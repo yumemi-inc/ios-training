@@ -15,7 +15,8 @@
 		502BACAE243209EA0019B403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 502BACAC243209EA0019B403 /* LaunchScreen.storyboard */; };
 		502BACB9243209EA0019B403 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACB8243209EA0019B403 /* ExampleTests.swift */; };
 		502BACC4243209EA0019B403 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACC3243209EA0019B403 /* ExampleUITests.swift */; };
-		502BACD324320A7C0019B403 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 502BACD224320A7C0019B403 /* YumemiWeather */; };
+		502BACD92432108F0019B403 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACD82432108F0019B403 /* R.generated.swift */; };
+		50C438562432EB43008269CF /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 50C438552432EB43008269CF /* Rswift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		502BACBF243209EA0019B403 /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		502BACC3243209EA0019B403 /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
 		502BACC5243209EA0019B403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		502BACD82432108F0019B403 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				502BACD324320A7C0019B403 /* YumemiWeather in Frameworks */,
+				50C438562432EB43008269CF /* Rswift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +110,7 @@
 				502BACAA243209EA0019B403 /* Assets.xcassets */,
 				502BACAC243209EA0019B403 /* LaunchScreen.storyboard */,
 				502BACAF243209EA0019B403 /* Info.plist */,
+				502BACD82432108F0019B403 /* R.generated.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 502BACC8243209EA0019B403 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
+				502BACD7243210190019B403 /* R.swift */,
 				502BAC9A243209E80019B403 /* Sources */,
 				502BAC9B243209E80019B403 /* Frameworks */,
 				502BAC9C243209E80019B403 /* Resources */,
@@ -147,7 +151,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				502BACD224320A7C0019B403 /* YumemiWeather */,
+				50C438552432EB43008269CF /* Rswift */,
 			);
 			productName = Example;
 			productReference = 502BAC9E243209E90019B403 /* Example.app */;
@@ -222,7 +226,7 @@
 			);
 			mainGroup = 502BAC95243209E80019B403;
 			packageReferences = (
-				502BACD124320A7C0019B403 /* XCRemoteSwiftPackageReference "ios-training" */,
+				50C438542432EB43008269CF /* XCRemoteSwiftPackageReference "R.swift" */,
 			);
 			productRefGroup = 502BAC9F243209E90019B403 /* Products */;
 			projectDirPath = "";
@@ -262,6 +266,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		502BACD7243210190019B403 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/$PRODUCT_NAME/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if mint list | grep -q 'R.swift'; then\n  mint run R.swift rswift generate \"$SRCROOT/$PRODUCT_NAME/R.generated.swift\"\nelse\n  echo \"error: R.swift not installed; run 'mint bootstrap' to install\"\n  return -1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		502BAC9A243209E80019B403 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -270,6 +297,7 @@
 				502BACA6243209E90019B403 /* ViewController.swift in Sources */,
 				502BACA2243209E90019B403 /* AppDelegate.swift in Sources */,
 				502BACA4243209E90019B403 /* SceneDelegate.swift in Sources */,
+				502BACD92432108F0019B403 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,21 +628,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		502BACD124320A7C0019B403 /* XCRemoteSwiftPackageReference "ios-training" */ = {
+		50C438542432EB43008269CF /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:yumemi/ios-training.git";
+			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		502BACD224320A7C0019B403 /* YumemiWeather */ = {
+		50C438552432EB43008269CF /* Rswift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 502BACD124320A7C0019B403 /* XCRemoteSwiftPackageReference "ios-training" */;
-			productName = YumemiWeather;
+			package = 50C438542432EB43008269CF /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = Rswift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
