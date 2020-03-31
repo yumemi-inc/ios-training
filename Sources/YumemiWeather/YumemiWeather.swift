@@ -44,6 +44,17 @@ final public class YumemiWeather {
         return encoder
     }()
     
+    
+    /// 擬似 天気予報API
+    /// - Parameter jsonString: 地域と日付を含むJson文字列
+    /// example:
+    /// {
+    ///   "area": "tokyo",
+    ///   "date": "2020-04-01T12:00:00+09:00"
+    /// }
+    /// - Throws: Jsonパースエラー、またはパラメータが正常でもランダムにエラーが発生する
+    /// - Returns: Json文字列
+    /// example: {"max_temp":25,"date":"2020-04-01T12:00:00+09:00","min_temp":7,"weather":"cloudy"}
     public static func fetchWeather(_ jsonString: String) throws -> String {
         guard let requestData = jsonString.data(using: .utf8) else {
             throw Error.invalidParameterError
