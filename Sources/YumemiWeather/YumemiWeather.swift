@@ -22,6 +22,7 @@ final public class YumemiWeather {
     
     public enum YumemiWeatherError: Swift.Error {
         case invalidParameterError
+        case jsonDecodeError(cause: Error)
         case unknownError
     }
     
@@ -60,7 +61,13 @@ final public class YumemiWeather {
             throw YumemiWeatherError.invalidParameterError
         }
         
-        let request = try decoder.decode(Request.self, from: requestData)
+        let request: Request
+        do {
+            request = try decoder.decode(Request.self, from: requestData)
+        }
+        catch {
+            throw YumemiWeatherError.jsonDecodeError(cause: error)
+        }
         
         let maxTemp = Int.random(in: 10...40)
         let minTemp = Int.random(in: -40..<maxTemp)
