@@ -17,6 +17,7 @@
 		502BACC4243209EA0019B403 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACC3243209EA0019B403 /* ExampleUITests.swift */; };
 		502BACD92432108F0019B403 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACD82432108F0019B403 /* R.generated.swift */; };
 		50C438562432EB43008269CF /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 50C438552432EB43008269CF /* Rswift */; };
+		50C4385C2432EDDB008269CF /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 50C4385B2432EDDB008269CF /* YumemiWeather */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C438562432EB43008269CF /* Rswift in Frameworks */,
+				50C4385C2432EDDB008269CF /* YumemiWeather in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +154,7 @@
 			name = Example;
 			packageProductDependencies = (
 				50C438552432EB43008269CF /* Rswift */,
+				50C4385B2432EDDB008269CF /* YumemiWeather */,
 			);
 			productName = Example;
 			productReference = 502BAC9E243209E90019B403 /* Example.app */;
@@ -227,6 +230,7 @@
 			mainGroup = 502BAC95243209E80019B403;
 			packageReferences = (
 				50C438542432EB43008269CF /* XCRemoteSwiftPackageReference "R.swift" */,
+				50C4385A2432EDDB008269CF /* XCRemoteSwiftPackageReference "ios-training" */,
 			);
 			productRefGroup = 502BAC9F243209E90019B403 /* Products */;
 			projectDirPath = "";
@@ -636,6 +640,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		50C4385A2432EDDB008269CF /* XCRemoteSwiftPackageReference "ios-training" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:yumemi/ios-training.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -643,6 +655,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50C438542432EB43008269CF /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = Rswift;
+		};
+		50C4385B2432EDDB008269CF /* YumemiWeather */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50C4385A2432EDDB008269CF /* XCRemoteSwiftPackageReference "ios-training" */;
+			productName = YumemiWeather;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
