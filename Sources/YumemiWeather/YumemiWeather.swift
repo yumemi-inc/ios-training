@@ -20,7 +20,7 @@ enum Weather: String, CaseIterable {
 
 final public class YumemiWeather {
     
-    public enum Error: Swift.Error {
+    public enum YumemiWeatherError: Swift.Error {
         case invalidParameterError
         case unknownError
     }
@@ -52,12 +52,12 @@ final public class YumemiWeather {
     ///   "area": "tokyo",
     ///   "date": "2020-04-01T12:00:00+09:00"
     /// }
-    /// - Throws: Jsonパースエラー、またはパラメータが正常でもランダムにエラーが発生する
+    /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
     /// - Returns: Json文字列
     /// example: {"max_temp":25,"date":"2020-04-01T12:00:00+09:00","min_temp":7,"weather":"cloudy"}
     public static func fetchWeather(_ jsonString: String) throws -> String {
         guard let requestData = jsonString.data(using: .utf8) else {
-            throw Error.invalidParameterError
+            throw YumemiWeatherError.invalidParameterError
         }
         
         let request = try decoder.decode(Request.self, from: requestData)
@@ -75,7 +75,7 @@ final public class YumemiWeather {
         let responseData = try encoder.encode(response)
         
         if Int.random(in: 0...4) == 4 {
-            throw Error.unknownError
+            throw YumemiWeatherError.unknownError
         }
         
         return String(data: responseData, encoding: .utf8)!
