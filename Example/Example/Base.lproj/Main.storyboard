@@ -65,6 +65,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERe-3f-sA4">
                                 <rect key="frame" x="185.5" y="641" width="43" height="30"/>
                                 <state key="normal" title="reload"/>
+                                <connections>
+                                    <action selector="onTouchReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zmr-nn-ens"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -76,6 +79,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="maxTempLabel" destination="ESI-gU-cW3" id="x4x-ay-9m5"/>
+                        <outlet property="minTempLabel" destination="p5C-3W-aox" id="PV8-jV-uaE"/>
+                        <outlet property="weatherImageView" destination="Xc1-d9-3e0" id="mAr-OB-AEZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
