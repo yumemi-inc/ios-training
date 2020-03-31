@@ -66,7 +66,7 @@
                                 <rect key="frame" x="185.5" y="641" width="43" height="30"/>
                                 <state key="normal" title="reload"/>
                                 <connections>
-                                    <action selector="onTouchReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zmr-nn-ens"/>
+                                    <segue destination="rJC-ho-Fpi" kind="show" id="47i-nI-W6v"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -88,6 +88,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="g1w-dF-and">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="rJC-ho-Fpi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qd6-6e-btF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rE3-S3-b4o">
+                                <rect key="frame" x="187.5" y="433" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <segue destination="zVc-BJ-Z9v" kind="unwind" unwindAction="unwindWithSegue:" id="bra-St-DHv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="rE3-S3-b4o" firstAttribute="centerX" secondItem="Qd6-6e-btF" secondAttribute="centerX" id="AI1-HU-0Gy"/>
+                            <constraint firstItem="rE3-S3-b4o" firstAttribute="centerY" secondItem="Qd6-6e-btF" secondAttribute="centerY" id="lp3-Kw-YYC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o30-Uu-6I7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iIv-sh-Qfj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UGN-mS-EfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zVc-BJ-Z9v" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="84"/>
         </scene>
     </scenes>
     <resources>

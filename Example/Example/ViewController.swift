@@ -29,8 +29,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadWeather()
+    }
+    
+    @IBAction func unwind(segue: UIStoryboardSegue) {
+        
+    }
 
-    @IBAction func onTouchReload(_ sender: Any) {
+    func loadWeather() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
