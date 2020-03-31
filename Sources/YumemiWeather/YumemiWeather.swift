@@ -46,7 +46,7 @@ final public class YumemiWeather {
     }()
     
     
-    /// 擬似 天気予報API
+    /// 擬似 天気予報API 同期版
     /// - Parameter jsonString: 地域と日付を含むJson文字列
     /// example:
     /// {
@@ -87,5 +87,28 @@ final public class YumemiWeather {
         
         return String(data: responseData, encoding: .utf8)!
     }
-    
+
+    /// 擬似 天気予報API 非同期版
+    /// - Parameters:
+    ///   - jsonString: 地域と日付を含むJson文字列
+    /// example:
+    /// {
+    ///   "area": "tokyo",
+    ///   "date": "2020-04-01T12:00:00+09:00"
+    /// }
+    ///   - completion: 完了コールバック
+    public static func fetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+            do {
+                let response = try fetchWeather(jsonString)
+                completion(Result.success(response))
+            }
+            catch let error where error is YumemiWeatherError {
+                completion(Result.failure(error as! YumemiWeatherError))
+            }
+            catch {
+                fatalError()
+            }
+        }
+    }
 }
