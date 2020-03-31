@@ -18,13 +18,13 @@ enum Weather: String, CaseIterable {
     case rainy
 }
 
+public enum YumemiWeatherError: Swift.Error {
+    case invalidParameterError
+    case jsonDecodeError
+    case unknownError
+}
+
 final public class YumemiWeather {
-    
-    public enum YumemiWeatherError: Swift.Error {
-        case invalidParameterError
-        case jsonDecodeError(cause: Error)
-        case unknownError
-    }
     
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -66,7 +66,7 @@ final public class YumemiWeather {
             request = try decoder.decode(Request.self, from: requestData)
         }
         catch {
-            throw YumemiWeatherError.jsonDecodeError(cause: error)
+            throw YumemiWeatherError.jsonDecodeError
         }
         
         let maxTemp = Int.random(in: 10...40)
