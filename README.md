@@ -4,7 +4,7 @@ iOSアプリ開発の基礎復習、実務スキルを身に付けるための�
 
 ## 概要
 1〜6までの課題をクリアし、天気予報アプリを開発していただきます。  
-各課題の回答例はそれぞれ `T.B.D` にあります。
+課題の回答例は現在作成中 ~~`T.B.D`にあります。~~
 
 ## 環境
 Xcode 11.4  
@@ -22,7 +22,7 @@ SwiftPackageManagerに対応しています。
 1. 課題をひとつ実施
 1. 完了したらPull Requestを作成し、レビュー依頼
 1. Approvalされたらマージ
-1. 回答例にも目を通してみる
+1. 回答例がある場合は目を通してみる
 1. 次の課題を実施
 
 全ての改題をクリアしたら修了です！
@@ -35,3 +35,5 @@ SwiftPackageManagerに対応しています。
 - [Session4](Documentation/Session4.md)
 - [Session5](Documentation/Session5.md)
 - [Session6](Documentation/Session6.md)
+- [Session7](Documentation/Session7.md)
+- [Session7](Documentation/Session8.md)
