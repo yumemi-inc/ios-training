@@ -30,3 +30,5 @@ InterfaceBuilderで制約を与える方法、NSLayoutConstraintオブジェク�
 ![img3](Images/session1-3.jpeg)
 - UIButtonとUILabelの隙間は80pt
 ![img4](Images/session1-4.jpeg)
+- UIButtonとUILabelの水平中央は同じ
+![img5](Images/session1-5.jpeg)
