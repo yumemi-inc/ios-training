@@ -12,4 +12,4 @@
 - APIエラーが発生したらUIAlertControllerを表示する
 
 ※イメージ  
-![session1](Images/session1.gif)
+![session2](Images/session2.gif)
