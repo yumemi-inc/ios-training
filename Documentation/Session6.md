@@ -13,6 +13,7 @@ XCTestを使ってアプリのテストコードを書いてみましょう
   - 天気予報が`rainy`だったら、画面に雨画像が表示されること
   - 天気予報の最高気温がUILabelに反映されること
   - 天気予報の最低気温がUILabelに反映されること
+- 余力があれば、Jsonのエンコード、デコードのテストも書いてみましょう
 
 ## テストコードを書くためにリファクタリングする
 
@@ -27,9 +28,8 @@ XCTestを使ってアプリのテストコードを書いてみましょう
 1. ViewControllerの`天気予報を取得する実装`をWeatherModelの関数呼び出しに置き換える
 1. 外部からViewControllerにWeatherModelImplを渡す
 
-任意の値を返すWeatherModelの実装クラスを用意しておき、  
-テストクラスではViewControllerにそれを渡してあげると  
-テストがし易くなると思います。
+テストでは任意の値を返すWeatherModelの実装クラスを用意しておき、  
+ViewControllerにそれを渡してあげるとテストコードが書きやすくなるでしょう。
 
 ### Protocol
 
@@ -40,7 +40,9 @@ SwiftにはProtocolという機能があります。
 
 #### Protocol-Oriented Programming  
 一方で、SwiftにはProtocol指向という考え方があります。  
-[Protocol-Oriented Programming in Swift](https://developer.apple.com/videos/play/wwdc2015/408/)
+[Protocol-Oriented Programming in Swift](https://developer.apple.com/videos/play/wwdc2015/408/)  
+サンプルコードが古いですが、日本語の分かり易い資料として  
+[Swiftにおけるプロトコル指向プログラミング](https://github.com/mixi-inc/iOSTraining/blob/master/Swift/pages/day4/2-3_protocol-oriented-programming.md)
 
 IntやArrayなどの型もProtocolを用いて実装されています。  
 `Conforms To`の項に採用されているProtocolが列挙されています。  
@@ -59,3 +61,9 @@ DIや依存性の注入などと呼ばれます。
 せっかくProtocolで宣言したのに、実装クラスへの依存が生まれます。  
 しかし、外部から実装クラスを受け取るようにすると、ViewControllerはWeatherModel(Protocol)への依存しか持たず、その実装は意識しなくて良いことになります。  
 テストが書きやすくなったり、外部の変更に強いプログラムになり易いです。
+
+### モックライブラリ
+任意の値を返す `WeatherModel`の実装クラスをいくつも用意するのは骨がおれます。  
+そういったモックやスタブの実装をサポートしてくれるライブラリがいくつかあります。  
+- [Cuckoo](https://github.com/Brightify/Cuckoo)
+- [Mockolo](https://github.com/uber/mockolo)
