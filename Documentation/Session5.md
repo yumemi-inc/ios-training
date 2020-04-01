@@ -1,7 +1,7 @@
 # NotificationCenter
 
 Observerパターンを実現するための仕組みとして、NotificationCenterがあります。  
-イベントの発生を、一度に多に知らせることができます。
+イベントの発生を、一度に多くに知らせることができます。
 
 Sender(イベント通知者)はObserver(イベント観察者)のことを知る必要がありません。  
 
