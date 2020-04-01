@@ -13,9 +13,10 @@ UIViewControllerのライフサイクルに関するリファレンスをまと�
 
 # 別画面に遷移して、戻ってきたとき天気予報を更新する
 ## 課題
-- ボタンをタップして新しいViewControllerに遷移する
-- 新しいViewControllerには`閉じるボタン`を追加する
-- 新しいViewControllerを閉じると天気予報を更新する
+- `新しいViewController`を追加する
+- アプリケーション起動時に`新しいViewController`に遷移する
+- `新しいViewController`が表示されたら、前回まで作ったViewControllerに遷移する
+- 前回まで作ったViewControllerのCloseボタンを押下したらViewControllerを閉じるようにする
 
 ※イメージ  
-![session1](Images/session2.gif)
+![session3](Images/session3.gif)
