@@ -9,15 +9,9 @@
 import UIKit
 import YumemiWeather
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
     
     struct JsonDecodeError: Error {
-    }
-    
-    enum Weather: String {
-        case sunny
-        case cloudy
-        case rainy
     }
 
     @IBOutlet weak var weatherImageView: UIImageView!
