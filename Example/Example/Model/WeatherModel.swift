@@ -44,6 +44,7 @@ class WeatherModelImpl: WeatherModel {
         
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         return try decoder.decode(Response.self, from: responseData)
     }
     
