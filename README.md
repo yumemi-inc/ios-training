@@ -36,4 +36,4 @@ SwiftPackageManagerに対応しています。
 - [Session5](Documentation/Session5.md)
 - [Session6](Documentation/Session6.md)
 - [Session7](Documentation/Session7.md)
-- [Session7](Documentation/Session8.md)
+- [Session8](Documentation/Session8.md)
