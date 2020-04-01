@@ -9,7 +9,7 @@
 import Foundation
 
 struct Response: Decodable {
-    let weather: String
+    let weather: Weather
     let maxTemp: Int
     let minTemp: Int
     let date: Date

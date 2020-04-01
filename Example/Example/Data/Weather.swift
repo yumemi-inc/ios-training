@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Weather: String {
+enum Weather: String, Decodable {
     case sunny
     case cloudy
     case rainy
