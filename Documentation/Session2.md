@@ -1,7 +1,7 @@
 # 天気予報を取得し、表示する
 `YumemiWeather`のAPIを使用して、天気予報を取得しましょう。  
 `static func fetchWeather(_ jsonString: String) throws -> String`  
-[APIの概要](Documentation/YumemiWeather.md)
+[APIの概要](YumemiWeather.md)
 
 ## 課題
 - ボタンをタップして天気予報を取得する
