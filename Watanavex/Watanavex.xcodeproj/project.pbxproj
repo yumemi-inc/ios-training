@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		503EE7FD243579AE0061F2FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503EE7FC243579AE0061F2FC /* AppDelegate.swift */; };
+		503EE7FF243579AE0061F2FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503EE7FE243579AE0061F2FC /* SceneDelegate.swift */; };
+		503EE801243579AE0061F2FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503EE800243579AE0061F2FC /* ViewController.swift */; };
+		503EE804243579AE0061F2FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503EE802243579AE0061F2FC /* Main.storyboard */; };
+		503EE806243579B00061F2FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503EE805243579B00061F2FC /* Assets.xcassets */; };
+		503EE809243579B00061F2FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503EE807243579B00061F2FC /* LaunchScreen.storyboard */; };
+		503EE814243579B00061F2FC /* WatanavexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503EE813243579B00061F2FC /* WatanavexTests.swift */; };
+		503EE81F243579B00061F2FC /* WatanavexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503EE81E243579B00061F2FC /* WatanavexUITests.swift */; };
+		503EE82E24357A300061F2FC /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 503EE82D24357A300061F2FC /* YumemiWeather */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		503EE810243579B00061F2FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503EE7F1243579AE0061F2FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 503EE7F8243579AE0061F2FC;
+			remoteInfo = Watanavex;
+		};
+		503EE81B243579B00061F2FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503EE7F1243579AE0061F2FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 503EE7F8243579AE0061F2FC;
+			remoteInfo = Watanavex;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		503EE7F9243579AE0061F2FC /* Watanavex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watanavex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		503EE7FC243579AE0061F2FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		503EE7FE243579AE0061F2FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		503EE800243579AE0061F2FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		503EE803243579AE0061F2FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		503EE805243579B00061F2FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		503EE808243579B00061F2FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		503EE80A243579B00061F2FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		503EE80F243579B00061F2FC /* WatanavexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatanavexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		503EE813243579B00061F2FC /* WatanavexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatanavexTests.swift; sourceTree = "<group>"; };
+		503EE815243579B00061F2FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		503EE81A243579B00061F2FC /* WatanavexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatanavexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		503EE81E243579B00061F2FC /* WatanavexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatanavexUITests.swift; sourceTree = "<group>"; };
+		503EE820243579B00061F2FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		503EE7F6243579AE0061F2FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503EE82E24357A300061F2FC /* YumemiWeather in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503EE80C243579B00061F2FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503EE817243579B00061F2FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		503EE7F0243579AE0061F2FC = {
+			isa = PBXGroup;
+			children = (
+				503EE7FB243579AE0061F2FC /* Watanavex */,
+				503EE812243579B00061F2FC /* WatanavexTests */,
+				503EE81D243579B00061F2FC /* WatanavexUITests */,
+				503EE7FA243579AE0061F2FC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		503EE7FA243579AE0061F2FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				503EE7F9243579AE0061F2FC /* Watanavex.app */,
+				503EE80F243579B00061F2FC /* WatanavexTests.xctest */,
+				503EE81A243579B00061F2FC /* WatanavexUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		503EE7FB243579AE0061F2FC /* Watanavex */ = {
+			isa = PBXGroup;
+			children = (
+				503EE7FC243579AE0061F2FC /* AppDelegate.swift */,
+				503EE7FE243579AE0061F2FC /* SceneDelegate.swift */,
+				503EE800243579AE0061F2FC /* ViewController.swift */,
+				503EE802243579AE0061F2FC /* Main.storyboard */,
+				503EE805243579B00061F2FC /* Assets.xcassets */,
+				503EE807243579B00061F2FC /* LaunchScreen.storyboard */,
+				503EE80A243579B00061F2FC /* Info.plist */,
+			);
+			path = Watanavex;
+			sourceTree = "<group>";
+		};
+		503EE812243579B00061F2FC /* WatanavexTests */ = {
+			isa = PBXGroup;
+			children = (
+				503EE813243579B00061F2FC /* WatanavexTests.swift */,
+				503EE815243579B00061F2FC /* Info.plist */,
+			);
+			path = WatanavexTests;
+			sourceTree = "<group>";
+		};
+		503EE81D243579B00061F2FC /* WatanavexUITests */ = {
+			isa = PBXGroup;
+			children = (
+				503EE81E243579B00061F2FC /* WatanavexUITests.swift */,
+				503EE820243579B00061F2FC /* Info.plist */,
+			);
+			path = WatanavexUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		503EE7F8243579AE0061F2FC /* Watanavex */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 503EE823243579B00061F2FC /* Build configuration list for PBXNativeTarget "Watanavex" */;
+			buildPhases = (
+				503EE7F5243579AE0061F2FC /* Sources */,
+				503EE7F6243579AE0061F2FC /* Frameworks */,
+				503EE7F7243579AE0061F2FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Watanavex;
+			packageProductDependencies = (
+				503EE82D24357A300061F2FC /* YumemiWeather */,
+			);
+			productName = Watanavex;
+			productReference = 503EE7F9243579AE0061F2FC /* Watanavex.app */;
+			productType = "com.apple.product-type.application";
+		};
+		503EE80E243579B00061F2FC /* WatanavexTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 503EE826243579B00061F2FC /* Build configuration list for PBXNativeTarget "WatanavexTests" */;
+			buildPhases = (
+				503EE80B243579B00061F2FC /* Sources */,
+				503EE80C243579B00061F2FC /* Frameworks */,
+				503EE80D243579B00061F2FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				503EE811243579B00061F2FC /* PBXTargetDependency */,
+			);
+			name = WatanavexTests;
+			productName = WatanavexTests;
+			productReference = 503EE80F243579B00061F2FC /* WatanavexTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		503EE819243579B00061F2FC /* WatanavexUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 503EE829243579B00061F2FC /* Build configuration list for PBXNativeTarget "WatanavexUITests" */;
+			buildPhases = (
+				503EE816243579B00061F2FC /* Sources */,
+				503EE817243579B00061F2FC /* Frameworks */,
+				503EE818243579B00061F2FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				503EE81C243579B00061F2FC /* PBXTargetDependency */,
+			);
+			name = WatanavexUITests;
+			productName = WatanavexUITests;
+			productReference = 503EE81A243579B00061F2FC /* WatanavexUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		503EE7F1243579AE0061F2FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "YUMEMI Inc.";
+				TargetAttributes = {
+					503EE7F8243579AE0061F2FC = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					503EE80E243579B00061F2FC = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 503EE7F8243579AE0061F2FC;
+					};
+					503EE819243579B00061F2FC = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 503EE7F8243579AE0061F2FC;
+					};
+				};
+			};
+			buildConfigurationList = 503EE7F4243579AE0061F2FC /* Build configuration list for PBXProject "Watanavex" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 503EE7F0243579AE0061F2FC;
+			packageReferences = (
+				503EE82C24357A300061F2FC /* XCRemoteSwiftPackageReference "ios-training" */,
+			);
+			productRefGroup = 503EE7FA243579AE0061F2FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				503EE7F8243579AE0061F2FC /* Watanavex */,
+				503EE80E243579B00061F2FC /* WatanavexTests */,
+				503EE819243579B00061F2FC /* WatanavexUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		503EE7F7243579AE0061F2FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503EE809243579B00061F2FC /* LaunchScreen.storyboard in Resources */,
+				503EE806243579B00061F2FC /* Assets.xcassets in Resources */,
+				503EE804243579AE0061F2FC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503EE80D243579B00061F2FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503EE818243579B00061F2FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		503EE7F5243579AE0061F2FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503EE801243579AE0061F2FC /* ViewController.swift in Sources */,
+				503EE7FD243579AE0061F2FC /* AppDelegate.swift in Sources */,
+				503EE7FF243579AE0061F2FC /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503EE80B243579B00061F2FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503EE814243579B00061F2FC /* WatanavexTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503EE816243579B00061F2FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503EE81F243579B00061F2FC /* WatanavexUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		503EE811243579B00061F2FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 503EE7F8243579AE0061F2FC /* Watanavex */;
+			targetProxy = 503EE810243579B00061F2FC /* PBXContainerItemProxy */;
+		};
+		503EE81C243579B00061F2FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 503EE7F8243579AE0061F2FC /* Watanavex */;
+			targetProxy = 503EE81B243579B00061F2FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		503EE802243579AE0061F2FC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				503EE803243579AE0061F2FC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		503EE807243579B00061F2FC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				503EE808243579B00061F2FC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		503EE821243579B00061F2FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		503EE822243579B00061F2FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		503EE824243579B00061F2FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Watanavex/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yumemi.Watanavex;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		503EE825243579B00061F2FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Watanavex/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yumemi.Watanavex;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		503EE827243579B00061F2FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WatanavexTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yumemi.WatanavexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Watanavex.app/Watanavex";
+			};
+			name = Debug;
+		};
+		503EE828243579B00061F2FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WatanavexTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yumemi.WatanavexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Watanavex.app/Watanavex";
+			};
+			name = Release;
+		};
+		503EE82A243579B00061F2FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WatanavexUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yumemi.WatanavexUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Watanavex;
+			};
+			name = Debug;
+		};
+		503EE82B243579B00061F2FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WatanavexUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.yumemi.WatanavexUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Watanavex;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		503EE7F4243579AE0061F2FC /* Build configuration list for PBXProject "Watanavex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				503EE821243579B00061F2FC /* Debug */,
+				503EE822243579B00061F2FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		503EE823243579B00061F2FC /* Build configuration list for PBXNativeTarget "Watanavex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				503EE824243579B00061F2FC /* Debug */,
+				503EE825243579B00061F2FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		503EE826243579B00061F2FC /* Build configuration list for PBXNativeTarget "WatanavexTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				503EE827243579B00061F2FC /* Debug */,
+				503EE828243579B00061F2FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		503EE829243579B00061F2FC /* Build configuration list for PBXNativeTarget "WatanavexUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				503EE82A243579B00061F2FC /* Debug */,
+				503EE82B243579B00061F2FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		503EE82C24357A300061F2FC /* XCRemoteSwiftPackageReference "ios-training" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:yumemi/ios-training.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		503EE82D24357A300061F2FC /* YumemiWeather */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 503EE82C24357A300061F2FC /* XCRemoteSwiftPackageReference "ios-training" */;
+			productName = YumemiWeather;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 503EE7F1243579AE0061F2FC /* Project object */;
+}
