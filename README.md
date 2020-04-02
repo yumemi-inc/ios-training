@@ -21,9 +21,9 @@ SwiftPackageManagerに対応しています。
 1. v1.0.0のタグから自身のdevelopブランチを作成  
 ブランチ名: `{name}/develop`
 1. 課題用のブランチを切って実施  
-`{name}/issue/{#}`
+`{name}/session/{#}`
 1. 完了したらPull Requestを作成し、レビュー依頼  
-`{name}/develop` <-- `{name}/issue/{#}`  
+`{name}/develop` <-- `{name}/session/{#}`  
 Reviewersは `yumemi/yutu`
 1. Approvalされたらマージ
 1. 回答例がある場合は目を通してみる
