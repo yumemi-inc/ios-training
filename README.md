@@ -18,9 +18,13 @@ SwiftPackageManagerに対応しています。
 [YumemiWeather](Documentation/YumemiWeather.md)
 
 ## 研修の進め方
-1. ご自身のGitHubアカウントにリポジトリを作成
-1. 課題をひとつ実施
-1. 完了したらPull Requestを作成し、レビュー依頼
+1. v1.0.0のタグから自身のdevelopブランチを作成  
+ブランチ名: `{name}/develop`
+1. 課題用のブランチを切って実施  
+`{name}/issue/{#}`
+1. 完了したらPull Requestを作成し、レビュー依頼  
+`{name}/develop` <-- `{name}/issue/{#}`  
+Reviewersは `yumemi/yutu`
 1. Approvalされたらマージ
 1. 回答例がある場合は目を通してみる
 1. 次の課題を実施
