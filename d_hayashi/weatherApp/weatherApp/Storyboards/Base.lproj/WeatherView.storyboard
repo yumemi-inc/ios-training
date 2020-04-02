@@ -27,13 +27,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAt-nN-dQS">
                                         <rect key="frame" x="0.0" y="207" width="207" height="20.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLy-rV-Oi9">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ーー" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLy-rV-Oi9">
                                                 <rect key="frame" x="0.0" y="0.0" width="103.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZY-jU-EwT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ーー" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZY-jU-EwT">
                                                 <rect key="frame" x="103.5" y="0.0" width="103.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,12 +47,24 @@
                                     <constraint firstItem="dLy-rV-Oi9" firstAttribute="width" secondItem="BBO-2f-zdR" secondAttribute="width" multiplier="0.5" id="Unl-62-Jyp"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNY-zj-GdW">
+                                <rect key="frame" x="136" y="642" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfb-DT-0GT">
+                                <rect key="frame" x="235.5" y="642" width="47" height="30"/>
+                                <state key="normal" title="Reload"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="rfb-DT-0GT" firstAttribute="top" secondItem="A6g-46-sdf" secondAttribute="bottom" constant="80" id="BWj-du-0XS"/>
                             <constraint firstItem="A6g-46-sdf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HrZ-rC-k9h"/>
+                            <constraint firstItem="rfb-DT-0GT" firstAttribute="centerX" secondItem="fZY-jU-EwT" secondAttribute="centerX" id="I02-DN-vJv"/>
+                            <constraint firstItem="gNY-zj-GdW" firstAttribute="top" secondItem="A6g-46-sdf" secondAttribute="bottom" constant="80" id="hTk-aA-wbn"/>
+                            <constraint firstItem="gNY-zj-GdW" firstAttribute="centerX" secondItem="dLy-rV-Oi9" secondAttribute="centerX" id="jjI-7z-iyb"/>
+                            <constraint firstItem="BBO-2f-zdR" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="nNU-bC-aEA"/>
                             <constraint firstItem="A6g-46-sdf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="umE-hZ-fj8"/>
-                            <constraint firstItem="A6g-46-sdf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="v4m-Jn-a4I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
