@@ -23,7 +23,8 @@ SwiftPackageManagerに対応しています。
 1. 課題用のブランチを切って実施  
 `{name}/issue/{#}`
 1. 完了したらPull Requestを作成し、レビュー依頼  
-`{name}/develop` <-- `{name}/issue/{#}`
+`{name}/develop` <-- `{name}/issue/{#}`  
+Reviewersは `yumemi/yutu`
 1. Approvalされたらマージ
 1. 回答例がある場合は目を通してみる
 1. 次の課題を実施
