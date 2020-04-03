@@ -14,3 +14,8 @@ struct WeatherResponse: Codable {
     let date: Date
     let weather: String
 }
+
+struct InputJSON: Codable {
+    let area: String
+    let date: Date
+}

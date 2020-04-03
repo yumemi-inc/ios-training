@@ -17,7 +17,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     
     // MARK: - Property
-    private let inputString = #"{ "area": "tokyo", "date": "2020-04-01T12:00:00+09:00" }"#
+    private var inputJsonString = #"{ "area": "tokyo", "date": "2020-04-01T12:00:00+09:00" }"#
     private var weatherImageName = "sunny"
 
     override func viewDidLoad() {
@@ -27,11 +27,24 @@ class WeatherViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func tapReload(_ sender: Any) {
+        
+        let inputString = InputJSON(area: "tokyo", date: Date())
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        encoder.dateEncodingStrategy = .iso8601
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
+        
         do {
-            let result: String = try YumemiWeather.fetchWeather(inputString)
+            let inputData = try encoder.encode(inputString)
+            inputJsonString = String(data: inputData, encoding: .utf8)!
+        } catch {
+            print("encoding error")
+        }
+        
+        do {
+            let result: String = try YumemiWeather.fetchWeather(inputJsonString)
             guard let data = result.data(using: .utf8) else {
                 // TODO: エラーハンドリング
                 return
@@ -40,6 +53,7 @@ class WeatherViewController: UIViewController {
             
             minTempLabel.text = String(response.minTemp) + " ˚C"
             maxTempLabel.text = String(response.maxTemp) + " ˚C"
+            print(response.date)
             
             // TODO: 債務の切り分け (画像の変更は View に分ける)
             switch response.weather {
