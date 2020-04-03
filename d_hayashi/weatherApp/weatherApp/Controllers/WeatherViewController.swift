@@ -38,6 +38,9 @@ class WeatherViewController: UIViewController {
             maxTempLabel.text = String(response.maxTemp)
         } catch {
             print("error")
+            let errorAlertController: UIAlertController = UIAlertController(title: "Error", message: "エラーが発生しました", preferredStyle: .alert)
+            errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(errorAlertController, animated: true)
         }
     }
     
