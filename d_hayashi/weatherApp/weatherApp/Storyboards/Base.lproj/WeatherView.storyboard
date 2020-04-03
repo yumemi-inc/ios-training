@@ -74,6 +74,7 @@
                     <connections>
                         <outlet property="maxTempLabel" destination="fZY-jU-EwT" id="jgm-6y-NH9"/>
                         <outlet property="minTempLabel" destination="dLy-rV-Oi9" id="idl-4P-6EJ"/>
+                        <outlet property="weatherImageView" destination="BBO-2f-zdR" id="Ygd-H9-TMW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

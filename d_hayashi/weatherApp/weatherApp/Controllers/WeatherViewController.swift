@@ -12,11 +12,13 @@ import YumemiWeather
 class WeatherViewController: UIViewController {
     
     // MARK: - IBOutlet
+    @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     
     // MARK: - Property
     private let inputString = "{ \"area\": \"tokyo\", \"date\": \"2020-04-01T12:00:00+09:00\" }"
+    private var weatherImageName = "sunny"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,22 @@ class WeatherViewController: UIViewController {
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: data)
             minTempLabel.text = String(response.minTemp)
             maxTempLabel.text = String(response.maxTemp)
+            
+            // TODO: 債務の切り分け (画像の変更は View に分ける)
+            switch response.weather {
+            case "sunny":
+                weatherImageName = "sunny"
+                weatherImageView.tintColor = .red
+            case "rainy":
+                weatherImageName = "rainy"
+                weatherImageView.tintColor = .blue
+            case "cloudy":
+                weatherImageName = "cloudy"
+                weatherImageView.tintColor = .gray
+            default:
+                weatherImageName = "sunny"
+            }
+            weatherImageView.image = UIImage(named: weatherImageName)?.withRenderingMode(.alwaysTemplate)
         } catch {
             print("error")
             let errorAlertController: UIAlertController = UIAlertController(title: "Error", message: "エラーが発生しました", preferredStyle: .alert)
