@@ -67,6 +67,26 @@ final public class YumemiWeather {
         )
     }
     
+    /// 擬似 天気予報API シンプル版
+    /// - Returns: 天気を表す文字列 "sunny" or "cloudy" or "rainy"
+    public static func fetchWeather() -> String {
+        return self.makeRandomResponse().weather
+    }
+    
+    /// 擬似 天気予報API シンプル版
+    /// - Parameters:
+    ///   - area: 天気予報を取得する対象地域 example: "tokyo"
+    ///   - date: 天気予報を取得する対象日時
+    /// - Throws: YumemiWeatherError
+    /// - Returns: 天気を表す文字列 "sunny" or "cloudy" or "rainy"
+    public static func fetchWeather(at area: String) throws -> String {
+        if Int.random(in: 0...4) == 4 {
+            throw YumemiWeatherError.unknownError
+        }
+        
+        return self.makeRandomResponse().weather
+    }
+    
     /// 擬似 天気予報API 同期版
     /// - Parameter jsonString: 地域と日付を含むJson文字列
     /// example:
