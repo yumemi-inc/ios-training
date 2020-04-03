@@ -38,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		C93B9B632436BD550076A0D3 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		C93B9B6C2436D4E40076A0D3 /* weather-sunny.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "weather-sunny.pdf"; sourceTree = "<group>"; };
+		C93B9B6D2436D4E40076A0D3 /* weather-rainny.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "weather-rainny.pdf"; sourceTree = "<group>"; };
+		C93B9B6E2436D4E40076A0D3 /* weather-cloudy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "weather-cloudy.pdf"; sourceTree = "<group>"; };
 		C967B5DD24357B960057C047 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C967B5E024357B960057C047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C967B5E224357B960057C047 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +91,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C93B9B6B2436D4D40076A0D3 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				C93B9B6C2436D4E40076A0D3 /* weather-sunny.pdf */,
+				C93B9B6E2436D4E40076A0D3 /* weather-cloudy.pdf */,
+				C93B9B6D2436D4E40076A0D3 /* weather-rainny.pdf */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		C967B5D424357B960057C047 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +124,7 @@
 		C967B5DF24357B960057C047 /* weatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				C93B9B6B2436D4D40076A0D3 /* Icons */,
 				C93B9B622436BD3C0076A0D3 /* Models */,
 				C967B614243581350057C047 /* Storyboards */,
 				C967B613243581280057C047 /* Controllers */,
