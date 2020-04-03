@@ -18,7 +18,7 @@ Json文字列
 |Key|型|フォーマット|例|
 |:--|:--|:--|:--|
 |area|String|自由|tokyo|
-|data|String|yyyy-MM-dd'T'HH:mm:ssZZZZZ|2020-04-01T12:00:00+09:00|
+|date|String|yyyy-MM-dd'T'HH:mm:ssZZZZZ|2020-04-01T12:00:00+09:00|
 
 ### Returns
 Json文字列
