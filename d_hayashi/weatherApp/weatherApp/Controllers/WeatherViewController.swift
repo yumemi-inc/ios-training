@@ -19,7 +19,7 @@ class WeatherViewController: UIViewController {
     // MARK: - Property
     private var inputJsonString = #"{ "area": "tokyo", "date": "2020-04-01T12:00:00+09:00" }"#
     private var weatherImageName = "sunny"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,9 +29,11 @@ class WeatherViewController: UIViewController {
     @IBAction func tapReload(_ sender: Any) {
         
         let inputString = InputJSON(area: "tokyo", date: Date())
+
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dateEncodingStrategy = .iso8601
+
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
@@ -54,22 +56,20 @@ class WeatherViewController: UIViewController {
             minTempLabel.text = String(response.minTemp) + " ˚C"
             maxTempLabel.text = String(response.maxTemp) + " ˚C"
             print(response.date)
-            
+
             // TODO: 債務の切り分け (画像の変更は View に分ける)
             switch response.weather {
             case "sunny":
-                weatherImageName = "sunny"
                 weatherImageView.tintColor = .sunny
             case "rainy":
-                weatherImageName = "rainy"
                 weatherImageView.tintColor = .rainy
             case "cloudy":
-                weatherImageName = "cloudy"
                 weatherImageView.tintColor = .gray
             default:
                 weatherImageName = "sunny"
             }
-            weatherImageView.image = UIImage(named: weatherImageName)?.withRenderingMode(.alwaysTemplate)
+            weatherImageView.image = UIImage(named: response.weather)?.withRenderingMode(.alwaysTemplate)
+
         } catch let weatherError as YumemiWeatherError {
             var errorTitleString = "unknown error"
             let errorMessageString = "エラーが発生しました"
@@ -88,6 +88,4 @@ class WeatherViewController: UIViewController {
             print("unextected")
         }
     }
-    
 }
-
