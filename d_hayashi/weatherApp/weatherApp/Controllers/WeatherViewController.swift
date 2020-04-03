@@ -18,6 +18,7 @@ class WeatherViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
             let result: String = try YumemiWeather.fetchWeather(inputString)
             guard let data = result.data(using: .utf8) else {
@@ -25,7 +26,7 @@ class WeatherViewController: UIViewController {
                 return
             }
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: data)
-            print(response.max_temp)
+            print(response.maxTemp)
         } catch {
             print("error")
         }
