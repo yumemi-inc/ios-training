@@ -17,8 +17,15 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        let decoder = JSONDecoder()
         do {
-            try print(YumemiWeather.fetchWeather(inputString))
+            let result: String = try YumemiWeather.fetchWeather(inputString)
+            guard let data = result.data(using: .utf8) else {
+                // TODO: エラーハンドリング
+                return
+            }
+            let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: data)
+            print(response.max_temp)
         } catch {
             print("error")
         }
