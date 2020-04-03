@@ -9,5 +9,10 @@ Simple ver
 - ボタンをタップして天気予報を取得する
 - 天気予報を画面に表示する
 
+画像はこれを利用してください
+- [sunny](Images/iconmonstr-weather-1.pdf)
+- [cloudy](Images/iconmonstr-weather-11.pdf)
+- [rainy](Images/iconmonstr-umbrella-1.pdf)
+
 ※イメージ  
-![session2](Images/session2.gif)
+![api](Images/API.gif)

@@ -16,6 +16,3 @@ Swiftにはベースになる考え方があります。
 - APIエラーが発生したらUIAlertControllerを表示する
   - エラーの内容に応じてメッセージを返る  
   メッセージの内容は自由です。エラーを切り分けられていればOK。
-
-※イメージ  
-![session2](Images/session2.gif)

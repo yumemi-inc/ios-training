@@ -13,4 +13,4 @@ Json ver
   - 最高気温
 
 ※イメージ  
-![session2](Images/session2.gif)
+![json](Images/Json.gif)

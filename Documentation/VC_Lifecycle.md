@@ -19,4 +19,4 @@ UIViewControllerのライフサイクルに関するリファレンスをまと�
 - 前回まで作ったViewControllerのCloseボタンを押下したらViewControllerを閉じるようにする
 
 ※イメージ  
-![session3](Images/session3.gif)
+![VC_Lifecycle](Images/VC_Lifecycle.gif)
