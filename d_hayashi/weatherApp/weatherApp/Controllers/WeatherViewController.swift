@@ -11,6 +11,11 @@ import YumemiWeather
 
 class WeatherViewController: UIViewController {
     
+    // MARK: - IBOutlet
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    
+    // MARK: - Property
     private let inputString = "{ \"area\": \"tokyo\", \"date\": \"2020-04-01T12:00:00+09:00\" }"
 
     override func viewDidLoad() {
@@ -26,7 +31,8 @@ class WeatherViewController: UIViewController {
                 return
             }
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: data)
-            print(response.maxTemp)
+            minTempLabel.text = String(response.minTemp)
+            maxTempLabel.text = String(response.maxTemp)
         } catch {
             print("error")
         }

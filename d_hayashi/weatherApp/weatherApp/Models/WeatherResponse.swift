@@ -9,7 +9,6 @@
 import Foundation
 
 struct WeatherResponse: Codable {
-    // TODO: スネークケース -> キャメルケースへ
     let maxTemp: Int
     let minTemp: Int
     let date: String
