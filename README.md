@@ -29,11 +29,13 @@ SwiftPackageManagerに対応しています。
 
 
 # 課題
-- [Session1](Documentation/Session1.md)
-- [Session2](Documentation/Session2.md)
-- [Session3](Documentation/Session3.md)
-- [Session4](Documentation/Session4.md)
-- [Session5](Documentation/Session5.md)
-- [Session6](Documentation/Session6.md)
-- [Session7](Documentation/Session7.md)
-- [Session8](Documentation/Session8.md)
+- [Session1](Documentation/AutoLayout.md)
+- [Session2](Documentation/API.md)
+- [Session3](Documentation/Error.md)
+- [Session4](Documentation/Json.md)
+- [Session5](Documentation/Codable.md)
+- [Session6](Documentation/VC_Lifecycle.md)
+- [Session7](Documentation/NotificationCenter.md)
+- [Session8](Documentation/UnitTest.md)
+- [Session9](Documentation/Delegate.md)
+- [Session10](Documentation/Closure.md)
