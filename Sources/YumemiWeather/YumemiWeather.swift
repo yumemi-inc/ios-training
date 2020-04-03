@@ -46,6 +46,27 @@ final public class YumemiWeather {
     }()
     
     
+    /// 引数の値でResponse構造体を作成する。引数がnilの場合はランダムに値を作成する。
+    /// - Parameters:
+    ///   - weather: 天気を表すenum
+    ///   - maxTemp: 最高気温
+    ///   - minTemp: 最低気温
+    ///   - date: 日付
+    /// - Returns: Response構造体
+    private static func makeRandomResponse(weather: Weather? = nil, maxTemp: Int? = nil, minTemp: Int? = nil, date: Date? = nil) -> Response {
+        let weather = weather ?? Weather.allCases.randomElement()!
+        let maxTemp = maxTemp ?? Int.random(in: 10...40)
+        let minTemp = minTemp ?? Int.random(in: -40..<maxTemp)
+        let date = date ?? Date()
+        
+        return Response(
+            weather: weather.rawValue,
+            maxTemp: maxTemp,
+            minTemp: minTemp,
+            date: date
+        )
+    }
+    
     /// 擬似 天気予報API 同期版
     /// - Parameter jsonString: 地域と日付を含むJson文字列
     /// example:
@@ -69,16 +90,7 @@ final public class YumemiWeather {
             throw YumemiWeatherError.jsonDecodeError
         }
         
-        let maxTemp = Int.random(in: 10...40)
-        let minTemp = Int.random(in: -40..<maxTemp)
-        
-        let response = Response(
-            weather: Weather.allCases.randomElement()!.rawValue,
-            maxTemp: maxTemp,
-            minTemp: minTemp,
-            date: request.date
-        )
-        
+        let response = makeRandomResponse(date: request.date)
         let responseData = try encoder.encode(response)
         
         if Int.random(in: 0...4) == 4 {
