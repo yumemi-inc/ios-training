@@ -71,16 +71,17 @@ class WeatherViewController: UIViewController {
             }
             weatherImageView.image = UIImage(named: weatherImageName)?.withRenderingMode(.alwaysTemplate)
         } catch let weatherError as YumemiWeatherError {
-            var errorMessageString = "unknown error"
+            var errorTitleString = "unknown error"
+            let errorMessageString = "エラーが発生しました"
             switch weatherError {
             case .invalidParameterError:
-                errorMessageString = "invalid parameter error"
+                errorTitleString = "invalid parameter error"
             case .jsonDecodeError:
-                errorMessageString = "JSON decode error"
+                errorTitleString = "JSON decode error"
             case .unknownError:
-                errorMessageString = "unknown error"
+                errorTitleString = "unknown error"
             }
-            let errorAlertController: UIAlertController = UIAlertController(title: errorMessageString, message: "エラーが発生しました", preferredStyle: .alert)
+            let errorAlertController: UIAlertController = UIAlertController(title: errorTitleString, message: errorMessageString, preferredStyle: .alert)
             errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(errorAlertController, animated: true)
         } catch {
