@@ -21,14 +21,14 @@ InterfaceBuilderで制約を与える方法、NSLayoutConstraintオブジェク�
 以下の条件の画面レイアウトを作ってみましょう
 - UIImageViewの幅はUIViewControllerの幅の半分
 - 青字のUILabelと赤字のUILabelの幅はUIImageViewの半分
-![img1](Images/session1-1.jpeg)
+![img1](Images/AutoLayout-1.jpeg)
 - UIImageViewの高さと幅は同じ
 - UIImageViewとUILabelの隙間はあけない
-![img2](Images/session1-2.jpeg)
+![img2](Images/AutoLayout-2.jpeg)
 - UIImageViewの水平中央はUIViewControllerの中央と同じ
 - UIImageViewとUILabelを合わせた矩形の垂直中央はUIViewControllerの中央と同じ
-![img3](Images/session1-3.jpeg)
+![img3](Images/AutoLayout-3.jpeg)
 - UIButtonとUILabelの隙間は80pt
-![img4](Images/session1-4.jpeg)
+![img4](Images/AutoLayout-4.jpeg)
 - UIButtonとUILabelの水平中央は同じ
-![img5](Images/session1-5.jpeg)
+![img5](Images/AutoLayout-5.jpeg)
