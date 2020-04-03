@@ -17,7 +17,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     
     // MARK: - Property
-    private let inputString = "{ \"area\": \"tokyo\", \"date\": \"2020-04-01T12:00:00+09:00\" }"
+    private let inputString = #"{ "area": "tokyo", "date": "2020-04-01T12:00:00+09:00" }"#
     private var weatherImageName = "sunny"
 
     override func viewDidLoad() {
@@ -37,9 +37,9 @@ class WeatherViewController: UIViewController {
                 return
             }
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: data)
+            
             minTempLabel.text = String(response.minTemp) + " ˚C"
             maxTempLabel.text = String(response.maxTemp) + " ˚C"
-            print(response.date)
             
             // TODO: 債務の切り分け (画像の変更は View に分ける)
             switch response.weather {
