@@ -29,6 +29,7 @@ class WeatherViewController: UIViewController {
     @IBAction func tapReload(_ sender: Any) {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
         do {
             let result: String = try YumemiWeather.fetchWeather(inputString)
             guard let data = result.data(using: .utf8) else {
@@ -38,6 +39,7 @@ class WeatherViewController: UIViewController {
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: data)
             minTempLabel.text = String(response.minTemp)
             maxTempLabel.text = String(response.maxTemp)
+            print(response.date)
             
             // TODO: 債務の切り分け (画像の変更は View に分ける)
             switch response.weather {
@@ -54,11 +56,20 @@ class WeatherViewController: UIViewController {
                 weatherImageName = "sunny"
             }
             weatherImageView.image = UIImage(named: weatherImageName)?.withRenderingMode(.alwaysTemplate)
-        } catch {
-            print("error")
+        } catch let weatherError as YumemiWeatherError {
             let errorAlertController: UIAlertController = UIAlertController(title: "Error", message: "エラーが発生しました", preferredStyle: .alert)
             errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(errorAlertController, animated: true)
+            switch weatherError {
+            case .invalidParameterError:
+                print("invalidParameter")
+            case .jsonDecodeError:
+                print("jsonDecode")
+            case .unknownError:
+                print("unknown")
+            }
+        } catch {
+            print("unextected")
         }
     }
     

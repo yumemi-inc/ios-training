@@ -11,6 +11,6 @@ import Foundation
 struct WeatherResponse: Codable {
     let maxTemp: Int
     let minTemp: Int
-    let date: String
+    let date: Date
     let weather: String
 }
