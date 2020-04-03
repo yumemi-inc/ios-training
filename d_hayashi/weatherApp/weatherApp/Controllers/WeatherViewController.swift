@@ -21,7 +21,10 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+    }
+    
+    // MARK: - IBAction
+    @IBAction func tapReload(_ sender: Any) {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
@@ -37,7 +40,6 @@ class WeatherViewController: UIViewController {
             print("error")
         }
     }
-
-
+    
 }
 
