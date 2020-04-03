@@ -5,7 +5,7 @@ struct Request: Decodable {
     let date: Date
 }
 
-struct Response: Encodable {
+struct Response: Codable {
     let weather: String
     let maxTemp: Int
     let minTemp: Int
