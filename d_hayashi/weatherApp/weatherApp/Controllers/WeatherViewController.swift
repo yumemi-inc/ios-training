@@ -37,18 +37,18 @@ class WeatherViewController: UIViewController {
                 return
             }
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: data)
-            minTempLabel.text = String(response.minTemp)
-            maxTempLabel.text = String(response.maxTemp)
+            minTempLabel.text = String(response.minTemp) + " ˚C"
+            maxTempLabel.text = String(response.maxTemp) + " ˚C"
             print(response.date)
             
             // TODO: 債務の切り分け (画像の変更は View に分ける)
             switch response.weather {
             case "sunny":
                 weatherImageName = "sunny"
-                weatherImageView.tintColor = .red
+                weatherImageView.tintColor = .sunny
             case "rainy":
                 weatherImageName = "rainy"
-                weatherImageView.tintColor = .blue
+                weatherImageView.tintColor = .rainy
             case "cloudy":
                 weatherImageName = "cloudy"
                 weatherImageView.tintColor = .gray

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C93B9B642436BD550076A0D3 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B9B632436BD550076A0D3 /* WeatherResponse.swift */; };
+		C93B9B782436FE640076A0D3 /* MyDefineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93B9B772436FE640076A0D3 /* MyDefineColor.swift */; };
 		C967B5E124357B960057C047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C967B5E024357B960057C047 /* AppDelegate.swift */; };
 		C967B5E324357B960057C047 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C967B5E224357B960057C047 /* SceneDelegate.swift */; };
 		C967B5E524357B960057C047 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C967B5E424357B960057C047 /* WeatherViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		C93B9B632436BD550076A0D3 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		C93B9B772436FE640076A0D3 /* MyDefineColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDefineColor.swift; sourceTree = "<group>"; };
 		C967B5DD24357B960057C047 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C967B5E024357B960057C047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C967B5E224357B960057C047 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				C93B9B632436BD550076A0D3 /* WeatherResponse.swift */,
+				C93B9B772436FE640076A0D3 /* MyDefineColor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93B9B782436FE640076A0D3 /* MyDefineColor.swift in Sources */,
 				C967B5E524357B960057C047 /* WeatherViewController.swift in Sources */,
 				C967B5E124357B960057C047 /* AppDelegate.swift in Sources */,
 				C967B5E324357B960057C047 /* SceneDelegate.swift in Sources */,
