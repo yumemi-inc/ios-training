@@ -28,9 +28,9 @@
 以上、6 項目
 
 ### Session 2 : Review
-- [ ] 天気アイコンを vector で
-  - [ ] Resizing : Preserve Vector Data
-  - [ ] Scales : Single Scale
+- [x] 天気アイコンを vector で
+  - [x] Resizing : Preserve Vector Data
+  - [x] Scales : Single Scale
 - [ ] `InputJSON` を別ファイルに
 - [ ] `weatherImageName` はプロパティである必要なし
 - [ ] WeatherVC L:58 想定外はエラーとして処理
