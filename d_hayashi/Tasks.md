@@ -31,13 +31,13 @@
 - [x] 天気アイコンを vector で
   - [x] Resizing : Preserve Vector Data
   - [x] Scales : Single Scale
-- [ ] `InputJSON` を別ファイルに
-- [ ] `weatherImageName` はプロパティである必要なし
-- [ ] WeatherVC L:58 想定外はエラーとして処理
+- [x] `InputJSON` を別ファイルに
+- [x] `weatherImageName` はプロパティである必要なし
+- [x] WeatherVC L:58 想定外はエラーとして処理
 - [ ] `errorTitleString` は `let` で記述できる
-- [ ] `encoding error` をログで出すだけでなく、きちんとハンドルする
+- [x] `encoding error` をログで出すだけでなく、きちんとハンドルする
   - [参考](https://qiita.com/koher/items/a7a12e7e18d2bb7d8c77)
 - [ ] ライブラリのエラーをアプリで throw する (今回は Result だが) は混乱しやすいので避ける
 - [ ] 改行の統一
-- [ ] 色の管理を ColorAssets で
-  - [ ] [参考](https://dev.classmethod.jp/articles/xcode-9-asset-catalogs-support-named-colors/)
+- [x] 色の管理を ColorAssets で
+  - [x] [参考](https://dev.classmethod.jp/articles/xcode-9-asset-catalogs-support-named-colors/)
