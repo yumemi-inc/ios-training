@@ -27,26 +27,32 @@ final class WeatherAPIOperator {
 
         // input encoding
         do {
+
             let inputData = try encoder.encode(inputString)
             inputJsonString = String(data: inputData, encoding: .utf8)!
         } catch {
+
             print("encoding error")
         }
 
         // output decoding
         do {
+
             let resultString: String = try YumemiWeather.fetchWeather(inputJsonString)
             guard let resultData = resultString.data(using: .utf8) else {
+
                 return .failure(.unknownError)
             }
+
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: resultData)
 
             return .success(response)
 
         } catch let weatherError as YumemiWeatherError {
-            return .failure(weatherError)
 
+            return .failure(weatherError)
         } catch {
+
             return .failure(.unknownError)
         }
     }
