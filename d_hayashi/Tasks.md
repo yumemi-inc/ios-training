@@ -41,3 +41,10 @@
 - [ ] 改行の統一
 - [x] 色の管理を ColorAssets で
   - [x] [参考](https://dev.classmethod.jp/articles/xcode-9-asset-catalogs-support-named-colors/)
+
+## Session 6 : UIViewControllerのライフサイクル
+(Session 3, 4, 5 は旧 Session 2 が分割されたため、飛ばして Sssion 6 に取り掛かる)
+- [x] 新しい `ViewController` を追加する
+- [x] アプリケーション起動時に新しい `ViewController` に遷移する
+- [ ] 新しい `ViewController` が表示されたら、前回まで作った `ViewController` に遷移する
+- [ ] 前回まで作った `ViewController` の `Close` ボタンを押下したら `ViewController` を閉じるようにする
