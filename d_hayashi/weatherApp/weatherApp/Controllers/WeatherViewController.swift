@@ -17,7 +17,6 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     
     // MARK: - Property
-    private var inputJsonString = #"{ "area": "tokyo", "date": "2020-04-01T12:00:00+09:00" }"#
     private var weatherImageName = "sunny"
     
     override func viewDidLoad() {
@@ -27,32 +26,11 @@ class WeatherViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func tapReload(_ sender: Any) {
-        
-        let inputString = InputJSON(area: "tokyo", date: Date())
 
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        encoder.dateEncodingStrategy = .iso8601
+        let weatherResult = WeatherAPIOperator().getWeather("tokyo")
 
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
-        do {
-            let inputData = try encoder.encode(inputString)
-            inputJsonString = String(data: inputData, encoding: .utf8)!
-        } catch {
-            print("encoding error")
-        }
-        
-        do {
-            let result: String = try YumemiWeather.fetchWeather(inputJsonString)
-            guard let data = result.data(using: .utf8) else {
-                // TODO: エラーハンドリング
-                return
-            }
-            let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: data)
-            
+        switch weatherResult {
+        case let .success(response):
             minTempLabel.text = String(response.minTemp) + " ˚C"
             maxTempLabel.text = String(response.maxTemp) + " ˚C"
             print(response.date)
@@ -70,10 +48,10 @@ class WeatherViewController: UIViewController {
             }
             weatherImageView.image = UIImage(named: response.weather)?.withRenderingMode(.alwaysTemplate)
 
-        } catch let weatherError as YumemiWeatherError {
+        case let .failure(error):
             var errorTitleString = "unknown error"
             let errorMessageString = "エラーが発生しました"
-            switch weatherError {
+            switch error {
             case .invalidParameterError:
                 errorTitleString = "invalid parameter error"
             case .jsonDecodeError:
@@ -84,8 +62,6 @@ class WeatherViewController: UIViewController {
             let errorAlertController: UIAlertController = UIAlertController(title: errorTitleString, message: errorMessageString, preferredStyle: .alert)
             errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(errorAlertController, animated: true)
-        } catch {
-            print("unextected")
         }
     }
 }

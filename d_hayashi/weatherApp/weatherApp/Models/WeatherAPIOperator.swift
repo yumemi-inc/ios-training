@@ -25,6 +25,7 @@ class WeatherAPIOperator {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
 
+        // input encoding
         do {
             let inputData = try encoder.encode(inputString)
             inputJsonString = String(data: inputData, encoding: .utf8)!
@@ -32,6 +33,7 @@ class WeatherAPIOperator {
             print("encoding error")
         }
 
+        // output decoding
         do {
             let resultString: String = try YumemiWeather.fetchWeather(inputJsonString)
             guard let resultData = resultString.data(using: .utf8) else {
@@ -43,6 +45,7 @@ class WeatherAPIOperator {
 
         } catch let weatherError as YumemiWeatherError {
             return .failure(weatherError)
+
         } catch {
             return .failure(.unknownError)
         }
