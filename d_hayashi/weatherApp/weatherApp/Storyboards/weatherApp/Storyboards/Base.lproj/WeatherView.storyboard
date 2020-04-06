@@ -64,6 +64,9 @@
                                         <color key="value" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapClose:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KTA-qB-aCD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfb-DT-0GT" customClass="CustomButton" customModule="weatherApp" customModuleProvider="target">
                                 <rect key="frame" x="217.5" y="645.5" width="82.5" height="40"/>

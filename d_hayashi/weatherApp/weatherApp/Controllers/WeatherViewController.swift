@@ -27,6 +27,13 @@ class WeatherViewController: UIViewController {
         self.contactWeatherAPI("tokyo")
     }
 
+    @IBAction func tapClose(_ sender: Any) {
+
+        let firstViewStoryboard = UIStoryboard(name: "FirstView", bundle: nil)
+        let firstViewController = firstViewStoryboard.instantiateViewController(withIdentifier: "FirstViewController")
+        self.present(firstViewController, animated: true, completion: nil)
+    }
+
     // MARK: Contact to weather API
     private func contactWeatherAPI(_ area: String) {
 
