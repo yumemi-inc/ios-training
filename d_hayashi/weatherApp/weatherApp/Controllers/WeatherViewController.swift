@@ -44,20 +44,7 @@ class WeatherViewController: UIViewController {
         minTempLabel.text = String(weatherInfo.minTemp) + " ˚C"
         maxTempLabel.text = String(weatherInfo.maxTemp) + " ˚C"
 
-        switch weatherInfo.weather {
-
-        case "sunny":
-            weatherImageView.tintColor = .sunny
-
-        case "rainy":
-            weatherImageView.tintColor = .rainy
-
-        case "cloudy":
-            weatherImageView.tintColor = .gray
-
-        default:
-            self.showErrorAlert(.jsonDecodeError)
-        }
+        weatherImageView.tintColor = UIColor(named: weatherInfo.weather)
         weatherImageView.image = UIImage(named: weatherInfo.weather)?.withRenderingMode(.alwaysTemplate)
     }
 
