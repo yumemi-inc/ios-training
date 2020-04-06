@@ -32,7 +32,8 @@ final class WeatherAPIOperator {
             inputJsonString = String(data: inputData, encoding: .utf8)!
         } catch {
 
-            print("encoding error")
+            debugPrint("encoding error")
+            return .failure(.invalidParameterError)
         }
 
         // output decoding
