@@ -9,7 +9,7 @@
 import Foundation
 import YumemiWeather
 
-class WeatherAPIOperator {
+final class WeatherAPIOperator {
 
     private var inputJsonString = #"{ "area": "tokyo", "date": "2020-04-01T12:00:00+09:00" }"#
 

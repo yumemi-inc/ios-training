@@ -31,37 +31,51 @@ class WeatherViewController: UIViewController {
 
         switch weatherResult {
         case let .success(response):
-            minTempLabel.text = String(response.minTemp) + " ˚C"
-            maxTempLabel.text = String(response.maxTemp) + " ˚C"
+
+            weatherViewUpdate(response)
             print(response.date)
 
-            // TODO: 債務の切り分け (画像の変更は View に分ける)
-            switch response.weather {
-            case "sunny":
-                weatherImageView.tintColor = .sunny
-            case "rainy":
-                weatherImageView.tintColor = .rainy
-            case "cloudy":
-                weatherImageView.tintColor = .gray
-            default:
-                weatherImageName = "sunny"
-            }
-            weatherImageView.image = UIImage(named: response.weather)?.withRenderingMode(.alwaysTemplate)
-
         case let .failure(error):
-            var errorTitleString = "unknown error"
-            let errorMessageString = "エラーが発生しました"
-            switch error {
-            case .invalidParameterError:
-                errorTitleString = "invalid parameter error"
-            case .jsonDecodeError:
-                errorTitleString = "JSON decode error"
-            case .unknownError:
-                errorTitleString = "unknown error"
-            }
-            let errorAlertController: UIAlertController = UIAlertController(title: errorTitleString, message: errorMessageString, preferredStyle: .alert)
-            errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(errorAlertController, animated: true)
+
+            showErrorAlert(error)
         }
+    }
+
+    // MARK: Update View
+    private func weatherViewUpdate(_ weatherInfo: WeatherResponse) {
+
+        minTempLabel.text = String(weatherInfo.minTemp) + " ˚C"
+        maxTempLabel.text = String(weatherInfo.maxTemp) + " ˚C"
+
+        switch weatherInfo.weather {
+        case "sunny":
+            weatherImageView.tintColor = .sunny
+        case "rainy":
+            weatherImageView.tintColor = .rainy
+        case "cloudy":
+            weatherImageView.tintColor = .gray
+        default:
+            weatherImageName = "sunny"
+        }
+        weatherImageView.image = UIImage(named: weatherInfo.weather)?.withRenderingMode(.alwaysTemplate)
+    }
+
+    // MARK: Show Error Alert
+    private func showErrorAlert(_ error: YumemiWeatherError) {
+
+        var errorTitleString = "unknown error"
+        let errorMessageString = "エラーが発生しました"
+        switch error {
+        case .invalidParameterError:
+            errorTitleString = "invalid parameter error"
+        case .jsonDecodeError:
+            errorTitleString = "JSON decode error"
+        case .unknownError:
+            errorTitleString = "unknown error"
+        }
+
+        let errorAlertController: UIAlertController = UIAlertController(title: errorTitleString, message: errorMessageString, preferredStyle: .alert)
+        errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(errorAlertController, animated: true)
     }
 }
