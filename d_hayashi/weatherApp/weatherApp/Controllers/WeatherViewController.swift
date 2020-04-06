@@ -16,9 +16,6 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
 
-    // MARK: - Property
-    private var weatherImageName = "sunny"
-
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -59,7 +56,7 @@ class WeatherViewController: UIViewController {
             weatherImageView.tintColor = .gray
 
         default:
-            weatherImageName = "sunny"
+            self.showErrorAlert(.jsonDecodeError)
         }
         weatherImageView.image = UIImage(named: weatherInfo.weather)?.withRenderingMode(.alwaysTemplate)
     }
