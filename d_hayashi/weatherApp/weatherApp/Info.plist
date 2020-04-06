@@ -41,8 +41,6 @@
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>FirstView</string>
-	<key>UIMainStoryboardFile</key>
-	<string>WeatherView</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

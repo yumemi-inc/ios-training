@@ -10,23 +10,11 @@
         <!--First View Controller-->
         <scene sceneID="4oG-YT-6z9">
             <objects>
-                <viewController storyboardIdentifier="firstView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwb-Av-dg5" customClass="FirstViewController" customModule="weatherApp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwb-Av-dg5" customClass="FirstViewController" customModule="weatherApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Giq-id-KiL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oub-GS-LZu">
-                                <rect key="frame" x="169.5" y="437.5" width="75" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Oub-GS-LZu" firstAttribute="centerY" secondItem="Giq-id-KiL" secondAttribute="centerY" id="4Xm-OX-DPp"/>
-                            <constraint firstItem="Oub-GS-LZu" firstAttribute="centerX" secondItem="Giq-id-KiL" secondAttribute="centerX" id="QBx-qN-qTn"/>
-                        </constraints>
+                        <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Br4-MT-995"/>
                     </view>
                 </viewController>
