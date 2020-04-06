@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import YumemiWeather
 
-struct WeatherResponse: Codable {
+struct WeatherResponse: Decodable {
     let maxTemp: Int
     let minTemp: Int
     let date: Date
     let weather: String
 }
 
-struct InputJSON: Codable {
+struct InputJSON: Encodable {
     let area: String
     let date: Date
 }
