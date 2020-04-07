@@ -13,7 +13,7 @@ final class WeatherAPIOperator {
 
     func getWeather(_ area: String) -> Result<WeatherResponse, WeatherAppError> {
 
-        let inputString = InputJSON(area: area, date: Date())
+        let inputJsonString = InputJSON(area: area, date: Date())
 
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
@@ -26,7 +26,7 @@ final class WeatherAPIOperator {
         do {
 
             // try encoding
-            let inputData = try encoder.encode(inputString)
+            let inputData = try encoder.encode(inputJsonString)
             let inputJsonString = String(data: inputData, encoding: .utf8)!
 
             // try decoding
