@@ -11,8 +11,6 @@ import YumemiWeather
 
 final class WeatherAPIOperator {
 
-    private var inputJsonString = #"{ "area": "tokyo", "date": "2020-04-01T12:00:00+09:00" }"#
-
     func getWeather(_ area: String) -> Result<WeatherResponse, YumemiWeatherError> {
 
         let inputString = InputJSON(area: area, date: Date())
@@ -25,30 +23,23 @@ final class WeatherAPIOperator {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
 
-        // input encoding
         do {
 
+            // try encoding
             let inputData = try encoder.encode(inputString)
-            inputJsonString = String(data: inputData, encoding: .utf8)!
-        } catch {
+            let inputJsonString = String(data: inputData, encoding: .utf8)!
 
-            debugPrint("encoding error")
-            return .failure(.invalidParameterError)
-        }
-
-        // output decoding
-        do {
-
+            // try decoding
             let resultString: String = try YumemiWeather.fetchWeather(inputJsonString)
-            guard let resultData = resultString.data(using: .utf8) else {
-
-                return .failure(.unknownError)
-            }
+            let resultData = Data(resultString.utf8)
 
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: resultData)
 
             return .success(response)
 
+        } catch EncodingError.invalidValue {
+
+            return .failure(.invalidParameterError)
         } catch let weatherError as YumemiWeatherError {
 
             return .failure(weatherError)

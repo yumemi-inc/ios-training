@@ -55,6 +55,7 @@ class WeatherViewController: UIViewController {
         let errorMessageString = "エラーが発生しました"
 
         switch error {
+
         case .invalidParameterError:
             errorTitleString = "invalid parameter error"
 
