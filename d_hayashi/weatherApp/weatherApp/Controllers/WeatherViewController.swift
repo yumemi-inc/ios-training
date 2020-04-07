@@ -50,8 +50,19 @@ class WeatherViewController: UIViewController {
         minTempLabel.text = String(weatherInfo.minTemp) + " ˚C"
         maxTempLabel.text = String(weatherInfo.maxTemp) + " ˚C"
 
-        weatherImageView.tintColor = UIColor(named: weatherInfo.weather)
-        weatherImageView.image = UIImage(named: weatherInfo.weather)?.withRenderingMode(.alwaysTemplate)
+        do {
+
+            let weatherImageName = try GetWeatherResourceName().getImageName(weatherInfo.weather)
+            weatherImageView.tintColor = UIColor(named: weatherImageName)
+
+            let weatherColorName = try GetWeatherResourceName().getColorName(weatherInfo.weather)
+            weatherImageView.image = UIImage(named: weatherColorName)?.withRenderingMode(.alwaysTemplate)
+        } catch let error {
+
+            self.showErrorAlert(error as! WeatherAppError)
+        }
+
+
     }
 
     // MARK: Show Error Alert
