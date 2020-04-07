@@ -51,7 +51,7 @@ class WeatherViewController: UIViewController {
     // MARK: Show Error Alert
     private func showErrorAlert(_ error: YumemiWeatherError) {
 
-        var errorTitleString = "unknown error"
+        let errorTitleString: String
         let errorMessageString = "エラーが発生しました"
 
         switch error {
