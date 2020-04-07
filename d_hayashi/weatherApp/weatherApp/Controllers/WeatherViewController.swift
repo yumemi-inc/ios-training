@@ -49,43 +49,21 @@ class WeatherViewController: UIViewController {
         minTempLabel.text = String(weatherInfo.minTemp) + " ˚C"
         maxTempLabel.text = String(weatherInfo.maxTemp) + " ˚C"
 
-        do {
+        guard let weather = GetWeatherResource(rawValue: weatherInfo.weather) else {
 
-            let weatherImageName = try GetWeatherResourceName().getImageName(weatherInfo.weather)
-            weatherImageView.tintColor = UIColor(named: weatherImageName)
-
-            let weatherColorName = try GetWeatherResourceName().getColorName(weatherInfo.weather)
-            weatherImageView.image = UIImage(named: weatherColorName)?.withRenderingMode(.alwaysTemplate)
-        } catch let error {
-
-            self.showErrorAlert(error as! WeatherAppError)
+            self.showErrorAlert(.resourceNameError)
+            return
         }
 
-
+        weatherImageView.tintColor = weather.color
+        weatherImageView.image = weather.image.withRenderingMode(.alwaysTemplate)
     }
 
     // MARK: Show Error Alert
     private func showErrorAlert(_ error: WeatherAppError) {
 
-        let errorTitleString: String
         let errorMessageString = "エラーが発生しました"
-
-        switch error {
-
-        case .invalidParameterAppError:
-            errorTitleString = "invalid parameter error"
-
-        case .jsonEncodeAppError:
-            errorTitleString = "JSON encode error"
-
-        case .jsonDecodeAppError:
-            errorTitleString = "JSON decode error"
-
-        case .unknownAppError:
-            errorTitleString = "unknown error"
-        }
-
-        let errorAlertController: UIAlertController = UIAlertController(title: errorTitleString, message: errorMessageString, preferredStyle: .alert)
+        let errorAlertController: UIAlertController = UIAlertController(title: error.errorDescription, message: errorMessageString, preferredStyle: .alert)
         errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(errorAlertController, animated: true)
     }

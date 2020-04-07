@@ -14,6 +14,7 @@ enum WeatherAppError: Error {
     case jsonEncodeAppError
     case jsonDecodeAppError
     case invalidParameterAppError
+    case resourceNameError
 }
 
 extension WeatherAppError: LocalizedError {
@@ -23,13 +24,15 @@ extension WeatherAppError: LocalizedError {
         switch self {
 
         case .unknownAppError:
-            return "unknown error happend"
+            return "unknown error"
         case .jsonEncodeAppError:
-            return "encoding input parameter to json error"
+            return "encoding error"
         case .jsonDecodeAppError:
-            return "decoding json responce to string error"
+            return "decoding error"
         case .invalidParameterAppError:
-            return "input parameter is wrong"
+            return "input parameter error"
+        case .resourceNameError:
+            return "resource name error"
         }
     }
 }
