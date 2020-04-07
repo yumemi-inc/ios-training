@@ -25,6 +25,12 @@ class WeatherViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func tapReload(_ sender: Any) {
 
+        self.contactWeatherAPI("tokyo")
+    }
+
+    // MARK: Contact to weather API
+    private func contactWeatherAPI(_ area: String) {
+
         let weatherResult = WeatherAPIOperator().getWeather("tokyo")
 
         switch weatherResult {
@@ -49,20 +55,23 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: Show Error Alert
-    private func showErrorAlert(_ error: YumemiWeatherError) {
+    private func showErrorAlert(_ error: WeatherAppError) {
 
         let errorTitleString: String
         let errorMessageString = "エラーが発生しました"
 
         switch error {
 
-        case .invalidParameterError:
+        case .invalidParameterAppError:
             errorTitleString = "invalid parameter error"
 
-        case .jsonDecodeError:
+        case .jsonEncodeAppError:
+            errorTitleString = "JSON encode error"
+
+        case .jsonDecodeAppError:
             errorTitleString = "JSON decode error"
 
-        case .unknownError:
+        case .unknownAppError:
             errorTitleString = "unknown error"
         }
 

@@ -11,7 +11,7 @@ import YumemiWeather
 
 final class WeatherAPIOperator {
 
-    func getWeather(_ area: String) -> Result<WeatherResponse, YumemiWeatherError> {
+    func getWeather(_ area: String) -> Result<WeatherResponse, WeatherAppError> {
 
         let inputString = InputJSON(area: area, date: Date())
 
@@ -36,16 +36,22 @@ final class WeatherAPIOperator {
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: resultData)
 
             return .success(response)
-
         } catch EncodingError.invalidValue {
 
-            return .failure(.invalidParameterError)
+            return .failure(.jsonEncodeAppError)
         } catch let weatherError as YumemiWeatherError {
 
-            return .failure(weatherError)
+            switch weatherError {
+            case .invalidParameterError:
+                return .failure(.invalidParameterAppError)
+            case .jsonDecodeError:
+                return .failure(.jsonDecodeAppError)
+            case .unknownError:
+                return .failure(.unknownAppError)
+            }
         } catch {
 
-            return .failure(.unknownError)
+            return .failure(.unknownAppError)
         }
     }
 }
