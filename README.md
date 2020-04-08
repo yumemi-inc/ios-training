@@ -52,5 +52,6 @@ Session1がレビュー待ちの場合...
 - [Session6](Documentation/VC_Lifecycle.md)
 - [Session7](Documentation/NotificationCenter.md)
 - [Session8](Documentation/UnitTest.md)
-- [Session9](Documentation/Delegate.md)
-- [Session10](Documentation/Closure.md)
+- [Session9](Documentation/ThreadBlock.md)
+- [Session10](Documentation/Delegate.md)
+- [Session11](Documentation/Closure.md)
