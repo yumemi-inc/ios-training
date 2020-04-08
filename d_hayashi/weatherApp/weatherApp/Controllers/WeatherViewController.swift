@@ -49,7 +49,7 @@ class WeatherViewController: UIViewController {
         minTempLabel.text = String(weatherInfo.minTemp) + " ˚C"
         maxTempLabel.text = String(weatherInfo.maxTemp) + " ˚C"
 
-        guard let weather = GetWeatherResource(rawValue: weatherInfo.weather) else {
+        guard let weather = ResourceWeatherType(rawValue: weatherInfo.weather) else {
 
             self.showErrorAlert(.resourceNameError)
             return
