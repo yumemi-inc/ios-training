@@ -24,7 +24,7 @@ class WeatherViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func tapReload(_ sender: Any) {
 
-        self.contactWeatherAPI("tokyo")
+        self.contactWeatherAPI()
     }
 
     @IBAction func tapClose(_ sender: Any) {
@@ -33,7 +33,7 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: Contact to weather API
-    @objc private func contactWeatherAPI(_ area: String) {
+    @objc private func contactWeatherAPI(_ area: String = "tokyo") {
 
         let weatherResult = WeatherAPIOperator().getWeather(area)
 
