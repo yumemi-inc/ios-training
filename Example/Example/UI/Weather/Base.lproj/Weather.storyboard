@@ -22,23 +22,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaK-00-GVL">
-                                <rect key="frame" x="93.666666666666671" y="290.66666666666669" width="187.66666666666663" height="230.66666666666669"/>
+                                <rect key="frame" x="93.666666666666671" y="293.66666666666669" width="187.66666666666663" height="224.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5C-3W-aox">
-                                        <rect key="frame" x="0.0" y="187.33333333333331" width="94" height="43.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="187.66666666666663" width="94" height="37"/>
                                         <fontDescription key="fontDescription" name="OstrichSans-Medium" family="Ostrich Sans" pointSize="37"/>
                                         <color key="textColor" name="Blue"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xc1-d9-3e0">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="187.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="187.66666666666666"/>
                                         <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Xc1-d9-3e0" secondAttribute="height" multiplier="1:1" id="fAn-sK-ZBs"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESI-gU-cW3">
-                                        <rect key="frame" x="93.999999999999972" y="187.33333333333331" width="93.666666666666657" height="43.333333333333343"/>
+                                        <rect key="frame" x="93.999999999999972" y="187.66666666666663" width="93.666666666666657" height="37"/>
                                         <fontDescription key="fontDescription" name="OstrichSans-Medium" family="Ostrich Sans" pointSize="37"/>
                                         <color key="textColor" name="Red"/>
                                         <nil key="highlightedColor"/>
@@ -61,19 +61,28 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERe-3f-sA4">
-                                <rect key="frame" x="166" y="602" width="43" height="30"/>
-                                <state key="normal" title="reload"/>
+                                <rect key="frame" x="211" y="598.33333333333337" width="47" height="30"/>
+                                <state key="normal" title="Reload"/>
                                 <connections>
                                     <action selector="onTapReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bL-gj-e8C"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiu-CP-tw9">
+                                <rect key="frame" x="121" y="598.33333333333337" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="onTapClose:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xEE-WJ-yKG"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="EaK-00-GVL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7aD-fH-eoI"/>
-                            <constraint firstItem="ERe-3f-sA4" firstAttribute="top" secondItem="EaK-00-GVL" secondAttribute="bottom" constant="80.666666666666629" id="FCm-E7-XJX"/>
-                            <constraint firstItem="ERe-3f-sA4" firstAttribute="centerX" secondItem="EaK-00-GVL" secondAttribute="centerX" id="KiA-8g-CXg"/>
+                            <constraint firstItem="iiu-CP-tw9" firstAttribute="centerX" secondItem="p5C-3W-aox" secondAttribute="centerX" id="8uL-il-40y"/>
+                            <constraint firstItem="ERe-3f-sA4" firstAttribute="centerY" secondItem="iiu-CP-tw9" secondAttribute="centerY" id="GxP-1L-iZd"/>
+                            <constraint firstItem="ERe-3f-sA4" firstAttribute="centerX" secondItem="ESI-gU-cW3" secondAttribute="centerX" id="KqX-6E-9Bf"/>
                             <constraint firstItem="EaK-00-GVL" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="RZ2-A1-x7E"/>
+                            <constraint firstItem="iiu-CP-tw9" firstAttribute="top" secondItem="p5C-3W-aox" secondAttribute="bottom" constant="80" id="Zdb-WY-zWD"/>
                             <constraint firstItem="EaK-00-GVL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ben-ua-x6A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
