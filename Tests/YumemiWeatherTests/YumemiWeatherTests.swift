@@ -21,7 +21,7 @@ final class YumemiWeatherTests: XCTestCase {
         }
     }
     
-    func test_fetchWeather_jsonString_sync() {
+    func test_fetchWeather_jsonString() {
         let parameter = """
 {
     "area": "tokyo",
@@ -45,6 +45,33 @@ final class YumemiWeatherTests: XCTestCase {
         }
     }
     
+    func test_fetchWeather_jsonString_sync() {
+        let beginDate = Date()
+        let parameter = """
+{
+    "area": "tokyo",
+    "date": "2020-04-01T12:00:00+09:00"
+}
+"""
+        do {
+            let responseJson = try YumemiWeather.syncFetchWeather(parameter)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            _ = try decoder.decode(Response.self, from: Data(responseJson.utf8))
+        }
+        catch let error as YumemiWeatherError {
+            XCTAssertEqual(error, YumemiWeatherError.unknownError)
+        }
+        catch {
+            XCTFail()
+        }
+        
+        XCTAssertGreaterThanOrEqual(Date().timeIntervalSince(beginDate), YumemiWeather.apiDuration)
+    }
+    
     func test_fetchWeather_jsonString_async() {
         let parameter = """
 {
@@ -53,7 +80,7 @@ final class YumemiWeatherTests: XCTestCase {
 }
 """
         let exp = expectation(description: #function)
-        YumemiWeather.fetchWeather(parameter) { result in
+        YumemiWeather.asyncFetchWeather(parameter) { result in
             exp.fulfill()
             switch result {
             case .success(let jsonString):
@@ -67,12 +94,13 @@ final class YumemiWeatherTests: XCTestCase {
                 XCTAssertEqual(error, YumemiWeatherError.unknownError)
             }
         }
-        self.wait(for: [exp], timeout: 1.1)
+        self.wait(for: [exp], timeout: YumemiWeather.apiDuration + 0.1)
     }
 
     static var allTests = [
         ("test_fetchWeather", test_fetchWeather),
         ("test_fetchWeather_at", test_fetchWeather_at),
+        ("test_fetchWeather_jsonString", test_fetchWeather_jsonString),
         ("test_fetchWeather_jsonString_sync", test_fetchWeather_jsonString_sync),
         ("test_fetchWeather_jsonString_async", test_fetchWeather_jsonString_async),
     ]

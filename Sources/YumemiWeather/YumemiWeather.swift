@@ -26,6 +26,8 @@ public enum YumemiWeatherError: Swift.Error {
 
 final public class YumemiWeather {
     
+    static let apiDuration: TimeInterval = 2
+    
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -118,6 +120,20 @@ final public class YumemiWeather {
         
         return String(data: responseData, encoding: .utf8)!
     }
+    
+    /// 擬似 天気予報API Sync ver
+    /// - Parameter jsonString: 地域と日付を含むJson文字列
+    /// example:
+    /// {
+    ///   "area": "tokyo",
+    ///   "date": "2020-04-01T12:00:00+09:00"
+    /// }
+    /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
+    /// - Returns: Json文字列
+    public static func syncFetchWeather(_ jsonString: String) throws -> String {
+        Thread.sleep(forTimeInterval: apiDuration)
+        return try self.fetchWeather(jsonString)
+    }
 
     /// 擬似 天気予報API Async ver
     /// - Parameters:
@@ -128,8 +144,8 @@ final public class YumemiWeather {
     ///   "date": "2020-04-01T12:00:00+09:00"
     /// }
     ///   - completion: 完了コールバック
-    public static func fetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+    public static func asyncFetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + apiDuration) {
             do {
                 let response = try fetchWeather(jsonString)
                 completion(Result.success(response))
