@@ -35,8 +35,8 @@ YumemiWeatherError型
 天気を表す文字列 "sunny" or "cloudy" or "rainy"
 
 ## Json ver
-同期的に天気予報を取得するAPIです。  
-ランダムにエラーが発生します。  
+天気予報を取得するAPIです。  
+Json文字列を引数に受け取り、Json文字列で天気予報を返却します。  
 `static func fetchWeather(_ jsonString: String) throws -> String`
 
 ### Parameter
@@ -58,9 +58,33 @@ Json文字列
 |minTemp|Int|--|-20|
 |date|String|yyyy-MM-dd'T'HH:mm:ssZZZZZ|2020-04-01T12:00:00+09:00|
 
+## Sync ver
+天気予報を取得するAPIです。  
+同期的に処理します。メソッドが戻るまでに時間を要します。   
+`static func syncFetchWeather(_ jsonString: String) throws -> String`
+
+### Parameter
+Json文字列
+|Key|型|フォーマット|例|
+|:--|:--|:--|:--|
+|area|String|自由|tokyo|
+|date|String|yyyy-MM-dd'T'HH:mm:ssZZZZZ|2020-04-01T12:00:00+09:00|
+
+### Throws
+YumemiWeatherError型
+
+### Returns
+Json文字列
+|Key|型|フォーマット|例|
+|:--|:--|:--|:--|
+|weather|String|sunny or cloudy or rainy|sunny|
+|maxTemp|Int|--|20|
+|minTemp|Int|--|-20|
+|date|String|yyyy-MM-dd'T'HH:mm:ssZZZZZ|2020-04-01T12:00:00+09:00|
+
 ## Async ver
-非同期に天気予報を取得するAPIです。  
-ランダムにエラーが発生します。  
+天気予報を取得するAPIです。  
+非同期に処理します。  
 `static func fetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void)`
 
 ### Parameters
