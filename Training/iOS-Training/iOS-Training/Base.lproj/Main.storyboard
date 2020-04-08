@@ -24,7 +24,7 @@
                                             <constraint firstAttribute="width" secondItem="n4j-6a-ac5" secondAttribute="height" multiplier="1:1" id="JCJ-RB-mpX"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpF-TQ-8n1">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xpF-TQ-8n1">
                                         <rect key="frame" x="0.0" y="207" width="207" height="12"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jS-Lv-tUE">
@@ -40,10 +40,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="3jS-Lv-tUE" firstAttribute="width" secondItem="xpF-TQ-8n1" secondAttribute="width" multiplier="0.5" id="2N3-gC-9xI"/>
-                                            <constraint firstItem="K9W-Kd-p8e" firstAttribute="width" secondItem="xpF-TQ-8n1" secondAttribute="width" multiplier="0.5" id="BH4-ji-JFD"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
