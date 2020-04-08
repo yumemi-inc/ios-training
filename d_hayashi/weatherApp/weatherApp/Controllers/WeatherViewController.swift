@@ -27,6 +27,11 @@ class WeatherViewController: UIViewController {
         self.contactWeatherAPI("tokyo")
     }
 
+    @IBAction func tapClose(_ sender: Any) {
+
+        dismiss(animated: true, completion: nil)
+    }
+
     // MARK: Contact to weather API
     private func contactWeatherAPI(_ area: String) {
 
