@@ -26,6 +26,8 @@ public enum YumemiWeatherError: Swift.Error {
 
 final public class YumemiWeather {
     
+    static let apiDuration: TimeInterval = 2
+    
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
