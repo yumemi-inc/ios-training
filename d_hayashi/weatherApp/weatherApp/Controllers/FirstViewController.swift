@@ -10,13 +10,13 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    // View の構築
     override func viewDidLoad() {
+
         super.viewDidLoad()
     }
 
-    // View 構築後の処理
     override func viewDidAppear(_ animated: Bool) {
+
         super.viewDidAppear(animated)
 
         let weatherViewStoryboard: UIStoryboard = UIStoryboard(name: "WeatherView", bundle: nil)
