@@ -50,11 +50,23 @@
                                     <constraint firstItem="xpF-TQ-8n1" firstAttribute="width" secondItem="n4j-6a-ac5" secondAttribute="width" id="Nhr-hb-oVs"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3k-Y0-nyT">
+                                <rect key="frame" x="136" y="642.5" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ead-CQ-JkC">
+                                <rect key="frame" x="235.5" y="642.5" width="47" height="30"/>
+                                <state key="normal" title="Reload"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="I3k-Y0-nyT" firstAttribute="top" secondItem="3jS-Lv-tUE" secondAttribute="bottom" constant="80" id="154-aQ-dno"/>
+                            <constraint firstItem="Ead-CQ-JkC" firstAttribute="centerX" secondItem="K9W-Kd-p8e" secondAttribute="centerX" id="Fr9-UR-Me8"/>
                             <constraint firstItem="XT3-TN-QvP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VGM-9W-YNZ"/>
+                            <constraint firstItem="Ead-CQ-JkC" firstAttribute="top" secondItem="K9W-Kd-p8e" secondAttribute="bottom" constant="80" id="axr-SZ-Jev"/>
                             <constraint firstItem="n4j-6a-ac5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="rEH-bZ-8xZ"/>
+                            <constraint firstItem="I3k-Y0-nyT" firstAttribute="centerX" secondItem="3jS-Lv-tUE" secondAttribute="centerX" id="sum-zZ-R5o"/>
                             <constraint firstItem="XT3-TN-QvP" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="tCd-RB-vGI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
