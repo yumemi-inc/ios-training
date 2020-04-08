@@ -144,8 +144,8 @@ final public class YumemiWeather {
     ///   "date": "2020-04-01T12:00:00+09:00"
     /// }
     ///   - completion: 完了コールバック
-    public static func fetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+    public static func asyncFetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + apiDuration) {
             do {
                 let response = try fetchWeather(jsonString)
                 completion(Result.success(response))
