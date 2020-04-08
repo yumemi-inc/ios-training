@@ -24,6 +24,10 @@ class WeatherViewController: UIViewController {
         loadWeather()
     }
     
+    @IBAction func onTapClose(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func loadWeather() {
         let request = Request(area: "tokyo", date: Date())
         do {
