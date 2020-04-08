@@ -18,6 +18,19 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didBecomeActiveNotification(notification:)),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    deinit {
+        print(#function)
+    }
+    
+    @objc private func didBecomeActiveNotification(notification: NSNotification) {
+        self.loadWeather()
     }
     
     @IBAction func onTapReload(_ sender: Any) {
