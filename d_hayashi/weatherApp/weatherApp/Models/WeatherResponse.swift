@@ -14,4 +14,11 @@ struct WeatherResponse: Decodable {
     let minTemp: Int
     let date: Date
     let weather: Weather
+
+    enum Weather: String, Decodable {
+
+        case sunny
+        case cloudy
+        case rainy
+    }
 }

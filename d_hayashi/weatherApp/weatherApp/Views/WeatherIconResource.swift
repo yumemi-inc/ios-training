@@ -9,32 +9,25 @@
 import Foundation
 import UIKit
 
-extension WeatherResponse {
+extension WeatherResponse.Weather {
 
-    enum Weather: String, Decodable {
+    var color: UIColor {
 
-        case sunny
-        case cloudy
-        case rainy
-
-        var color: UIColor {
-
-            switch self {
-
-            case .sunny: return UIColor(named: "sunny") ?? .red
-            case .cloudy: return UIColor(named: "cloudy") ?? .gray
-            case .rainy: return UIColor(named: "rainy") ?? .blue
-            }
+        switch self {
+            
+        case .sunny: return UIColor(named: "sunny") ?? .red
+        case .cloudy: return UIColor(named: "cloudy") ?? .gray
+        case .rainy: return UIColor(named: "rainy") ?? .blue
         }
+    }
 
-        var image: UIImage {
+    var image: UIImage {
 
-            switch self {
+        switch self {
 
-            case .sunny: return #imageLiteral(resourceName: "sunny")
-            case .cloudy: return #imageLiteral(resourceName: "cloudy")
-            case .rainy: return #imageLiteral(resourceName: "rainy")
-            }
+        case .sunny: return #imageLiteral(resourceName: "sunny")
+        case .cloudy: return #imageLiteral(resourceName: "cloudy")
+        case .rainy: return #imageLiteral(resourceName: "rainy")
         }
     }
 }
