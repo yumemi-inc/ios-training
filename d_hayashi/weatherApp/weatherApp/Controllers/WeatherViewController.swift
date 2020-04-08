@@ -19,6 +19,9 @@ class WeatherViewController: UIViewController {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.contactWeatherAPI), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     // MARK: - IBAction
