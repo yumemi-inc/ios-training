@@ -120,6 +120,20 @@ final public class YumemiWeather {
         
         return String(data: responseData, encoding: .utf8)!
     }
+    
+    /// 擬似 天気予報API Sync ver
+    /// - Parameter jsonString: 地域と日付を含むJson文字列
+    /// example:
+    /// {
+    ///   "area": "tokyo",
+    ///   "date": "2020-04-01T12:00:00+09:00"
+    /// }
+    /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
+    /// - Returns: Json文字列
+    public static func syncFetchWeather(_ jsonString: String) throws -> String {
+        Thread.sleep(forTimeInterval: apiDuration)
+        return try self.fetchWeather(jsonString)
+    }
 
     /// 擬似 天気予報API Async ver
     /// - Parameters:
