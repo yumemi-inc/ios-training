@@ -33,8 +33,9 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: Contact to weather API
-    @objc private func contactWeatherAPI(_ area: String = "tokyo") {
+    @objc private func contactWeatherAPI() {
 
+        let area = "tokyo"
         let weatherResult = WeatherAPIOperator().getWeather(area)
 
         switch weatherResult {
