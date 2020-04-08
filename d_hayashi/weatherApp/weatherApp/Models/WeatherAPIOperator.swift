@@ -30,7 +30,7 @@ final class WeatherAPIOperator {
             let inputJsonString = String(data: inputData, encoding: .utf8)!
 
             // try decoding
-            let resultString: String = try YumemiWeather.fetchWeather(inputJsonString)
+            let resultString = try YumemiWeather.fetchWeather(inputJsonString)
             let resultData = Data(resultString.utf8)
 
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: resultData)
@@ -38,20 +38,24 @@ final class WeatherAPIOperator {
             return .success(response)
         } catch EncodingError.invalidValue {
 
-            return .failure(.jsonEncodeAppError)
+            return .failure(.jsonEncodeSystemError)
         } catch let weatherError as YumemiWeatherError {
 
             switch weatherError {
             case .invalidParameterError:
-                return .failure(.invalidParameterAppError)
+                return .failure(.invalidParameterYumemiError)
             case .jsonDecodeError:
-                return .failure(.jsonDecodeAppError)
+                return .failure(.jsonDecodeYumemiError)
             case .unknownError:
-                return .failure(.unknownAppError)
+                return .failure(.unknownYumemiError)
             }
+        } catch let DecodingError.dataCorrupted(context) {
+
+            debugPrint(context)
+            return .failure(.decodeSystemError)
         } catch {
 
-            return .failure(.unknownAppError)
+            return .failure(.unknownSystemError)
         }
     }
 }

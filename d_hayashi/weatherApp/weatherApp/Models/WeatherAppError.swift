@@ -10,11 +10,13 @@ import Foundation
 
 enum WeatherAppError: Error {
 
-    case unknownAppError
-    case jsonEncodeAppError
-    case jsonDecodeAppError
-    case invalidParameterAppError
-    case resourceNameError
+    case unknownYumemiError
+    case jsonEncodeSystemError
+    case jsonDecodeYumemiError
+    case invalidParameterYumemiError
+    case resourceNameSystemError
+    case unknownSystemError
+    case decodeSystemError
 }
 
 extension WeatherAppError: LocalizedError {
@@ -23,16 +25,20 @@ extension WeatherAppError: LocalizedError {
 
         switch self {
 
-        case .unknownAppError:
-            return "unknown error"
-        case .jsonEncodeAppError:
-            return "encoding error"
-        case .jsonDecodeAppError:
-            return "decoding error"
-        case .invalidParameterAppError:
-            return "input parameter error"
-        case .resourceNameError:
-            return "resource name error"
+        case .unknownYumemiError:
+            return "unknown Yumemi error"
+        case .jsonEncodeSystemError:
+            return "encoding faild"
+        case .jsonDecodeYumemiError:
+            return "decoding Yumemi error"
+        case .invalidParameterYumemiError:
+            return "input parameter Yumemi error"
+        case .resourceNameSystemError:
+            return "resource name system error"
+        case .unknownSystemError:
+            return "unknown system error"
+        case .decodeSystemError:
+            return "faild to decode"
         }
     }
 }
