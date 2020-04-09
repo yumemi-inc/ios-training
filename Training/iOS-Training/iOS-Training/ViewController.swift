@@ -8,6 +8,29 @@
 
 import UIKit
 
+enum Weather {
+    case sunny
+    case cloudy
+    case rainy
+    
+    func getColor() -> UIColor {
+        switch self {
+        case .sunny:
+            return UIColor.red
+            
+        case .cloudy:
+            return UIColor.gray
+            
+        case .rainy:
+            return UIColor.blue
+        }
+    }
+}
+
+enum WeatherError: Error {
+    case notExistsError
+}
+
 class ViewController: UIViewController {
     
     let weatherAPI = WeatherAPI()
@@ -22,22 +45,39 @@ class ViewController: UIViewController {
     @IBAction func reload(_ sender: Any) {
         switch weatherAPI.getWeather() {
         case .success(let weather):
-            setWeatherImage(weather: weather)
+            do {
+                try setWeatherImage(weather: weather)
+            } catch {
+                showAlert(title: "WeatherError", message: "notExistsError")
+            }
         case .failure(let error):
             let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
             showAlert(title: "APIError", message: errorMessage)
         }
     }
     
-    func setWeatherImage(weather: String) -> Void {
-        switch weatherAPI.getWeatherColor(weather: weather) {
-        case .success(let color):
-            weatherImageView.image = UIImage(named: weather)?.withRenderingMode(.alwaysTemplate)
-            weatherImageView.tintColor = color
-        case .failure(let error):
-            let errorMessage = weatherAPI.generateColorErrorMessage(error: error)
-            showAlert(title: "ColorError", message: errorMessage)
+    func setWeatherImage(weather: String) throws -> Void {
+        if !weatherAPI.isInWeatherTypes(weather: weather) {
+            throw WeatherError.notExistsError
         }
+        
+        var color: UIColor
+        switch weather {
+        case "sunny":
+            color = Weather.sunny.getColor()
+            
+        case "cloudy":
+            color = Weather.cloudy.getColor()
+            
+        case "rainy":
+            color = Weather.rainy.getColor()
+            
+        default:
+            throw WeatherError.notExistsError
+        }
+        
+        weatherImageView.image = UIImage(named: weather)?.withRenderingMode(.alwaysTemplate)
+        weatherImageView.tintColor = color
     }
     
     func showAlert(title: String, message: String) {
