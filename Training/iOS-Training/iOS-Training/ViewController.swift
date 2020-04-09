@@ -29,14 +29,7 @@ class ViewController: UIViewController {
                 debugPrint("unexpectedError")
             }
         case .failure(let error):
-            switch error {
-            case YumemiWeatherError.invalidParameterError:
-                debugPrint("API Error: invalidParameterError")
-            case YumemiWeatherError.jsonDecodeError:
-                debugPrint("API Error: jsonDecodeError")
-            case YumemiWeatherError.unknownError:
-                debugPrint("API Error: unknownError")
-            }
+            showAlert(error: error)
         }
     }
     
@@ -53,6 +46,25 @@ class ViewController: UIViewController {
         default:
             throw NSError(domain: "unexpectedError", code: -1, userInfo: nil)
         }
+    }
+    
+    func showAlert(error: YumemiWeatherError) {
+        var alertMessage: String
+        switch error {
+        case YumemiWeatherError.invalidParameterError:
+            alertMessage = "invalidParameterError"
+        case YumemiWeatherError.jsonDecodeError:
+            alertMessage = "jsonDecodeError"
+        case YumemiWeatherError.unknownError:
+            alertMessage = "unknownError"
+        }
+        
+        let alert = UIAlertController(title:"API Error", message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        
+        let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

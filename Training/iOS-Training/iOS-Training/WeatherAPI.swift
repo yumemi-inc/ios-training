@@ -26,7 +26,7 @@ class WeatherAPI {
         let parameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         let parameterJson = try! JSONEncoder().encode(parameter)
         let parameterString = String(data: parameterJson, encoding: .utf8)!
-    
+        
         var weather: WeatherResponse
         do {
             let response = try YumemiWeather.fetchWeather(parameterString)
@@ -42,3 +42,5 @@ class WeatherAPI {
         return Result.success(weather.weather)
     }
 }
+
+
