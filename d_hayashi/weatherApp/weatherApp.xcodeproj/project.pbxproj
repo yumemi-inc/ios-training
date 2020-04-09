@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C900B814243DD3AC00A81871 /* WeatherIconResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C900B813243DD3AC00A81871 /* WeatherIconResource.swift */; };
 		C91042BA243C478B005C0D3C /* WeatherAppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91042B9243C478B005C0D3C /* WeatherAppError.swift */; };
 		C9172FCD243AB2DF00BBC255 /* WeatherAPIOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9172FCC243AB2DF00BBC255 /* WeatherAPIOperator.swift */; };
 		C9172FD1243AE2BF00BBC255 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9172FD0243AE2BF00BBC255 /* FirstViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C900B813243DD3AC00A81871 /* WeatherIconResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconResource.swift; sourceTree = "<group>"; };
 		C91042B9243C478B005C0D3C /* WeatherAppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppError.swift; sourceTree = "<group>"; };
 		C9172FCC243AB2DF00BBC255 /* WeatherAPIOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIOperator.swift; sourceTree = "<group>"; };
 		C9172FD0243AE2BF00BBC255 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				C93B9B7A243753770076A0D3 /* RoundedButton.swift */,
+				C900B813243DD3AC00A81871 /* WeatherIconResource.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				C93B9B7B243753770076A0D3 /* RoundedButton.swift in Sources */,
 				C967B5E524357B960057C047 /* WeatherViewController.swift in Sources */,
 				C9172FD1243AE2BF00BBC255 /* FirstViewController.swift in Sources */,
+				C900B814243DD3AC00A81871 /* WeatherIconResource.swift in Sources */,
 				C967B5E124357B960057C047 /* AppDelegate.swift in Sources */,
 				C91042BA243C478B005C0D3C /* WeatherAppError.swift in Sources */,
 				C94B625D243B70DA003EFE7A /* InputJSON.swift in Sources */,

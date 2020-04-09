@@ -19,12 +19,15 @@ class WeatherViewController: UIViewController {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.contactWeatherAPI), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     // MARK: - IBAction
     @IBAction func tapReload(_ sender: Any) {
 
-        self.contactWeatherAPI("tokyo")
+        self.contactWeatherAPI()
     }
 
     @IBAction func tapClose(_ sender: Any) {
@@ -33,8 +36,9 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: Contact to weather API
-    private func contactWeatherAPI(_ area: String) {
+    @objc private func contactWeatherAPI() {
 
+        let area = "tokyo"
         let weatherResult = WeatherAPIOperator().getWeather(area)
 
         switch weatherResult {
