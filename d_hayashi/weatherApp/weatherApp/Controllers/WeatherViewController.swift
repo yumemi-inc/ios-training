@@ -43,17 +43,7 @@ class WeatherViewController: UIViewController {
     @objc private func contactWeatherAPI() {
 
         let area = "tokyo"
-        let weatherResult = WeatherAPIOperator().getWeather(area)
-
-        switch weatherResult {
-
-        case let .success(response):
-            weatherViewUpdate(response)
-            print(response.date)
-
-        case let .failure(error):
-            showErrorAlert(error)
-        }
+        weatherAPIOperator.getWeather(area)
     }
 }
 
