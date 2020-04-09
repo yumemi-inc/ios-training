@@ -33,13 +33,13 @@ class WeatherAPI {
             let responseJson = response.data(using: .utf8)
             weather = try! JSONDecoder().decode(WeatherResponse.self, from: responseJson!)
         } catch YumemiWeatherError.invalidParameterError {
-            return Result.failure(YumemiWeatherError.invalidParameterError)
+            return .failure(.invalidParameterError)
         } catch YumemiWeatherError.jsonDecodeError {
-            return Result.failure(YumemiWeatherError.jsonDecodeError)
+            return .failure(.jsonDecodeError)
         } catch {
-            return Result.failure(YumemiWeatherError.unknownError)
+            return .failure(.unknownError)
         }
-        return Result.success(weather.weather)
+        return .success(weather.weather)
     }
 }
 
