@@ -22,34 +22,26 @@ class ViewController: UIViewController {
     @IBAction func touchDownReloadButton(_ sender: Any) {
         switch weatherAPI.getWeather() {
         case .success(let weather):
-            do {
-                try setWeatherImage(imageName: weather)
-            } catch {
-                debugPrint("unexpectedError")
-            }
+            setWeatherImage(weather: weather)
         case .failure(let error):
-            let errorMessage = weatherAPI.generateErrorMessage(error: error)
-            showAlert(message: errorMessage)
+            let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
+            showAlert(title: "APIError", message: errorMessage)
         }
     }
     
-    func setWeatherImage(imageName: String) throws -> Void {
-        weatherImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
-        
-        switch imageName {
-        case "sunny":
-            weatherImageView.tintColor = UIColor.red
-        case "cloudy":
-            weatherImageView.tintColor = UIColor.gray
-        case "rainy":
-            weatherImageView.tintColor = UIColor.blue
-        default:
-            throw NSError(domain: "unexpectedError", code: -1, userInfo: nil)
+    func setWeatherImage(weather: String) -> Void {
+        switch weatherAPI.getWeatherColor(weather: weather) {
+        case .success(let color):
+            weatherImageView.image = UIImage(named: weather)?.withRenderingMode(.alwaysTemplate)
+            weatherImageView.tintColor = color
+        case .failure(let error):
+            let errorMessage = weatherAPI.generateColorErrorMessage(error: error)
+            showAlert(title: "ColorError", message: errorMessage)
         }
     }
     
-    func showAlert(message: String) {
-        let alert = UIAlertController(title:"API Error", message: message, preferredStyle: UIAlertController.Style.alert)
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
         

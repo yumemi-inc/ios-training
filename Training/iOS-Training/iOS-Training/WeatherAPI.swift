@@ -6,6 +6,7 @@
 //  Copyright © 2020 tokizuoh. All rights reserved.
 //
 
+import UIKit
 import Foundation
 import YumemiWeather
 
@@ -21,7 +22,17 @@ struct WeatherResponse: Codable {
     let weather: String
 }
 
+enum WeatherColorError: Error {
+    case notExistsError
+}
+
 class WeatherAPI {
+    let weatherColorDictionary = [
+        "sunny": UIColor.red,
+        "cloudy": UIColor.gray,
+        "rainy": UIColor.blue
+    ]
+    
     func getWeather() -> Result<String, YumemiWeatherError>{
         let parameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         let parameterJson = try! JSONEncoder().encode(parameter)
@@ -42,7 +53,7 @@ class WeatherAPI {
         return .success(weather.weather)
     }
     
-    func generateErrorMessage (error: YumemiWeatherError) -> String {
+    func generateAPIErrorMessage (error: YumemiWeatherError) -> String {
         var errorMessage: String
         switch error {
         case YumemiWeatherError.invalidParameterError:
@@ -54,6 +65,20 @@ class WeatherAPI {
         }
         return errorMessage
     }
+    
+    func getWeatherColor(weather: String) -> Result<UIColor, WeatherColorError> {
+        guard let color = weatherColorDictionary[weather] else {
+            return .failure(WeatherColorError.notExistsError)
+        }
+        return .success(color)
+    }
+    
+    func generateColorErrorMessage (error: WeatherColorError) -> String {
+        var errorMessage: String
+        switch error {
+        case WeatherColorError.notExistsError:
+            errorMessage = "notExistsError"
+        }
+        return errorMessage
+    }
 }
-
-
