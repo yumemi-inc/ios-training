@@ -41,6 +41,19 @@ class WeatherAPI {
         }
         return .success(weather.weather)
     }
+    
+    func generateErrorMessage (error: YumemiWeatherError) -> String {
+        var errorMessage: String
+        switch error {
+        case YumemiWeatherError.invalidParameterError:
+            errorMessage = "invalidParameterError"
+        case YumemiWeatherError.jsonDecodeError:
+            errorMessage = "jsonDecodeError"
+        case YumemiWeatherError.unknownError:
+            errorMessage = "unknownError"
+        }
+        return errorMessage
+    }
 }
 
 

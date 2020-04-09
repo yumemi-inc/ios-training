@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import YumemiWeather
 
 class ViewController: UIViewController {
     
@@ -29,7 +28,8 @@ class ViewController: UIViewController {
                 debugPrint("unexpectedError")
             }
         case .failure(let error):
-            showAlert(error: error)
+            let errorMessage = weatherAPI.generateErrorMessage(error: error)
+            showAlert(message: errorMessage)
         }
     }
     
@@ -48,18 +48,8 @@ class ViewController: UIViewController {
         }
     }
     
-    func showAlert(error: YumemiWeatherError) {
-        var alertMessage: String
-        switch error {
-        case YumemiWeatherError.invalidParameterError:
-            alertMessage = "invalidParameterError"
-        case YumemiWeatherError.jsonDecodeError:
-            alertMessage = "jsonDecodeError"
-        case YumemiWeatherError.unknownError:
-            alertMessage = "unknownError"
-        }
-        
-        let alert = UIAlertController(title:"API Error", message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+    func showAlert(message: String) {
+        let alert = UIAlertController(title:"API Error", message: message, preferredStyle: UIAlertController.Style.alert)
         
         let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
         
