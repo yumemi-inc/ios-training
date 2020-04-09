@@ -54,7 +54,7 @@
                                 <rect key="frame" x="235.5" y="642.5" width="47" height="30"/>
                                 <state key="normal" title="Reload"/>
                                 <connections>
-                                    <action selector="touchDownReloadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vop-gK-10a"/>
+                                    <action selector="reload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bal-77-16z"/>
                                 </connections>
                             </button>
                         </subviews>

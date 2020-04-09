@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func touchDownReloadButton(_ sender: Any) {
+    @IBAction func reload(_ sender: Any) {
         switch weatherAPI.getWeather() {
         case .success(let weather):
             setWeatherImage(weather: weather)
