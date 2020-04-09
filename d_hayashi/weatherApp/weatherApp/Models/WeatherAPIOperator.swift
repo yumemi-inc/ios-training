@@ -13,7 +13,7 @@ final class WeatherAPIOperator {
 
     var delegate: WeatherModel?
 
-    func getWeather(_ area: String) -> Result<WeatherResponse, WeatherAppError> {
+    func getWeather(_ area: String) {
 
         let inputJsonString = InputJSON(area: area, date: Date())
 
@@ -37,27 +37,27 @@ final class WeatherAPIOperator {
 
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: resultData)
 
-            return .success(response)
+            delegate?.weatherViewUpdate(response)
         } catch EncodingError.invalidValue {
 
-            return .failure(.jsonEncodeSystemError)
+            delegate?.showErrorAlert(.jsonEncodeSystemError)
         } catch let weatherError as YumemiWeatherError {
 
             switch weatherError {
             case .invalidParameterError:
-                return .failure(.invalidParameterYumemiError)
+                delegate?.showErrorAlert(.invalidParameterYumemiError)
             case .jsonDecodeError:
-                return .failure(.jsonDecodeYumemiError)
+                delegate?.showErrorAlert(.jsonDecodeYumemiError)
             case .unknownError:
-                return .failure(.unknownYumemiError)
+                delegate?.showErrorAlert(.unknownYumemiError)
             }
         } catch let DecodingError.dataCorrupted(context) {
 
             debugPrint(context)
-            return .failure(.decodeSystemError)
+            delegate?.showErrorAlert(.decodeSystemError)
         } catch {
 
-            return .failure(.unknownSystemError)
+            delegate?.showErrorAlert(.unknownSystemError)
         }
     }
 }
