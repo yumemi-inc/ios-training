@@ -15,12 +15,13 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
 
+    private let weatherAPIOperator = WeatherAPIOperator()
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        let weatherAPIOperator = WeatherAPIOperator()
         weatherAPIOperator.delegate = self
 
         let notificationCenter = NotificationCenter.default
