@@ -51,9 +51,13 @@ class WeatherViewController: UIViewController {
             showErrorAlert(error)
         }
     }
+}
+
+// MARK: - delegate methods
+extension WeatherViewController: WeatherModel {
 
     // MARK: Update View
-    private func weatherViewUpdate(_ weatherInfo: WeatherResponse) {
+    func weatherViewUpdate(_ weatherInfo: WeatherResponse) {
 
         minTempLabel.text = String(weatherInfo.minTemp) + " ˚C"
         maxTempLabel.text = String(weatherInfo.maxTemp) + " ˚C"
@@ -65,7 +69,7 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: Show Error Alert
-    private func showErrorAlert(_ error: WeatherAppError) {
+    func showErrorAlert(_ error: WeatherAppError) {
 
         let errorMessageString = "エラーが発生しました"
         let errorAlertController: UIAlertController = UIAlertController(title: error.errorDescription, message: errorMessageString, preferredStyle: .alert)
