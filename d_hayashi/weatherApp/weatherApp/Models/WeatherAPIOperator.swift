@@ -11,6 +11,8 @@ import YumemiWeather
 
 final class WeatherAPIOperator {
 
+    var delegate: WeatherModel?
+
     func getWeather(_ area: String) -> Result<WeatherResponse, WeatherAppError> {
 
         let inputJsonString = InputJSON(area: area, date: Date())
