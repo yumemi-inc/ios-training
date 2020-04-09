@@ -54,8 +54,11 @@ class WeatherAPI {
         switch error {
         case YumemiWeatherError.invalidParameterError:
             errorMessage = "invalidParameterError"
+            
         case YumemiWeatherError.jsonDecodeError:
             errorMessage = "jsonDecodeError"
+            
+            
         case YumemiWeatherError.unknownError:
             errorMessage = "unknownError"
         }
