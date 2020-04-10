@@ -68,7 +68,7 @@ class WeatherAPI {
     }
     
     func generateAPIErrorMessage (error: WeatherError) -> String {
-        var errorMessage: String
+        let errorMessage: String
         switch error {
         case WeatherError.invalidParameterError:
             errorMessage = "invalidParameterError"
