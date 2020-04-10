@@ -31,21 +31,35 @@ enum WeatherError: Error {
 }
 
 class WeatherAPI {
+    static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        return dateFormatter
+    }()
+    
+    static let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        return decoder
+    }()
+    
+    static let encoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        return encoder
+    }()
+    
     func getWeather() -> Result<String, WeatherError>{
         let dateString = "2020-04-01T12:00:00+09:00"
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let date = formatter.date(from: dateString)!
+        let date = WeatherAPI.dateFormatter.date(from: dateString)!
         
         let parameter = WeatherParameter(area: "tokyo", date: date)
         
-        let jsonEncoder = JSONEncoder()
-        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
-        jsonEncoder.dateEncodingStrategy = .formatted(formatter)
-        
         let parameterJson: Foundation.Data
         do {
-            parameterJson = try jsonEncoder.encode(parameter)
+            parameterJson = try WeatherAPI.encoder.encode(parameter)
         } catch {
             return .failure(WeatherError.jsonEncodeError)
         }
@@ -70,12 +84,8 @@ class WeatherAPI {
         }
         
         let weather: WeatherResponse
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.dateDecodingStrategy = .formatted(formatter)
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        
         do {
-            weather = try jsonDecoder.decode(WeatherResponse.self, from: responseJson)
+            weather = try WeatherAPI.decoder.decode(WeatherResponse.self, from: responseJson)
         } catch {
             return .failure(WeatherError.jsonDecodeError)
         }
