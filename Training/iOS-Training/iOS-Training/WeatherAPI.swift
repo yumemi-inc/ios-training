@@ -19,7 +19,7 @@ struct WeatherResponse: Codable {
     let weather: String
     let maxTemp: Int
     let minTemp: Int
-    let date: String
+    let date: Date
 }
 
 enum WeatherError: Error {
@@ -71,7 +71,6 @@ class WeatherAPI {
         }
 
         let parameterString = String(data: parameterJson, encoding: .utf8)!
-        debugPrint(parameterString)
         
         let response: String
         do {
@@ -92,7 +91,9 @@ class WeatherAPI {
         
         let weather: WeatherResponse
         let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .formatted(formatter)
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         do {
             weather = try jsonDecoder.decode(WeatherResponse.self, from: responseJson)
         } catch {
