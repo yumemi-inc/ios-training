@@ -12,7 +12,7 @@ import YumemiWeather
 
 struct WeatherParameter: Codable {
     let area: String
-    let date: String
+    let date: Date
 }
 
 struct WeatherResponse: Codable {
@@ -31,16 +31,47 @@ enum WeatherError: Error {
 }
 
 class WeatherAPI {
+    static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        return dateFormatter
+    }()
+    
+    private static let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        return decoder
+    }()
+    
+    private static let encoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        return encoder
+    }()
+    
     func getWeather() -> Result<String, WeatherError>{
-        let parameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
-        let parameterJson: Foundation.Data
+        let dateString = "2020-04-01T12:00:00+09:00"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let date = formatter.date(from: dateString)!
         
+        let parameter = WeatherParameter(area: "tokyo", date: date)
+        
+        
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
+        jsonEncoder.dateEncodingStrategy = .formatted(formatter)
+        
+        let parameterJson: Foundation.Data
         do {
-            parameterJson = try JSONEncoder().encode(parameter)
+            parameterJson = try jsonEncoder.encode(parameter)
         } catch {
             return .failure(WeatherError.jsonEncodeError)
         }
+
         let parameterString = String(data: parameterJson, encoding: .utf8)!
+        debugPrint(parameterString)
         
         let response: String
         do {
