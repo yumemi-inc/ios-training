@@ -25,6 +25,7 @@ struct WeatherResponse: Codable {
 enum WeatherError: Error {
     case notExistsError
     case invalidParameterError
+    case invalidResponseError
     case jsonDecodeError
     case jsonEncodeError
     case unknownError
@@ -78,7 +79,7 @@ class WeatherAPI {
         }
         
         guard let responseJson = response.data(using: .utf8) else {
-            return .failure(WeatherError.invalidParameterError)
+            return .failure(WeatherError.invalidResponseError)
         }
         
         let weather: WeatherResponse
@@ -95,6 +96,9 @@ class WeatherAPI {
         switch error {
         case WeatherError.invalidParameterError:
             errorMessage = "invalidParameterError"
+            
+        case WeatherError.invalidResponseError:
+            errorMessage = "invalidResponseError"
             
         case WeatherError.jsonDecodeError:
             errorMessage = "jsonDecodeError"
