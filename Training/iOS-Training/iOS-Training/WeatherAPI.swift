@@ -73,10 +73,8 @@ class WeatherAPI {
             return .failure(WeatherError.invalidParameterError)
         } catch YumemiWeatherError.jsonDecodeError {
             return .failure(WeatherError.jsonDecodeError)
-        } catch YumemiWeatherError.unknownError {
-            return .failure(WeatherError.unknownError)
         } catch {
-            return .failure(WeatherError.jsonEncodeError)
+            return .failure(WeatherError.unknownError)
         }
         
         guard let responseJson = response.data(using: .utf8) else {
