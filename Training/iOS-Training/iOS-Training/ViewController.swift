@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     }
     
     func setWeatherImage(weather: String) throws -> Void {
-        var color: UIColor
+        let color: UIColor
         switch weather {
         case "sunny":
             color = Weather.sunny.getColor()

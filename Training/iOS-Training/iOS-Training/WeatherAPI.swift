@@ -33,7 +33,7 @@ enum WeatherError: Error {
 class WeatherAPI {
     func getWeather() -> Result<String, WeatherError>{
         let parameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
-        var parameterJson: Foundation.Data
+        let parameterJson: Foundation.Data
         do {
             parameterJson = try JSONEncoder().encode(parameter)
         } catch {
@@ -41,7 +41,7 @@ class WeatherAPI {
         }
         let parameterString = String(data: parameterJson, encoding: .utf8)!
         
-        var response: String
+        let response: String
         do {
             response = try YumemiWeather.fetchWeather(parameterString)
         } catch YumemiWeatherError.invalidParameterError {
@@ -58,7 +58,7 @@ class WeatherAPI {
             return .failure(WeatherError.invalidParameterError)
         }
         
-        var weather: WeatherResponse
+        let weather: WeatherResponse
         do {
             weather = try JSONDecoder().decode(WeatherResponse.self, from: responseJson)
         } catch {
