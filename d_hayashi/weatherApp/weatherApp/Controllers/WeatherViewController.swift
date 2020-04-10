@@ -21,9 +21,13 @@ class WeatherViewController: UIViewController {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+
+        super.viewDidAppear(animated)
 
         weatherAPIOperator.delegate = self
-
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.contactWeatherAPI), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
@@ -66,7 +70,7 @@ extension WeatherViewController: WeatherModel {
     func showErrorAlert(_ error: WeatherAppError) {
 
         let errorMessageString = "エラーが発生しました"
-        let errorAlertController: UIAlertController = UIAlertController(title: error.errorDescription, message: errorMessageString, preferredStyle: .alert)
+        let errorAlertController = UIAlertController(title: error.errorDescription, message: errorMessageString, preferredStyle: .alert)
         errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(errorAlertController, animated: true)
     }
