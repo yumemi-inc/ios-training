@@ -53,10 +53,10 @@ class WeatherAPI {
     }()
     
     func getWeather() -> Result<String, WeatherError>{
-        let dateString = "2020-04-01T12:00:00+09:00"
-        let date = WeatherAPI.dateFormatter.date(from: dateString)!
+        let area = "tokyo"
+        let date = Date()
         
-        let parameter = WeatherParameter(area: "tokyo", date: date)
+        let parameter = WeatherParameter(area: area, date: date)
         
         let parameterJson: Foundation.Data
         do {
