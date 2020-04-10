@@ -31,25 +31,6 @@ enum WeatherError: Error {
 }
 
 class WeatherAPI {
-    static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        return dateFormatter
-    }()
-    
-    private static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        return decoder
-    }()
-    
-    private static let encoder: JSONEncoder = {
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        encoder.dateEncodingStrategy = .formatted(dateFormatter)
-        return encoder
-    }()
-    
     func getWeather() -> Result<String, WeatherError>{
         let dateString = "2020-04-01T12:00:00+09:00"
         let formatter = DateFormatter()
@@ -57,7 +38,6 @@ class WeatherAPI {
         let date = formatter.date(from: dateString)!
         
         let parameter = WeatherParameter(area: "tokyo", date: date)
-        
         
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
@@ -69,7 +49,7 @@ class WeatherAPI {
         } catch {
             return .failure(WeatherError.jsonEncodeError)
         }
-
+        
         let parameterString = String(data: parameterJson, encoding: .utf8)!
         
         let response: String
