@@ -16,10 +16,10 @@ struct WeatherParameter: Codable {
 }
 
 struct WeatherResponse: Codable {
-    let max_temp: Int
-    let date: String
-    let min_temp: Int
     let weather: String
+    let maxTemp: Int
+    let minTemp: Int
+    let date: String
 }
 
 enum WeatherError: Error {
@@ -34,6 +34,7 @@ class WeatherAPI {
     func getWeather() -> Result<String, WeatherError>{
         let parameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         let parameterJson: Foundation.Data
+        
         do {
             parameterJson = try JSONEncoder().encode(parameter)
         } catch {
@@ -59,8 +60,10 @@ class WeatherAPI {
         }
         
         let weather: WeatherResponse
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
-            weather = try JSONDecoder().decode(WeatherResponse.self, from: responseJson)
+            weather = try jsonDecoder.decode(WeatherResponse.self, from: responseJson)
         } catch {
             return .failure(WeatherError.jsonDecodeError)
         }
