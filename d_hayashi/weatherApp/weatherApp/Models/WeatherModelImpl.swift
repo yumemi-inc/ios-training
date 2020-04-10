@@ -37,27 +37,27 @@ final class WeatherModelImpl: WeatherModel {
 
             let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: resultData)
 
-            delegate?.weatherViewUpdate(response)
+            delegate?.didGetWeather(.success(response))
         } catch EncodingError.invalidValue {
 
-            delegate?.showErrorAlert(.jsonEncodeSystemError)
+            delegate?.didGetWeather(.failure(.jsonEncodeSystemError))
         } catch let weatherError as YumemiWeatherError {
 
             switch weatherError {
             case .invalidParameterError:
-                delegate?.showErrorAlert(.invalidParameterYumemiError)
+                delegate?.didGetWeather(.failure(.invalidParameterYumemiError))
             case .jsonDecodeError:
-                delegate?.showErrorAlert(.jsonDecodeYumemiError)
+                delegate?.didGetWeather(.failure(.jsonDecodeYumemiError))
             case .unknownError:
-                delegate?.showErrorAlert(.unknownYumemiError)
+                delegate?.didGetWeather(.failure(.unknownYumemiError))
             }
         } catch let DecodingError.dataCorrupted(context) {
 
             debugPrint(context)
-            delegate?.showErrorAlert(.decodeSystemError)
+            delegate?.didGetWeather(.failure(.decodeSystemError))
         } catch {
 
-            delegate?.showErrorAlert(.unknownSystemError)
+            delegate?.didGetWeather(.failure(.unknownSystemError))
         }
     }
 }

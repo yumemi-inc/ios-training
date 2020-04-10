@@ -10,6 +10,5 @@ import Foundation
 
 protocol WeatheModelDelegate: AnyObject {
 
-    func weatherViewUpdate(_ weatherInfo: WeatherResponse)
-    func showErrorAlert(_ error: WeatherAppError)
+    func didGetWeather(_ result: Result<WeatherResponse, WeatherAppError>)
 }
