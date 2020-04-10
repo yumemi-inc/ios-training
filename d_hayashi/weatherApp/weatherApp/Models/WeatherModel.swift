@@ -10,5 +10,6 @@ import Foundation
 
 protocol WeatherModel {
 
+    var delegate: WeatheModelDelegate? { get set }
     func getWeather(_ area: String)
 }

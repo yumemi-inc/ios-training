@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol WeatherAPIOperatorDelegate: AnyObject {
+protocol WeatheModelDelegate: AnyObject {
 
     func weatherViewUpdate(_ weatherInfo: WeatherResponse)
     func showErrorAlert(_ error: WeatherAppError)

@@ -9,7 +9,7 @@
 import Foundation
 import YumemiWeather
 
-final class WeatherAPIOperator: WeatherModel {
+final class WeatherModelImpl: WeatherModel {
 
     var delegate: WeatherAPIOperatorDelegate?
 

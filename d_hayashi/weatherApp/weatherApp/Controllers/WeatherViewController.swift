@@ -15,7 +15,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
 
-    private let weatherAPIOperator = WeatherAPIOperator()
+    var weatherModel: WeatherModel = WeatherModelImpl()
 
     override func viewDidLoad() {
 
@@ -27,7 +27,7 @@ class WeatherViewController: UIViewController {
 
         super.viewDidAppear(animated)
 
-        weatherAPIOperator.delegate = self
+        weatherModel.delegate = self
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.contactWeatherAPI), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
@@ -47,12 +47,12 @@ class WeatherViewController: UIViewController {
     @objc private func contactWeatherAPI() {
 
         let area = "tokyo"
-        weatherAPIOperator.getWeather(area)
+        weatherModel.getWeather(area)
     }
 }
 
 // MARK: - delegate methods
-extension WeatherViewController: WeatherAPIOperatorDelegate {
+extension WeatherViewController: WeatheModelDelegate {
 
     // MARK: Update View
     func weatherViewUpdate(_ weatherInfo: WeatherResponse) {
