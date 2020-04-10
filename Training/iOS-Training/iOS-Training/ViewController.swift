@@ -27,10 +27,6 @@ enum Weather {
     }
 }
 
-enum WeatherError: Error {
-    case notExistsError
-}
-
 class ViewController: UIViewController {
     
     let weatherAPI = WeatherAPI()
@@ -57,10 +53,6 @@ class ViewController: UIViewController {
     }
     
     func setWeatherImage(weather: String) throws -> Void {
-        if !weatherAPI.isInWeatherTypes(weather: weather) {
-            throw WeatherError.notExistsError
-        }
-        
         var color: UIColor
         switch weather {
         case "sunny":

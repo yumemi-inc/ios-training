@@ -22,42 +22,69 @@ struct WeatherResponse: Codable {
     let weather: String
 }
 
+enum WeatherError: Error {
+    case notExistsError
+    case invalidParameterError
+    case jsonDecodeError
+    case jsonEncodeError
+    case unknownError
+}
+
 class WeatherAPI {
-    let weatherTypes = ["sunny", "cloudy", "rainy"]
-    
-    func getWeather() -> Result<String, YumemiWeatherError>{
+    func getWeather() -> Result<String, WeatherError>{
         let parameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
-        let parameterJson = try! JSONEncoder().encode(parameter)
+        var parameterJson: Foundation.Data
+        do {
+            parameterJson = try JSONEncoder().encode(parameter)
+        } catch {
+            return .failure(WeatherError.jsonEncodeError)
+        }
         let parameterString = String(data: parameterJson, encoding: .utf8)!
+        
+        var response: String
+        do {
+            response = try YumemiWeather.fetchWeather(parameterString)
+        } catch YumemiWeatherError.invalidParameterError {
+            return .failure(WeatherError.invalidParameterError)
+        } catch YumemiWeatherError.jsonDecodeError {
+            return .failure(WeatherError.jsonDecodeError)
+        } catch YumemiWeatherError.unknownError {
+            return .failure(WeatherError.unknownError)
+        } catch {
+            return .failure(WeatherError.jsonEncodeError)
+        }
+        
+        guard let responseJson = response.data(using: .utf8) else {
+            return .failure(WeatherError.invalidParameterError)
+        }
         
         var weather: WeatherResponse
         do {
-            let response = try YumemiWeather.fetchWeather(parameterString)
-            let responseJson = response.data(using: .utf8)
-            weather = try! JSONDecoder().decode(WeatherResponse.self, from: responseJson!)
-        } catch let error {
-            return .failure(error as! YumemiWeatherError)
+            weather = try JSONDecoder().decode(WeatherResponse.self, from: responseJson)
+        } catch {
+            return .failure(WeatherError.jsonDecodeError)
         }
         return .success(weather.weather)
     }
     
-    func generateAPIErrorMessage (error: YumemiWeatherError) -> String {
+    func generateAPIErrorMessage (error: WeatherError) -> String {
         var errorMessage: String
         switch error {
-        case YumemiWeatherError.invalidParameterError:
+        case WeatherError.invalidParameterError:
             errorMessage = "invalidParameterError"
             
-        case YumemiWeatherError.jsonDecodeError:
+        case WeatherError.jsonDecodeError:
             errorMessage = "jsonDecodeError"
             
+        case WeatherError.jsonEncodeError:
+            errorMessage = "jsonEncodeError"
             
-        case YumemiWeatherError.unknownError:
+        case WeatherError.notExistsError:
+            errorMessage = "notExistsError"
+            
+        case WeatherError.unknownError:
             errorMessage = "unknownError"
         }
         return errorMessage
-    }
-    
-    func isInWeatherTypes(weather: String) -> Bool {
-        return weatherTypes.contains(weather)
     }
 }
