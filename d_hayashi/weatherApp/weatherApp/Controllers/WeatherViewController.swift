@@ -52,7 +52,7 @@ class WeatherViewController: UIViewController {
 }
 
 // MARK: - delegate methods
-extension WeatherViewController: WeatherModel {
+extension WeatherViewController: WeatherAPIOperatorDelegate {
 
     // MARK: Update View
     func weatherViewUpdate(_ weatherInfo: WeatherResponse) {

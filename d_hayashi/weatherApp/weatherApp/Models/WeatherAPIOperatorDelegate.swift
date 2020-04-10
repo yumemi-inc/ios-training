@@ -1,5 +1,5 @@
 //
-//  WeatherModel.swift
+//  WeatherAPIOperatorDelegate.swift
 //  weatherApp
 //
 //  Created by 林 大地 on 2020/04/09.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol WeatherModel: AnyObject {
+protocol WeatherAPIOperatorDelegate: AnyObject {
 
     func weatherViewUpdate(_ weatherInfo: WeatherResponse)
     func showErrorAlert(_ error: WeatherAppError)

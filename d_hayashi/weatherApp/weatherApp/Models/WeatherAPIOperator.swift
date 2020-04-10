@@ -11,7 +11,7 @@ import YumemiWeather
 
 final class WeatherAPIOperator {
 
-    var delegate: WeatherModel?
+    var delegate: WeatherAPIOperatorDelegate?
 
     func getWeather(_ area: String) {
 
