@@ -51,7 +51,7 @@ final class WeatherModelImpl: WeatherModel {
         do {
 
             let encodedString = try encode(InputJSON(area: area, date: Date()))
-            let resultString = try YumemiWeather.fetchWeather(encodedString)
+            let resultString = try YumemiWeather.syncFetchWeather(encodedString)
 
             let response: WeatherResponse = try decode(resultString)
 
