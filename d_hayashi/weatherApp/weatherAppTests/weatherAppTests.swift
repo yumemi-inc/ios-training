@@ -72,4 +72,28 @@ class weatherAppTests: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
 
+
+    func test最高気温がUILabelに反映される() {
+
+        weatherViewController.weatherModel = WeatherModelSuccessStub.init(minTemp: -40, maxTemp: 40, weather: .sunny, date: Date())
+        weatherViewController.weatherModel?.delegate = weatherViewController
+        weatherViewController.contactWeatherAPI()
+
+        let actual = weatherViewController.maxTempLabel.text
+        let expected = "40 ˚C"
+
+        XCTAssertEqual(actual, expected)
+    }
+
+    func test最低気温がUILabelに反映される() {
+
+        weatherViewController.weatherModel = WeatherModelSuccessStub.init(minTemp: -40, maxTemp: 40, weather: .sunny, date: Date())
+        weatherViewController.weatherModel?.delegate = weatherViewController
+        weatherViewController.contactWeatherAPI()
+
+        let actual = weatherViewController.minTempLabel.text
+        let expected = "-40 ˚C"
+
+        XCTAssertEqual(actual, expected)
+    }
 }
