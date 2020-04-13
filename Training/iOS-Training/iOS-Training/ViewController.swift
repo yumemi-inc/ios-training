@@ -8,25 +8,6 @@
 
 import UIKit
 
-enum Weather {
-    case sunny
-    case cloudy
-    case rainy
-    
-    func getColor() -> UIColor {
-        switch self {
-        case .sunny:
-            return UIColor.red
-            
-        case .cloudy:
-            return UIColor.gray
-            
-        case .rainy:
-            return UIColor.blue
-        }
-    }
-}
-
 class ViewController: UIViewController {
     
     let weatherAPI = WeatherAPI()
@@ -52,23 +33,20 @@ class ViewController: UIViewController {
         }
     }
     
-    func setWeatherImage(weather: String) throws -> Void {
+    func setWeatherImage(weather: Weather) throws -> Void {
         let color: UIColor
         switch weather {
-        case "sunny":
-            color = Weather.sunny.getColor()
+        case .sunny:
+            color = UIColor.red
             
-        case "cloudy":
-            color = Weather.cloudy.getColor()
+        case .cloudy:
+            color = UIColor.gray
             
-        case "rainy":
-            color = Weather.rainy.getColor()
-            
-        default:
-            throw WeatherError.notExistsError
+        case .rainy:
+            color = UIColor.blue
         }
         
-        weatherImageView.image = UIImage(named: weather)?.withRenderingMode(.alwaysTemplate)
+        weatherImageView.image = UIImage(named: weather.rawValue)?.withRenderingMode(.alwaysTemplate)
         weatherImageView.tintColor = color
     }
     

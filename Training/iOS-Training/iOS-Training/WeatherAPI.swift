@@ -10,16 +10,10 @@ import UIKit
 import Foundation
 import YumemiWeather
 
-struct WeatherParameter: Codable {
-    let area: String
-    let date: Date
-}
-
-struct WeatherResponse: Codable {
-    let weather: String
-    let maxTemp: Int
-    let minTemp: Int
-    let date: Date
+enum Weather: String, Codable {
+    case sunny
+    case cloudy
+    case rainy
 }
 
 enum WeatherError: Error {
@@ -29,6 +23,18 @@ enum WeatherError: Error {
     case jsonDecodeError
     case jsonEncodeError
     case unknownError
+}
+
+struct WeatherParameter: Codable {
+    let area: String
+    let date: Date
+}
+
+struct WeatherResponse: Codable {
+    let weather: Weather
+    let maxTemp: Int
+    let minTemp: Int
+    let date: Date
 }
 
 class WeatherAPI {
@@ -52,7 +58,7 @@ class WeatherAPI {
         return encoder
     }()
     
-    func getWeather() -> Result<String, WeatherError>{
+    func getWeather() -> Result<Weather, WeatherError>{
         let area = "tokyo"
         let date = Date()
         
