@@ -11,12 +11,12 @@ import XCTest
 
 class weatherAppTests: XCTestCase {
 
-    var weatherViewController = WeatherViewController()
+    var weatherViewController: WeatherViewController!
 
     override func setUpWithError() throws {
 
         let weatherStoryboard = UIStoryboard(name: "WeatherView", bundle: nil)
-        weatherViewController = weatherStoryboard.instantiateViewController(identifier: "WeatherViewController") as! WeatherViewController
+        weatherViewController = weatherStoryboard.instantiateViewController(identifier: "WeatherViewController")
         weatherViewController.loadViewIfNeeded()
     }
 
