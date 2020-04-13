@@ -71,40 +71,7 @@ class WeatherAPI {
         return encoder
     }()
     
-    private func decodeWeatherResponse(from: Foundation.Data) throws -> WeatherResponse {
-        let weather: WeatherResponse
-        do {
-            weather = try WeatherAPI.decoder.decode(WeatherResponse.self, from: from)
-        } catch {
-            throw WeatherError.jsonDecodeError
-        }
-        return weather
-    }
-    
-    private func encodeData(parameter: WeatherParameter) throws -> Foundation.Data {
-        let parameterJson: Foundation.Data
-        do {
-            parameterJson = try WeatherAPI.encoder.encode(parameter)
-        } catch {
-            throw WeatherError.jsonEncodeError
-        }
-        return parameterJson
-    }
-    
-    private func convertWeatherError(yumemiError: YumemiWeatherError) -> WeatherError {
-        let weatherError: WeatherError
-        switch yumemiError {
-        case .invalidParameterError:
-            weatherError = WeatherError.invalidParameterError
-        case .jsonDecodeError:
-            weatherError = WeatherError.jsonDecodeError
-        case .unknownError:
-            weatherError = WeatherError.unknownError
-        }
-        return weatherError
-    }
-    
-    func getWeather() -> Result<Weather, WeatherError>{
+    func getWeather() -> Result<WeatherResponse, WeatherError>{
         let parameter = WeatherParameter(area: "tokyo", date: Date())
         do {
             let requestData = try WeatherAPI.encoder.encode(parameter)
@@ -113,7 +80,7 @@ class WeatherAPI {
             }
             let responseJson = try YumemiWeather.fetchWeather(requestJson)
             let response = try WeatherAPI.decoder.decode(WeatherResponse.self, from: Data(responseJson.utf8))
-            return .success(response.weather)
+            return .success(response)
         } catch is EncodingError {
             return .failure(.jsonEncodeError)
         } catch is DecodingError {

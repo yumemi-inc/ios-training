@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     let weatherAPI = WeatherAPI()
     
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var minTemperatureLabel: UILabel!
+    @IBOutlet weak var maxTemperatureLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +23,10 @@ class ViewController: UIViewController {
     
     @IBAction func reload(_ sender: Any) {
         switch weatherAPI.getWeather() {
-        case .success(let weather):
-            setWeatherImage(weather: weather)
+        case .success(let response):
+            minTemperatureLabel.text = String(response.minTemp)
+            maxTemperatureLabel.text = String(response.maxTemp)
+            setWeatherImage(weather: response.weather)
         case .failure(let error):
             let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
             showAlert(title: "APIError", message: errorMessage)
