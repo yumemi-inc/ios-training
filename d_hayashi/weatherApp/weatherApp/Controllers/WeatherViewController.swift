@@ -35,7 +35,7 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: - generate ViewController and set WeatherModel
-    class func generateViewController(model: WeatherModel) -> WeatherViewController {
+    static func generateViewController(model: WeatherModel) -> WeatherViewController {
 
         let weatherViewStoryboard: UIStoryboard = UIStoryboard(name: "WeatherView", bundle: nil)
         let weatherViewController: WeatherViewController = weatherViewStoryboard.instantiateViewController(withIdentifier: "WeatherViewController") as! WeatherViewController
