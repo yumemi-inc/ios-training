@@ -17,7 +17,6 @@ enum Weather: String, Codable {
 }
 
 enum WeatherError: Error {
-    case notExistsError
     case invalidParameterError
     case invalidResponseError
     case jsonDecodeError
@@ -26,8 +25,6 @@ enum WeatherError: Error {
     
     var toString: String {
         switch self {
-        case .notExistsError:
-            return "notExistsError"
         case .invalidParameterError:
             return "invalidParameterError"
         case .invalidResponseError:

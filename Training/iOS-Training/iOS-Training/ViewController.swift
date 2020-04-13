@@ -22,18 +22,14 @@ class ViewController: UIViewController {
     @IBAction func reload(_ sender: Any) {
         switch weatherAPI.getWeather() {
         case .success(let weather):
-            do {
-                try setWeatherImage(weather: weather)
-            } catch {
-                showAlert(title: "WeatherError", message: "notExistsError")
-            }
+            setWeatherImage(weather: weather)
         case .failure(let error):
             let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
             showAlert(title: "APIError", message: errorMessage)
         }
     }
     
-    func setWeatherImage(weather: Weather) throws -> Void {
+    func setWeatherImage(weather: Weather) -> Void {
         let color: UIColor
         switch weather {
         case .sunny:
