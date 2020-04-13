@@ -106,45 +106,31 @@ class WeatherAPI {
     }
     
     func getWeather() -> Result<Weather, WeatherError>{
-        let area = "tokyo"
-        let date = Date()
-        
-        let parameter = WeatherParameter(area: area, date: date)
-        
-        let parameterJson: Foundation.Data
+        let parameter = WeatherParameter(area: "tokyo", date: Date())
         do {
-            parameterJson = try encodeData(parameter: parameter)
-        } catch let error as WeatherError {
-            return .failure(error)
-        } catch {
-            return .failure(.unknownError)
-        }
-        
-        let parameterString = String(data: parameterJson, encoding: .utf8)!
-        
-        let response: String
-        do {
-            response = try YumemiWeather.fetchWeather(parameterString)
+            let requestData = try WeatherAPI.encoder.encode(parameter)
+            guard let requestJson = String(data: requestData, encoding: .utf8) else {
+                return .failure(.invalidParameterError)
+            }
+            let responseJson = try YumemiWeather.fetchWeather(requestJson)
+            let response = try WeatherAPI.decoder.decode(WeatherResponse.self, from: Data(responseJson.utf8))
+            return .success(response.weather)
+        } catch is EncodingError {
+            return .failure(.jsonEncodeError)
+        } catch is DecodingError {
+            return .failure(.jsonDecodeError)
         } catch let error as YumemiWeatherError {
-            return .failure(convertWeatherError(yumemiError: error))
+            switch error {
+            case .invalidParameterError:
+                return .failure(.invalidParameterError)
+            case .jsonDecodeError:
+                return .failure(.jsonDecodeError)
+            case .unknownError:
+                return .failure(.unknownError)
+            }
         } catch {
             return .failure(.unknownError)
         }
-        
-        guard let responseJson = response.data(using: .utf8) else {
-            return .failure(WeatherError.invalidResponseError)
-        }
-        
-        let weather: WeatherResponse
-        do {
-            weather = try decodeWeatherResponse(from: responseJson)
-        } catch let error as WeatherError {
-            return .failure(error)
-        } catch {
-            return .failure(.unknownError)
-        }
-        
-        return .success(weather.weather)
     }
     
     func generateAPIErrorMessage (error: WeatherError) -> String {
