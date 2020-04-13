@@ -48,4 +48,28 @@ class weatherAppTests: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
 
+    func test曇りに対応した画像が表示される() {
+
+        weatherViewController.weatherModel = WeatherModelSuccessStub.init(minTemp: -40, maxTemp: 40, weather: .cloudy, date: Date())
+        weatherViewController.weatherModel?.delegate = weatherViewController
+        weatherViewController.contactWeatherAPI()
+
+        let actual = weatherViewController.weatherImageView.image
+        let expected = #imageLiteral(resourceName: "cloudy").withRenderingMode(.alwaysTemplate)
+
+        XCTAssertEqual(actual, expected)
+    }
+
+    func test雨に対応した画像が表示される() {
+
+        weatherViewController.weatherModel = WeatherModelSuccessStub.init(minTemp: -40, maxTemp: 40, weather: .rainy, date: Date())
+        weatherViewController.weatherModel?.delegate = weatherViewController
+        weatherViewController.contactWeatherAPI()
+
+        let actual = weatherViewController.weatherImageView.image
+        let expected = #imageLiteral(resourceName: "rainy").withRenderingMode(.alwaysTemplate)
+
+        XCTAssertEqual(actual, expected)
+    }
+
 }
