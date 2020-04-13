@@ -95,6 +95,19 @@ class WeatherAPI {
         return .success(parameterJson)
     }
     
+    private func convertWeatherError(yumemiError: YumemiWeatherError) -> WeatherError {
+        let weatherError: WeatherError
+        switch yumemiError {
+        case .invalidParameterError:
+            weatherError = WeatherError.invalidParameterError
+        case .jsonDecodeError:
+            weatherError = WeatherError.jsonDecodeError
+        case .unknownError:
+            weatherError = WeatherError.unknownError
+        }
+        return weatherError
+    }
+    
     func getWeather() -> Result<Weather, WeatherError>{
         let area = "tokyo"
         let date = Date()
@@ -114,12 +127,10 @@ class WeatherAPI {
         let response: String
         do {
             response = try YumemiWeather.fetchWeather(parameterString)
-        } catch YumemiWeatherError.invalidParameterError {
-            return .failure(WeatherError.invalidParameterError)
-        } catch YumemiWeatherError.jsonDecodeError {
-            return .failure(WeatherError.jsonDecodeError)
+        } catch let error as YumemiWeatherError {
+            return .failure(convertWeatherError(yumemiError: error))
         } catch {
-            return .failure(WeatherError.unknownError)
+            return .failure(.unknownError)
         }
         
         guard let responseJson = response.data(using: .utf8) else {
