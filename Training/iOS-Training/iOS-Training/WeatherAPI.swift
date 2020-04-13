@@ -72,14 +72,14 @@ class WeatherAPI {
         return encoder
     }()
     
-    private func decodeWeatherResponse(from: Foundation.Data) -> Result<WeatherResponse, WeatherError> {
+    private func decodeWeatherResponse(from: Foundation.Data) throws -> WeatherResponse {
         let weather: WeatherResponse
         do {
             weather = try WeatherAPI.decoder.decode(WeatherResponse.self, from: from)
         } catch {
-            return .failure(WeatherError.jsonDecodeError)
+            throw WeatherError.jsonDecodeError
         }
-        return .success(weather)
+        return weather
     }
     
     private func encodeData(parameter: WeatherParameter) -> Result<Foundation.Data, WeatherError> {
@@ -135,11 +135,12 @@ class WeatherAPI {
         }
         
         let weather: WeatherResponse
-        switch decodeWeatherResponse(from: responseJson) {
-        case .success(let result):
-            weather = result
-        case .failure(let error):
+        do {
+            weather = try decodeWeatherResponse(from: responseJson)
+        } catch let error as WeatherError {
             return .failure(error)
+        } catch {
+            return .failure(.unknownError)
         }
         
         return .success(weather.weather)
