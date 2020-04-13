@@ -21,13 +21,14 @@ class WeatherViewController: UIViewController {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        weatherModel.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
 
         super.viewDidAppear(animated)
 
-        weatherModel.delegate = self
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.contactWeatherAPI), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
