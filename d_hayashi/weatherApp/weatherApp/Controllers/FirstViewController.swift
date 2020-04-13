@@ -14,7 +14,7 @@ class FirstViewController: UIViewController {
 
         super.viewDidAppear(animated)
 
-        let weatherViewController = WeatherViewController.generateViewController(model: WeatherModelImpl() as WeatherModel)
+        let weatherViewController = WeatherViewController.generateViewController(model: WeatherModelImpl())
         self.present(weatherViewController, animated: true, completion: nil)
     }
 
