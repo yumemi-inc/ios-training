@@ -96,4 +96,24 @@ class weatherAppTests: XCTestCase {
 
         XCTAssertEqual(actual, expected)
     }
+
+    func testJSONエンコード() {
+
+        let weatherModel = WeatherModelImpl()
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        formatter.locale = Locale(identifier: "ja_JP")
+        let date = formatter.date(from: "2020-04-01T12:00:00+09:00")!
+
+        let actual: String
+        let expected = #"{"date":"2020-04-01T03:00:00Z","area":"tokyo"}"#
+
+        do {
+            actual = try weatherModel.encode(InputJSON(area: "tokyo", date: date))
+            XCTAssertEqual(actual, expected)
+        } catch {
+            XCTFail("test encode faild")
+        }
+    }
 }
