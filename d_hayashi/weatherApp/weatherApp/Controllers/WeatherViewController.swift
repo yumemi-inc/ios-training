@@ -16,7 +16,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
 
     // MARK: - Property
-    var weatherModel: WeatherModel!
+    private var weatherModel: WeatherModel!
 
     override func viewDidLoad() {
 
