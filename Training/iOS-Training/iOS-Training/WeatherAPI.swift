@@ -71,7 +71,7 @@ class WeatherAPI {
         return encoder
     }()
     
-    func getWeather() -> Result<Weather, WeatherError>{
+    func getWeather() -> Result<WeatherResponse, WeatherError>{
         let parameter = WeatherParameter(area: "tokyo", date: Date())
         do {
             let requestData = try WeatherAPI.encoder.encode(parameter)
@@ -80,7 +80,7 @@ class WeatherAPI {
             }
             let responseJson = try YumemiWeather.fetchWeather(requestJson)
             let response = try WeatherAPI.decoder.decode(WeatherResponse.self, from: Data(responseJson.utf8))
-            return .success(response.weather)
+            return .success(response)
         } catch is EncodingError {
             return .failure(.jsonEncodeError)
         } catch is DecodingError {

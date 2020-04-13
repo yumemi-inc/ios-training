@@ -21,8 +21,8 @@ class ViewController: UIViewController {
     
     @IBAction func reload(_ sender: Any) {
         switch weatherAPI.getWeather() {
-        case .success(let weather):
-            setWeatherImage(weather: weather)
+        case .success(let response):
+            setWeatherImage(weather: response.weather)
         case .failure(let error):
             let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
             showAlert(title: "APIError", message: errorMessage)
