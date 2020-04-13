@@ -82,14 +82,14 @@ class WeatherAPI {
         return weather
     }
     
-    private func encodeData(parameter: WeatherParameter) -> Result<Foundation.Data, WeatherError> {
+    private func encodeData(parameter: WeatherParameter) throws -> Foundation.Data {
         let parameterJson: Foundation.Data
         do {
             parameterJson = try WeatherAPI.encoder.encode(parameter)
         } catch {
-            return .failure(WeatherError.jsonEncodeError)
+            throw WeatherError.jsonEncodeError
         }
-        return .success(parameterJson)
+        return parameterJson
     }
     
     private func convertWeatherError(yumemiError: YumemiWeatherError) -> WeatherError {
@@ -112,11 +112,12 @@ class WeatherAPI {
         let parameter = WeatherParameter(area: area, date: date)
         
         let parameterJson: Foundation.Data
-        switch encodeData(parameter: parameter) {
-        case .success(let result):
-            parameterJson = result
-        case .failure(let error):
+        do {
+            parameterJson = try encodeData(parameter: parameter)
+        } catch let error as WeatherError {
             return .failure(error)
+        } catch {
+            return .failure(.unknownError)
         }
         
         let parameterString = String(data: parameterJson, encoding: .utf8)!
