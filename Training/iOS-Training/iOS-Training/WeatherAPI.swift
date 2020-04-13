@@ -6,7 +6,6 @@
 //  Copyright © 2020 tokizuoh. All rights reserved.
 //
 
-import UIKit
 import Foundation
 import YumemiWeather
 
