@@ -21,8 +21,8 @@ final class WeatherModelImpl: WeatherModel {
 
         do {
 
-            let inputData = try encoder.encode(input)
-            return String(data: inputData, encoding: .utf8)!
+            let result = try encoder.encode(input)
+            return String(data: result, encoding: .utf8)!
         } catch {
 
             throw WeatherAppError.jsonEncodeSystemError
