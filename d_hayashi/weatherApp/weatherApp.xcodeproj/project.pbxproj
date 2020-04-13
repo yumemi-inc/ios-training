@@ -26,6 +26,7 @@
 		C967B5F824357B970057C047 /* weatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C967B5F724357B970057C047 /* weatherAppTests.swift */; };
 		C967B60324357B970057C047 /* weatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C967B60224357B970057C047 /* weatherAppUITests.swift */; };
 		C967B61224357BC70057C047 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = C967B61124357BC70057C047 /* YumemiWeather */; };
+		C9FD52332443EC5E0005A132 /* WeatherModelStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD52322443EC5E0005A132 /* WeatherModelStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		C967B5FE24357B970057C047 /* weatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C967B60224357B970057C047 /* weatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherAppUITests.swift; sourceTree = "<group>"; };
 		C967B60424357B970057C047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9FD52322443EC5E0005A132 /* WeatherModelStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModelStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		C967B5F624357B970057C047 /* weatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				C9FD52322443EC5E0005A132 /* WeatherModelStub.swift */,
 				C967B5F724357B970057C047 /* weatherAppTests.swift */,
 				C967B5F924357B970057C047 /* Info.plist */,
 			);
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9FD52332443EC5E0005A132 /* WeatherModelStub.swift in Sources */,
 				C967B5F824357B970057C047 /* weatherAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

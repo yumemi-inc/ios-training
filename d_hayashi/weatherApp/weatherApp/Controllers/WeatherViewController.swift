@@ -15,14 +15,15 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
 
-    var weatherModel: WeatherModel = WeatherModelImpl()
+    var weatherModel: WeatherModel?
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        weatherModel.delegate = self
+        weatherModel = weatherModel ?? WeatherModelImpl()
+        weatherModel?.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -45,10 +46,10 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: Contact to weather API
-    @objc private func contactWeatherAPI() {
+    @objc func contactWeatherAPI() {
 
         let area = "tokyo"
-        weatherModel.getWeather(area)
+        weatherModel?.getWeather(area)
     }
 
     // MARK: Update View
