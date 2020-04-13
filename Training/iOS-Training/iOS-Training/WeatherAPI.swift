@@ -58,6 +58,26 @@ class WeatherAPI {
         return encoder
     }()
     
+    private func decodeWeatherResponse(from: Foundation.Data) -> Result<WeatherResponse, WeatherError> {
+        let weather: WeatherResponse
+        do {
+            weather = try WeatherAPI.decoder.decode(WeatherResponse.self, from: from)
+        } catch {
+            return .failure(WeatherError.jsonDecodeError)
+        }
+        return .success(weather)
+    }
+    
+    private func encodeData(parameter: WeatherParameter) -> Result<Foundation.Data, WeatherError> {
+        let parameterJson: Foundation.Data
+        do {
+            parameterJson = try WeatherAPI.encoder.encode(parameter)
+        } catch {
+            return .failure(WeatherError.jsonEncodeError)
+        }
+        return .success(parameterJson)
+    }
+    
     func getWeather() -> Result<Weather, WeatherError>{
         let area = "tokyo"
         let date = Date()
@@ -65,10 +85,11 @@ class WeatherAPI {
         let parameter = WeatherParameter(area: area, date: date)
         
         let parameterJson: Foundation.Data
-        do {
-            parameterJson = try WeatherAPI.encoder.encode(parameter)
-        } catch {
-            return .failure(WeatherError.jsonEncodeError)
+        switch encodeData(parameter: parameter) {
+        case .success(let result):
+            parameterJson = result
+        case .failure(let error):
+            return .failure(error)
         }
         
         let parameterString = String(data: parameterJson, encoding: .utf8)!
@@ -89,11 +110,13 @@ class WeatherAPI {
         }
         
         let weather: WeatherResponse
-        do {
-            weather = try WeatherAPI.decoder.decode(WeatherResponse.self, from: responseJson)
-        } catch {
-            return .failure(WeatherError.jsonDecodeError)
+        switch decodeWeatherResponse(from: responseJson) {
+        case .success(let result):
+            weather = result
+        case .failure(let error):
+            return .failure(error)
         }
+        
         return .success(weather.weather)
     }
     
