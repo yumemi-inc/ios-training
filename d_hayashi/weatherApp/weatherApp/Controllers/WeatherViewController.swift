@@ -23,7 +23,6 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        weatherModel = weatherModel ?? WeatherModelImpl()
         weatherModel.delegate = self
     }
 

@@ -14,8 +14,7 @@ class FirstViewController: UIViewController {
 
         super.viewDidAppear(animated)
 
-        let weatherViewStoryboard: UIStoryboard = UIStoryboard(name: "WeatherView", bundle: nil)
-        let weatherViewController: UIViewController = weatherViewStoryboard.instantiateViewController(withIdentifier: "WeatherViewController")
+        let weatherViewController = WeatherViewController.generateViewController(model: WeatherModelImpl() as WeatherModel)
         self.present(weatherViewController, animated: true, completion: nil)
     }
 
