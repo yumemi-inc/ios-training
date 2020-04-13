@@ -13,13 +13,23 @@ final class WeatherModelImpl: WeatherModel {
 
     weak var delegate: WeatheModelDelegate?
 
-    func getWeather(_ area: String) {
-
-        let inputJsonString = InputJSON(area: area, date: Date())
+    func encode(_ input: InputJSON) throws -> String {
 
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dateEncodingStrategy = .iso8601
+
+        do {
+
+            let inputData = try encoder.encode(input)
+            return String(data: inputData, encoding: .utf8)!
+        } catch {
+
+            throw WeatherAppError.jsonEncodeSystemError
+        }
+    }
+
+    func decode(_ input: String) throws -> WeatherResponse {
 
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -27,20 +37,31 @@ final class WeatherModelImpl: WeatherModel {
 
         do {
 
-            // try encoding
-            let inputData = try encoder.encode(inputJsonString)
-            let inputJsonString = String(data: inputData, encoding: .utf8)!
+            let inputData = Data(input.utf8)
+            let response = try decoder.decode(WeatherResponse.self, from: inputData)
+            return response
+        } catch {
 
-            // try decoding
-            let resultString = try YumemiWeather.fetchWeather(inputJsonString)
-            let resultData = Data(resultString.utf8)
+            throw WeatherAppError.decodeSystemError
+        }
+    }
 
-            let response: WeatherResponse = try decoder.decode(WeatherResponse.self, from: resultData)
+    func getWeather(_ area: String) {
+
+        do {
+
+            let encodedString = try encode(InputJSON(area: area, date: Date()))
+            let resultString = try YumemiWeather.fetchWeather(encodedString)
+
+            let response: WeatherResponse = try decode(resultString)
 
             delegate?.didGetWeather(.success(response))
-        } catch EncodingError.invalidValue {
+        } catch WeatherAppError.jsonEncodeSystemError {
 
             delegate?.didGetWeather(.failure(.jsonEncodeSystemError))
+        } catch WeatherAppError.decodeSystemError {
+
+            delegate?.didGetWeather(.failure(.decodeSystemError))
         } catch let weatherError as YumemiWeatherError {
 
             switch weatherError {
@@ -51,10 +72,6 @@ final class WeatherModelImpl: WeatherModel {
             case .unknownError:
                 delegate?.didGetWeather(.failure(.unknownYumemiError))
             }
-        } catch let DecodingError.dataCorrupted(context) {
-
-            debugPrint(context)
-            delegate?.didGetWeather(.failure(.decodeSystemError))
         } catch {
 
             delegate?.didGetWeather(.failure(.unknownSystemError))
