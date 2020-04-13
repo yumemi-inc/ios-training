@@ -35,6 +35,15 @@ class WeatherViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.contactWeatherAPI), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
+    class func generateViewController(model: WeatherModel) -> WeatherViewController {
+
+        let weatherViewStoryboard: UIStoryboard = UIStoryboard(name: "WeatherView", bundle: nil)
+        let weatherViewController: WeatherViewController = weatherViewStoryboard.instantiateViewController(withIdentifier: "WeatherViewController") as! WeatherViewController
+        weatherViewController.weatherModel = model
+
+        return weatherViewController
+    }
+
     // MARK: - IBAction
     @IBAction func tapReload(_ sender: Any) {
 
