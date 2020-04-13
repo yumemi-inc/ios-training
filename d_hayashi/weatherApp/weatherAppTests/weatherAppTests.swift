@@ -116,4 +116,48 @@ class weatherAppTests: XCTestCase {
             XCTFail("test encode faild")
         }
     }
+
+    func testJSONデコード() {
+
+        let weatherModel = WeatherModelImpl()
+
+        let testInput = """
+        {
+            "weather": "sunny",
+            "max_temp": 40,
+            "min_temp": -40,
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        formatter.locale = Locale(identifier: "ja_JP")
+        let date = formatter.date(from: "2020-04-01T12:00:00+09:00")!
+
+        let actual: WeatherResponse
+
+        do {
+            actual = try weatherModel.decode(testInput)
+            print(actual)
+            let expected = WeatherResponse(maxTemp: 40, minTemp: -40, date: date, weather: .sunny)
+
+            XCTContext.runActivity(named: "各プロパティ") { _ in
+                XCTContext.runActivity(named: "weather") { _ in
+                    XCTAssertEqual(actual.weather, expected.weather)
+                }
+                XCTContext.runActivity(named: "maxTemp") { _ in
+                    XCTAssertEqual(actual.maxTemp, expected.maxTemp)
+                }
+                XCTContext.runActivity(named: "minTemp") { _ in
+                    XCTAssertEqual(actual.minTemp, expected.minTemp)
+                }
+                XCTContext.runActivity(named: "date") { _ in
+                    XCTAssertEqual(actual.date, expected.date)
+                }
+            }
+        } catch {
+            XCTFail("test encode faild")
+        }
+    }
 }
