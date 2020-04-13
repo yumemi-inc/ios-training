@@ -23,6 +23,23 @@ enum WeatherError: Error {
     case jsonDecodeError
     case jsonEncodeError
     case unknownError
+    
+    var toString: String {
+        switch self {
+        case .notExistsError:
+            return "notExistsError"
+        case .invalidParameterError:
+            return "invalidParameterError"
+        case .invalidResponseError:
+            return "invalidResponseError"
+        case .jsonDecodeError:
+            return "jsonDecodeError"
+        case .jsonEncodeError:
+            return "jsonEncodeError"
+        case .unknownError:
+            return "unknownError"
+        }
+    }
 }
 
 struct WeatherParameter: Codable {
@@ -121,26 +138,6 @@ class WeatherAPI {
     }
     
     func generateAPIErrorMessage (error: WeatherError) -> String {
-        let errorMessage: String
-        switch error {
-        case WeatherError.invalidParameterError:
-            errorMessage = "invalidParameterError"
-            
-        case WeatherError.invalidResponseError:
-            errorMessage = "invalidResponseError"
-            
-        case WeatherError.jsonDecodeError:
-            errorMessage = "jsonDecodeError"
-            
-        case WeatherError.jsonEncodeError:
-            errorMessage = "jsonEncodeError"
-            
-        case WeatherError.notExistsError:
-            errorMessage = "notExistsError"
-            
-        case WeatherError.unknownError:
-            errorMessage = "unknownError"
-        }
-        return errorMessage
+        return error.toString
     }
 }
