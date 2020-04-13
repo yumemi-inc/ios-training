@@ -34,6 +34,7 @@ class WeatherViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.contactWeatherAPI), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
+    // MARK: - generate ViewController and set WeatherModel
     class func generateViewController(model: WeatherModel) -> WeatherViewController {
 
         let weatherViewStoryboard: UIStoryboard = UIStoryboard(name: "WeatherView", bundle: nil)
