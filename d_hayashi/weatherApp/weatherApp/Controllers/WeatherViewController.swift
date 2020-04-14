@@ -60,7 +60,7 @@ class WeatherViewController: UIViewController {
     // MARK: Contact to weather API
     @objc func contactWeatherAPI() {
 
-        startActivityIndicator()
+        activityIndicator.startAnimating()
 
         let area = "tokyo"
         DispatchQueue.global(qos: .default).async {
@@ -97,7 +97,7 @@ extension WeatherViewController: WeatheModelDelegate {
 
         DispatchQueue.main.async {
 
-            self.stopActivityIndicator()
+            self.activityIndicator.stopAnimating()
 
             switch result {
                 

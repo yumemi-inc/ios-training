@@ -17,19 +17,8 @@ extension WeatherViewController {
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         activityIndicator.center = view.center
         activityIndicator.style = .large
+        activityIndicator.hidesWhenStopped = true
 
         self.view.addSubview(activityIndicator)
-    }
-
-    func startActivityIndicator() {
-
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-
-    }
-    func stopActivityIndicator() {
-
-        activityIndicator.stopAnimating()
-        activityIndicator.isHidden = true
     }
 }
