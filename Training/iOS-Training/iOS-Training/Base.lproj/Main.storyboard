@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller First-->
         <scene sceneID="RvC-aG-rzu">
             <objects>
-                <viewController id="ZJd-lL-GEB" sceneMemberID="viewController">
+                <viewController id="ZJd-lL-GEB" customClass="ViewControllerFirst" customModule="iOS_Training" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zmn-nf-qSg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,7 +18,7 @@
                         <viewLayoutGuide key="safeArea" id="5F8-DC-DLd"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" id="7Rx-Bb-m89"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toSecond" modalPresentationStyle="fullScreen" id="3B6-Kx-GVC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sov-Y7-9Kh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -30,11 +30,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewControllerSecond" customModule="iOS_Training" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XT3-TN-QvP">
-                                <rect key="frame" x="103.5" y="292" width="207" height="224"/>
+                                <rect key="frame" x="103.5" y="341" width="207" height="224"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n4j-6a-ac5">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
@@ -65,11 +65,11 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3k-Y0-nyT">
-                                <rect key="frame" x="136" y="596" width="39" height="30"/>
+                                <rect key="frame" x="136" y="645" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ead-CQ-JkC">
-                                <rect key="frame" x="235.5" y="596" width="47" height="30"/>
+                                <rect key="frame" x="235.5" y="645" width="47" height="30"/>
                                 <state key="normal" title="Reload"/>
                                 <connections>
                                     <action selector="reload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bal-77-16z"/>
@@ -88,6 +88,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hEW-WN-WzW"/>
                     <connections>
                         <outlet property="maxTemperatureLabel" destination="K9W-Kd-p8e" id="OXS-cp-nde"/>
                         <outlet property="minTemperatureLabel" destination="3jS-Lv-tUE" id="F8i-6M-UCs"/>
