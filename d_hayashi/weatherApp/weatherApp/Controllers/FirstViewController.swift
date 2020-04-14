@@ -10,17 +10,11 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    override func viewDidLoad() {
-
-        super.viewDidLoad()
-    }
-
     override func viewDidAppear(_ animated: Bool) {
 
         super.viewDidAppear(animated)
 
-        let weatherViewStoryboard: UIStoryboard = UIStoryboard(name: "WeatherView", bundle: nil)
-        let weatherViewController: UIViewController = weatherViewStoryboard.instantiateViewController(withIdentifier: "WeatherViewController")
+        let weatherViewController = WeatherViewController.generateViewController(model: WeatherModelImpl())
         self.present(weatherViewController, animated: true, completion: nil)
     }
 

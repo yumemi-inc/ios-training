@@ -15,13 +15,33 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
 
+    // MARK: - Property
+    private var weatherModel: WeatherModel!
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        weatherModel.delegate = self
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+
+        super.viewDidAppear(animated)
+
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.contactWeatherAPI), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+
+    // MARK: - generate ViewController and set WeatherModel
+    static func generateViewController(model: WeatherModel) -> WeatherViewController {
+
+        let weatherViewStoryboard: UIStoryboard = UIStoryboard(name: "WeatherView", bundle: nil)
+        let weatherViewController: WeatherViewController = weatherViewStoryboard.instantiateViewController(withIdentifier: "WeatherViewController") as! WeatherViewController
+        weatherViewController.weatherModel = model
+
+        return weatherViewController
     }
 
     // MARK: - IBAction
@@ -36,20 +56,10 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: Contact to weather API
-    @objc private func contactWeatherAPI() {
+    @objc func contactWeatherAPI() {
 
         let area = "tokyo"
-        let weatherResult = WeatherAPIOperator().getWeather(area)
-
-        switch weatherResult {
-
-        case let .success(response):
-            weatherViewUpdate(response)
-            print(response.date)
-
-        case let .failure(error):
-            showErrorAlert(error)
-        }
+        weatherModel.getWeather(area)
     }
 
     // MARK: Update View
@@ -68,8 +78,24 @@ class WeatherViewController: UIViewController {
     private func showErrorAlert(_ error: WeatherAppError) {
 
         let errorMessageString = "エラーが発生しました"
-        let errorAlertController: UIAlertController = UIAlertController(title: error.errorDescription, message: errorMessageString, preferredStyle: .alert)
+        let errorAlertController = UIAlertController(title: error.errorDescription, message: errorMessageString, preferredStyle: .alert)
         errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(errorAlertController, animated: true)
+    }
+}
+
+// MARK: - delegate methods
+extension WeatherViewController: WeatheModelDelegate {
+
+    func didGetWeather(_ result: Result<WeatherResponse, WeatherAppError>) {
+
+        switch result {
+
+        case let .success(response):
+            weatherViewUpdate(response)
+
+        case let .failure(error):
+            showErrorAlert(error)
+        }
     }
 }
