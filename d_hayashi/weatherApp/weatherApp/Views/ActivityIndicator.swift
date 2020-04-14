@@ -13,8 +13,7 @@ extension WeatherViewController {
 
     func generateActivityIndicator() {
 
-        activityIndicator.backgroundColor = .black
-        activityIndicator.color = .white
+        activityIndicator.color = .gray
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         activityIndicator.center = view.center
         activityIndicator.style = .large
@@ -30,9 +29,7 @@ extension WeatherViewController {
     }
     func stopActivityIndicator() {
 
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-        }
+        activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
     }
 }
