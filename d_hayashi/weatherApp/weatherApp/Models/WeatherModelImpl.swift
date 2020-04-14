@@ -49,6 +49,7 @@ final class WeatherModelImpl: WeatherModel {
     func getWeather(_ area: String) {
 
         DispatchQueue.global().async {
+
             do {
 
                 let encodedString = try self.encode(InputJSON(area: area, date: Date()))
@@ -56,10 +57,14 @@ final class WeatherModelImpl: WeatherModel {
 
                 let response: WeatherResponse = try self.decode(resultString)
 
-                self.delegate?.didGetWeather(.success(response))
+                DispatchQueue.main.async {
+                    self.delegate?.didGetWeather(.success(response))
+                }
             } catch WeatherAppError.jsonEncodeSystemError {
 
-                self.delegate?.didGetWeather(.failure(.jsonEncodeSystemError))
+                DispatchQueue.main.async {
+                    self.delegate?.didGetWeather(.failure(.jsonEncodeSystemError))
+                }
             } catch WeatherAppError.decodeSystemError {
 
                 self.delegate?.didGetWeather(.failure(.decodeSystemError))
@@ -67,15 +72,23 @@ final class WeatherModelImpl: WeatherModel {
 
                 switch weatherError {
                 case .invalidParameterError:
-                    self.delegate?.didGetWeather(.failure(.invalidParameterYumemiError))
+                    DispatchQueue.main.async {
+                        self.delegate?.didGetWeather(.failure(.invalidParameterYumemiError))
+                    }
                 case .jsonDecodeError:
-                    self.delegate?.didGetWeather(.failure(.jsonDecodeYumemiError))
+                    DispatchQueue.main.async {
+                        self.delegate?.didGetWeather(.failure(.jsonDecodeYumemiError))
+                    }
                 case .unknownError:
-                    self.delegate?.didGetWeather(.failure(.unknownYumemiError))
+                    DispatchQueue.main.async {
+                        self.delegate?.didGetWeather(.failure(.unknownYumemiError))
+                    }
                 }
             } catch {
 
-                self.delegate?.didGetWeather(.failure(.unknownSystemError))
+                DispatchQueue.main.async {
+                    self.delegate?.didGetWeather(.failure(.unknownSystemError))
+                }
             }
         }
 

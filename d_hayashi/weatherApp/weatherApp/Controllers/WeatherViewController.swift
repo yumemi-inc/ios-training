@@ -93,18 +93,15 @@ extension WeatherViewController: WeatheModelDelegate {
 
     func didGetWeather(_ result: Result<WeatherResponse, WeatherAppError>) {
 
-        DispatchQueue.main.async {
-
-            self.activityIndicator.stopAnimating()
-
-            switch result {
-                
-            case let .success(response):
-                self.weatherViewUpdate(response)
-
-            case let .failure(error):
-                self.showErrorAlert(error)
-            }
+        self.activityIndicator.stopAnimating()
+        
+        switch result {
+            
+        case let .success(response):
+            self.weatherViewUpdate(response)
+            
+        case let .failure(error):
+            self.showErrorAlert(error)
         }
     }
 }
