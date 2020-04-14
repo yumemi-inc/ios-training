@@ -63,9 +63,7 @@ class WeatherViewController: UIViewController {
         activityIndicator.startAnimating()
 
         let area = "tokyo"
-        DispatchQueue.global(qos: .default).async {
-            self.weatherModel.getWeather(area)
-        }
+        self.weatherModel.getWeather(area)
     }
 
     // MARK: Update View
