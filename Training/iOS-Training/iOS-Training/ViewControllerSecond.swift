@@ -58,5 +58,9 @@ class ViewControllerSecond: UIViewController {
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func backViewControllerFirst(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
