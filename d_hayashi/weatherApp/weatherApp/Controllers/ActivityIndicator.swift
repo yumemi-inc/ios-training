@@ -11,7 +11,7 @@ import UIKit
 
 extension WeatherViewController {
 
-    func generateActivityIndicator() {
+    func commandActivityIndicator() {
 
         activityIndicator.color = .gray
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 30, height: 30)

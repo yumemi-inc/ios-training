@@ -120,7 +120,6 @@
 			children = (
 				C93B9B7A243753770076A0D3 /* RoundedButton.swift */,
 				C900B813243DD3AC00A81871 /* WeatherIconResource.swift */,
-				C928F8B22444ACC80017380D /* ActivityIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +181,7 @@
 		C967B613243581280057C047 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C928F8B22444ACC80017380D /* ActivityIndicator.swift */,
 				C967B5E424357B960057C047 /* WeatherViewController.swift */,
 				C9172FD0243AE2BF00BBC255 /* FirstViewController.swift */,
 			);
