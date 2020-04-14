@@ -17,6 +17,7 @@ class WeatherViewController: UIViewController {
 
     // MARK: - Property
     private var weatherModel: WeatherModel!
+    let activityIndicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
 
@@ -24,6 +25,7 @@ class WeatherViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         weatherModel.delegate = self
+        generateActivityIndicator()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +49,7 @@ class WeatherViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func tapReload(_ sender: Any) {
 
-        self.contactWeatherAPI()
+        contactWeatherAPI()
     }
 
     @IBAction func tapClose(_ sender: Any) {
@@ -58,8 +60,12 @@ class WeatherViewController: UIViewController {
     // MARK: Contact to weather API
     @objc func contactWeatherAPI() {
 
+        startActivityIndicator()
+
         let area = "tokyo"
-        weatherModel.getWeather(area)
+        DispatchQueue.global(qos: .default).async {
+            self.weatherModel.getWeather(area)
+        }
     }
 
     // MARK: Update View
@@ -89,13 +95,18 @@ extension WeatherViewController: WeatheModelDelegate {
 
     func didGetWeather(_ result: Result<WeatherResponse, WeatherAppError>) {
 
-        switch result {
+        DispatchQueue.main.async {
 
-        case let .success(response):
-            weatherViewUpdate(response)
+            self.stopActivityIndicator()
 
-        case let .failure(error):
-            showErrorAlert(error)
+            switch result {
+                
+            case let .success(response):
+                self.weatherViewUpdate(response)
+
+            case let .failure(error):
+                self.showErrorAlert(error)
+            }
         }
     }
 }
