@@ -81,9 +81,7 @@ final class WeatherModelImpl: WeatherModel {
                 result = .failure(.unknownSystemError)
             }
 
-            DispatchQueue.main.async {
-                self.delegate?.didGetWeather(result)
-            }
+            self.delegate?.didGetWeather(result)
         }
 
     }
