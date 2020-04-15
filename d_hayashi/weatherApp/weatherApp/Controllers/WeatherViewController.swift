@@ -18,7 +18,6 @@ class WeatherViewController: UIViewController {
     // MARK: - Property
     private var weatherModel: WeatherModel!
     let activityIndicator = UIActivityIndicatorView()
-    let semaphore = DispatchSemaphore(value: 0)
 
     override func viewDidLoad() {
 
@@ -94,15 +93,18 @@ extension WeatherViewController: WeatheModelDelegate {
 
     func didGetWeather(_ result: Result<WeatherResponse, WeatherAppError>) {
 
-        activityIndicator.stopAnimating()
-        
-        switch result {
-            
-        case let .success(response):
-            weatherViewUpdate(response)
-            
-        case let .failure(error):
-            showErrorAlert(error)
+        DispatchQueue.main.async {
+
+            self.activityIndicator.stopAnimating()
+
+            switch result {
+
+            case let .success(response):
+                self.weatherViewUpdate(response)
+
+            case let .failure(error):
+                self.showErrorAlert(error)
+            }
         }
     }
 }
