@@ -14,6 +14,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var closeButton: CustomButton!
+    @IBOutlet weak var reloadButton: CustomButton!
 
     // MARK: - Property
     private var weatherModel: WeatherModel!
@@ -61,6 +63,8 @@ class WeatherViewController: UIViewController {
     @objc func contactWeatherAPI() {
 
         activityIndicator.startAnimating()
+        reloadButton.isEnabled = false
+        closeButton.isEnabled = false
 
         let area = "tokyo"
         weatherModel.getWeather(area)
@@ -95,6 +99,8 @@ extension WeatherViewController: WeatheModelDelegate {
 
         DispatchQueue.main.async {
 
+            self.reloadButton.isEnabled = true
+            self.closeButton.isEnabled = true
             self.activityIndicator.stopAnimating()
 
             switch result {

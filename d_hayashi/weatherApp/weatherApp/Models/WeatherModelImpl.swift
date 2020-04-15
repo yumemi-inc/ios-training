@@ -83,6 +83,5 @@ final class WeatherModelImpl: WeatherModel {
 
             self.delegate?.didGetWeather(result)
         }
-
     }
 }
