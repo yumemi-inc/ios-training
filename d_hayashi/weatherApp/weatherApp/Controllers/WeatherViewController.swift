@@ -25,7 +25,7 @@ class WeatherViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         weatherModel.delegate = self
-        generateActivityIndicator()
+        commandActivityIndicator()
     }
 
     override func viewDidAppear(_ animated: Bool) {
