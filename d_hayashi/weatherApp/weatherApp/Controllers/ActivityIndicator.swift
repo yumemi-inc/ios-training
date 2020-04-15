@@ -11,7 +11,7 @@ import UIKit
 
 extension WeatherViewController {
 
-    func commandActivityIndicator() {
+    func setActivityIndicatorProperty() {
 
         activityIndicator.color = .gray
         activityIndicator.style = .large
