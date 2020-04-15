@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class WeatherViewController: UIViewController {
     
     let weatherAPI = WeatherAPI()
     

@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--Start Up View Controller-->
         <scene sceneID="RvC-aG-rzu">
             <objects>
-                <viewController id="ZJd-lL-GEB" customClass="FirstViewController" customModule="iOS_Training" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZJd-lL-GEB" customClass="StartUpViewController" customModule="iOS_Training" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zmn-nf-qSg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,17 +18,17 @@
                         <viewLayoutGuide key="safeArea" id="5F8-DC-DLd"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toSecond" modalPresentationStyle="fullScreen" id="3B6-Kx-GVC"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toWeather" modalPresentationStyle="fullScreen" id="3B6-Kx-GVC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sov-Y7-9Kh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-657" y="139"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SecondViewController" customModule="iOS_Training" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="iOS_Training" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
