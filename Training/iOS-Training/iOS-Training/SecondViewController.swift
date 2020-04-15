@@ -59,7 +59,7 @@ class SecondViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func backViewControllerFirst(_ sender: Any) {
+    @IBAction func dismissSelfViewController(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 }
