@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
     
     let weatherAPI = WeatherAPI()
     
@@ -57,6 +57,10 @@ class ViewController: UIViewController {
         
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func dismissSelfViewController(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
