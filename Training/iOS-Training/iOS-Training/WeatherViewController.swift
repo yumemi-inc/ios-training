@@ -18,19 +18,13 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.updateWeather), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     @IBAction func reload(_ sender: Any) {
-        switch weatherAPI.getWeather() {
-        case .success(let response):
-            minTemperatureLabel.text = String(response.minTemp)
-            maxTemperatureLabel.text = String(response.maxTemp)
-            setWeatherImage(weather: response.weather)
-        case .failure(let error):
-            let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
-            showAlert(title: "APIError", message: errorMessage)
-        }
+        self.updateWeather()
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -61,6 +55,18 @@ class WeatherViewController: UIViewController {
     
     @IBAction func dismissSelfViewController(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func updateWeather() {
+        switch weatherAPI.getWeather() {
+        case .success(let response):
+            minTemperatureLabel.text = String(response.minTemp)
+            maxTemperatureLabel.text = String(response.maxTemp)
+            setWeatherImage(weather: response.weather)
+        case .failure(let error):
+            let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
+            showAlert(title: "APIError", message: errorMessage)
+        }
     }
 }
 
