@@ -19,7 +19,7 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didBecomeActiveNotification(notification:)),
+                                               selector: #selector(loadWeather),
                                                name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
     }
@@ -27,20 +27,12 @@ class WeatherViewController: UIViewController {
     deinit {
         print(#function)
     }
-    
-    @objc private func didBecomeActiveNotification(notification: NSNotification) {
-        self.loadWeather()
-    }
-    
-    @IBAction func onTapReload(_ sender: Any) {
-        loadWeather()
-    }
-    
-    @IBAction func onTapClose(_ sender: Any) {
+            
+    @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func loadWeather() {
+    @IBAction func loadWeather(_ sender: Any) {
         let request = Request(area: "tokyo", date: Date())
         do {
             let response = try self.weatherModel.fetchWeather(request)

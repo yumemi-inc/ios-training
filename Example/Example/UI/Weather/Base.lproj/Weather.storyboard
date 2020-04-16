@@ -64,14 +64,14 @@
                                 <rect key="frame" x="211" y="598.33333333333337" width="47" height="30"/>
                                 <state key="normal" title="Reload"/>
                                 <connections>
-                                    <action selector="onTapReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bL-gj-e8C"/>
+                                    <action selector="loadWeather:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EOj-rP-f1G"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiu-CP-tw9">
                                 <rect key="frame" x="121" y="598.33333333333337" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
                                 <connections>
-                                    <action selector="onTapClose:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xEE-WJ-yKG"/>
+                                    <action selector="dismiss:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yf6-Nr-YS7"/>
                                 </connections>
                             </button>
                         </subviews>
