@@ -11,8 +11,6 @@ import YumemiWeather
 
 final class WeatherModelImpl: WeatherModel {
 
-    weak var delegate: WeatheModelDelegate?
-
     func encode(_ input: InputJSON) throws -> String {
 
         let encoder = JSONEncoder()
@@ -46,11 +44,9 @@ final class WeatherModelImpl: WeatherModel {
         }
     }
 
-    func getWeather(_ area: String) {
+    func getWeather(_ area: String, completionHandler: @escaping (Result<WeatherResponse, WeatherAppError>) -> Void) {
 
         DispatchQueue.global().async {
-
-            let result: Result<WeatherResponse, WeatherAppError>
 
             do {
 
@@ -59,29 +55,27 @@ final class WeatherModelImpl: WeatherModel {
 
                 let response: WeatherResponse = try self.decode(resultString)
 
-                result = .success(response)
+                completionHandler(.success(response))
             } catch WeatherAppError.jsonEncodeSystemError {
 
-                result = .failure(.jsonEncodeSystemError)
+                completionHandler(.failure(.jsonEncodeSystemError))
             } catch WeatherAppError.decodeSystemError {
 
-                result = .failure(.decodeSystemError)
+                completionHandler(.failure(.decodeSystemError))
             } catch let weatherError as YumemiWeatherError {
 
                 switch weatherError {
                 case .invalidParameterError:
-                    result = .failure(.invalidParameterYumemiError)
+                    completionHandler(.failure(.invalidParameterYumemiError))
                 case .jsonDecodeError:
-                    result = .failure(.jsonDecodeYumemiError)
+                    completionHandler(.failure(.jsonDecodeYumemiError))
                 case .unknownError:
-                    result = .failure(.unknownYumemiError)
+                    completionHandler(.failure(.unknownYumemiError))
                 }
             } catch {
 
                 fatalError()
             }
-
-            self.delegate?.didGetWeather(result)
         }
     }
 }
