@@ -1,11 +1,16 @@
 # Delegateは相互に依存が発生する
 
-Delegateパターンで非同期APIの結果を取得すると、  
+Delegateパターンで結果を取得すると、  
 ViewControllerとModelの間に相互に依存がうまれたと思います。
-ModelはViewControllerに依存しないよう、関数型プロパティでAPIの結果を通知してみましょう。
 
-# APIを叩く別画面から結果を受け取る Part.2
+ModelはViewControllerに依存しないように修正してみましょう。  
+Modelの天気予報取得メソッドに、結果を通知する関数型引数を追加してみましょう。
+
+UIViewControllerの [present(_:animated:completion:)](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621380-present)メソッドのように、  
+完了時の処理を引数で予め渡しておく手法です。
+
 ## 課題
-- ModelにAPI終了時に呼び出すcompletionプロパティを追加する
-- ViewControllerはAPIの結果を受け取る処理をcompletionプロパティにセットする
+- Modelの天気予報取得メソッドに、結果を通知する関数型引数を追加する
 - ViewControllerを閉じた時に`deinit`が呼ばれることを確認する
+
+ぜひ関数型引数はOptional型、非Optional型の両方を実装し、その違いを確認してみましょう。
