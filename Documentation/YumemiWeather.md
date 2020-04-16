@@ -103,7 +103,7 @@ Json文字列
 天気予報を取得するAPIです。  
 非同期に処理します。  
 ```swift
-static func fetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void)
+static func asyncFetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void)
 ```
 
 ### Parameters
