@@ -29,7 +29,6 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        weatherModel.delegate = self
         setActivityIndicatorProperty()
     }
 
@@ -68,7 +67,22 @@ class WeatherViewController: UIViewController {
         activityIndicator.startAnimating()
 
         let area = "tokyo"
-        weatherModel.getWeather(area)
+        weatherModel.getWeather(area) { result in
+
+            DispatchQueue.main.async {
+
+                self.activityIndicator.stopAnimating()
+
+                switch result {
+
+                case let .success(response):
+                    self.weatherViewUpdate(response)
+
+                case let .failure(error):
+                    self.showErrorAlert(error)
+                }
+            }
+        }
     }
 
     // MARK: Update View
