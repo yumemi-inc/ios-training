@@ -19,6 +19,11 @@ class WeatherViewController: UIViewController {
     private var weatherModel: WeatherModel!
     let activityIndicator = UIActivityIndicatorView()
 
+    deinit {
+
+        debugPrint("deinitializer of WeatherViewController has just been called")
+    }
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
