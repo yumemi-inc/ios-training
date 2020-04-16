@@ -10,11 +10,11 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    let weatherAPI = WeatherAPI()
-    
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
+    
+    var weatherModel: WeatherModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +58,13 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func updateWeather() {
-        switch weatherAPI.getWeather() {
+        switch weatherModel.getWeather() {
         case .success(let response):
             minTemperatureLabel.text = String(response.minTemp)
             maxTemperatureLabel.text = String(response.maxTemp)
             setWeatherImage(weather: response.weather)
         case .failure(let error):
-            let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
+            let errorMessage = weatherModel.generateAPIErrorMessage(error: error)
             showAlert(title: "APIError", message: errorMessage)
         }
     }

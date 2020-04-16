@@ -18,4 +18,11 @@ class StartUpViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.performSegue(withIdentifier: "toWeather", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWeather" {
+            let weatherViewController = segue.destination as! WeatherViewController
+            weatherViewController.weatherModel = WeatherModelImpl()
+        }
+    }
 }
