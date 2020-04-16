@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import YumemiWeather
 
 class WeatherViewController: UIViewController {
     
@@ -56,10 +55,6 @@ class WeatherViewController: UIViewController {
                 message = "Jsonエンコードに失敗しました。"
             case let error as WeatherModelError where error ~= WeatherModelError.jsonDecodeError:
                 message = "Jsonデコードに失敗しました。"
-            case let error as YumemiWeatherError where error ~= YumemiWeatherError.unknownError:
-                message = "エラーが発生しました。"
-            case let error as YumemiWeatherError where error ~= YumemiWeatherError.invalidParameterError:
-                message = "パラメータが不正です。"
             default:
                 message = "エラーが発生しました。"
             }
