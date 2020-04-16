@@ -1,7 +1,7 @@
 # 非同期APIを利用する
 `YumemiWeather`の非同期APIを利用して、天気予報を取得してみましょう。
 
-`static func fetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void)`  
+`static func asyncFetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void)`  
 [APIの概要](YumemiWeather.md)
 
 
