@@ -10,6 +10,5 @@ import Foundation
 
 protocol WeatherModel {
 
-    var delegate: WeatheModelDelegate? { get set }
     func getWeather(_ area: String, completionHandler: @escaping (Result<WeatherResponse, WeatherAppError>) -> Void)
 }
