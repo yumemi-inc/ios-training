@@ -17,6 +17,7 @@ class WeatherViewController: UIViewController {
 
     // MARK: - Property
     private var weatherModel: WeatherModel!
+    let activityIndicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
 
@@ -24,6 +25,7 @@ class WeatherViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         weatherModel.delegate = self
+        setActivityIndicatorProperty()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +49,7 @@ class WeatherViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func tapReload(_ sender: Any) {
 
-        self.contactWeatherAPI()
+        contactWeatherAPI()
     }
 
     @IBAction func tapClose(_ sender: Any) {
@@ -57,6 +59,8 @@ class WeatherViewController: UIViewController {
 
     // MARK: Contact to weather API
     @objc func contactWeatherAPI() {
+
+        activityIndicator.startAnimating()
 
         let area = "tokyo"
         weatherModel.getWeather(area)
@@ -89,13 +93,38 @@ extension WeatherViewController: WeatheModelDelegate {
 
     func didGetWeather(_ result: Result<WeatherResponse, WeatherAppError>) {
 
-        switch result {
+        DispatchQueue.main.async {
 
-        case let .success(response):
-            weatherViewUpdate(response)
+            self.activityIndicator.stopAnimating()
 
-        case let .failure(error):
-            showErrorAlert(error)
+            switch result {
+
+            case let .success(response):
+                self.weatherViewUpdate(response)
+
+            case let .failure(error):
+                self.showErrorAlert(error)
+            }
         }
+    }
+}
+
+// MARK: ActivityIndicator
+extension WeatherViewController {
+
+    func setActivityIndicatorProperty() {
+
+        activityIndicator.color = .gray
+        activityIndicator.style = .large
+        activityIndicator.hidesWhenStopped = true
+
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(activityIndicator)
+
+        // MARK: - AutoLayout Constraints
+        activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        activityIndicator.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        activityIndicator.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
     }
 }

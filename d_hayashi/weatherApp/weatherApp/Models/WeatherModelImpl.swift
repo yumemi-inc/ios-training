@@ -48,33 +48,40 @@ final class WeatherModelImpl: WeatherModel {
 
     func getWeather(_ area: String) {
 
-        do {
+        DispatchQueue.global().async {
 
-            let encodedString = try encode(InputJSON(area: area, date: Date()))
-            let resultString = try YumemiWeather.fetchWeather(encodedString)
+            let result: Result<WeatherResponse, WeatherAppError>
 
-            let response: WeatherResponse = try decode(resultString)
+            do {
 
-            delegate?.didGetWeather(.success(response))
-        } catch WeatherAppError.jsonEncodeSystemError {
+                let encodedString = try self.encode(InputJSON(area: area, date: Date()))
+                let resultString = try YumemiWeather.syncFetchWeather(encodedString)
 
-            delegate?.didGetWeather(.failure(.jsonEncodeSystemError))
-        } catch WeatherAppError.decodeSystemError {
+                let response: WeatherResponse = try self.decode(resultString)
 
-            delegate?.didGetWeather(.failure(.decodeSystemError))
-        } catch let weatherError as YumemiWeatherError {
+                result = .success(response)
+            } catch WeatherAppError.jsonEncodeSystemError {
 
-            switch weatherError {
-            case .invalidParameterError:
-                delegate?.didGetWeather(.failure(.invalidParameterYumemiError))
-            case .jsonDecodeError:
-                delegate?.didGetWeather(.failure(.jsonDecodeYumemiError))
-            case .unknownError:
-                delegate?.didGetWeather(.failure(.unknownYumemiError))
+                result = .failure(.jsonEncodeSystemError)
+            } catch WeatherAppError.decodeSystemError {
+
+                result = .failure(.decodeSystemError)
+            } catch let weatherError as YumemiWeatherError {
+
+                switch weatherError {
+                case .invalidParameterError:
+                    result = .failure(.invalidParameterYumemiError)
+                case .jsonDecodeError:
+                    result = .failure(.jsonDecodeYumemiError)
+                case .unknownError:
+                    result = .failure(.unknownYumemiError)
+                }
+            } catch {
+
+                result = .failure(.unknownSystemError)
             }
-        } catch {
 
-            delegate?.didGetWeather(.failure(.unknownSystemError))
+            self.delegate?.didGetWeather(result)
         }
     }
 }
