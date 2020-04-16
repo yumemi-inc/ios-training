@@ -78,7 +78,7 @@ final class WeatherModelImpl: WeatherModel {
                 }
             } catch {
 
-                result = .failure(.unknownSystemError)
+                fatalError()
             }
 
             self.delegate?.didGetWeather(result)
