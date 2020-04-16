@@ -9,7 +9,7 @@
 import UIKit
 
 class StartUpViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
