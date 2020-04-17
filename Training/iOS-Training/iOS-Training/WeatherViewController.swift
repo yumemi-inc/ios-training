@@ -20,11 +20,11 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(self.updateWeather), name: UIApplication.didBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.updateWeatherView), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     @IBAction func reload(_ sender: Any) {
-        self.updateWeather()
+        self.updateWeatherView()
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -57,8 +57,12 @@ class WeatherViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func updateWeather() {
-        switch weatherModel.getWeather() {
+    @objc func updateWeatherView() {
+        reflectWeatherResult(result: weatherModel.getWeather())
+    }
+    
+    func reflectWeatherResult(result: Result<WeatherResponse, WeatherError>) {
+        switch result {
         case .success(let response):
             minTemperatureLabel.text = String(response.minTemp)
             maxTemperatureLabel.text = String(response.maxTemp)
@@ -69,4 +73,3 @@ class WeatherViewController: UIViewController {
         }
     }
 }
-
