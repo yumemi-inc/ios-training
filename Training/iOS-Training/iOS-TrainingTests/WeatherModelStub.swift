@@ -11,20 +11,10 @@ import Foundation
 
 class WeatherModelStub: WeatherModel {
     
-    let weatherModel = WeatherModelImpl()
-    
-    private var minTemp: Int
-    private var maxTemp: Int
-    private var weather: Weather
-    
-    init(minTemp: Int, maxTemp: Int, weather: Weather) {
-        self.maxTemp = minTemp
-        self.maxTemp = maxTemp
-        self.weather = weather
-    }
+    var response: WeatherResponse?
     
     func getWeather() -> Result<WeatherResponse, WeatherError> {
-        weatherModel.getWeather()
+        return .success(response!)
     }
     
     func generateAPIErrorMessage(error: WeatherError) -> String {
