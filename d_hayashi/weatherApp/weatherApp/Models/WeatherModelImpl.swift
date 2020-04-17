@@ -48,6 +48,8 @@ final class WeatherModelImpl: WeatherModel {
 
         DispatchQueue.global().async {
 
+            let result: Result<WeatherResponse, WeatherAppError>
+
             do {
 
                 let encodedString = try self.encode(InputJSON(area: area, date: Date()))
@@ -55,27 +57,29 @@ final class WeatherModelImpl: WeatherModel {
 
                 let response: WeatherResponse = try self.decode(resultString)
 
-                completionHandler(.success(response))
+                result = .success(response)
             } catch WeatherAppError.jsonEncodeSystemError {
 
-                completionHandler(.failure(.jsonEncodeSystemError))
+                result = .failure(.jsonEncodeSystemError)
             } catch WeatherAppError.decodeSystemError {
 
-                completionHandler(.failure(.decodeSystemError))
+                result = .failure(.decodeSystemError)
             } catch let weatherError as YumemiWeatherError {
 
                 switch weatherError {
                 case .invalidParameterError:
-                    completionHandler(.failure(.invalidParameterYumemiError))
+                    result = .failure(.invalidParameterYumemiError)
                 case .jsonDecodeError:
-                    completionHandler(.failure(.jsonDecodeYumemiError))
+                    result = .failure(.jsonDecodeYumemiError)
                 case .unknownError:
-                    completionHandler(.failure(.unknownYumemiError))
+                    result = .failure(.unknownYumemiError)
                 }
             } catch {
 
                 fatalError()
             }
+
+            completionHandler(result)
         }
     }
 }
