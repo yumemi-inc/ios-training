@@ -76,7 +76,8 @@ final class WeatherModelImpl: WeatherModel {
                 }
             } catch {
 
-                fatalError()
+                result = .failure(.unknownSystemError)
+                assertionFailure("critical unknown error")
             }
 
             completionHandler!(result)
