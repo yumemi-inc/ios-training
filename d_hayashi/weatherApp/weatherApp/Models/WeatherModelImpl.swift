@@ -80,7 +80,7 @@ final class WeatherModelImpl: WeatherModel {
                 assertionFailure("critical unknown error")
             }
 
-            completionHandler!(result)
+            completionHandler?(result)
         }
     }
 }
