@@ -8,7 +8,9 @@
 
 import Foundation
 
+typealias WeatherResultHandler = (Result<WeatherResponse, WeatherAppError>) -> Void
+
 protocol WeatherModel {
 
-    func getWeather(_ area: String, completionHandler: @escaping (Result<WeatherResponse, WeatherAppError>) -> Void)
+    func getWeather(_ area: String, completionHandler: @escaping WeatherResultHandler)
 }
