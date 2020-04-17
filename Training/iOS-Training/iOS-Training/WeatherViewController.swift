@@ -20,11 +20,11 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(self.changeWeatherView), name: UIApplication.didBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.updateWeatherView), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     @IBAction func reload(_ sender: Any) {
-        self.changeWeatherView()
+        self.updateWeatherView()
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -57,7 +57,7 @@ class WeatherViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func changeWeatherView() {
+    @objc func updateWeatherView() {
         let result = weatherModel.getWeather()
         switch result {
         case .success(let response):
