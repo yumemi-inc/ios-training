@@ -58,10 +58,10 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func updateWeatherView() {
-        reflectWeatherResult(result: weatherModel.getWeather())
+        changeView(result: weatherModel.getWeather())
     }
     
-    func reflectWeatherResult(result: Result<WeatherResponse, WeatherError>) {
+    func changeView(result: Result<WeatherResponse, WeatherError>) {
         switch result {
         case .success(let response):
             minTemperatureLabel.text = String(response.minTemp)
