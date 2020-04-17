@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias WeatherResultHandler = Optional<(Result<WeatherResponse, WeatherAppError>) -> Void?>
+typealias WeatherResultHandler = Optional<(Result<WeatherResponse, WeatherAppError>) -> Void>
 
 protocol WeatherModel {
 
