@@ -44,7 +44,7 @@ final class WeatherModelImpl: WeatherModel {
         }
     }
 
-    func getWeather(_ area: String, completionHandler: @escaping WeatherResultHandler) {
+    func getWeather(_ area: String, completionHandler: WeatherResultHandler) {
 
         DispatchQueue.global().async {
 
@@ -79,7 +79,7 @@ final class WeatherModelImpl: WeatherModel {
                 fatalError()
             }
 
-            completionHandler(result)
+            completionHandler!(result)
         }
     }
 }
