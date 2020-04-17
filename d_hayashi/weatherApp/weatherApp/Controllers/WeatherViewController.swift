@@ -64,14 +64,14 @@ class WeatherViewController: UIViewController {
     // MARK: Contact to weather API
     @objc func contactWeatherAPI() {
 
+        let area = "tokyo"
         activityIndicator.startAnimating()
 
-        let area = "tokyo"
         weatherModel.getWeather(area) { result in
 
             DispatchQueue.main.async {
 
-                self.activityIndicator.stopAnimating()
+                defer { self.activityIndicator.stopAnimating() }
 
                 switch result {
 
