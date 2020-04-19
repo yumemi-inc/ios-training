@@ -15,6 +15,8 @@ public class YumemiDisaster {
     
     public weak var delegate: YumemiDisasterHandleDelegate?
     
+    public init() {}
+    
     public func fetchDisaster() {
         self.delegate?.handle(disaster: "只今、災害情報はありません。")
     }
