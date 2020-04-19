@@ -32,30 +32,39 @@ class WeatherViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func loadWeather(_ sender: Any) {
-        let request = Request(area: "tokyo", date: Date())
-        do {
-            let response = try self.weatherModel.fetchWeather(request)
+    @IBAction func loadWeather(_ sender: Any?) {
+        self.activityIndicator.startAnimating()
+        weatherModel.fetchWeather(at: "tokyo", date: Date()) { result in
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.handleWeather(result: result)
+            }
+        }
+    }
+    
+    func handleWeather(result: Result<Response, WeatherModelError>) {
+        switch result {
+        case .success(let response):
             self.weatherImageView.set(weather: response.weather)
             self.minTempLabel.text = String(response.minTemp)
             self.maxTempLabel.text = String(response.maxTemp)
-        }
-        catch {
+            
+        case .failure(let error):
             let message: String
             switch error {
-            case let error as WeatherModelError where error ~= WeatherModelError.jsonEncodeError:
+            case .jsonEncodeError:
                 message = "Jsonエンコードに失敗しました。"
-            case let error as WeatherModelError where error ~= WeatherModelError.jsonDecodeError:
+            case .jsonDecodeError:
                 message = "Jsonデコードに失敗しました。"
-            default:
+            case .unknownError:
                 message = "エラーが発生しました。"
             }
+            
             let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
 }
 
 private extension UIImageView {

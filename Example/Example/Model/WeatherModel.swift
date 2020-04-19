@@ -10,12 +10,13 @@ import Foundation
 import YumemiWeather
 
 protocol WeatherModel {
-    func fetchWeather(_ request: Request) throws -> Response
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherModelError>) -> Void)
 }
 
 enum WeatherModelError: Error {
     case jsonEncodeError
     case jsonDecodeError
+    case unknownError
 }
 
 class WeatherModelImpl: WeatherModel {
@@ -48,10 +49,19 @@ class WeatherModelImpl: WeatherModel {
         return try decoder.decode(Response.self, from: responseData)
     }
     
-    func fetchWeather(_ request: Request) throws -> Response {
-        let requestJson = try jsonString(from: request)
-        let responseJson = try YumemiWeather.fetchWeather(requestJson)
-        return try response(from: responseJson)
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherModelError>) -> Void) {
+        let request = Request(area: area, date: date)
+        if let requestJson = try? jsonString(from: request) {
+            DispatchQueue.global().async {
+                if let responseJson = try? YumemiWeather.syncFetchWeather(requestJson) {
+                    if let response = try? self.response(from: responseJson) {
+                        completion(.success(response))
+                    }
+                    else {
+                        completion(.failure(WeatherModelError.jsonDecodeError))
+                    }
+                }
+            }
+        }
     }
-    
 }
