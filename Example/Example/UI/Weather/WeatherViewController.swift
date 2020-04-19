@@ -11,9 +11,11 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     var weatherModel: WeatherModel!
+    var disasterModel: DisasterModel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var disasterLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -39,6 +41,9 @@ class WeatherViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 self.handleWeather(result: result)
             }
+        }
+        disasterModel.fetchDisaster { (disaster) in
+            self.disasterLabel.text = disaster
         }
     }
     

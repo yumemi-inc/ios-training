@@ -106,9 +106,9 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="otr-ve-lfm" id="c5Y-h7-a5R"/>
+                        <outlet property="disasterLabel" destination="gRh-8C-I1Q" id="jKC-ck-gXL"/>
                         <outlet property="maxTempLabel" destination="ESI-gU-cW3" id="x4x-ay-9m5"/>
                         <outlet property="minTempLabel" destination="p5C-3W-aox" id="PV8-jV-uaE"/>
-                        <outlet property="omikujiLabel" destination="gRh-8C-I1Q" id="WyY-TF-5ck"/>
                         <outlet property="weatherImageView" destination="Xc1-d9-3e0" id="mAr-OB-AEZ"/>
                     </connections>
                 </viewController>
