@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		500078CA24344E780077C73E /* WeatherViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500078C924344E780077C73E /* WeatherViewControllerTests.swift */; };
 		500078CD243463EE0077C73E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500078CC243463EE0077C73E /* RootViewController.swift */; };
+		5006A8BD244BED850050A653 /* DisasterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006A8BC244BED850050A653 /* DisasterModel.swift */; };
 		501DEBC52433598E0015FB44 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501DEBC42433598E0015FB44 /* Weather.swift */; };
 		502BACA2243209E90019B403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACA1243209E90019B403 /* AppDelegate.swift */; };
 		502BACA4243209E90019B403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACA3243209E90019B403 /* SceneDelegate.swift */; };
@@ -19,8 +20,8 @@
 		502BACB9243209EA0019B403 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACB8243209EA0019B403 /* ExampleTests.swift */; };
 		502BACC4243209EA0019B403 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACC3243209EA0019B403 /* ExampleUITests.swift */; };
 		502BACD92432108F0019B403 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BACD82432108F0019B403 /* R.generated.swift */; };
+		508267E5244BEECF00B6DB03 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 508267E4244BEECF00B6DB03 /* YumemiWeather */; };
 		50C438562432EB43008269CF /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 50C438552432EB43008269CF /* Rswift */; };
-		50C4385C2432EDDB008269CF /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 50C4385B2432EDDB008269CF /* YumemiWeather */; };
 		50C4385E24330B28008269CF /* ostrich-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50C4385D24330B28008269CF /* ostrich-regular.ttf */; };
 		50C4386324335AB8008269CF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C4386224335AB8008269CF /* Request.swift */; };
 		50C4386524335ACD008269CF /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C4386424335ACD008269CF /* Response.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		500078C924344E780077C73E /* WeatherViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewControllerTests.swift; sourceTree = "<group>"; };
 		500078CC243463EE0077C73E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		5006A8BC244BED850050A653 /* DisasterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisasterModel.swift; sourceTree = "<group>"; };
 		501DEBC42433598E0015FB44 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		502BAC9E243209E90019B403 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		502BACA1243209E90019B403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C438562432EB43008269CF /* Rswift in Frameworks */,
-				50C4385C2432EDDB008269CF /* YumemiWeather in Frameworks */,
+				508267E5244BEECF00B6DB03 /* YumemiWeather in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				50C4386A24341273008269CF /* WeatherModel.swift */,
+				5006A8BC244BED850050A653 /* DisasterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,7 +218,7 @@
 			name = Example;
 			packageProductDependencies = (
 				50C438552432EB43008269CF /* Rswift */,
-				50C4385B2432EDDB008269CF /* YumemiWeather */,
+				508267E4244BEECF00B6DB03 /* YumemiWeather */,
 			);
 			productName = Example;
 			productReference = 502BAC9E243209E90019B403 /* Example.app */;
@@ -291,7 +294,7 @@
 			mainGroup = 502BAC95243209E80019B403;
 			packageReferences = (
 				50C438542432EB43008269CF /* XCRemoteSwiftPackageReference "R.swift" */,
-				50C4385A2432EDDB008269CF /* XCRemoteSwiftPackageReference "ios-training" */,
+				508267E3244BEECF00B6DB03 /* XCRemoteSwiftPackageReference "ios-training" */,
 			);
 			productRefGroup = 502BAC9F243209E90019B403 /* Products */;
 			projectDirPath = "";
@@ -364,6 +367,7 @@
 				502BACA6243209E90019B403 /* WeatherViewController.swift in Sources */,
 				500078CD243463EE0077C73E /* RootViewController.swift in Sources */,
 				50C4386B24341273008269CF /* WeatherModel.swift in Sources */,
+				5006A8BD244BED850050A653 /* DisasterModel.swift in Sources */,
 				502BACA2243209E90019B403 /* AppDelegate.swift in Sources */,
 				502BACA4243209E90019B403 /* SceneDelegate.swift in Sources */,
 				502BACD92432108F0019B403 /* R.generated.swift in Sources */,
@@ -700,6 +704,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		508267E3244BEECF00B6DB03 /* XCRemoteSwiftPackageReference "ios-training" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:yumemi/ios-training.git";
+			requirement = {
+				branch = feature/bugfix_session;
+				kind = branch;
+			};
+		};
 		50C438542432EB43008269CF /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
@@ -708,26 +720,18 @@
 				minimumVersion = 5.1.0;
 			};
 		};
-		50C4385A2432EDDB008269CF /* XCRemoteSwiftPackageReference "ios-training" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:yumemi/ios-training.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		508267E4244BEECF00B6DB03 /* YumemiWeather */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 508267E3244BEECF00B6DB03 /* XCRemoteSwiftPackageReference "ios-training" */;
+			productName = YumemiWeather;
+		};
 		50C438552432EB43008269CF /* Rswift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50C438542432EB43008269CF /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = Rswift;
-		};
-		50C4385B2432EDDB008269CF /* YumemiWeather */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50C4385A2432EDDB008269CF /* XCRemoteSwiftPackageReference "ios-training" */;
-			productName = YumemiWeather;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
