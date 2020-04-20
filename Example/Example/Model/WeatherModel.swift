@@ -9,10 +9,6 @@
 import Foundation
 import YumemiWeather
 
-protocol WeatherModel {
-    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherModelError>) -> Void)
-}
-
 enum WeatherModelError: Error {
     case jsonEncodeError
     case jsonDecodeError
