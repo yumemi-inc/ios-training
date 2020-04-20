@@ -36,6 +36,7 @@ class WeatherViewController: UIViewController {
     
     deinit {
         print(#function)
+        print("ViewController died")
     }
             
     @IBAction func dismiss(_ sender: Any) {
