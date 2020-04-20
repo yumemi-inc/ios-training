@@ -11,8 +11,6 @@ import YumemiWeather
 
 final class WeatherModelImpl: WeatherModel {
 
-    weak var delegate: WeatheModelDelegate?
-
     func encode(_ input: InputJSON) throws -> String {
 
         let encoder = JSONEncoder()
@@ -46,7 +44,7 @@ final class WeatherModelImpl: WeatherModel {
         }
     }
 
-    func getWeather(_ area: String) {
+    func getWeather(_ area: String, completionHandler: @escaping WeatherResultHandler) {
 
         DispatchQueue.global().async {
 
@@ -79,9 +77,10 @@ final class WeatherModelImpl: WeatherModel {
             } catch {
 
                 result = .failure(.unknownSystemError)
+                assertionFailure("critical unknown error")
             }
 
-            self.delegate?.didGetWeather(result)
+            completionHandler(result)
         }
     }
 }

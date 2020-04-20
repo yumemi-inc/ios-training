@@ -29,7 +29,6 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        weatherModel.delegate = self
         setActivityIndicatorProperty()
     }
 
@@ -65,10 +64,25 @@ class WeatherViewController: UIViewController {
     // MARK: Contact to weather API
     @objc func contactWeatherAPI() {
 
+        let area = "tokyo"
         activityIndicator.startAnimating()
 
-        let area = "tokyo"
-        weatherModel.getWeather(area)
+        weatherModel.getWeather(area) { result in
+
+            DispatchQueue.main.async {
+
+                defer { self.activityIndicator.stopAnimating() }
+
+                switch result {
+
+                case let .success(response):
+                    self.weatherViewUpdate(response)
+
+                case let .failure(error):
+                    self.showErrorAlert(error)
+                }
+            }
+        }
     }
 
     // MARK: Update View
@@ -90,27 +104,6 @@ class WeatherViewController: UIViewController {
         let errorAlertController = UIAlertController(title: error.errorDescription, message: errorMessageString, preferredStyle: .alert)
         errorAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(errorAlertController, animated: true)
-    }
-}
-
-// MARK: - delegate methods
-extension WeatherViewController: WeatheModelDelegate {
-
-    func didGetWeather(_ result: Result<WeatherResponse, WeatherAppError>) {
-
-        DispatchQueue.main.async {
-
-            self.activityIndicator.stopAnimating()
-
-            switch result {
-
-            case let .success(response):
-                self.weatherViewUpdate(response)
-
-            case let .failure(error):
-                self.showErrorAlert(error)
-            }
-        }
     }
 }
 
