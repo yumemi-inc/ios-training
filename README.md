@@ -55,3 +55,4 @@ Session1がレビュー待ちの場合...
 - [Session9](Documentation/ThreadBlock.md)
 - [Session10](Documentation/Delegate.md)
 - [Session11](Documentation/Closure.md)
+- [Session12](Documentation/BugFix.md)
