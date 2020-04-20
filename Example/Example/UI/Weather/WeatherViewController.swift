@@ -9,7 +9,7 @@
 import UIKit
 
 protocol WeatherModel {
-    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherModelError>) -> Void)
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherError>) -> Void)
 }
 
 protocol DisasterModel {
@@ -55,7 +55,7 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    func handleWeather(result: Result<Response, WeatherModelError>) {
+    func handleWeather(result: Result<Response, WeatherError>) {
         switch result {
         case .success(let response):
             self.weatherImageView.set(weather: response.weather)

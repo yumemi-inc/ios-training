@@ -9,12 +9,6 @@
 import Foundation
 import YumemiWeather
 
-enum WeatherModelError: Error {
-    case jsonEncodeError
-    case jsonDecodeError
-    case unknownError
-}
-
 class WeatherModelImpl: WeatherModel {
     
     private lazy var dateFormatter: DateFormatter = {
@@ -29,14 +23,14 @@ class WeatherModelImpl: WeatherModel {
         
         let requestData = try encoder.encode(request)
         guard let requestJsonString = String(data: requestData, encoding: .utf8) else {
-            throw WeatherModelError.jsonEncodeError
+            throw WeatherError.jsonEncodeError
         }
         return requestJsonString
     }
     
     func response(from jsonString: String) throws -> Response {
         guard let responseData = jsonString.data(using: .utf8) else {
-            throw WeatherModelError.jsonDecodeError
+            throw WeatherError.jsonDecodeError
         }
         
         let decoder = JSONDecoder()
@@ -45,7 +39,7 @@ class WeatherModelImpl: WeatherModel {
         return try decoder.decode(Response.self, from: responseData)
     }
     
-    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherModelError>) -> Void) {
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherError>) -> Void) {
         let request = Request(area: area, date: date)
         if let requestJson = try? jsonString(from: request) {
             DispatchQueue.global().async {
@@ -54,7 +48,7 @@ class WeatherModelImpl: WeatherModel {
                         completion(.success(response))
                     }
                     else {
-                        completion(.failure(WeatherModelError.jsonDecodeError))
+                        completion(.failure(WeatherError.jsonDecodeError))
                     }
                 }
             }
