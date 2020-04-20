@@ -50,6 +50,8 @@ class WeatherModelImpl: WeatherModel {
                     else {
                         completion(.failure(WeatherError.jsonDecodeError))
                     }
+                } else {
+                    completion(.failure(.unknownError))
                 }
             }
         } else {
