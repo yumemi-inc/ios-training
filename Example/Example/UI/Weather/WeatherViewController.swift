@@ -33,7 +33,7 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] notification in
+        loadWeatherObserver = notificationCenter.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] notification in
 
             guard let self = self else { return }
             self.loadWeather(notification.object)
@@ -44,7 +44,10 @@ class WeatherViewController: UIViewController {
         print(#function)
         print("ViewController died")
 
-        NotificationCenter.default.removeObserver(self)
+        guard let loadWeatherObserver = loadWeatherObserver else {
+            return
+        }
+        notificationCenter.removeObserver(loadWeatherObserver)
     }
             
     @IBAction func dismiss(_ sender: Any) {
