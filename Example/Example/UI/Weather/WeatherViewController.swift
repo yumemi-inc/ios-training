@@ -34,6 +34,7 @@ class WeatherViewController: UIViewController {
                 return
             }
             self.loadWeather(notification.object)
+            NotificationCenter.default.removeObserver(notification)
         }
     }
     
