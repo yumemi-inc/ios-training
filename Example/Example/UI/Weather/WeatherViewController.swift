@@ -28,13 +28,14 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] notification in
-            guard let self = self else {
-                return
-            }
+
+        let notificationCenter = NotificationCenter.default
+        weak var notificationToken: NSObjectProtocol?
+        notificationToken = notificationCenter.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] notification in
+
+            guard let self = self else { return }
             self.loadWeather(notification.object)
-            NotificationCenter.default.removeObserver(notification)
+            notificationCenter.removeObserver(notificationToken!)
         }
     }
     
