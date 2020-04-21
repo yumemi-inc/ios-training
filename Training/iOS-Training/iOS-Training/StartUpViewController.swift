@@ -16,13 +16,11 @@ class StartUpViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.performSegue(withIdentifier: "toWeather", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toWeather" {
-            let weatherViewController = segue.destination as! WeatherViewController
-            weatherViewController.weatherModel = WeatherModelImpl()
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let weatherViewController = storyboard.instantiateViewController(identifier: "WeatherViewController", creator: { (coder) -> WeatherViewController? in
+            WeatherViewController.init(coder: coder, weatherModel: WeatherModelImpl())
+        })
+        weatherViewController.modalPresentationStyle = .fullScreen
+        self.present(weatherViewController, animated: true, completion: nil)
     }
 }

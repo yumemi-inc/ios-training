@@ -14,7 +14,16 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
-    var weatherModel: WeatherModel!
+    let weatherModel: WeatherModel
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    required init?(coder: NSCoder, weatherModel: WeatherModel) {
+        self.weatherModel = weatherModel
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
