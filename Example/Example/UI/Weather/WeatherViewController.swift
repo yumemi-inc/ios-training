@@ -25,6 +25,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var disasterLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+    // MARK: private Notification property
+    private let notificationCenter = NotificationCenter.default
+    private weak var loadWeatherObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
