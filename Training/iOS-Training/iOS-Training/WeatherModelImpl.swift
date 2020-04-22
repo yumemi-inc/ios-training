@@ -37,7 +37,7 @@ class WeatherModelImpl: WeatherModel {
             guard let requestJson = String(data: requestData, encoding: .utf8) else {
                 return .failure(.invalidParameterError)
             }
-            let responseJson = try YumemiWeather.fetchWeather(requestJson)
+            let responseJson = try YumemiWeather.syncFetchWeather(requestJson)
             let response = try WeatherModelImpl.decoder.decode(WeatherResponse.self, from: Data(responseJson.utf8))
             return .success(response)
         } catch is EncodingError {

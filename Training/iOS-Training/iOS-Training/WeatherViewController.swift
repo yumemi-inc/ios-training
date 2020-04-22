@@ -15,6 +15,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
     let weatherModel: WeatherModel
+    let activityIndicatorView = UIActivityIndicatorView()
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -30,6 +31,10 @@ class WeatherViewController: UIViewController {
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.updateWeatherView), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        activityIndicatorView.center = view.center
+        activityIndicatorView.color = .purple
+        view.addSubview(activityIndicatorView)
     }
     
     @IBAction func reload(_ sender: Any) {
@@ -67,15 +72,19 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func updateWeatherView() {
-        let result = weatherModel.getWeather()
-        switch result {
-        case .success(let response):
-            minTemperatureLabel.text = String(response.minTemp)
-            maxTemperatureLabel.text = String(response.maxTemp)
-            setWeatherImage(weather: response.weather)
-        case .failure(let error):
-            let errorMessage = weatherModel.generateAPIErrorMessage(error: error)
-            showAlert(title: "APIError", message: errorMessage)
+        activityIndicatorView.startAnimating()
+        DispatchQueue.main.async {
+            let result = self.weatherModel.getWeather()
+            self.activityIndicatorView.stopAnimating()
+            switch result {
+            case .success(let response):
+                self.minTemperatureLabel.text = String(response.minTemp)
+                self.maxTemperatureLabel.text = String(response.maxTemp)
+                self.setWeatherImage(weather: response.weather)
+            case .failure(let error):
+                let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
+                self.showAlert(title: "APIError", message: errorMessage)
+            }
         }
     }
 }
