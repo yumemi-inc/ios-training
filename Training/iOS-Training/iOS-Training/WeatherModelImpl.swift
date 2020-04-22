@@ -1,56 +1,15 @@
 //
-//  WeatherAPI.swift
+//  WeatherModelImpl.swift
 //  iOS-Training
 //
-//  Created by 酒井 桂哉 on 2020/04/08.
+//  Created by 酒井 桂哉 on 2020/04/16.
 //  Copyright © 2020 tokizuoh. All rights reserved.
 //
 
 import Foundation
 import YumemiWeather
 
-enum Weather: String, Codable {
-    case sunny
-    case cloudy
-    case rainy
-}
-
-enum WeatherError: Error {
-    case invalidParameterError
-    case invalidResponseError
-    case jsonDecodeError
-    case jsonEncodeError
-    case unknownError
-    
-    var toString: String {
-        switch self {
-        case .invalidParameterError:
-            return "invalidParameterError"
-        case .invalidResponseError:
-            return "invalidResponseError"
-        case .jsonDecodeError:
-            return "jsonDecodeError"
-        case .jsonEncodeError:
-            return "jsonEncodeError"
-        case .unknownError:
-            return "unknownError"
-        }
-    }
-}
-
-struct WeatherParameter: Codable {
-    let area: String
-    let date: Date
-}
-
-struct WeatherResponse: Codable {
-    let weather: Weather
-    let maxTemp: Int
-    let minTemp: Int
-    let date: Date
-}
-
-class WeatherAPI {
+class WeatherModelImpl: WeatherModel {
     static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -74,12 +33,12 @@ class WeatherAPI {
     func getWeather() -> Result<WeatherResponse, WeatherError>{
         let parameter = WeatherParameter(area: "tokyo", date: Date())
         do {
-            let requestData = try WeatherAPI.encoder.encode(parameter)
+            let requestData = try WeatherModelImpl.encoder.encode(parameter)
             guard let requestJson = String(data: requestData, encoding: .utf8) else {
                 return .failure(.invalidParameterError)
             }
             let responseJson = try YumemiWeather.fetchWeather(requestJson)
-            let response = try WeatherAPI.decoder.decode(WeatherResponse.self, from: Data(responseJson.utf8))
+            let response = try WeatherModelImpl.decoder.decode(WeatherResponse.self, from: Data(responseJson.utf8))
             return .success(response)
         } catch is EncodingError {
             return .failure(.jsonEncodeError)

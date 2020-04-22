@@ -10,21 +10,30 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    let weatherAPI = WeatherAPI()
-    
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
+    
+    let weatherModel: WeatherModel
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    required init?(coder: NSCoder, weatherModel: WeatherModel) {
+        self.weatherModel = weatherModel
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(self.updateWeather), name: UIApplication.didBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.updateWeatherView), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     @IBAction func reload(_ sender: Any) {
-        self.updateWeather()
+        self.updateWeatherView()
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -57,16 +66,16 @@ class WeatherViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func updateWeather() {
-        switch weatherAPI.getWeather() {
+    @objc func updateWeatherView() {
+        let result = weatherModel.getWeather()
+        switch result {
         case .success(let response):
             minTemperatureLabel.text = String(response.minTemp)
             maxTemperatureLabel.text = String(response.maxTemp)
             setWeatherImage(weather: response.weather)
         case .failure(let error):
-            let errorMessage = weatherAPI.generateAPIErrorMessage(error: error)
+            let errorMessage = weatherModel.generateAPIErrorMessage(error: error)
             showAlert(title: "APIError", message: errorMessage)
         }
     }
 }
-
