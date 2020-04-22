@@ -11,10 +11,10 @@ import Foundation
 
 class WeatherModelStub: WeatherModel {
     
-    var response: WeatherResponse?
+    var response: WeatherResponse!
     
     func getWeather() -> Result<WeatherResponse, WeatherError> {
-        return .success(response!)
+        return .success(response)
     }
     
     func generateAPIErrorMessage(error: WeatherError) -> String {
