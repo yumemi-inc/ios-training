@@ -89,7 +89,7 @@ class WeatherViewController: UIViewController {
             }
             
             let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, alertController] _ in
+            alertController.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak alertController] _ in
                 guard let self = self else {
                     return
                 }
