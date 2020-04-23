@@ -34,14 +34,15 @@ class WeatherViewController: UIViewController {
         
         activityIndicatorView.center = view.center
         activityIndicatorView.color = .green
-//        activityIndicatorView.hidesWhenStopped = true
+        //        activityIndicatorView.hidesWhenStopped = true
         view.addSubview(activityIndicatorView)
     }
     
     @IBAction func reload(_ sender: Any) {
-        activityIndicatorView.startAnimating() // 動作不安定
-        self.getWeather()
-//        activityIndicatorView.stopAnimating()
+        activityIndicatorView.startAnimating()
+        self.getWeather(completion: {
+            self.activityIndicatorView.stopAnimating()
+        })
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -75,16 +76,15 @@ class WeatherViewController: UIViewController {
     }
     
     func updateWeatherView(response: WeatherResponse) {
-        DispatchQueue.main.sync {
-            minTemperatureLabel.text = String(response.minTemp)
-            maxTemperatureLabel.text = String(response.maxTemp)
-            setWeatherImage(weather: response.weather)
-        }
+        minTemperatureLabel.text = String(response.minTemp)
+        maxTemperatureLabel.text = String(response.maxTemp)
+        setWeatherImage(weather: response.weather)
     }
     
-    @objc func getWeather() {
-        DispatchQueue.main.async {
-            self.weatherModel.getWeather { result in
+    @objc func getWeather(completion: @escaping() -> ()){
+        self.weatherModel.getWeather { result in
+            DispatchQueue.main.sync { [weak self] in
+                guard let self = self else { return }
                 switch result {
                 case .success(let response):
                     self.updateWeatherView(response: response)
@@ -92,6 +92,7 @@ class WeatherViewController: UIViewController {
                     let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
                     self.showAlert(title: "APIError", message: errorMessage)
                 }
+                completion()
             }
         }
     }
