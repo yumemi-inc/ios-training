@@ -92,6 +92,7 @@
                     <connections>
                         <outlet property="maxTemperatureLabel" destination="K9W-Kd-p8e" id="OXS-cp-nde"/>
                         <outlet property="minTemperatureLabel" destination="3jS-Lv-tUE" id="F8i-6M-UCs"/>
+                        <outlet property="reloadButton" destination="Ead-CQ-JkC" id="twc-UA-rwA"/>
                         <outlet property="weatherImageView" destination="n4j-6a-ac5" id="oJP-6B-ska"/>
                     </connections>
                 </viewController>

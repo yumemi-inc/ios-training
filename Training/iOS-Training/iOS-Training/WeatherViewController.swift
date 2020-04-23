@@ -13,6 +13,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
+    @IBOutlet weak var reloadButton: UIButton!
     
     let weatherModel: WeatherModel
     let activityIndicatorView = UIActivityIndicatorView()
@@ -32,17 +33,16 @@ class WeatherViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.getWeather), name: UIApplication.didBecomeActiveNotification, object: nil)
         
-        activityIndicatorView.center = view.center
-        activityIndicatorView.color = .green
-        //        activityIndicatorView.hidesWhenStopped = true
-        view.addSubview(activityIndicatorView)
+        setActivityIndicatorViewProperty()
     }
     
     @IBAction func reload(_ sender: Any) {
+        reloadButton.isEnabled = false
         activityIndicatorView.startAnimating()
         self.getWeather(completion: {
             self.activityIndicatorView.stopAnimating()
         })
+        reloadButton.isEnabled = true
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -95,5 +95,18 @@ class WeatherViewController: UIViewController {
                 completion()
             }
         }
+    }
+    
+    func setActivityIndicatorViewProperty() {
+        activityIndicatorView.center = view.center
+        activityIndicatorView.color = .white
+        activityIndicatorView.backgroundColor =  UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.45)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicatorView)
+        
+        activityIndicatorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        activityIndicatorView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        activityIndicatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
     }
 }
