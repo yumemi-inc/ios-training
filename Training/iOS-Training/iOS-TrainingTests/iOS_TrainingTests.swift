@@ -35,7 +35,7 @@ class iOS_TrainingTests: XCTestCase {
         weatherViewController.loadViewIfNeeded()
         weatherViewController.view.layoutIfNeeded()
         
-        weatherViewController.updateWeatherView()
+        weatherViewController.updateWeatherViewA()
         
         let actual = weatherViewController.weatherImageView.image
         let expected = #imageLiteral(resourceName: "sunny").withRenderingMode(.alwaysTemplate)
@@ -54,7 +54,7 @@ class iOS_TrainingTests: XCTestCase {
         weatherViewController.loadViewIfNeeded()
         weatherViewController.view.layoutIfNeeded()
         
-        weatherViewController.updateWeatherView()
+        weatherViewController.updateWeatherViewA()
         
         let actual = weatherViewController.weatherImageView.image
         let expected = #imageLiteral(resourceName: "cloudy").withRenderingMode(.alwaysTemplate)
@@ -73,7 +73,7 @@ class iOS_TrainingTests: XCTestCase {
         weatherViewController.loadViewIfNeeded()
         weatherViewController.view.layoutIfNeeded()
         
-        weatherViewController.updateWeatherView()
+        weatherViewController.updateWeatherViewA()
         
         let actual = weatherViewController.weatherImageView.image
         let expected = #imageLiteral(resourceName: "rainy").withRenderingMode(.alwaysTemplate)
@@ -92,7 +92,7 @@ class iOS_TrainingTests: XCTestCase {
         weatherViewController.loadViewIfNeeded()
         weatherViewController.view.layoutIfNeeded()
         
-        weatherViewController.updateWeatherView()
+        weatherViewController.updateWeatherViewA()
         
         let actual = weatherViewController.maxTemperatureLabel.text
         let expected = "20"
@@ -111,7 +111,7 @@ class iOS_TrainingTests: XCTestCase {
         weatherViewController.loadViewIfNeeded()
         weatherViewController.view.layoutIfNeeded()
         
-        weatherViewController.updateWeatherView()
+        weatherViewController.updateWeatherViewA()
         
         let actual = weatherViewController.minTemperatureLabel.text
         let expected = "-20"

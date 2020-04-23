@@ -15,7 +15,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
     let weatherModel: WeatherModel
-//    let activityIndicatorView = UIActivityIndicatorView()
+    let activityIndicatorView = UIActivityIndicatorView()
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -30,15 +30,18 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(self.updateWeatherView), name: UIApplication.didBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.getWeather), name: UIApplication.didBecomeActiveNotification, object: nil)
         
-//        activityIndicatorView.center = view.center
-//        activityIndicatorView.color = .green
-//        view.addSubview(activityIndicatorView)
+        activityIndicatorView.center = view.center
+        activityIndicatorView.color = .green
+//        activityIndicatorView.hidesWhenStopped = true
+        view.addSubview(activityIndicatorView)
     }
     
     @IBAction func reload(_ sender: Any) {
-        self.updateWeatherView()
+        activityIndicatorView.startAnimating() // 動作不安定
+        self.getWeather()
+//        activityIndicatorView.stopAnimating()
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -71,18 +74,24 @@ class WeatherViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func updateWeatherView() {
-//        activityIndicatorView.startAnimating()
-        weatherModel.getWeather { result in
-//            activityIndicatorView.stopAnimating()
-            switch result {
-            case .success(let response):
-                self.minTemperatureLabel.text = String(response.minTemp)
-                self.maxTemperatureLabel.text = String(response.maxTemp)
-                self.setWeatherImage(weather: response.weather)
-            case .failure(let error):
-                let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
-                self.showAlert(title: "APIError", message: errorMessage)
+    func updateWeatherView(response: WeatherResponse) {
+        DispatchQueue.main.sync {
+            minTemperatureLabel.text = String(response.minTemp)
+            maxTemperatureLabel.text = String(response.maxTemp)
+            setWeatherImage(weather: response.weather)
+        }
+    }
+    
+    @objc func getWeather() {
+        DispatchQueue.main.async {
+            self.weatherModel.getWeather { result in
+                switch result {
+                case .success(let response):
+                    self.updateWeatherView(response: response)
+                case .failure(let error):
+                    let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
+                    self.showAlert(title: "APIError", message: errorMessage)
+                }
             }
         }
     }
