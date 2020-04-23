@@ -15,7 +15,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
     let weatherModel: WeatherModel
-    let activityIndicatorView = UIActivityIndicatorView()
+//    let activityIndicatorView = UIActivityIndicatorView()
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -32,9 +32,9 @@ class WeatherViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.updateWeatherView), name: UIApplication.didBecomeActiveNotification, object: nil)
         
-        activityIndicatorView.center = view.center
-        activityIndicatorView.color = .purple
-        view.addSubview(activityIndicatorView)
+//        activityIndicatorView.center = view.center
+//        activityIndicatorView.color = .green
+//        view.addSubview(activityIndicatorView)
     }
     
     @IBAction func reload(_ sender: Any) {
@@ -72,10 +72,9 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func updateWeatherView() {
-        activityIndicatorView.startAnimating()
-        DispatchQueue.main.async {
-            let result = self.weatherModel.getWeather()
-            self.activityIndicatorView.stopAnimating()
+//        activityIndicatorView.startAnimating()
+        weatherModel.getWeather { result in
+//            activityIndicatorView.stopAnimating()
             switch result {
             case .success(let response):
                 self.minTemperatureLabel.text = String(response.minTemp)

@@ -61,4 +61,33 @@ class WeatherModelImpl: WeatherModel {
     func generateAPIErrorMessage (error: WeatherError) -> String {
         return error.toString
     }
+    
+    func getWeather(completion: (Result<WeatherResponse, WeatherError>) -> ()) {
+        let parameter = WeatherParameter(area: "tokyo", date: Date())
+        do {
+            let requestData = try WeatherModelImpl.encoder.encode(parameter)
+            guard let requestJson = String(data: requestData, encoding: .utf8) else {
+                completion(.failure(.invalidParameterError))
+                return
+            }
+            let responseJson = try YumemiWeather.syncFetchWeather(requestJson)
+            let response = try WeatherModelImpl.decoder.decode(WeatherResponse.self, from: Data(responseJson.utf8))
+            completion(.success(response))
+        } catch is EncodingError {
+            completion(.failure(.jsonEncodeError))
+        } catch is DecodingError {
+            completion(.failure(.jsonDecodeError))
+        } catch let error as YumemiWeatherError {
+            switch error {
+            case .invalidParameterError:
+                completion(.failure(.invalidParameterError))
+            case .jsonDecodeError:
+                completion(.failure(.jsonDecodeError))
+            case .unknownError:
+                completion(.failure(.unknownError))
+            }
+        } catch {
+            completion(.failure(.unknownError))
+        }
+    }
 }
