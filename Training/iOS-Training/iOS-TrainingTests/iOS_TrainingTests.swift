@@ -18,6 +18,12 @@ class iOS_TrainingTests: XCTestCase {
     override func setUpWithError() throws {
         storyboard = UIStoryboard(name: "Main", bundle: nil)
         weatherModel = WeatherModelStub()
+        weatherViewController = storyboard.instantiateViewController(identifier: "WeatherViewController", creator: { (coder) -> WeatherViewController? in
+            WeatherViewController.init(coder: coder, weatherModel: self.weatherModel)
+        })
+        
+        weatherViewController.loadViewIfNeeded()
+        weatherViewController.view.layoutIfNeeded()
     }
     
     override func tearDownWithError() throws {
@@ -27,13 +33,6 @@ class iOS_TrainingTests: XCTestCase {
     func test_天気がsunnyだったら_画面に晴れ画像が表示される() throws {
         let response = WeatherResponse(weather: .sunny, maxTemp: 20, minTemp: -20, date: Date())
         weatherModel.response = response
-        
-        weatherViewController = storyboard.instantiateViewController(identifier: "WeatherViewController", creator: { (coder) -> WeatherViewController? in
-            WeatherViewController.init(coder: coder, weatherModel: self.weatherModel)
-        })
-        
-        weatherViewController.loadViewIfNeeded()
-        weatherViewController.view.layoutIfNeeded()
         
         weatherViewController.updateWeatherView(response: response)
         
@@ -46,13 +45,6 @@ class iOS_TrainingTests: XCTestCase {
         let response = WeatherResponse(weather: .cloudy, maxTemp: 20, minTemp: -20, date: Date())
         weatherModel.response = response
         
-        weatherViewController = storyboard.instantiateViewController(identifier: "WeatherViewController", creator: { (coder) -> WeatherViewController? in
-            WeatherViewController.init(coder: coder, weatherModel: self.weatherModel)
-        })
-        
-        weatherViewController.loadViewIfNeeded()
-        weatherViewController.view.layoutIfNeeded()
-        
         weatherViewController.updateWeatherView(response: response)
         
         let actual = weatherViewController.weatherImageView.image
@@ -63,13 +55,6 @@ class iOS_TrainingTests: XCTestCase {
     func test_天気予報がrainyだったら_画面に雨画像が表示される() throws {
         let response = WeatherResponse(weather: .rainy, maxTemp: 20, minTemp: -20, date: Date())
         weatherModel.response = response
-        
-        weatherViewController = storyboard.instantiateViewController(identifier: "WeatherViewController", creator: { (coder) -> WeatherViewController? in
-            WeatherViewController.init(coder: coder, weatherModel: self.weatherModel)
-        })
-        
-        weatherViewController.loadViewIfNeeded()
-        weatherViewController.view.layoutIfNeeded()
         
         weatherViewController.updateWeatherView(response: response)
         
@@ -82,13 +67,6 @@ class iOS_TrainingTests: XCTestCase {
         let response = WeatherResponse(weather: .rainy, maxTemp: 20, minTemp: -20, date: Date())
         weatherModel.response = response
         
-        weatherViewController = storyboard.instantiateViewController(identifier: "WeatherViewController", creator: { (coder) -> WeatherViewController? in
-            WeatherViewController.init(coder: coder, weatherModel: self.weatherModel)
-        })
-        
-        weatherViewController.loadViewIfNeeded()
-        weatherViewController.view.layoutIfNeeded()
-        
         weatherViewController.updateWeatherView(response: response)
         
         let actual = weatherViewController.maxTemperatureLabel.text
@@ -96,17 +74,10 @@ class iOS_TrainingTests: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
     
-    func test_天気予報の最低い気温がUILabelに反映される() throws {
+    func test_天気予報の最低気温がUILabelに反映される() throws {
         let response = WeatherResponse(weather: .rainy, maxTemp: 20, minTemp: -20, date: Date())
         weatherModel.response = response
-        
-        weatherViewController = storyboard.instantiateViewController(identifier: "WeatherViewController", creator: { (coder) -> WeatherViewController? in
-            WeatherViewController.init(coder: coder, weatherModel: self.weatherModel)
-        })
-        
-        weatherViewController.loadViewIfNeeded()
-        weatherViewController.view.layoutIfNeeded()
-        
+
         weatherViewController.updateWeatherView(response: response)
         
         let actual = weatherViewController.minTemperatureLabel.text
