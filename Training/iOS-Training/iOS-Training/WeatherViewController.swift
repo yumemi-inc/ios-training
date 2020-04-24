@@ -30,7 +30,7 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(self.getWeather), name: UIApplication.didBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.reload(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         setActivityIndicatorViewProperty()
     }
