@@ -13,7 +13,6 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
-    @IBOutlet weak var reloadButton: UIButton!
     
     let weatherModel: WeatherModel
     let activityIndicatorView = UIActivityIndicatorView()
@@ -37,12 +36,10 @@ class WeatherViewController: UIViewController {
     }
     
     @IBAction func reload(_ sender: Any) {
-        reloadButton.isEnabled = false
         activityIndicatorView.startAnimating()
         self.getWeather(completion: {
             self.activityIndicatorView.stopAnimating()
         })
-        reloadButton.isEnabled = true
     }
     
     func setWeatherImage(weather: Weather) -> Void {
