@@ -95,7 +95,6 @@ class WeatherViewController: UIViewController {
     }
     
     func setActivityIndicatorViewProperty() {
-        activityIndicatorView.center = view.center
         activityIndicatorView.color = .white
         activityIndicatorView.backgroundColor =  UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.45)
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
