@@ -37,7 +37,8 @@ class WeatherViewController: UIViewController {
     
     @IBAction func reload(_ sender: Any) {
         activityIndicatorView.startAnimating()
-        self.getWeather(completion: {
+        self.getWeather(completion: { [weak self] in
+            guard let self = self else { return }
             self.activityIndicatorView.stopAnimating()
         })
     }
