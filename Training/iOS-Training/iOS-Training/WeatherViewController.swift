@@ -46,13 +46,13 @@ class WeatherViewController: UIViewController {
         let color: UIColor
         switch weather {
         case .sunny:
-            color = UIColor.red
+            color = .red
             
         case .cloudy:
-            color = UIColor.gray
+            color = .gray
             
         case .rainy:
-            color = UIColor.blue
+            color = .blue
         }
         
         weatherImageView.image = UIImage(named: weather.rawValue)?.withRenderingMode(.alwaysTemplate)
