@@ -78,7 +78,7 @@ class WeatherViewController: UIViewController {
         setWeatherImage(weather: response.weather)
     }
     
-    @objc func getWeather(completion: @escaping() -> ()){
+    func getWeather(completion: @escaping() -> ()){
         self.weatherModel.getWeather { result in
             DispatchQueue.main.sync { [weak self] in
                 guard let self = self else { return }
