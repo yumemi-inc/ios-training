@@ -12,7 +12,7 @@ import Foundation
 class WeatherModelStub: WeatherModel {
     var response: WeatherResponse!
     func getWeather(completion: @escaping (Result<WeatherResponse, WeatherError>) -> ()) {
-        completion(.success(response!))
+        completion(.success(response))
     }
     
     func generateAPIErrorMessage(error: WeatherError) -> String {
