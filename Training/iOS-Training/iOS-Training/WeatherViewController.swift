@@ -15,6 +15,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
     let weatherModel: WeatherModel
+    let activityIndicatorView = UIActivityIndicatorView()
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -29,24 +30,30 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(self.updateWeatherView), name: UIApplication.didBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.reload(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        setActivityIndicatorViewProperty()
     }
     
     @IBAction func reload(_ sender: Any) {
-        self.updateWeatherView()
+        activityIndicatorView.startAnimating()
+        self.getWeather(completion: { [weak self] in
+            guard let self = self else { return }
+            self.activityIndicatorView.stopAnimating()
+        })
     }
     
     func setWeatherImage(weather: Weather) -> Void {
         let color: UIColor
         switch weather {
         case .sunny:
-            color = UIColor.red
+            color = .red
             
         case .cloudy:
-            color = UIColor.gray
+            color = .gray
             
         case .rainy:
-            color = UIColor.blue
+            color = .blue
         }
         
         weatherImageView.image = UIImage(named: weather.rawValue)?.withRenderingMode(.alwaysTemplate)
@@ -66,16 +73,37 @@ class WeatherViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func updateWeatherView() {
-        let result = weatherModel.getWeather()
-        switch result {
-        case .success(let response):
-            minTemperatureLabel.text = String(response.minTemp)
-            maxTemperatureLabel.text = String(response.maxTemp)
-            setWeatherImage(weather: response.weather)
-        case .failure(let error):
-            let errorMessage = weatherModel.generateAPIErrorMessage(error: error)
-            showAlert(title: "APIError", message: errorMessage)
+    func updateWeatherView(response: WeatherResponse) {
+        minTemperatureLabel.text = String(response.minTemp)
+        maxTemperatureLabel.text = String(response.maxTemp)
+        setWeatherImage(weather: response.weather)
+    }
+    
+    func getWeather(completion: @escaping() -> ()){
+        self.weatherModel.getWeather { result in
+            DispatchQueue.main.sync { [weak self] in
+                guard let self = self else { return }
+                switch result {
+                case .success(let response):
+                    self.updateWeatherView(response: response)
+                case .failure(let error):
+                    let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
+                    self.showAlert(title: "APIError", message: errorMessage)
+                }
+                completion()
+            }
         }
+    }
+    
+    func setActivityIndicatorViewProperty() {
+        activityIndicatorView.color = .white
+        activityIndicatorView.backgroundColor =  UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.45)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicatorView)
+        
+        activityIndicatorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        activityIndicatorView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        activityIndicatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
     }
 }

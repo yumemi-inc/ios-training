@@ -30,6 +30,16 @@ class WeatherModelImpl: WeatherModel {
         return encoder
     }()
     
+    func generateAPIErrorMessage (error: WeatherError) -> String {
+        return error.toString
+    }
+    
+    func getWeather(completion: @escaping(Result<WeatherResponse, WeatherError>) -> ()) {
+        DispatchQueue.global().async {
+            completion(self.getWeather())
+        }
+    }
+    
     func getWeather() -> Result<WeatherResponse, WeatherError>{
         let parameter = WeatherParameter(area: "tokyo", date: Date())
         do {
@@ -37,7 +47,7 @@ class WeatherModelImpl: WeatherModel {
             guard let requestJson = String(data: requestData, encoding: .utf8) else {
                 return .failure(.invalidParameterError)
             }
-            let responseJson = try YumemiWeather.fetchWeather(requestJson)
+            let responseJson = try YumemiWeather.syncFetchWeather(requestJson)
             let response = try WeatherModelImpl.decoder.decode(WeatherResponse.self, from: Data(responseJson.utf8))
             return .success(response)
         } catch is EncodingError {
@@ -56,9 +66,5 @@ class WeatherModelImpl: WeatherModel {
         } catch {
             return .failure(.unknownError)
         }
-    }
-    
-    func generateAPIErrorMessage (error: WeatherError) -> String {
-        return error.toString
     }
 }

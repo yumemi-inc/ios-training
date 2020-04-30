@@ -50,6 +50,6 @@ struct WeatherResponse: Codable {
 }
 
 protocol WeatherModel {
-    func getWeather() -> Result<WeatherResponse, WeatherError>
+    func getWeather(completion: @escaping(_ result: Result<WeatherResponse, WeatherError>) -> ())
     func generateAPIErrorMessage (error: WeatherError) -> String
 }

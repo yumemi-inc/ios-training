@@ -10,11 +10,9 @@ import Foundation
 @testable import iOS_Training
 
 class WeatherModelStub: WeatherModel {
-    
-    var response: WeatherResponse?
-    
-    func getWeather() -> Result<WeatherResponse, WeatherError> {
-        return .success(response!)
+    var response: WeatherResponse!
+    func getWeather(completion: @escaping (Result<WeatherResponse, WeatherError>) -> ()) {
+        completion(.success(response))
     }
     
     func generateAPIErrorMessage(error: WeatherError) -> String {
