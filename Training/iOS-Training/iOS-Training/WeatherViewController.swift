@@ -8,13 +8,13 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, WeatherModelDelegate {
     
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
-    let weatherModel: WeatherModel
+    var weatherModel: WeatherModel
     let activityIndicatorView = UIActivityIndicatorView()
     
     required init?(coder: NSCoder) {
@@ -29,9 +29,9 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        weatherModel.delegate = self
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.reload(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
-        
         setActivityIndicatorViewProperty()
     }
     
@@ -105,5 +105,15 @@ class WeatherViewController: UIViewController {
         activityIndicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         activityIndicatorView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         activityIndicatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+    }
+    
+    func didGetWeather(result: Result<WeatherResponse, WeatherError>) {
+        switch result {
+        case .success(let response):
+            updateWeatherView(response: response)
+        case .failure(let error):
+            let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
+            self.showAlert(title: "APIError", message: errorMessage)
+        }
     }
 }

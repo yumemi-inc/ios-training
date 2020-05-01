@@ -10,6 +10,8 @@ import Foundation
 import YumemiWeather
 
 class WeatherModelImpl: WeatherModel {
+    var delegate: WeatherModelDelegate?
+    
     static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
