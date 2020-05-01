@@ -37,10 +37,7 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
     
     @IBAction func reload(_ sender: Any) {
         activityIndicatorView.startAnimating()
-        self.getWeather(completion: { [weak self] in
-            guard let self = self else { return }
-            self.activityIndicatorView.stopAnimating()
-        })
+        self.getWeather()
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -79,20 +76,8 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
         setWeatherImage(weather: response.weather)
     }
     
-    func getWeather(completion: @escaping() -> ()){
-        self.weatherModel.getWeather { result in
-            DispatchQueue.main.sync { [weak self] in
-                guard let self = self else { return }
-                switch result {
-                case .success(let response):
-                    self.updateWeatherView(response: response)
-                case .failure(let error):
-                    let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
-                    self.showAlert(title: "APIError", message: errorMessage)
-                }
-                completion()
-            }
-        }
+    func getWeather(){
+        self.weatherModel.getWeather()
     }
     
     func setActivityIndicatorViewProperty() {
@@ -107,13 +92,17 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
         activityIndicatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
     }
     
+    // WeatherModelDelegate Protocol Method
     func didGetWeather(result: Result<WeatherResponse, WeatherError>) {
-        switch result {
-        case .success(let response):
-            updateWeatherView(response: response)
-        case .failure(let error):
-            let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
-            self.showAlert(title: "APIError", message: errorMessage)
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            switch result {
+            case .success(let response):
+                self.updateWeatherView(response: response)
+            case .failure(let error):
+                let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
+                self.showAlert(title: "APIError", message: errorMessage)
+            }
         }
     }
 }
