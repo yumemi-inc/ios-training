@@ -10,7 +10,7 @@ import Foundation
 @testable import iOS_Training
 
 class WeatherModelStub: WeatherModel {
-    var delegate: WeatherModelDelegate?
+    weak var delegate: WeatherModelDelegate?
     var response: WeatherResponse!
     
     func getWeather() {

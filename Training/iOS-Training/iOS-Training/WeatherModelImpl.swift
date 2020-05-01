@@ -10,7 +10,7 @@ import Foundation
 import YumemiWeather
 
 class WeatherModelImpl: WeatherModel {
-    var delegate: WeatherModelDelegate?
+    weak var delegate: WeatherModelDelegate?
     
     static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()

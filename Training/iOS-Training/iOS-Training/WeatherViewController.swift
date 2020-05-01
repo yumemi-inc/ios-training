@@ -26,6 +26,10 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
         super.init(coder: coder)
     }
     
+    deinit {
+        debugPrint("deinit: WeatherViewController")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +41,7 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
     
     @IBAction func reload(_ sender: Any) {
         activityIndicatorView.startAnimating()
-        self.getWeather()
+        self.weatherModel.getWeather()
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -74,10 +78,6 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
         minTemperatureLabel.text = String(response.minTemp)
         maxTemperatureLabel.text = String(response.maxTemp)
         setWeatherImage(weather: response.weather)
-    }
-    
-    func getWeather(){
-        self.weatherModel.getWeather()
     }
     
     func setActivityIndicatorViewProperty() {
