@@ -62,7 +62,7 @@ class WeatherModelImpl: WeatherModel {
         }
     }
 
-    func getWeather(completionHandler: @escaping (Result<WeatherResponse, WeatherError>) -> Void) {
+    func getWeather(completionHandler: @escaping weatherCompletionHandler) {
         DispatchQueue.global().async {
             let result = self.featchWeather()
             completionHandler(result)
