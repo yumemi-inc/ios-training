@@ -33,6 +33,7 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.weatherModel.delegate = self
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.reload(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         setActivityIndicatorViewProperty()

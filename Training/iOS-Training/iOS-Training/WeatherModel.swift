@@ -49,7 +49,7 @@ struct WeatherResponse: Codable {
     let date: Date
 }
 
-protocol WeatherModel {
+protocol WeatherModel: class {
     var delegate: WeatherModelDelegate? { get set }
     func getWeather()
     func generateAPIErrorMessage (error: WeatherError) -> String
