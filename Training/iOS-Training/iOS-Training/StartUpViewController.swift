@@ -17,9 +17,11 @@ class StartUpViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let weatherModelImpl = WeatherModelImpl()
         let weatherViewController = storyboard.instantiateViewController(identifier: "WeatherViewController", creator: { (coder) -> WeatherViewController? in
-            WeatherViewController.init(coder: coder, weatherModel: WeatherModelImpl())
+            WeatherViewController.init(coder: coder, weatherModel: weatherModelImpl)
         })
+        weatherModelImpl.delegate = weatherViewController
         weatherViewController.modalPresentationStyle = .fullScreen
         self.present(weatherViewController, animated: true, completion: nil)
     }

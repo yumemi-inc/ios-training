@@ -14,7 +14,7 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
-    var weatherModel: WeatherModel
+    let weatherModel: WeatherModel
     let activityIndicatorView = UIActivityIndicatorView()
     
     required init?(coder: NSCoder) {
@@ -33,7 +33,6 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherModel.delegate = self
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.reload(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         setActivityIndicatorViewProperty()
