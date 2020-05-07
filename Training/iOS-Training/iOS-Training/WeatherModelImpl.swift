@@ -10,8 +10,6 @@ import Foundation
 import YumemiWeather
 
 class WeatherModelImpl: WeatherModel {
-    weak var delegate: WeatherModelDelegate?
-    
     static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -63,11 +61,11 @@ class WeatherModelImpl: WeatherModel {
             return .failure(.unknownError)
         }
     }
-    
-    func getWeather() {
+
+    func getWeather(completionHandler: @escaping (Result<WeatherResponse, WeatherError>) -> Void) {
         DispatchQueue.global().async {
             let result = self.featchWeather()
-            self.delegate?.didGetWeather(result: result, weatherModel: self)
+            completionHandler(result)
         }
     }
 }
