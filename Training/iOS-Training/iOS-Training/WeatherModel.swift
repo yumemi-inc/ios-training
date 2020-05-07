@@ -49,9 +49,9 @@ struct WeatherResponse: Codable {
     let date: Date
 }
 
-typealias weatherCompletionHandler = (Result<WeatherResponse, WeatherError>) -> Void
+typealias weatherCompletionHandler = Optional<(Result<WeatherResponse, WeatherError>) -> Void>
 
 protocol WeatherModel: class {
-    func getWeather(completionHandler: @escaping weatherCompletionHandler)
+    func getWeather(completionHandler: weatherCompletionHandler)
     func generateAPIErrorMessage (error: WeatherError) -> String
 }

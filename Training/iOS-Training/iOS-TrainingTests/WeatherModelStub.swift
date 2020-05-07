@@ -12,7 +12,10 @@ import Foundation
 class WeatherModelStub: WeatherModel {
     var response: WeatherResponse!
     
-    func getWeather(completionHandler: @escaping weatherCompletionHandler) {
+    func getWeather(completionHandler: weatherCompletionHandler) {
+        guard let completionHandler = completionHandler else {
+            fatalError("completionHandler is nil.")
+        }
         completionHandler(.success(response))
     }
     
