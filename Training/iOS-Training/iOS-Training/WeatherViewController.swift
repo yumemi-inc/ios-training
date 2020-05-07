@@ -93,14 +93,14 @@ class WeatherViewController: UIViewController, WeatherModelDelegate {
     }
     
     // WeatherModelDelegate Protocol Method
-    func didGetWeather(result: Result<WeatherResponse, WeatherError>) {
+    func didGetWeather(result: Result<WeatherResponse, WeatherError>, weatherModel: WeatherModel) {
         DispatchQueue.main.async {
             self.activityIndicatorView.stopAnimating()
             switch result {
             case .success(let response):
                 self.updateWeatherView(response: response)
             case .failure(let error):
-                let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
+                let errorMessage = weatherModel.generateAPIErrorMessage(error: error)
                 self.showAlert(title: "APIError", message: errorMessage)
             }
         }

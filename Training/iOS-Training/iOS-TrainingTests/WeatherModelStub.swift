@@ -14,7 +14,7 @@ class WeatherModelStub: WeatherModel {
     var response: WeatherResponse!
     
     func getWeather() {
-        delegate?.didGetWeather(result: .success(response))
+        delegate?.didGetWeather(result: .success(response), weatherModel: self)
     }
     
     func generateAPIErrorMessage(error: WeatherError) -> String {

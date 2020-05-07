@@ -67,7 +67,7 @@ class WeatherModelImpl: WeatherModel {
     func getWeather() {
         DispatchQueue.global().async {
             let result = self.featchWeather()
-            self.delegate?.didGetWeather(result: result)
+            self.delegate?.didGetWeather(result: result, weatherModel: self)
         }
     }
 }
