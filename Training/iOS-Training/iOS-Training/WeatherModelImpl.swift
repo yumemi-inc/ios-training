@@ -62,7 +62,7 @@ class WeatherModelImpl: WeatherModel {
         }
     }
 
-    func getWeather(completionHandler: weatherCompletionHandler) {
+    func getWeather(completionHandler: WeatherCompletionHandler) {
         DispatchQueue.global().async {
             let result = self.featchWeather()
             guard let completionHandler = completionHandler else {
