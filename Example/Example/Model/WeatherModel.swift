@@ -50,7 +50,13 @@ class WeatherModelImpl: WeatherModel {
                     else {
                         completion(.failure(WeatherError.jsonDecodeError))
                     }
+                } else {
+                    completion(.failure(WeatherError.unknownError))
                 }
+            }
+        }else{
+            DispatchQueue.global().async {
+                completion(.failure(.jsonEncodeError))
             }
         }
     }
