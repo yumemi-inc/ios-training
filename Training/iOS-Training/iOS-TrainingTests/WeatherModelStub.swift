@@ -10,9 +10,11 @@ import Foundation
 @testable import iOS_Training
 
 class WeatherModelStub: WeatherModel {
+    weak var delegate: WeatherModelDelegate?
     var response: WeatherResponse!
-    func getWeather(completion: @escaping (Result<WeatherResponse, WeatherError>) -> ()) {
-        completion(.success(response))
+    
+    func getWeather() {
+        delegate?.didGetWeather(result: .success(response), weatherModel: self)
     }
     
     func generateAPIErrorMessage(error: WeatherError) -> String {

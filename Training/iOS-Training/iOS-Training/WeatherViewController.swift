@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, WeatherModelDelegate {
     
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
@@ -26,21 +26,22 @@ class WeatherViewController: UIViewController {
         super.init(coder: coder)
     }
     
+    deinit {
+        debugPrint("deinit: WeatherViewController")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.weatherModel.delegate = self
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.reload(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
-        
         setActivityIndicatorViewProperty()
     }
     
     @IBAction func reload(_ sender: Any) {
         activityIndicatorView.startAnimating()
-        self.getWeather(completion: { [weak self] in
-            guard let self = self else { return }
-            self.activityIndicatorView.stopAnimating()
-        })
+        self.weatherModel.getWeather()
     }
     
     func setWeatherImage(weather: Weather) -> Void {
@@ -79,22 +80,6 @@ class WeatherViewController: UIViewController {
         setWeatherImage(weather: response.weather)
     }
     
-    func getWeather(completion: @escaping() -> ()){
-        self.weatherModel.getWeather { result in
-            DispatchQueue.main.sync { [weak self] in
-                guard let self = self else { return }
-                switch result {
-                case .success(let response):
-                    self.updateWeatherView(response: response)
-                case .failure(let error):
-                    let errorMessage = self.weatherModel.generateAPIErrorMessage(error: error)
-                    self.showAlert(title: "APIError", message: errorMessage)
-                }
-                completion()
-            }
-        }
-    }
-    
     func setActivityIndicatorViewProperty() {
         activityIndicatorView.color = .white
         activityIndicatorView.backgroundColor =  UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.45)
@@ -105,5 +90,19 @@ class WeatherViewController: UIViewController {
         activityIndicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         activityIndicatorView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         activityIndicatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+    }
+    
+    // WeatherModelDelegate Protocol Method
+    func didGetWeather(result: Result<WeatherResponse, WeatherError>, weatherModel: WeatherModel) {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            switch result {
+            case .success(let response):
+                self.updateWeatherView(response: response)
+            case .failure(let error):
+                let errorMessage = weatherModel.generateAPIErrorMessage(error: error)
+                self.showAlert(title: "APIError", message: errorMessage)
+            }
+        }
     }
 }

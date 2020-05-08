@@ -20,6 +20,7 @@
 		038C4AEC2448456100BAF3DF /* WeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C4AEB2448456100BAF3DF /* WeatherModelImpl.swift */; };
 		038C4AF22448578D00BAF3DF /* WeatherModelStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C4AF12448578D00BAF3DF /* WeatherModelStub.swift */; };
 		03DAE5DC24458A54000034E0 /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DAE5DB24458A54000034E0 /* StartUpViewController.swift */; };
+		03E5C007245BB76400C63F63 /* WeatherModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E5C006245BB76400C63F63 /* WeatherModelDelegate.swift */; };
 		03E82AB0243DC218002E07C9 /* WeatherImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03E82AAF243DC218002E07C9 /* WeatherImages.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		038C4AEB2448456100BAF3DF /* WeatherModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelImpl.swift; sourceTree = "<group>"; };
 		038C4AF12448578D00BAF3DF /* WeatherModelStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelStub.swift; sourceTree = "<group>"; };
 		03DAE5DB24458A54000034E0 /* StartUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpViewController.swift; sourceTree = "<group>"; };
+		03E5C006245BB76400C63F63 /* WeatherModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelDelegate.swift; sourceTree = "<group>"; };
 		03E82AAF243DC218002E07C9 /* WeatherImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeatherImages.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				035A788D2435856300453E2B /* Info.plist */,
 				038C4AE92448453600BAF3DF /* WeatherModel.swift */,
 				038C4AEB2448456100BAF3DF /* WeatherModelImpl.swift */,
+				03E5C006245BB76400C63F63 /* WeatherModelDelegate.swift */,
 			);
 			path = "iOS-Training";
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				038C4AEA2448453600BAF3DF /* WeatherModel.swift in Sources */,
 				03DAE5DC24458A54000034E0 /* StartUpViewController.swift in Sources */,
 				038C4AEC2448456100BAF3DF /* WeatherModelImpl.swift in Sources */,
+				03E5C007245BB76400C63F63 /* WeatherModelDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
