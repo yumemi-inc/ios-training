@@ -55,9 +55,7 @@ class WeatherModelImpl: WeatherModel {
                 }
             }
         }else{
-            DispatchQueue.global().async {
-                completion(.failure(.jsonEncodeError))
-            }
+            completion(.failure(.jsonEncodeError))
         }
     }
 }
