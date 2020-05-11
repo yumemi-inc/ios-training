@@ -40,7 +40,10 @@ class WeatherViewController: UIViewController {
     
     @IBAction func reload(_ sender: Any) {
         activityIndicatorView.startAnimating()
-        self.weatherModel.getWeather() { result in
+        self.weatherModel.getWeather() { [weak self] result in
+            guard let self = self else {
+                return
+            }
             DispatchQueue.main.async {
                 defer {
                     self.activityIndicatorView.stopAnimating()
