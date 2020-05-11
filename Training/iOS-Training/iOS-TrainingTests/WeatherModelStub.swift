@@ -13,10 +13,7 @@ class WeatherModelStub: WeatherModel {
     var response: WeatherResponse!
     
     func getWeather(completionHandler: WeatherCompletionHandler) {
-        guard let completionHandler = completionHandler else {
-            fatalError("completionHandler is nil.")
-        }
-        completionHandler(.success(response))
+        completionHandler?(.success(response))
     }
     
     func generateAPIErrorMessage(error: WeatherError) -> String {
