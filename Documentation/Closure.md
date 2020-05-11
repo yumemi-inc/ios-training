@@ -1,7 +1,7 @@
 # コールバック
 
 完了時の処理を引数で渡しておく手法があります。  
-UIViewControllerの [present(_:animated:completion:)](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621380-present)
+例えば、UIViewControllerの [present(_:animated:completion:)](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621380-present) など。
 
 Delegateパターンよりも全体の処理の流れが追いやすくなると思います。  
 また、メソッドが1〜2つのDelegateですと、コールバックを用いた方が実装量も少なくなるでしょう。  
