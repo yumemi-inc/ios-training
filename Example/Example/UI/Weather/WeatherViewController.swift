@@ -28,19 +28,13 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] notification in
-            guard let self = self else {
-                return
-            }
-            self.loadWeather(notification.object)
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(loadWeather(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     deinit {
         print(#function)
     }
-            
+    
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
