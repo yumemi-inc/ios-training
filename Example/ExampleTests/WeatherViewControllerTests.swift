@@ -56,7 +56,7 @@ class WeatherViewControllerTests: XCTestCase {
 }
 
 class WeatherModelMock: WeatherModel {
-    func getWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherError>) -> Void) {
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherError>) -> Void) {
 
     }
     

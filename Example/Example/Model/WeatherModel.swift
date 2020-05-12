@@ -56,7 +56,7 @@ class WeatherModelImpl: WeatherModel {
         }
     }
     
-    func getWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherError>) -> Void) {
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherError>) -> Void) {
         let request = Request(area: area, date: date)
         DispatchQueue.global().async {
             let result = self.fetchWeather(request: request)
