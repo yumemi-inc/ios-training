@@ -9,7 +9,7 @@
 import UIKit
 
 protocol WeatherModel {
-    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherError>) -> Void)
+    func getWeather(at area: String, date: Date, completion: @escaping (Result<Response, WeatherError>) -> Void)
 }
 
 protocol DisasterModel {
@@ -41,7 +41,7 @@ class WeatherViewController: UIViewController {
     
     @IBAction func loadWeather(_ sender: Any?) {
         self.activityIndicator.startAnimating()
-        weatherModel.fetchWeather(at: "tokyo", date: Date()) { result in
+        weatherModel.getWeather(at: "tokyo", date: Date()) { result in
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 self.handleWeather(result: result)
