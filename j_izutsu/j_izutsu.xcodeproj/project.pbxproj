@@ -1,0 +1,718 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05EE580224F3AFBB00223B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE580124F3AFBB00223B65 /* AppDelegate.swift */; };
+		05EE580424F3AFBB00223B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE580324F3AFBB00223B65 /* SceneDelegate.swift */; };
+		05EE580B24F3AFBC00223B65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05EE580A24F3AFBC00223B65 /* Assets.xcassets */; };
+		05EE580E24F3AFBC00223B65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EE580C24F3AFBC00223B65 /* LaunchScreen.storyboard */; };
+		05EE581924F3AFBC00223B65 /* j_izutsuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE581824F3AFBC00223B65 /* j_izutsuTests.swift */; };
+		05EE582424F3AFBC00223B65 /* j_izutsuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE582324F3AFBC00223B65 /* j_izutsuUITests.swift */; };
+		05EE583324F3B0CB00223B65 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 05EE583224F3B0CB00223B65 /* YumemiWeather */; };
+		05EE583B24F3B1C600223B65 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE583A24F3B1C600223B65 /* Routes.swift */; };
+		05EE583F24F3B21200223B65 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE583E24F3B21200223B65 /* String.swift */; };
+		05EE584124F3B23900223B65 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE584024F3B23900223B65 /* UIViewController+.swift */; };
+		05EE584524F3B32F00223B65 /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EE584424F3B32F00223B65 /* Weather.storyboard */; };
+		05EE584724F3B34800223B65 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE584624F3B34800223B65 /* WeatherViewModel.swift */; };
+		05EE584924F3B35100223B65 /* WeatherViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE584824F3B35100223B65 /* WeatherViewBuilder.swift */; };
+		05EE584B24F3B35700223B65 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE584A24F3B35600223B65 /* WeatherViewController.swift */; };
+		05EE584D24F3B35C00223B65 /* WeatherViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE584C24F3B35C00223B65 /* WeatherViewPresenter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		05EE581524F3AFBC00223B65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05EE57F624F3AFBB00223B65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05EE57FD24F3AFBB00223B65;
+			remoteInfo = j_izutsu;
+		};
+		05EE582024F3AFBC00223B65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05EE57F624F3AFBB00223B65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05EE57FD24F3AFBB00223B65;
+			remoteInfo = j_izutsu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05EE57FE24F3AFBB00223B65 /* j_izutsu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = j_izutsu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05EE580124F3AFBB00223B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		05EE580324F3AFBB00223B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		05EE580A24F3AFBC00223B65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		05EE580D24F3AFBC00223B65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		05EE580F24F3AFBC00223B65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05EE581424F3AFBC00223B65 /* j_izutsuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = j_izutsuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		05EE581824F3AFBC00223B65 /* j_izutsuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = j_izutsuTests.swift; sourceTree = "<group>"; };
+		05EE581A24F3AFBC00223B65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05EE581F24F3AFBC00223B65 /* j_izutsuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = j_izutsuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		05EE582324F3AFBC00223B65 /* j_izutsuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = j_izutsuUITests.swift; sourceTree = "<group>"; };
+		05EE582524F3AFBC00223B65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05EE583A24F3B1C600223B65 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		05EE583E24F3B21200223B65 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		05EE584024F3B23900223B65 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		05EE584424F3B32F00223B65 /* Weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Weather.storyboard; sourceTree = "<group>"; };
+		05EE584624F3B34800223B65 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		05EE584824F3B35100223B65 /* WeatherViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewBuilder.swift; sourceTree = "<group>"; };
+		05EE584A24F3B35600223B65 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		05EE584C24F3B35C00223B65 /* WeatherViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewPresenter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05EE57FB24F3AFBB00223B65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05EE583324F3B0CB00223B65 /* YumemiWeather in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05EE581124F3AFBC00223B65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05EE581C24F3AFBC00223B65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05EE57F524F3AFBB00223B65 = {
+			isa = PBXGroup;
+			children = (
+				05EE580024F3AFBB00223B65 /* j_izutsu */,
+				05EE581724F3AFBC00223B65 /* j_izutsuTests */,
+				05EE582224F3AFBC00223B65 /* j_izutsuUITests */,
+				05EE57FF24F3AFBB00223B65 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05EE57FF24F3AFBB00223B65 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05EE57FE24F3AFBB00223B65 /* j_izutsu.app */,
+				05EE581424F3AFBC00223B65 /* j_izutsuTests.xctest */,
+				05EE581F24F3AFBC00223B65 /* j_izutsuUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05EE580024F3AFBB00223B65 /* j_izutsu */ = {
+			isa = PBXGroup;
+			children = (
+				05EE583724F3B12F00223B65 /* App */,
+				05EE583624F3B12E00223B65 /* Extentions */,
+				05EE583524F3B12C00223B65 /* Resources */,
+				05EE583424F3B11700223B65 /* Views */,
+			);
+			path = j_izutsu;
+			sourceTree = "<group>";
+		};
+		05EE581724F3AFBC00223B65 /* j_izutsuTests */ = {
+			isa = PBXGroup;
+			children = (
+				05EE581824F3AFBC00223B65 /* j_izutsuTests.swift */,
+				05EE581A24F3AFBC00223B65 /* Info.plist */,
+			);
+			path = j_izutsuTests;
+			sourceTree = "<group>";
+		};
+		05EE582224F3AFBC00223B65 /* j_izutsuUITests */ = {
+			isa = PBXGroup;
+			children = (
+				05EE582324F3AFBC00223B65 /* j_izutsuUITests.swift */,
+				05EE582524F3AFBC00223B65 /* Info.plist */,
+			);
+			path = j_izutsuUITests;
+			sourceTree = "<group>";
+		};
+		05EE583424F3B11700223B65 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				05EE583924F3B15800223B65 /* Weather */,
+				05EE583824F3B15600223B65 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		05EE583524F3B12C00223B65 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				05EE584324F3B2C300223B65 /* Asset */,
+				05EE584224F3B2C100223B65 /* Info */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		05EE583624F3B12E00223B65 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				05EE583D24F3B1FF00223B65 /* UI */,
+				05EE583C24F3B1FE00223B65 /* Utility */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		05EE583724F3B12F00223B65 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				05EE580124F3AFBB00223B65 /* AppDelegate.swift */,
+				05EE583A24F3B1C600223B65 /* Routes.swift */,
+				05EE580324F3AFBB00223B65 /* SceneDelegate.swift */,
+				05EE580C24F3AFBC00223B65 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		05EE583824F3B15600223B65 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				05EE584424F3B32F00223B65 /* Weather.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		05EE583924F3B15800223B65 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				05EE584824F3B35100223B65 /* WeatherViewBuilder.swift */,
+				05EE584A24F3B35600223B65 /* WeatherViewController.swift */,
+				05EE584C24F3B35C00223B65 /* WeatherViewPresenter.swift */,
+				05EE584624F3B34800223B65 /* WeatherViewModel.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		05EE583C24F3B1FE00223B65 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				05EE583E24F3B21200223B65 /* String.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		05EE583D24F3B1FF00223B65 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				05EE584024F3B23900223B65 /* UIViewController+.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		05EE584224F3B2C100223B65 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				05EE580F24F3AFBC00223B65 /* Info.plist */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		05EE584324F3B2C300223B65 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				05EE580A24F3AFBC00223B65 /* Assets.xcassets */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05EE57FD24F3AFBB00223B65 /* j_izutsu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05EE582824F3AFBC00223B65 /* Build configuration list for PBXNativeTarget "j_izutsu" */;
+			buildPhases = (
+				05EE57FA24F3AFBB00223B65 /* Sources */,
+				05EE57FB24F3AFBB00223B65 /* Frameworks */,
+				05EE57FC24F3AFBB00223B65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = j_izutsu;
+			packageProductDependencies = (
+				05EE583224F3B0CB00223B65 /* YumemiWeather */,
+			);
+			productName = j_izutsu;
+			productReference = 05EE57FE24F3AFBB00223B65 /* j_izutsu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		05EE581324F3AFBC00223B65 /* j_izutsuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05EE582B24F3AFBC00223B65 /* Build configuration list for PBXNativeTarget "j_izutsuTests" */;
+			buildPhases = (
+				05EE581024F3AFBC00223B65 /* Sources */,
+				05EE581124F3AFBC00223B65 /* Frameworks */,
+				05EE581224F3AFBC00223B65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05EE581624F3AFBC00223B65 /* PBXTargetDependency */,
+			);
+			name = j_izutsuTests;
+			productName = j_izutsuTests;
+			productReference = 05EE581424F3AFBC00223B65 /* j_izutsuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		05EE581E24F3AFBC00223B65 /* j_izutsuUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05EE582E24F3AFBC00223B65 /* Build configuration list for PBXNativeTarget "j_izutsuUITests" */;
+			buildPhases = (
+				05EE581B24F3AFBC00223B65 /* Sources */,
+				05EE581C24F3AFBC00223B65 /* Frameworks */,
+				05EE581D24F3AFBC00223B65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05EE582124F3AFBC00223B65 /* PBXTargetDependency */,
+			);
+			name = j_izutsuUITests;
+			productName = j_izutsuUITests;
+			productReference = 05EE581F24F3AFBC00223B65 /* j_izutsuUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05EE57F624F3AFBB00223B65 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "井筒 順";
+				TargetAttributes = {
+					05EE57FD24F3AFBB00223B65 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					05EE581324F3AFBC00223B65 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 05EE57FD24F3AFBB00223B65;
+					};
+					05EE581E24F3AFBC00223B65 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 05EE57FD24F3AFBB00223B65;
+					};
+				};
+			};
+			buildConfigurationList = 05EE57F924F3AFBB00223B65 /* Build configuration list for PBXProject "j_izutsu" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 05EE57F524F3AFBB00223B65;
+			packageReferences = (
+				05EE583124F3B0CB00223B65 /* XCRemoteSwiftPackageReference "ios-training" */,
+			);
+			productRefGroup = 05EE57FF24F3AFBB00223B65 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05EE57FD24F3AFBB00223B65 /* j_izutsu */,
+				05EE581324F3AFBC00223B65 /* j_izutsuTests */,
+				05EE581E24F3AFBC00223B65 /* j_izutsuUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05EE57FC24F3AFBB00223B65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05EE580E24F3AFBC00223B65 /* LaunchScreen.storyboard in Resources */,
+				05EE584524F3B32F00223B65 /* Weather.storyboard in Resources */,
+				05EE580B24F3AFBC00223B65 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05EE581224F3AFBC00223B65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05EE581D24F3AFBC00223B65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05EE57FA24F3AFBB00223B65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05EE584D24F3B35C00223B65 /* WeatherViewPresenter.swift in Sources */,
+				05EE583B24F3B1C600223B65 /* Routes.swift in Sources */,
+				05EE584724F3B34800223B65 /* WeatherViewModel.swift in Sources */,
+				05EE584924F3B35100223B65 /* WeatherViewBuilder.swift in Sources */,
+				05EE584124F3B23900223B65 /* UIViewController+.swift in Sources */,
+				05EE583F24F3B21200223B65 /* String.swift in Sources */,
+				05EE584B24F3B35700223B65 /* WeatherViewController.swift in Sources */,
+				05EE580224F3AFBB00223B65 /* AppDelegate.swift in Sources */,
+				05EE580424F3AFBB00223B65 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05EE581024F3AFBC00223B65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05EE581924F3AFBC00223B65 /* j_izutsuTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05EE581B24F3AFBC00223B65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05EE582424F3AFBC00223B65 /* j_izutsuUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05EE581624F3AFBC00223B65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05EE57FD24F3AFBB00223B65 /* j_izutsu */;
+			targetProxy = 05EE581524F3AFBC00223B65 /* PBXContainerItemProxy */;
+		};
+		05EE582124F3AFBC00223B65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05EE57FD24F3AFBB00223B65 /* j_izutsu */;
+			targetProxy = 05EE582024F3AFBC00223B65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		05EE580C24F3AFBC00223B65 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05EE580D24F3AFBC00223B65 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		05EE582624F3AFBC00223B65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		05EE582724F3AFBC00223B65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		05EE582924F3AFBC00223B65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				INFOPLIST_FILE = j_izutsu/Resources/Info/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.j-izutsu";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		05EE582A24F3AFBC00223B65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				INFOPLIST_FILE = j_izutsu/Resources/Info/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.j-izutsu";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		05EE582C24F3AFBC00223B65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				INFOPLIST_FILE = j_izutsuTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.j-izutsuTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/j_izutsu.app/j_izutsu";
+			};
+			name = Debug;
+		};
+		05EE582D24F3AFBC00223B65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				INFOPLIST_FILE = j_izutsuTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.j-izutsuTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/j_izutsu.app/j_izutsu";
+			};
+			name = Release;
+		};
+		05EE582F24F3AFBC00223B65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				INFOPLIST_FILE = j_izutsuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.j-izutsuUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = j_izutsu;
+			};
+			name = Debug;
+		};
+		05EE583024F3AFBC00223B65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				INFOPLIST_FILE = j_izutsuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.j-izutsuUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = j_izutsu;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05EE57F924F3AFBB00223B65 /* Build configuration list for PBXProject "j_izutsu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05EE582624F3AFBC00223B65 /* Debug */,
+				05EE582724F3AFBC00223B65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05EE582824F3AFBC00223B65 /* Build configuration list for PBXNativeTarget "j_izutsu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05EE582924F3AFBC00223B65 /* Debug */,
+				05EE582A24F3AFBC00223B65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05EE582B24F3AFBC00223B65 /* Build configuration list for PBXNativeTarget "j_izutsuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05EE582C24F3AFBC00223B65 /* Debug */,
+				05EE582D24F3AFBC00223B65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05EE582E24F3AFBC00223B65 /* Build configuration list for PBXNativeTarget "j_izutsuUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05EE582F24F3AFBC00223B65 /* Debug */,
+				05EE583024F3AFBC00223B65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		05EE583124F3B0CB00223B65 /* XCRemoteSwiftPackageReference "ios-training" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:yumemi/ios-training.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		05EE583224F3B0CB00223B65 /* YumemiWeather */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05EE583124F3B0CB00223B65 /* XCRemoteSwiftPackageReference "ios-training" */;
+			productName = YumemiWeather;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 05EE57F624F3AFBB00223B65 /* Project object */;
+}
