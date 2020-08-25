@@ -22,6 +22,9 @@
                                     <constraint firstAttribute="width" constant="60" id="cd0-ai-trI"/>
                                 </constraints>
                                 <state key="normal" title="Reload"/>
+                                <connections>
+                                    <action selector="tapReloadButton:" destination="8iI-xh-beZ" eventType="touchUpInside" id="MfD-Xj-gde"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kkv-KK-e2t">
                                 <rect key="frame" x="103.5" y="334.5" width="207" height="227.5"/>
@@ -65,6 +68,9 @@
                                     <constraint firstAttribute="height" constant="30" id="VDM-yi-Wj7"/>
                                 </constraints>
                                 <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="tapCloseButton:" destination="8iI-xh-beZ" eventType="touchUpInside" id="mua-o4-giR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -79,6 +85,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ut1-ag-56g"/>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="e2d-Ue-Uo5" id="xAz-Nf-W6h"/>
+                        <outlet property="maxTemperatureLabel" destination="v74-le-msM" id="xw3-ll-DEY"/>
+                        <outlet property="minTemperatureLabel" destination="N26-jT-JMb" id="WKY-VI-uBU"/>
+                        <outlet property="reloadButton" destination="XeA-zR-Fpa" id="anS-DS-aXj"/>
+                        <outlet property="weatherImageView" destination="ovm-KK-JoD" id="aco-qB-f2k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTj-SG-XIv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
