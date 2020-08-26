@@ -20,6 +20,17 @@ final class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupNotification()
+    }
+    
+    private func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func viewWillEnterForeground(_ notification: Notification) {
+        guard self.isViewLoaded else { return }
+        
+        self.presenter.didViewEnterForeground()
     }
     
     @IBAction func tapReloadButton(_ sender: Any) {

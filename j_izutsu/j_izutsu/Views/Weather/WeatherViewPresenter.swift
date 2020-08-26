@@ -11,6 +11,7 @@ protocol WeatherViewPresenterProtocol {
     
     func didTapReloadButton()
     func didTapCloseButton()
+    func didViewEnterForeground()
 }
 
 protocol WeatherViewPresenterOutput: class {
@@ -38,6 +39,10 @@ final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutp
     
     func didTapCloseButton() {
         self.view.dismissVC()
+    }
+    
+    func didViewEnterForeground() {
+        self.model.fetchWeather()
     }
     
     func successFetchWeather(response: WeatherResponse) {
