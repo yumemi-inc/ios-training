@@ -27,7 +27,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction func tapCloseButton(_ sender: Any) {
-        
+        self.presenter.didTapCloseButton()
     }
     
     func inject(with presenter: WeatherViewPresenterProtocol) {
@@ -64,6 +64,10 @@ extension WeatherViewController: WeatherViewPresenterOutput {
             self.weatherImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
             self.weatherImageView.tintColor = .systemBlue
         }
+    }
+    
+    func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
