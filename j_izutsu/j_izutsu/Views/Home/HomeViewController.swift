@@ -16,6 +16,11 @@ final class HomeViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.presenter.didViewDidAppear()
+    }
+    
     func inject(with presenter: HomeViewPresenterProtocol) {
         self.presenter = presenter
         self.presenter.view = self
@@ -23,5 +28,8 @@ final class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomeViewPresenterOutput {
-    
+    func showWeatherViewController() {
+        let weatherVC = WeatherViewBuilder.create()
+        self.present(weatherVC, animated: true, completion: nil)
+    }
 }

@@ -8,10 +8,12 @@
 
 protocol HomeViewPresenterProtocol {
     var view: HomeViewPresenterOutput! { get set }
+    
+    func didViewDidAppear()
 }
 
 protocol HomeViewPresenterOutput: class {
-    
+    func showWeatherViewController()
 }
 
 final class HomeViewPresenter: HomeViewPresenterProtocol, HomeModelOutput {
@@ -21,6 +23,10 @@ final class HomeViewPresenter: HomeViewPresenterProtocol, HomeModelOutput {
     init(model: HomeModelProtocol) {
         self.model = model
         self.model.presenter = self
+    }
+    
+    func didViewDidAppear() {
+        self.view.showWeatherViewController()
     }
     
 }
