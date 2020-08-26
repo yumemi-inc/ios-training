@@ -38,17 +38,17 @@ final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutp
         
     }
     
-    func successFetchWeather(responce: WeatherResponse) {
-        self.view.setMaxTemp(responce.maxTemp)
-        self.view.setMinTemp(responce.minTemp)
+    func successFetchWeather(response: WeatherResponse) {
+        self.view.setMaxTemp(response.maxTemp)
+        self.view.setMinTemp(response.minTemp)
         
-        switch responce.weather {
+        switch response.weather {
         case .sunny:
-            self.view.setSunnyImage(imageName: responce.weather.rawValue)
+            self.view.setSunnyImage(imageName: response.weather.rawValue)
         case .cloudy:
-            self.view.setCloudyImage(imageName: responce.weather.rawValue)
+            self.view.setCloudyImage(imageName: response.weather.rawValue)
         case .rainy:
-            self.view.setRainyImage(imageName: responce.weather.rawValue)
+            self.view.setRainyImage(imageName: response.weather.rawValue)
         }
     }
 }

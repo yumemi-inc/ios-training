@@ -15,7 +15,7 @@ protocol WeatherModelProtocol {
 }
 
 protocol WeatherModelOutput: class {
-    func successFetchWeather(responce: WeatherResponse)
+    func successFetchWeather(response: WeatherResponse)
 }
 
 final class WeatherModel: WeatherModelProtocol {
@@ -26,8 +26,8 @@ final class WeatherModel: WeatherModelProtocol {
         let result = self.weatherAPI.fetchWeather(area: "tokyo")
         
         switch result {
-        case let .success(responce):
-            self.presenter.successFetchWeather(responce: responce)
+        case let .success(response):
+            self.presenter.successFetchWeather(response: response)
         case let .failure(error):
             print(error)
         }
