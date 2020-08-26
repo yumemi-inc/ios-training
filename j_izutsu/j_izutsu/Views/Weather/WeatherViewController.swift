@@ -23,7 +23,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction func tapReloadButton(_ sender: Any) {
-        
+        self.presenter.didTapReloadButton()
     }
     
     @IBAction func tapCloseButton(_ sender: Any) {
@@ -37,7 +37,34 @@ final class WeatherViewController: UIViewController {
 }
 
 extension WeatherViewController: WeatherViewPresenterOutput {
+    func setMaxTemp(_ temp: Int) {
+        self.maxTemperatureLabel.text = String(temp)
+    }
     
+    func setMinTemp(_ temp: Int) {
+        self.minTemperatureLabel.text = String(temp)
+    }
+    
+    func setSunnyImage(imageName: String) {
+        DispatchQueue.main.async {
+            self.weatherImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
+            self.weatherImageView.tintColor = .systemRed
+        }
+    }
+    
+    func setCloudyImage(imageName: String) {
+        DispatchQueue.main.async {
+            self.weatherImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
+            self.weatherImageView.tintColor = .systemGray
+        }
+    }
+    
+    func setRainyImage(imageName: String) {
+        DispatchQueue.main.async {
+            self.weatherImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
+            self.weatherImageView.tintColor = .systemBlue
+        }
+    }
 }
 
 
