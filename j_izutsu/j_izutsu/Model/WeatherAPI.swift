@@ -10,7 +10,11 @@ import Foundation
 import YumemiWeather
 
 
-class WeatherAPI {
+protocol WeatherAPIModel {
+    func fetchWeather(area: String) -> Result<WeatherResponse, WeatherAPIError>
+}
+
+class WeatherAPI: WeatherAPIModel {
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
     
