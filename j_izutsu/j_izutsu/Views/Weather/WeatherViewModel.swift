@@ -6,15 +6,31 @@
 //  Copyright © 2020 井筒 順. All rights reserved.
 //
 
+import Foundation
+
 protocol WeatherModelProtocol {
     var presenter: WeatherModelOutput! { get set }
+    
+    func fetchWeather()
 }
 
 protocol WeatherModelOutput: class {
-    
+    func successFetchWeather(response: WeatherResponse)
 }
 
 final class WeatherModel: WeatherModelProtocol {
     weak var presenter: WeatherModelOutput!
+    private let weatherAPI = WeatherAPI()
+    
+    func fetchWeather() {
+        let result = self.weatherAPI.fetchWeather(area: "tokyo")
+        
+        switch result {
+        case let .success(response):
+            self.presenter.successFetchWeather(response: response)
+        case let .failure(error):
+            print(error)
+        }
+    }
 }
 

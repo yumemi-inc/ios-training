@@ -8,10 +8,17 @@
 
 protocol WeatherViewPresenterProtocol {
     var view: WeatherViewPresenterOutput! { get set }
+    
+    func didTapReloadButton()
+    func didTapCloseButton()
 }
 
 protocol WeatherViewPresenterOutput: class {
-    
+    func setMaxTemp(_ temp: Int)
+    func setMinTemp(_ temp: Int)
+    func setSunnyImage(imageName: String)
+    func setCloudyImage(imageName: String)
+    func setRainyImage(imageName: String)
 }
 
 final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutput {
@@ -21,6 +28,28 @@ final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutp
     init(model: WeatherModelProtocol) {
         self.model = model
         self.model.presenter = self
+    }
+    
+    func didTapReloadButton() {
+        self.model.fetchWeather()
+    }
+    
+    func didTapCloseButton() {
+        
+    }
+    
+    func successFetchWeather(response: WeatherResponse) {
+        self.view.setMaxTemp(response.maxTemp)
+        self.view.setMinTemp(response.minTemp)
+        
+        switch response.weather {
+        case .sunny:
+            self.view.setSunnyImage(imageName: response.weather.rawValue)
+        case .cloudy:
+            self.view.setCloudyImage(imageName: response.weather.rawValue)
+        case .rainy:
+            self.view.setRainyImage(imageName: response.weather.rawValue)
+        }
     }
 }
 
