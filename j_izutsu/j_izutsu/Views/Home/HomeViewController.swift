@@ -13,7 +13,7 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = .black
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +30,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewPresenterOutput {
     func showWeatherViewController() {
         let weatherVC = WeatherViewBuilder.create()
+        weatherVC.modalPresentationStyle = .fullScreen
         self.present(weatherVC, animated: true, completion: nil)
     }
 }
