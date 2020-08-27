@@ -55,11 +55,15 @@ final class WeatherViewController: UIViewController {
 
 extension WeatherViewController: WeatherViewPresenterOutput {
     func setMaxTemp(_ temp: Int) {
-        self.maxTemperatureLabel.text = String(temp)
+        DispatchQueue.main.async {
+            self.maxTemperatureLabel.text = String(temp)
+        }
     }
     
     func setMinTemp(_ temp: Int) {
-        self.minTemperatureLabel.text = String(temp)
+        DispatchQueue.main.async {
+            self.minTemperatureLabel.text = String(temp)
+        }
     }
     
     func setSunnyImage(imageName: String) {
