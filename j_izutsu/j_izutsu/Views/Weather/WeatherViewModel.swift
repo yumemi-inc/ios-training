@@ -22,9 +22,17 @@ final class WeatherModel: WeatherModelProtocol {
     weak var presenter: WeatherModelOutput!
     private let weatherAPI = WeatherAPI()
     
+    init() {
+        self.weatherAPI.delegate = self
+    }
+    
     func fetchWeather() {
-        let result = self.weatherAPI.fetchWeather(area: "tokyo")
-        
+        self.weatherAPI.fetchWeather(area: "tokyo")
+    }
+}
+
+extension WeatherModel: WeatherAPIDelegate {
+    func didFetchWeather(result: Result<WeatherResponse, WeatherAPIError>) {
         switch result {
         case let .success(response):
             self.presenter.successFetchWeather(response: response)
@@ -33,4 +41,3 @@ final class WeatherModel: WeatherModelProtocol {
         }
     }
 }
-
