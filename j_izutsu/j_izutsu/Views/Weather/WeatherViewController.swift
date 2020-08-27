@@ -10,6 +10,7 @@ import UIKit
 
 final class WeatherViewController: UIViewController {
     private var presenter: WeatherViewPresenterProtocol!
+    private var activityIndicator = UIActivityIndicatorView()
     
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
@@ -20,6 +21,7 @@ final class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupActivityIndicator()
         self.setupNotification()
     }
     
@@ -27,6 +29,13 @@ final class WeatherViewController: UIViewController {
         super.viewWillDisappear(true)
         
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupActivityIndicator() {
+        self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(self.activityIndicator)
     }
     
     private func setupNotification() {
@@ -55,11 +64,15 @@ final class WeatherViewController: UIViewController {
 
 extension WeatherViewController: WeatherViewPresenterOutput {
     func setMaxTemp(_ temp: Int) {
-        self.maxTemperatureLabel.text = String(temp)
+        DispatchQueue.main.async {
+            self.maxTemperatureLabel.text = String(temp)
+        }
     }
     
     func setMinTemp(_ temp: Int) {
-        self.minTemperatureLabel.text = String(temp)
+        DispatchQueue.main.async {
+            self.minTemperatureLabel.text = String(temp)
+        }
     }
     
     func setSunnyImage(imageName: String) {
@@ -81,6 +94,30 @@ extension WeatherViewController: WeatherViewPresenterOutput {
             self.weatherImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
             self.weatherImageView.tintColor = .systemBlue
         }
+    }
+    
+    func showErrorAlert(errorStr: String) {
+        DispatchQueue.main.async {
+            let errorAlertView = UIAlertController(title: "Error", message: errorStr, preferredStyle: .alert)
+            errorAlertView.addAction((UIAlertAction(title: "OK", style: .default, handler: nil)))
+            self.present(errorAlertView, animated: true, completion: nil)
+        }
+    }
+    
+    func disenabledReloadButton() {
+        DispatchQueue.main.async { self.reloadButton.isEnabled = false }
+    }
+    
+    func enabledReloadButton() {
+        DispatchQueue.main.async { self.reloadButton.isEnabled = true }
+    }
+    
+    func startActivityIndicator() {
+        DispatchQueue.main.async { self.activityIndicator.startAnimating() }
+    }
+    
+    func stopActivityIndicator() {
+        DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
     }
     
     func dismissVC() {
