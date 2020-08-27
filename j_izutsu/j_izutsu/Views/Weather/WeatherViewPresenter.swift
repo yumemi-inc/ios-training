@@ -69,6 +69,8 @@ final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutp
     }
     
     func errorFetchWeather(error: WeatherAPIError) {
+        self.view.enabledReloadButton()
+        self.view.stopActivityIndicator()
         self.view.showErrorAlert(errorStr: error.localizedDescription)
     }
 }
