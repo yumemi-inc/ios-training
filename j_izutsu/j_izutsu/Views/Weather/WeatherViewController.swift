@@ -20,6 +20,23 @@ final class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func viewWillEnterForeground(_ notification: Notification) {
+        guard self.isViewLoaded else { return }
+        
+        self.presenter.didViewEnterForeground()
     }
     
     @IBAction func tapReloadButton(_ sender: Any) {
@@ -27,7 +44,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction func tapCloseButton(_ sender: Any) {
-        
+        self.presenter.didTapCloseButton()
     }
     
     func inject(with presenter: WeatherViewPresenterProtocol) {
@@ -64,6 +81,10 @@ extension WeatherViewController: WeatherViewPresenterOutput {
             self.weatherImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
             self.weatherImageView.tintColor = .systemBlue
         }
+    }
+    
+    func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

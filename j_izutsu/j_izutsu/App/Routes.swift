@@ -10,7 +10,7 @@ import UIKit
 
 struct Routes {
     static func decideRootViewController() -> UIViewController {
-        return WeatherViewBuilder.create()
+        return HomeViewBuilder.create()
     }
 }
 

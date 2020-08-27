@@ -11,6 +11,7 @@ protocol WeatherViewPresenterProtocol {
     
     func didTapReloadButton()
     func didTapCloseButton()
+    func didViewEnterForeground()
 }
 
 protocol WeatherViewPresenterOutput: class {
@@ -19,6 +20,8 @@ protocol WeatherViewPresenterOutput: class {
     func setSunnyImage(imageName: String)
     func setCloudyImage(imageName: String)
     func setRainyImage(imageName: String)
+    
+    func dismissVC()
 }
 
 final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutput {
@@ -35,7 +38,11 @@ final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutp
     }
     
     func didTapCloseButton() {
-        
+        self.view.dismissVC()
+    }
+    
+    func didViewEnterForeground() {
+        self.model.fetchWeather()
     }
     
     func successFetchWeather(response: WeatherResponse) {
