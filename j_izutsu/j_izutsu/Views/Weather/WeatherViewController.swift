@@ -23,6 +23,12 @@ final class WeatherViewController: UIViewController {
         self.setupNotification()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private func setupNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(viewWillEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
