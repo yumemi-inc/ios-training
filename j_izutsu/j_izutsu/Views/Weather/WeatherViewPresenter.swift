@@ -21,6 +21,10 @@ protocol WeatherViewPresenterOutput: class {
     func setCloudyImage(imageName: String)
     func setRainyImage(imageName: String)
     
+    func disenabledReloadButton()
+    func enabledReloadButton()
+    func startActivityIndicator()
+    func stopActivityIndicator()
     func dismissVC()
 }
 
@@ -34,6 +38,8 @@ final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutp
     }
     
     func didTapReloadButton() {
+        self.view.startActivityIndicator()
+        self.view.disenabledReloadButton()
         self.model.fetchWeather()
     }
     
@@ -46,6 +52,8 @@ final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutp
     }
     
     func successFetchWeather(response: WeatherResponse) {
+        self.view.enabledReloadButton()
+        self.view.stopActivityIndicator()
         self.view.setMaxTemp(response.maxTemp)
         self.view.setMinTemp(response.minTemp)
         

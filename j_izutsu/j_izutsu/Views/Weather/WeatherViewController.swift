@@ -10,6 +10,7 @@ import UIKit
 
 final class WeatherViewController: UIViewController {
     private var presenter: WeatherViewPresenterProtocol!
+    private var activityIndicator = UIActivityIndicatorView()
     
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
@@ -20,6 +21,7 @@ final class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupActivityIndicator()
         self.setupNotification()
     }
     
@@ -27,6 +29,13 @@ final class WeatherViewController: UIViewController {
         super.viewWillDisappear(true)
         
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupActivityIndicator() {
+        self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(self.activityIndicator)
     }
     
     private func setupNotification() {
@@ -85,6 +94,22 @@ extension WeatherViewController: WeatherViewPresenterOutput {
             self.weatherImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
             self.weatherImageView.tintColor = .systemBlue
         }
+    }
+    
+    func disenabledReloadButton() {
+        DispatchQueue.main.async { self.reloadButton.isEnabled = false }
+    }
+    
+    func enabledReloadButton() {
+        DispatchQueue.main.async { self.reloadButton.isEnabled = true }
+    }
+    
+    func startActivityIndicator() {
+        DispatchQueue.main.async { self.activityIndicator.startAnimating() }
+    }
+    
+    func stopActivityIndicator() {
+        DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
     }
     
     func dismissVC() {
