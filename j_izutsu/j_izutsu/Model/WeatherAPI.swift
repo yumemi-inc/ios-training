@@ -9,17 +9,12 @@
 import Foundation
 import YumemiWeather
 
-protocol WeatherAPIDelegate: AnyObject {
-    func didFetchWeather(result: Result<WeatherResponse, WeatherAPIError>)
-}
 
 protocol WeatherAPIModel {
-    var delegate: WeatherAPIDelegate? { get set }
-    func fetchWeather(area: String)
+    func fetchWeather(area: String, completionHandler: @escaping (Result<WeatherResponse, WeatherAPIError>) -> Void)
 }
 
 class WeatherAPI: WeatherAPIModel {
-    weak var delegate: WeatherAPIDelegate?
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
     
@@ -30,7 +25,7 @@ class WeatherAPI: WeatherAPIModel {
         self.decoder.dateDecodingStrategy = .iso8601
     }
     
-    func fetchWeather(area: String) {
+    func fetchWeather(area: String, completionHandler: @escaping (Result<WeatherResponse, WeatherAPIError>) -> Void) {
         let input = InputData(area: area, date: Date())
         
         DispatchQueue.global().async {
@@ -40,7 +35,7 @@ class WeatherAPI: WeatherAPIModel {
                 
                 guard let inputJsonStr = String(data: inputData, encoding: .utf8) else {
                     result = .failure(.invalidParameterError)
-                    self.delegate?.didFetchWeather(result: result)
+                    completionHandler(result)
                     return
                 }
                 
@@ -65,7 +60,7 @@ class WeatherAPI: WeatherAPIModel {
                 result = .failure(.unknownError)
             }
             
-            self.delegate?.didFetchWeather(result: result)
+            completionHandler(result)
         }
     }
 }
