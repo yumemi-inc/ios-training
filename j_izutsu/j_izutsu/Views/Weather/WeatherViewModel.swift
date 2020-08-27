@@ -16,6 +16,7 @@ protocol WeatherModelProtocol {
 
 protocol WeatherModelOutput: class {
     func successFetchWeather(response: WeatherResponse)
+    func errorFetchWeather(error: WeatherAPIError)
 }
 
 final class WeatherModel: WeatherModelProtocol {
@@ -37,7 +38,7 @@ extension WeatherModel: WeatherAPIDelegate {
         case let .success(response):
             self.presenter.successFetchWeather(response: response)
         case let .failure(error):
-            print(error)
+            self.presenter.errorFetchWeather(error: error)
         }
     }
 }

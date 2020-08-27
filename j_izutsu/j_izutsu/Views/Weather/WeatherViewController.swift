@@ -96,6 +96,14 @@ extension WeatherViewController: WeatherViewPresenterOutput {
         }
     }
     
+    func showErrorAlert(errorStr: String) {
+        DispatchQueue.main.async {
+            let errorAlertView = UIAlertController(title: "Error", message: errorStr, preferredStyle: .alert)
+            errorAlertView.addAction((UIAlertAction(title: "OK", style: .default, handler: nil)))
+            self.present(errorAlertView, animated: true, completion: nil)
+        }
+    }
+    
     func disenabledReloadButton() {
         DispatchQueue.main.async { self.reloadButton.isEnabled = false }
     }

@@ -20,6 +20,7 @@ protocol WeatherViewPresenterOutput: class {
     func setSunnyImage(imageName: String)
     func setCloudyImage(imageName: String)
     func setRainyImage(imageName: String)
+    func showErrorAlert(errorStr: String)
     
     func disenabledReloadButton()
     func enabledReloadButton()
@@ -65,6 +66,10 @@ final class WeatherViewPresenter: WeatherViewPresenterProtocol, WeatherModelOutp
         case .rainy:
             self.view.setRainyImage(imageName: response.weather.rawValue)
         }
+    }
+    
+    func errorFetchWeather(error: WeatherAPIError) {
+        self.view.showErrorAlert(errorStr: error.localizedDescription)
     }
 }
 

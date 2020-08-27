@@ -33,3 +33,14 @@ enum WeatherAPIError: Error {
     case jsonEncodeError
     case unknownError
 }
+
+extension WeatherAPIError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .invalidParameterError: return "invalid Parameter error"
+        case .jsonDecodeError: return "json decode error"
+        case .jsonEncodeError: return "json encode error"
+        case .unknownError: return "unknown error happened"
+        }
+    }
+}
