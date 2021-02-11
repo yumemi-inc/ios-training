@@ -27,6 +27,16 @@ class ViewController: UIViewController {
                 return "cloud"
             }
         }
+        var imageColor: UIColor {
+            switch self {
+            case .sunny:
+                return .red
+            case .rainy:
+                return .blue
+            case .cloudy:
+                return .gray
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -36,17 +46,8 @@ class ViewController: UIViewController {
     @IBAction func tappedReloadButton(_ sender: Any) {
         let fetchedWeather = YumemiWeather.fetchWeather()
         guard let weather = Weather(rawValue: fetchedWeather) else { return }
-        switch weather {
-        case .sunny:
-            guard let image = UIImage(named: Weather.sunny.imageName) else { return }
-            weatherImageView.image = image.withTintColor(.red)
-        case .rainy:
-            guard let image = UIImage(named: Weather.rainy.imageName) else { return }
-            weatherImageView.image = image.withTintColor(.blue)
-        case .cloudy:
-            guard let image = UIImage(named: Weather.cloudy.imageName) else { return }
-            weatherImageView.image = image.withTintColor(.gray)
-        }
+        guard let image = UIImage(named: weather.imageName) else { return }
+        weatherImageView.image = image.withTintColor(weather.imageColor)
     }
 }
 
