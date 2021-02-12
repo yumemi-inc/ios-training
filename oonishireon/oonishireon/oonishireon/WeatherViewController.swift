@@ -17,9 +17,11 @@ class WeatherViewController: UIViewController {
     }
     
     @IBAction func tappedReloadButton(_ sender: Any) {
-        let fetchedWeather = YumemiWeather.fetchWeather()
-        weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
+        do {
+            let fetchedWeather = try YumemiWeather.fetchWeather(at: "tokyo")
+            weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
+        }catch {
+            present(.alert(title: "エラー", message: "エラーが発生しました。"))
+        }
     }
 }
-
-
