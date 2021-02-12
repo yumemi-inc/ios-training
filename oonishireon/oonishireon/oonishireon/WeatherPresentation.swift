@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct PresentWeather {
+struct WeatherPresentation {
     var image: UIImage?
     var tintColor: UIColor
     var tintedImage: UIImage? { image?.withTintColor(tintColor) }

@@ -20,7 +20,8 @@ class WeatherViewController: UIViewController {
     
     @IBAction func tappedReloadButton(_ sender: Any) {
         let fetchedWeather = YumemiWeather.fetchWeather()
-        weatherImageView.image = PresentWeather(weatherString: fetchedWeather)?.tintedImage
+        weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
     }
 }
+
 
