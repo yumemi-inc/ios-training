@@ -12,14 +12,12 @@ struct WeatherPresentation {
     let tintColor: UIColor
     var tintedImage: UIImage? { image?.withTintColor(tintColor) }
     private static func nameAndColor(for weatherString: String) -> (imageName: String, tintColor: UIColor)? {
-        {
-            switch weatherString {
-            case "sunny":  return ("sun", .red)
-            case "rainy":  return ("umbrella", .blue)
-            case "cloudy": return ("cloud", .gray)
-            default:       return .none
-            }
-        }()
+        switch weatherString {
+        case "sunny":  return ("sun", .red)
+        case "rainy":  return ("umbrella", .blue)
+        case "cloudy": return ("cloud", .gray)
+        default:       return .none
+        }
     }
     init?(weatherString: String) {
         guard let attributes = Self.nameAndColor(for: weatherString) else { return nil }
