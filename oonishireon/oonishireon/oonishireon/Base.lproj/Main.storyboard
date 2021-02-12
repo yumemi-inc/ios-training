@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="3Ff-Jo-30C">
             <objects>
-                <viewController id="0H3-EW-yjq" customClass="ViewController" customModule="oonishireon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0H3-EW-yjq" customClass="WeatherViewController" customModule="oonishireon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SKa-AS-ux5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
