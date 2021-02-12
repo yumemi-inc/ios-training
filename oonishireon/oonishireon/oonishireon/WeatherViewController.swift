@@ -1,7 +1,5 @@
-
-
 //
-//  ViewController.swift
+//  WeatherViewController.swift
 //  oonishireon
 //
 //  Created by 大西 玲音 on 2021/02/09.

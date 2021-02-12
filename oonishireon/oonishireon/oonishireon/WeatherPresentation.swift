@@ -1,5 +1,5 @@
 //
-//  PresentWeather.swift
+//  WeatherPresentation.swift
 //  oonishireon
 //
 //  Created by 大西 玲音 on 2021/02/12.
@@ -8,8 +8,8 @@
 import UIKit
 
 struct WeatherPresentation {
-    var image: UIImage?
-    var tintColor: UIColor
+    let image: UIImage?
+    let tintColor: UIColor
     var tintedImage: UIImage? { image?.withTintColor(tintColor) }
     private static func nameAndColor(for weatherString: String) -> (imageName: String, tintColor: UIColor)? {
         {
