@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="3Ff-Jo-30C">
             <objects>
-                <viewController id="0H3-EW-yjq" customClass="ViewController" customModule="oonishireon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0H3-EW-yjq" customClass="WeatherViewController" customModule="oonishireon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SKa-AS-ux5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,6 +51,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0N-Zs-oHO">
                                 <rect key="frame" x="235.5" y="642" width="47" height="30"/>
                                 <state key="normal" title="Reload"/>
+                                <connections>
+                                    <action selector="tappedReloadButton:" destination="0H3-EW-yjq" eventType="touchUpInside" id="ujJ-Cv-qvz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oia-TW-4D1"/>
@@ -65,6 +68,9 @@
                             <constraint firstItem="I0N-Zs-oHO" firstAttribute="centerX" secondItem="WO2-Xk-Eds" secondAttribute="centerX" id="uXM-1y-eCg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherImageView" destination="8QK-v6-sQn" id="aZc-I0-kih"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZ3-ER-wBL" sceneMemberID="firstResponder"/>
             </objects>
