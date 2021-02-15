@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		69D1DCB025D63AA4004354B0 /* WeatherPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DCAF25D63AA4004354B0 /* WeatherPresentation.swift */; };
-		69D1DCD825D68C1C004354B0 /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DCD725D68C1C004354B0 /* UIAlertController+.swift */; };
-		69D1DCDD25D68C36004354B0 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DCDC25D68C36004354B0 /* UIViewController+.swift */; };
+		69D1DCD825D68C1C004354B0 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DCD725D68C1C004354B0 /* UIAlertController+Extension.swift */; };
+		69D1DCDD25D68C36004354B0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DCDC25D68C36004354B0 /* UIViewController+Extension.swift */; };
 		69D9EEFC25D24BC1004A0D3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D9EEFB25D24BC1004A0D3B /* AppDelegate.swift */; };
 		69D9EEFE25D24BC1004A0D3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D9EEFD25D24BC1004A0D3B /* SceneDelegate.swift */; };
 		69D9EF0025D24BC1004A0D3B /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D9EEFF25D24BC1004A0D3B /* WeatherViewController.swift */; };
@@ -40,8 +40,8 @@
 
 /* Begin PBXFileReference section */
 		69D1DCAF25D63AA4004354B0 /* WeatherPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPresentation.swift; sourceTree = "<group>"; };
-		69D1DCD725D68C1C004354B0 /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
-		69D1DCDC25D68C36004354B0 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		69D1DCD725D68C1C004354B0 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		69D1DCDC25D68C36004354B0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		69D9EEF825D24BC1004A0D3B /* oonishireon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oonishireon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69D9EEFB25D24BC1004A0D3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69D9EEFD25D24BC1004A0D3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 		69D1DCD625D68BE6004354B0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				69D1DCD725D68C1C004354B0 /* UIAlertController+.swift */,
-				69D1DCDC25D68C36004354B0 /* UIViewController+.swift */,
+				69D1DCD725D68C1C004354B0 /* UIAlertController+Extension.swift */,
+				69D1DCDC25D68C36004354B0 /* UIViewController+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -309,10 +309,10 @@
 			files = (
 				69D9EF0025D24BC1004A0D3B /* WeatherViewController.swift in Sources */,
 				69D9EEFC25D24BC1004A0D3B /* AppDelegate.swift in Sources */,
-				69D1DCDD25D68C36004354B0 /* UIViewController+.swift in Sources */,
+				69D1DCDD25D68C36004354B0 /* UIViewController+Extension.swift in Sources */,
 				69D1DCB025D63AA4004354B0 /* WeatherPresentation.swift in Sources */,
 				69D9EEFE25D24BC1004A0D3B /* SceneDelegate.swift in Sources */,
-				69D1DCD825D68C1C004354B0 /* UIAlertController+.swift in Sources */,
+				69D1DCD825D68C1C004354B0 /* UIAlertController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

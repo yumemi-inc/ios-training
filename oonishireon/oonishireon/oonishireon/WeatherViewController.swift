@@ -20,7 +20,7 @@ class WeatherViewController: UIViewController {
         do {
             let fetchedWeather = try YumemiWeather.fetchWeather(at: "tokyo")
             weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
-        }catch {
+        } catch {
             present(.alert(title: "エラー", message: "エラーが発生しました。"))
         }
     }
