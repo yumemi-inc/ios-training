@@ -17,9 +17,22 @@ class WeatherViewController: UIViewController {
     }
     
     @IBAction func tappedReloadButton(_ sender: Any) {
-        let fetchedWeather = YumemiWeather.fetchWeather()
-        weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
+        do {
+            let fetchedWeather = try YumemiWeather.fetchWeather(at: "tokyo")
+            weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
+            
+        } catch YumemiWeatherError.invalidParameterError {
+            present(.alert(title: "エラー", message: "無効なパラメータが発生しました。"))
+            
+        } catch YumemiWeatherError.jsonDecodeError {
+            present(.alert(title: "エラー", message: "Jsonの読み込みに失敗しました。"))
+            
+        } catch YumemiWeatherError.unknownError {
+            present(.alert(title: "エラー", message: "不明なエラーが発生しました。"))
+            
+        } catch {
+            present(.alert(title: "エラー", message: "予期しないエラーが発生しました。"))
+            assertionFailure("YumemiWeatherErrorでないエラーが発生しました。")
+        }
     }
 }
-
-
