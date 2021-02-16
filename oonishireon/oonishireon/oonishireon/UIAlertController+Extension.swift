@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIAlertController {
-    static func alert(title: String?, message: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
+    static func createAlert(title: String?, message: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(.init(title: "閉じる", style: .default, handler: handler))
         return alert

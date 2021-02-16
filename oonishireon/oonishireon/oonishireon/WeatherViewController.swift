@@ -22,16 +22,16 @@ class WeatherViewController: UIViewController {
             weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
             
         } catch YumemiWeatherError.invalidParameterError {
-            present(.alert(title: "エラー", message: "無効なパラメータが発生しました。"))
+            present(.createAlert(title: "エラー", message: "無効なパラメータが発生しました。"))
             
         } catch YumemiWeatherError.jsonDecodeError {
-            present(.alert(title: "エラー", message: "Jsonの読み込みに失敗しました。"))
+            present(.createAlert(title: "エラー", message: "Jsonの読み込みに失敗しました。"))
             
         } catch YumemiWeatherError.unknownError {
-            present(.alert(title: "エラー", message: "不明なエラーが発生しました。"))
+            present(.createAlert(title: "エラー", message: "不明なエラーが発生しました。"))
             
         } catch {
-            present(.alert(title: "エラー", message: "予期しないエラーが発生しました。"))
+            present(.createAlert(title: "エラー", message: "予期しないエラーが発生しました。"))
             assertionFailure("YumemiWeatherErrorでないエラーが発生しました。")
         }
     }
