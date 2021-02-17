@@ -11,6 +11,8 @@ import YumemiWeather
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak private var weatherImageView: UIImageView!
+    @IBOutlet weak private var minTemperatureLabel: UILabel!
+    @IBOutlet weak private var maxTemperatureLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +20,17 @@ class WeatherViewController: UIViewController {
     
     @IBAction func tappedReloadButton(_ sender: Any) {
         do {
-            let fetchedWeather = try YumemiWeather.fetchWeather(at: "tokyo")
-            weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
+            let jsonString = "{\"area\": \"tokyo\",\"date\": \"2020-04-01T12:00:00+09:00\"}"
+            let fetchedWeather = try YumemiWeather.fetchWeather(jsonString)
+            let jsonData =  fetchedWeather.data(using: .utf8)!
+            let json = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! [String: Any]
+            weatherImageView.image = WeatherPresentation(weatherString: json["weather"] as! String)?.tintedImage
+            if let jsonMinTemp = json["min_temp"], let jsonMaxTemp = json["max_temp"] {
+                let jsonMinTempString = String(describing: jsonMinTemp)
+                minTemperatureLabel.text = jsonMinTempString
+                let jsonMaxTempString = String(describing: jsonMaxTemp)
+                maxTemperatureLabel.text = jsonMaxTempString
+            }
             
         } catch YumemiWeatherError.invalidParameterError {
             present(.createAlert(title: "エラー", message: "無効なパラメータが発生しました。"))
