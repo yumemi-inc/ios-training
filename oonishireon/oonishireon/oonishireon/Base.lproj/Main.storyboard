@@ -69,6 +69,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="maxTemperatureLabel" destination="WO2-Xk-Eds" id="g4i-kz-pbj"/>
+                        <outlet property="minTemperatureLabel" destination="rhs-AH-uxT" id="pt4-2L-7BQ"/>
                         <outlet property="weatherImageView" destination="8QK-v6-sQn" id="aZc-I0-kih"/>
                     </connections>
                 </viewController>

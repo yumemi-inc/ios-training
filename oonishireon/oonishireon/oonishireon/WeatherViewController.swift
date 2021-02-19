@@ -11,6 +11,8 @@ import YumemiWeather
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak private var weatherImageView: UIImageView!
+    @IBOutlet weak private var minTemperatureLabel: UILabel!
+    @IBOutlet weak private var maxTemperatureLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +20,11 @@ class WeatherViewController: UIViewController {
     
     @IBAction func tappedReloadButton(_ sender: Any) {
         do {
-            let fetchedWeather = try YumemiWeather.fetchWeather(at: "tokyo")
-            weatherImageView.image = WeatherPresentation(weatherString: fetchedWeather)?.tintedImage
+            guard let fetchedDictionary = try WeatherFetcher.fetchJsonDictionary() else { return }
+            let weatherPresentation = WeatherPresentation(weatherDictionary: fetchedDictionary)
+            weatherImageView.image = weatherPresentation?.tintedImage
+            minTemperatureLabel.text = weatherPresentation?.minTemperature
+            maxTemperatureLabel.text = weatherPresentation?.maxTemperature
             
         } catch YumemiWeatherError.invalidParameterError {
             present(.createAlert(title: "エラー", message: "無効なパラメータが発生しました。"))
@@ -29,7 +34,7 @@ class WeatherViewController: UIViewController {
             
         } catch YumemiWeatherError.unknownError {
             present(.createAlert(title: "エラー", message: "不明なエラーが発生しました。"))
-            
+
         } catch {
             present(.createAlert(title: "エラー", message: "予期しないエラーが発生しました。"))
             assertionFailure("YumemiWeatherErrorでないエラーが発生しました。")
