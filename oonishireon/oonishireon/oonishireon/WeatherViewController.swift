@@ -20,8 +20,8 @@ class WeatherViewController: UIViewController {
     
     @IBAction func tappedReloadButton(_ sender: Any) {
         do {
-            guard let fetchedDictionary = try WeatherFetcher.fetchJsonDictionary() else { return }
-            let weatherPresentation = WeatherPresentation(weatherDictionary: fetchedDictionary)
+            let fetchedWeatherInformation = try WeatherFetcher.fetchWeatherInformation()
+            let weatherPresentation = WeatherPresentation(weatherInformation: fetchedWeatherInformation)
             weatherImageView.image = weatherPresentation?.tintedImage
             minTemperatureLabel.text = weatherPresentation?.minTemperature
             maxTemperatureLabel.text = weatherPresentation?.maxTemperature

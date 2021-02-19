@@ -11,6 +11,7 @@
 		69D1DCD825D68C1C004354B0 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DCD725D68C1C004354B0 /* UIAlertController+Extension.swift */; };
 		69D1DCDD25D68C36004354B0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DCDC25D68C36004354B0 /* UIViewController+Extension.swift */; };
 		69D1DD9325DD1401004354B0 /* WeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DD9225DD1401004354B0 /* WeatherFetcher.swift */; };
+		69D1DDA925DF83CD004354B0 /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DDA825DF83CD004354B0 /* WeatherInformation.swift */; };
 		69D9EEFC25D24BC1004A0D3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D9EEFB25D24BC1004A0D3B /* AppDelegate.swift */; };
 		69D9EEFE25D24BC1004A0D3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D9EEFD25D24BC1004A0D3B /* SceneDelegate.swift */; };
 		69D9EF0025D24BC1004A0D3B /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D9EEFF25D24BC1004A0D3B /* WeatherViewController.swift */; };
@@ -44,6 +45,7 @@
 		69D1DCD725D68C1C004354B0 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		69D1DCDC25D68C36004354B0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		69D1DD9225DD1401004354B0 /* WeatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFetcher.swift; sourceTree = "<group>"; };
+		69D1DDA825DF83CD004354B0 /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
 		69D9EEF825D24BC1004A0D3B /* oonishireon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oonishireon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69D9EEFB25D24BC1004A0D3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69D9EEFD25D24BC1004A0D3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				69D1DCAF25D63AA4004354B0 /* WeatherPresentation.swift */,
 				69D1DD9225DD1401004354B0 /* WeatherFetcher.swift */,
+				69D1DDA825DF83CD004354B0 /* WeatherInformation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69D1DDA925DF83CD004354B0 /* WeatherInformation.swift in Sources */,
 				69D1DD9325DD1401004354B0 /* WeatherFetcher.swift in Sources */,
 				69D9EF0025D24BC1004A0D3B /* WeatherViewController.swift in Sources */,
 				69D9EEFC25D24BC1004A0D3B /* AppDelegate.swift in Sources */,

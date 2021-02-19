@@ -9,11 +9,13 @@ import UIKit
 import YumemiWeather
 
 struct WeatherFetcher {
-    static func fetchJsonDictionary() throws -> [String: Any]? {
+    static func fetchWeatherInformation() throws -> WeatherInformation {
         let jsonString = #"{"area": "tokyo","date": "2020-04-01T12:00:00+09:00"}"#
         let fetchedWeather = try YumemiWeather.fetchWeather(jsonString)
         let jsonData =  fetchedWeather.data(using: .utf8)!
-        let fetchedResultDictionary = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String: Any]
-        return fetchedResultDictionary
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let weatherInformation = try decoder.decode(WeatherInformation.self, from: jsonData)
+        return weatherInformation
     }
 }

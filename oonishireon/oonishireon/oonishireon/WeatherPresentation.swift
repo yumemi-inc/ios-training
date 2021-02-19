@@ -23,10 +23,10 @@ struct WeatherPresentation {
         }
     }
     
-    init?(weatherDictionary: [String: Any]) {
-        guard let attributes = Self.nameAndColor(for: weatherDictionary["weather"] as! String),
-              let maxTemp = weatherDictionary["max_temp"],
-              let minTemp = weatherDictionary["min_temp"] else { return nil }
+    init?(weatherInformation: WeatherInformation) {
+        guard let attributes = Self.nameAndColor(for: weatherInformation.weather) else { return nil }
+        let maxTemp = weatherInformation.minTemp
+        let minTemp = weatherInformation.maxTemp
         image = UIImage(named: attributes.imageName)
         tintColor = attributes.tintColor
         maxTemperature = String(describing: maxTemp)
