@@ -17,7 +17,7 @@ class WeatherViewController: UIViewController {
     @IBAction func tappedReloadButton(_ sender: Any) {
         do {
             let fetchedWeatherInformation = try WeatherFetcher.fetchWeatherInformation()
-            let weatherPresentation = WeatherPresentation(weatherResponse: fetchedWeatherInformation)
+            let weatherPresentation = WeatherPresentation(weatherInformation: fetchedWeatherInformation)
             weatherImageView.image = weatherPresentation?.tintedImage
             minTemperatureLabel.text = weatherPresentation?.minTemperature
             maxTemperatureLabel.text = weatherPresentation?.maxTemperature
@@ -32,7 +32,7 @@ class WeatherViewController: UIViewController {
             present(.createAlert(title: "エラー", message: "不明なエラーが発生しました。"))
             
         } catch let DecodingError.dataCorrupted(context) {
-            present(.createAlert(title: "エラー", message: "JsonDecodeに失敗しました。"))
+            present(.createAlert(title: "エラー", message: "JsonDecodeに失敗しました。\(context)"))
             
         } catch {
             present(.createAlert(title: "エラー", message: "予期しないエラーが発生しました。"))
