@@ -22,7 +22,7 @@ XCTestを使ってアプリのテストコードを書いてみましょう
 ※必ずこの通りにしなくてもOKです。最良の方法ではなく、シンプルな例の紹介です
 1. WeatherModelというProtocolを定義する
 1. WeatherModelには`天気予報を取得する`関数を宣言する
-1. WeatherModelの実装クラスWeatherModelImplを定義suru
+1. WeatherModelの実装クラスWeatherModelImplを定義する
 1. ViewControllerから`天気予報を取得する実装`を切り離し、WeatherModelImplにおく
 1. ViewControllerはWeatherModelをプロパティとしてもつ
 1. ViewControllerの`天気予報を取得する実装`をWeatherModelの関数呼び出しに置き換える
