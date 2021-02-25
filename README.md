@@ -22,7 +22,7 @@ SwiftPackageManagerに対応しています。
 1. XcodeProjectに[YumemiWeather](Documentation/YumemiWeather.md)を導入
 1. `main`ブランチをPush
 1. 課題用のブランチを切って実施  
-`/session/{#}`
+`session/{#}`
 1. 完了したらPull Requestを作成し、レビュー依頼  
 `main` <-- `session/{#}`
 1. Approvalされたらマージ
