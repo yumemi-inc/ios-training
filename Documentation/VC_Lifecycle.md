@@ -11,7 +11,6 @@ UIViewControllerのライフサイクルに関するリファレンスをまと�
 [viewWillLayoutSubviews](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621437-viewwilllayoutsubviews)  
 [viewDidLayoutSubviews](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621398-viewdidlayoutsubviews)
 
-# 別画面に遷移して、戻ってきたとき天気予報を更新する
 ## 課題
 - `新しいViewController`を追加する
 - アプリケーション起動時に`新しいViewController`に遷移する
