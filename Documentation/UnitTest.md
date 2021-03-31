@@ -43,6 +43,7 @@ SwiftにはProtocolという機能があります。
 [Protocol-Oriented Programming in Swift](https://developer.apple.com/videos/play/wwdc2015/408/)  
 サンプルコードが古いですが、日本語の分かり易い資料として  
 [Swiftにおけるプロトコル指向プログラミング](https://github.com/mixi-inc/iOSTraining/blob/master/Swift/pages/day4/2-3_protocol-oriented-programming.md)
+[SwiftとProtocol指向](https://speakerdeck.com/lovee/swift-to-protocol-zhi-xiang)
 
 IntやArrayなどの型もProtocolを用いて実装されています。  
 `Conforms To`の項に採用されているProtocolが列挙されています。  
