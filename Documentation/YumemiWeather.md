@@ -6,7 +6,7 @@ SwiftPackageManagerに対応しています。
 
 1. Xcodeプロジェクトを開く
 1. File > Swift Packages > Add Package Dependency...
-1. テキストフィールドに`git@github.com:yumemi/ios-training.git`を入力し、`Next`ボタンクリック
+1. テキストフィールドに`https://github.com/yumemi-inc/ios-training.git`を入力し、`Next`ボタンクリック
 1. versionはそのままで`Next`ボタンクリック
 
 # APIs
