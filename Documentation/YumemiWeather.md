@@ -129,7 +129,6 @@ YumemiWeatherError
 ```swift
 public enum YumemiWeatherError: Swift.Error {
     case invalidParameterError
-    case jsonDecodeError
     case unknownError
 }
 ```
