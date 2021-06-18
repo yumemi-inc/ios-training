@@ -28,18 +28,18 @@ warnings が出力されないこと
 
 <!-- どれかにチェックをつけてください。 -->
 
-- [] [Session1](Documentation/AutoLayout.md)
-- [] [Session2](Documentation/API.md)
-- [] [Session3](Documentation/Error.md)
-- [] [Session4](Documentation/Json.md)
-- [] [Session5](Documentation/Codable.md)
-- [] [Session6](Documentation/VC_Lifecycle.md)
-- [] [Session7](Documentation/NotificationCenter.md)
-- [] [Session8](Documentation/UnitTest.md)
-- [] [Session9](Documentation/ThreadBlock.md)
-- [] [Session10](Documentation/Delegate.md)
-- [] [Session11](Documentation/Closure.md)
-- [] [Session12](Documentation/BugFix.md)
+- [ ] [Session1](Documentation/AutoLayout.md)
+- [ ] [Session2](Documentation/API.md)
+- [ ] [Session3](Documentation/Error.md)
+- [ ] [Session4](Documentation/Json.md)
+- [ ] [Session5](Documentation/Codable.md)
+- [ ] [Session6](Documentation/VC_Lifecycle.md)
+- [ ] [Session7](Documentation/NotificationCenter.md)
+- [ ] [Session8](Documentation/UnitTest.md)
+- [ ] [Session9](Documentation/ThreadBlock.md)
+- [ ] [Session10](Documentation/Delegate.md)
+- [ ] [Session11](Documentation/Closure.md)
+- [ ] [Session12](Documentation/BugFix.md)
 
 ## スクリーンショット
 
