@@ -28,18 +28,18 @@ warnings が出力されないこと
 
 <!-- どれかにチェックをつけてください。 -->
 
-- [ ] [Session1](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/AutoLayout.md)
-- [ ] [Session2](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/API.md)
-- [ ] [Session3](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Error.md)
-- [ ] [Session4](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Json.md)
-- [ ] [Session5](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Codable.md)
-- [ ] [Session6](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/VC_Lifecycle.md)
-- [ ] [Session7](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/NotificationCenter.md)
-- [ ] [Session8](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/UnitTest.md)
-- [ ] [Session9](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/ThreadBlock.md)
-- [ ] [Session10](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Delegate.md)
-- [ ] [Session11](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Closure.md)
-- [ ] [Session12](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/BugFix.md)
+- ~~[Session1](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/AutoLayout.md)~~
+- ~~[Session2](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/API.md)~~
+- ~~[Session3](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Error.md)~~
+- ~~[Session4](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Json.md)~~
+- ~~[Session5](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Codable.md)~~
+- ~~[Session6](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/VC_Lifecycle.md)~~
+- ~~[Session7](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/NotificationCenter.md)~~
+- ~~[Session8](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/UnitTest.md)~~
+- ~~[Session9](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/ThreadBlock.md)~~
+- ~~[Session10](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Delegate.md)~~
+- ~~[Session11](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Closure.md)~~
+- ~~[Session12](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/BugFix.md)~~
 
 ## スクリーンショット
 
