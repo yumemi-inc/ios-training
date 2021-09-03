@@ -1,32 +1,6 @@
-## 概要
-
-<!-- 箇条書きで良いので、簡素に記載をお願い致します。 -->
-
-## レビュー観点
-
-<!-- 
-レビューアに確認してほしい事柄の記載をお願い致します。
-特に、本PRにてレビュー対象外の内容があれば合わせて記載をお願い致します。
-
-(例)
-ビルドが通る状態となっているか
-warnings が出力されないこと
-デザインだけ組み込んだので、仕様についてはレビュー対象外として欲しい
-このコミット xxxxxxxxx(commit hash) を主にレビューして欲しい
--->
-
-## レビューレベル
-
-<!-- どれかの打ち消し線を外してください。 -->
-
-- ~~Lv0: まったく見ないでAcceptする~~
-- ~~Lv1: ぱっとみて違和感がないかチェックしてAcceptする~~
-- ~~Lv2: 仕様レベルまで理解して、仕様通りに動くかある程度検証してAcceptする~~
-- ~~Lv3: 実際に環境で動作確認したうえでAcceptする~~
-
 ## 課題へのリンク
 
-<!-- どれかにチェックをつけてください。 -->
+<!-- どれかの打ち消し線を外してください。 -->
 
 - ~~[Session1](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/AutoLayout.md)~~
 - ~~[Session2](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/API.md)~~
@@ -40,6 +14,10 @@ warnings が出力されないこと
 - ~~[Session10](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Delegate.md)~~
 - ~~[Session11](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/Closure.md)~~
 - ~~[Session12](https://github.com/yumemi-inc/ios-training/blob/main/Documentation/BugFix.md)~~
+
+## 概要
+
+<!-- 箇条書きで良いので、簡素に記載をお願い致します。 -->
 
 ## スクリーンショット
 
