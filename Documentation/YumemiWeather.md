@@ -124,6 +124,35 @@ Void
 
 ---
 
+## Async ver
+天気予報を取得するAPIです。  
+非同期に処理します。  
+```swift
+static func asyncFetchWeather(_ jsonString: String) async throws -> String
+```
+
+### Parameters
+#### jsonString
+Json文字列
+|Key|型|フォーマット|例|
+|:--|:--|:--|:--|
+|area|String|自由|tokyo|
+|data|String|yyyy-MM-dd'T'HH:mm:ssZZZZZ|2020-04-01T12:00:00+09:00|
+
+### Throws
+YumemiWeatherError型
+
+### Returns
+Json文字列
+|Key|型|フォーマット|例|
+|:--|:--|:--|:--|
+|weather|String|sunny or cloudy or rainy|sunny|
+|maxTemp|Int|--|20|
+|minTemp|Int|--|-20|
+|date|String|yyyy-MM-dd'T'HH:mm:ssZZZZZ|2020-04-01T12:00:00+09:00|
+
+---
+
 ## Error type
 YumemiWeatherError
 ```swift

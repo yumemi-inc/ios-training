@@ -150,4 +150,22 @@ final public class YumemiWeather {
             }
         }
     }
+    
+    /// 擬似 天気予報API Async ver
+    /// - Parameter jsonString: 地域と日付を含むJson文字列
+    /// example:
+    /// {
+    ///   "area": "tokyo",
+    ///   "date": "2020-04-01T12:00:00+09:00"
+    /// }
+    /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
+    /// - Returns: Json文字列
+    @available(iOS 13, macOS 10.15, *)
+    public static func asyncFetchWeather(_ jsonString: String) async throws -> String {
+        return try await withCheckedThrowingContinuation { continuation in
+            callbackFetchWeather(jsonString) { result in
+                continuation.resume(with: result)
+            }
+        }
+    }
 }
