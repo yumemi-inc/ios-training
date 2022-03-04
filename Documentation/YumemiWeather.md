@@ -99,11 +99,11 @@ Json文字列
 
 ---
 
-## Async ver
+## Callback ver
 天気予報を取得するAPIです。  
-非同期に処理します。  
+非同期に処理し、結果をコンプリーションハンドラーに渡します。  
 ```swift
-static func asyncFetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void)
+static func callbackFetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void)
 ```
 
 ### Parameters
