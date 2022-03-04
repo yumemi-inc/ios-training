@@ -51,7 +51,8 @@ Session1がレビュー待ちの場合...
 - [Session9](Documentation/ThreadBlock.md)
 - [Session10](Documentation/Delegate.md)
 - [Session11](Documentation/Closure.md)
-- [Session12](Documentation/BugFix.md)
+- [Session12](Documentation/Concurrency.md)
+- [Session13](Documentation/BugFix.md)
   
 **(注1)**  
 このようなケースで `rebase` コマンドを使うことが必ずしも正しいとは限りません。  
