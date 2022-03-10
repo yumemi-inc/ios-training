@@ -1,6 +1,6 @@
 # コンカレンシー
 
-iOS 15以降のSwiftランタイムはコンカレンシー（並行演算）をサポートし、、またXcode 13.2以降ではこの機能をiOS 13までバックデプロイしました。
+iOS 15以降のSwiftランタイムはコンカレンシー（並行演算）をサポートし、またXcode 13.2以降ではこの機能をiOS 13までバックデプロイしました。
 コンカレンシーを使うと、これまでのようにスレッドをブロックすることなく、あたかも同期的に処理が書けますが、内部的にはきちんと非同期に動きます。
 例えばURLSessionの[data(from:delegate:)](https://developer.apple.com/documentation/foundation/urlsession/3767353-data)などがこの機能を利用しています。
 
