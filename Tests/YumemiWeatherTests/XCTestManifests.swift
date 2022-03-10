@@ -1,9 +1,14 @@
 import XCTest
 
 #if !canImport(ObjectiveC)
-public func allTests() -> [XCTestCaseEntry] {
+public func allNonConcurrentTests() -> [XCTestCaseEntry] {
     return [
-        testCase(YumemiWeatherTests.allTests),
+        testCase(YumemiWeatherTests.allNonConcurrentTests),
+    ]
+}
+public func allConcurrentTests() -> [XCTestCaseEntry] {
+    return [
+        testCase(YumemiWeatherTests.allConcurrentTests),
     ]
 }
 #endif
