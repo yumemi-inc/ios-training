@@ -33,19 +33,18 @@ final public class YumemiWeather {
         return dateFormatter
     }()
     
-    private static let decoder: JSONDecoder = {
+    static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         return decoder
     }()
     
-    private static let encoder: JSONEncoder = {
+    static let encoder: JSONEncoder = {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dateEncodingStrategy = .formatted(dateFormatter)
         return encoder
     }()
-    
     
     /// 引数の値でResponse構造体を作成する。引数がnilの場合はランダムに値を作成する。
     /// - Parameters:
@@ -54,7 +53,7 @@ final public class YumemiWeather {
     ///   - minTemp: 最低気温
     ///   - date: 日付
     /// - Returns: Response構造体
-    private static func makeRandomResponse(weather: Weather? = nil, maxTemp: Int? = nil, minTemp: Int? = nil, date: Date? = nil) -> Response {
+    static func makeRandomResponse(weather: Weather? = nil, maxTemp: Int? = nil, minTemp: Int? = nil, date: Date? = nil) -> Response {
         let weather = weather ?? Weather.allCases.randomElement()!
         let maxTemp = maxTemp ?? Int.random(in: 10...40)
         let minTemp = minTemp ?? Int.random(in: -40..<maxTemp)
