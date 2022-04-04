@@ -4,8 +4,8 @@ UIViewControllerのライフサイクルに関するリファレンスをまと�
 各コールバック関数に`print`を入れて、動作を確認してみると良いです。
 
 ### Viewの生成、表示、非表示
-[Work with View Controllers](https://developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/WorkWithViewControllers.html#//apple_ref/doc/uid/TP40015214-CH6-SW1)  
-※`Understand the View Controller Lifecycle`の項  
+[UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller)  
+※`Handling View-Related Notifications`の項  
 
 ### レイアウト調整
 [viewWillLayoutSubviews](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621437-viewwilllayoutsubviews)  
