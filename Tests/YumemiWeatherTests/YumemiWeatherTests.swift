@@ -2,12 +2,12 @@ import XCTest
 @testable import YumemiWeather
 
 final class YumemiWeatherTests: XCTestCase {
-    
+
     func test_fetchWeather() {
         let str = YumemiWeather.fetchWeather()
         XCTAssertNotNil(Weather(rawValue: str))
     }
-    
+
     func test_fetchWeather_at() {
         do {
             let str = try YumemiWeather.fetchWeather(at: "tokyo")
@@ -20,7 +20,7 @@ final class YumemiWeatherTests: XCTestCase {
             XCTFail()
         }
     }
-    
+
     func test_fetchWeather_jsonString() {
         let parameter = """
 {
@@ -44,7 +44,7 @@ final class YumemiWeatherTests: XCTestCase {
             XCTFail()
         }
     }
-    
+
     func test_fetchWeather_jsonString_sync() {
         let beginDate = Date()
         let parameter = """
@@ -68,10 +68,10 @@ final class YumemiWeatherTests: XCTestCase {
         catch {
             XCTFail()
         }
-        
+
         XCTAssertGreaterThanOrEqual(Date().timeIntervalSince(beginDate), YumemiWeather.apiDuration)
     }
-    
+
     func test_fetchWeather_jsonString_callback() {
         let parameter = """
 {
@@ -121,10 +121,10 @@ final class YumemiWeatherTests: XCTestCase {
         catch {
             XCTFail()
         }
-        
+
         XCTAssertGreaterThanOrEqual(Date().timeIntervalSince(beginDate), YumemiWeather.apiDuration)
     }
-    
+
     static var allNonConcurrentTests = [
         ("test_fetchWeather", test_fetchWeather),
         ("test_fetchWeather_at", test_fetchWeather_at),
@@ -132,7 +132,7 @@ final class YumemiWeatherTests: XCTestCase {
         ("test_fetchWeather_jsonString_sync", test_fetchWeather_jsonString_sync),
         ("test_fetchWeather_jsonString_callback", test_fetchWeather_jsonString_callback),
     ]
-    
+
     @available(iOS 13, macOS 10.15, *)
     static var allConcurrentTests = [
         ("test_fetchWeather_jsonString_async", test_fetchWeather_jsonString_async),

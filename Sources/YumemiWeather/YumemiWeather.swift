@@ -24,28 +24,28 @@ public enum YumemiWeatherError: Swift.Error {
 }
 
 final public class YumemiWeather {
-    
+
     static let apiDuration: TimeInterval = 2
-    
+
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         return dateFormatter
     }()
-    
+
     static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         return decoder
     }()
-    
+
     static let encoder: JSONEncoder = {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dateEncodingStrategy = .formatted(dateFormatter)
         return encoder
     }()
-    
+
     /// 引数の値でResponse構造体を作成する。引数がnilの場合はランダムに値を作成する。
     /// - Parameters:
     ///   - weather: 天気を表すenum
@@ -58,7 +58,7 @@ final public class YumemiWeather {
         let maxTemp = maxTemp ?? Int.random(in: 10...40)
         let minTemp = minTemp ?? Int.random(in: -40..<maxTemp)
         let date = date ?? Date()
-        
+
         return Response(
             weather: weather.rawValue,
             maxTemp: maxTemp,
@@ -66,13 +66,13 @@ final public class YumemiWeather {
             date: date
         )
     }
-    
+
     /// 擬似 天気予報API Simple ver
     /// - Returns: 天気を表す文字列 "sunny" or "cloudy" or "rainy"
     public static func fetchWeather() -> String {
         return self.makeRandomResponse().weather
     }
-    
+
     /// 擬似 天気予報API Throws ver
     /// - Parameters:
     ///   - area: 天気予報を取得する対象地域 example: "tokyo"
@@ -82,10 +82,10 @@ final public class YumemiWeather {
         if Int.random(in: 0...4) == 4 {
             throw YumemiWeatherError.unknownError
         }
-        
+
         return self.makeRandomResponse().weather
     }
-    
+
     /// 擬似 天気予報API Json ver
     /// - Parameter jsonString: 地域と日付を含むJson文字列
     /// example:
@@ -101,17 +101,17 @@ final public class YumemiWeather {
               let request = try? decoder.decode(Request.self, from: requestData) else {
             throw YumemiWeatherError.invalidParameterError
         }
-        
+
         let response = makeRandomResponse(date: request.date)
         let responseData = try encoder.encode(response)
-        
+
         if Int.random(in: 0...4) == 4 {
             throw YumemiWeatherError.unknownError
         }
-        
+
         return String(data: responseData, encoding: .utf8)!
     }
-    
+
     /// 擬似 天気予報API Sync ver
     /// - Parameter jsonString: 地域と日付を含むJson文字列
     /// example:
@@ -149,7 +149,7 @@ final public class YumemiWeather {
             }
         }
     }
-    
+
     /// 擬似 天気予報API Async ver
     /// - Parameter jsonString: 地域と日付を含むJson文字列
     /// example:

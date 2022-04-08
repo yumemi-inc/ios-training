@@ -1,6 +1,6 @@
 //
 //  YumemiWeatherList.swift
-//  
+//
 //
 //  Created by 古宮 伸久 on 2022/04/04.
 //
@@ -33,7 +33,7 @@ public enum Area: String, CaseIterable, Codable {
 }
 
 public extension YumemiWeather {
-    
+
     /// 擬似 天気予報一覧API Json ver
     /// - Parameter jsonString: 地域と日付を含むJson文字列
     /// example:

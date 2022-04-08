@@ -2,7 +2,7 @@ import XCTest
 @testable import YumemiWeather
 
 final class YumemiWeatherListTests: XCTestCase {
-    
+
     func test_fetchWeatherList_jsonString() {
         let parameter = """
 {
