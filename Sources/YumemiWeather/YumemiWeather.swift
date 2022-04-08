@@ -52,11 +52,18 @@ final public class YumemiWeather {
     ///   - maxTemp: 最高気温
     ///   - minTemp: 最低気温
     ///   - date: 日付
+    ///   - seed: シード値
     /// - Returns: Response構造体
-    static func makeRandomResponse(weather: Weather? = nil, maxTemp: Int? = nil, minTemp: Int? = nil, date: Date? = nil) -> Response {
-        let weather = weather ?? Weather.allCases.randomElement()!
-        let maxTemp = maxTemp ?? Int.random(in: 10...40)
-        let minTemp = minTemp ?? Int.random(in: -40..<maxTemp)
+
+    static func makeRandomResponse(weather: Weather? = nil, maxTemp: Int? = nil, minTemp: Int? = nil, date: Date? = nil, seed: Int? = nil) -> Response {
+        return makeRandomResponse(weather: weather, maxTemp: maxTemp, minTemp: minTemp, date: date, seed: seed ?? Int.random(in: Int.min...Int.max))
+    }
+
+    private static func makeRandomResponse(weather: Weather?, maxTemp: Int?, minTemp: Int?, date: Date?, seed seedValue: Int) -> Response {
+        var seed = SeedRandomNumberGenerator(seed: seedValue)
+        let weather = weather ?? Weather.allCases.randomElement(using: &seed)!
+        let maxTemp = maxTemp ?? Int.random(in: 10...40, using: &seed)
+        let minTemp = minTemp ?? Int.random(in: -40..<maxTemp, using: &seed)
         let date = date ?? Date()
 
         return Response(
