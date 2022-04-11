@@ -46,6 +46,11 @@ final class YumemiWeatherListTests: XCTestCase {
             XCTAssertEqual(response.count, 1)
             let tokyo = response.first
             XCTAssertEqual(tokyo?.area, .Tokyo)
+
+            let responseJson2 = try YumemiWeather.fetchWeatherList(parameter)
+            let response2 = try decoder.decode([AreaResponse].self, from: Data(responseJson2.utf8))
+            let tokyo2 = response2.first
+            XCTAssertEqual(tokyo?.info, tokyo2?.info)
         }
         catch let error as YumemiWeatherError {
             XCTAssertEqual(error, YumemiWeatherError.unknownError)
@@ -75,6 +80,7 @@ final class YumemiWeatherListTests: XCTestCase {
             XCTAssertNotNil(tokyo)
             let nagoya = response.first(where: { $0.area == .Nagoya })
             XCTAssertNotNil(nagoya)
+            XCTAssertNotEqual(tokyo?.info, nagoya?.info)
         }
         catch let error as YumemiWeatherError {
             XCTAssertEqual(error, YumemiWeatherError.unknownError)
