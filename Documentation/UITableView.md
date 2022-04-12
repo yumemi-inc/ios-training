@@ -1,8 +1,8 @@
-# UIKit
+# UITableView
 
-UIKitを活用してみましょう
+[UITableView](https://developer.apple.com/documentation/uikit/uitableview)を使ってみましょう
 
-## 課題 [UITableView](https://developer.apple.com/documentation/uikit/uitableview)
+## 課題
 
 - 呼び出しAPIの`List ver`を使用する
 
