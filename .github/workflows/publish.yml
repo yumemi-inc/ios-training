@@ -25,6 +25,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run Bitrise
       - run: >
-          curl -X POST -H "Authorization: ${{secrets.CI_BITRISE_TOKEN}}"
+          curl -X POST -H "Authorization: ${{secrets.IOSTRAININGBITRISE}}"
           --data '{"hook_info":{"type":"bitrise"},"build_params":{"branch":"main","workflow_id":"primary"}}'
           https://api.bitrise.io/v0.1/apps/${{secrets.BUILD_SLUG}}/builds
