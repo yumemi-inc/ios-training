@@ -10,7 +10,7 @@ static func syncFetchWeather(_ jsonString: String) throws -> String
 
 ## 課題
 - 呼び出しAPIを`Sync ver`に変更する
-- APIの処理が戻るまでUIActivityIndicatorを表示する
+- APIの処理が戻るまで[UIActivityIndicatorView](https://developer.apple.com/documentation/uikit/uiactivityindicatorview)を表示する
 
 ※イメージ  
 ![thread block](Images/ThreadBlock.gif)
