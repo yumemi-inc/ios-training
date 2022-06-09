@@ -34,16 +34,30 @@ public enum Area: String, CaseIterable, Codable {
 
 public extension YumemiWeather {
 
-    /// 擬似 天気予報一覧API Json ver
-    /// - Parameter jsonString: 地域と日付を含むJson文字列
-    /// example:
-    /// {
-    ///   "areas": ["Tokyo"],
-    ///   "date": "2020-04-01T12:00:00+09:00"
-    /// }
+    /// 擬似 天気予報一覧 API JSON ver
+    ///
+    /// API に請求する JSON 文字列の例：
+    ///
+    ///     {
+    ///         "areas": ["tokyo"],
+    ///         "date": "2020-04-01T12:00:00+09:00"
+    ///     }
+    /// 返された AreaResponse の JSON 文字列の例
+    ///
+    ///     [
+    ///         {
+    ///             "area": "Tokyo",
+    ///             "info": {
+    ///                 "max_temperature": 25,
+    ///                 "date": "2020-04-01T12:00:00+09:00",
+    ///                 "min_temperature": 7,
+    ///                 "weather_condition": "cloudy"
+    ///             }
+    ///         }
+    ///     ]
     /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
-    /// - Returns: Json文字列
-    /// example: [{area: Tokyo, info: {"max_temperature":25,"date":"2020-04-01T12:00:00+09:00","min_temperature":7,"weather_condition":"cloudy"}}]
+    /// - Parameter jsonString: 地域と日付を含む JSON 文字列
+    /// - Returns: 返された AreaResponse の JSON 文字列
     static func fetchWeatherList(_ jsonString: String) throws -> String {
         guard let requestData = jsonString.data(using: .utf8),
               let request = try? decoder.decode(AreaRequest.self, from: requestData) else {
@@ -66,28 +80,61 @@ public extension YumemiWeather {
         return String(data: responseData, encoding: .utf8)!
     }
 
-    /// 擬似 天気予報一覧API Sync ver
-    /// - Parameter jsonString: 地域と日付を含むJson文字列
-    /// example:
-    /// {
-    ///   "areas": ["Tokyo"],
-    ///   "date": "2020-04-01T12:00:00+09:00"
-    /// }
+    /// 擬似 天気予報一覧 API Sync ver
+    ///
+    /// API に請求する JSON 文字列の例：
+    ///
+    ///     {
+    ///         "areas": ["tokyo"],
+    ///         "date": "2020-04-01T12:00:00+09:00"
+    ///     }
+    /// 返された AreaResponse の JSON 文字列の例
+    ///
+    ///     [
+    ///         {
+    ///             "area": "Tokyo",
+    ///             "info": {
+    ///                 "max_temperature": 25,
+    ///                 "date": "2020-04-01T12:00:00+09:00",
+    ///                 "min_temperature": 7,
+    ///                 "weather_condition": "cloudy"
+    ///             }
+    ///         }
+    ///     ]
     /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
-    /// - Returns: Json文字列
+    /// - Parameter jsonString: 地域と日付を含む JSON 文字列
+    /// - Returns: 返された AreaResponse の JSON 文字列
     static func syncFetchWeatherList(_ jsonString: String) throws -> String {
         Thread.sleep(forTimeInterval: apiDuration)
         return try self.fetchWeatherList(jsonString)
     }
 
-    /// 擬似 天気予報一覧API Callback ver
+    /// 擬似 天気予報一覧 API Callback ver
+    ///
+    /// API に請求する JSON 文字列の例：
+    ///
+    ///     {
+    ///         "areas": ["tokyo"],
+    ///         "date": "2020-04-01T12:00:00+09:00"
+    ///     }
+    ///
+    /// 成功に返された天気 Result の中に JSON 文字列の例：
+    ///
+    ///     [
+    ///         {
+    ///             "area": "Tokyo",
+    ///             "info": {
+    ///                 "max_temperature": 25,
+    ///                 "date": "2020-04-01T12:00:00+09:00",
+    ///                 "min_temperature": 7,
+    ///                 "weather_condition": "cloudy"
+    ///             }
+    ///         }
+    ///     ]
+    ///
+    /// また、YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
     /// - Parameters:
-    ///   - jsonString: 地域と日付を含むJson文字列
-    /// example:
-    /// {
-    ///   "areas": ["Tokyo"],
-    ///   "date": "2020-04-01T12:00:00+09:00"
-    /// }
+    ///   - jsonString: 地域と日付を含む JSON 文字列
     ///   - completion: 完了コールバック
     static func callbackFetchWeatherList(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + apiDuration) {
@@ -105,14 +152,29 @@ public extension YumemiWeather {
     }
 
     /// 擬似 天気予報一覧API Async ver
-    /// - Parameter jsonString: 地域と日付を含むJson文字列
-    /// example:
-    /// {
-    ///   "areas": ["Tokyo"],
-    ///   "date": "2020-04-01T12:00:00+09:00"
-    /// }
+    ///
+    /// API に請求する JSON 文字列の例：
+    ///
+    ///     {
+    ///         "areas": ["tokyo"],
+    ///         "date": "2020-04-01T12:00:00+09:00"
+    ///     }
+    /// 返された AreaResponse の JSON 文字列の例
+    ///
+    ///     [
+    ///         {
+    ///             "area": "Tokyo",
+    ///             "info": {
+    ///                 "max_temperature": 25,
+    ///                 "date": "2020-04-01T12:00:00+09:00",
+    ///                 "min_temperature": 7,
+    ///                 "weather_condition": "cloudy"
+    ///             }
+    ///         }
+    ///     ]
     /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
-    /// - Returns: Json文字列
+    /// - Parameter jsonString: 地域と日付を含む JSON 文字列
+    /// - Returns: 返された AreaResponse の JSON 文字列
     @available(iOS 13, macOS 10.15, *)
     static func asyncFetchWeatherList(_ jsonString: String) async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in
