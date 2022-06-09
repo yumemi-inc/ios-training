@@ -7,8 +7,8 @@ struct Request: Decodable {
 
 struct Response: Codable, Equatable {
     let weather: String
-    let maxTemp: Int
-    let minTemp: Int
+    let maxTemperature: Int
+    let minTemperature: Int
     let date: Date
 }
 
@@ -49,27 +49,27 @@ final public class YumemiWeather {
     /// 引数の値でResponse構造体を作成する。引数がnilの場合はランダムに値を作成する。
     /// - Parameters:
     ///   - weather: 天気を表すenum
-    ///   - maxTemp: 最高気温
-    ///   - minTemp: 最低気温
+    ///   - maxTemperature: 最高気温
+    ///   - minTemperature: 最低気温
     ///   - date: 日付
     ///   - seed: シード値
     /// - Returns: Response構造体
 
-    static func makeRandomResponse(weather: Weather? = nil, maxTemp: Int? = nil, minTemp: Int? = nil, date: Date? = nil, seed: Int? = nil) -> Response {
-        return makeRandomResponse(weather: weather, maxTemp: maxTemp, minTemp: minTemp, date: date, seed: seed ?? Int.random(in: Int.min...Int.max))
+    static func makeRandomResponse(weather: Weather? = nil, maxTemperature: Int? = nil, minTemperature: Int? = nil, date: Date? = nil, seed: Int? = nil) -> Response {
+        return makeRandomResponse(weather: weather, maxTemperature: maxTemperature, minTemperature: minTemperature, date: date, seed: seed ?? Int.random(in: Int.min...Int.max))
     }
 
-    private static func makeRandomResponse(weather: Weather?, maxTemp: Int?, minTemp: Int?, date: Date?, seed seedValue: Int) -> Response {
+    private static func makeRandomResponse(weather: Weather?, maxTemperature: Int?, minTemperature: Int?, date: Date?, seed seedValue: Int) -> Response {
         var seed = SeedRandomNumberGenerator(seed: seedValue)
         let weather = weather ?? Weather.allCases.randomElement(using: &seed)!
-        let maxTemp = maxTemp ?? Int.random(in: 10...40, using: &seed)
-        let minTemp = minTemp ?? Int.random(in: -40..<maxTemp, using: &seed)
+        let maxTemperature = maxTemperature ?? Int.random(in: 10...40, using: &seed)
+        let minTemperature = minTemperature ?? Int.random(in: -40..<maxTemperature, using: &seed)
         let date = date ?? Date()
 
         return Response(
             weather: weather.rawValue,
-            maxTemp: maxTemp,
-            minTemp: minTemp,
+            maxTemperature: maxTemperature,
+            minTemperature: minTemperature,
             date: date
         )
     }
