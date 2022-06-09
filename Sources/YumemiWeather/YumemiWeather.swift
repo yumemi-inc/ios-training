@@ -60,10 +60,10 @@ final public class YumemiWeather {
     }
 
     private static func makeRandomResponse(weatherCondition: WeatherCondition?, maxTemperature: Int?, minTemperature: Int?, date: Date?, seed seedValue: Int) -> Response {
-        var seed = SeedRandomNumberGenerator(seed: seedValue)
-        let weatherCondition = weatherCondition ?? WeatherCondition.allCases.randomElement(using: &seed)!
-        let maxTemperature = maxTemperature ?? Int.random(in: 10...40, using: &seed)
-        let minTemperature = minTemperature ?? Int.random(in: -40..<maxTemperature, using: &seed)
+        var generator = SeedRandomNumberGenerator(seed: seedValue)
+        let weatherCondition = weatherCondition ?? WeatherCondition.allCases.randomElement(using: &generator)!
+        let maxTemperature = maxTemperature ?? Int.random(in: 10...40, using: &generator)
+        let minTemperature = minTemperature ?? Int.random(in: -40..<maxTemperature, using: &generator)
         let date = date ?? Date()
 
         return Response(
