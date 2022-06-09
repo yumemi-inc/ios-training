@@ -114,5 +114,4 @@ final class YumemiWeatherListTests: XCTestCase {
             XCTFail()
         }
     }
-
 }

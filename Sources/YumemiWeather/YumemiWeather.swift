@@ -6,13 +6,13 @@ struct Request: Decodable {
 }
 
 struct Response: Codable, Equatable {
-    let weather: String
+    let weatherCondition: String
     let maxTemperature: Int
     let minTemperature: Int
     let date: Date
 }
 
-enum Weather: String, CaseIterable {
+enum WeatherCondition: String, CaseIterable {
     case sunny
     case cloudy
     case rainy
@@ -48,26 +48,26 @@ final public class YumemiWeather {
 
     /// 引数の値でResponse構造体を作成する。引数がnilの場合はランダムに値を作成する。
     /// - Parameters:
-    ///   - weather: 天気を表すenum
+    ///   - weatherCondition: 天気状況を表すenum
     ///   - maxTemperature: 最高気温
     ///   - minTemperature: 最低気温
     ///   - date: 日付
     ///   - seed: シード値
     /// - Returns: Response構造体
 
-    static func makeRandomResponse(weather: Weather? = nil, maxTemperature: Int? = nil, minTemperature: Int? = nil, date: Date? = nil, seed: Int? = nil) -> Response {
-        return makeRandomResponse(weather: weather, maxTemperature: maxTemperature, minTemperature: minTemperature, date: date, seed: seed ?? Int.random(in: Int.min...Int.max))
+    static func makeRandomResponse(weatherCondition: WeatherCondition? = nil, maxTemperature: Int? = nil, minTemperature: Int? = nil, date: Date? = nil, seed: Int? = nil) -> Response {
+        return makeRandomResponse(weatherCondition: weatherCondition, maxTemperature: maxTemperature, minTemperature: minTemperature, date: date, seed: seed ?? Int.random(in: Int.min...Int.max))
     }
 
-    private static func makeRandomResponse(weather: Weather?, maxTemperature: Int?, minTemperature: Int?, date: Date?, seed seedValue: Int) -> Response {
+    private static func makeRandomResponse(weatherCondition: WeatherCondition?, maxTemperature: Int?, minTemperature: Int?, date: Date?, seed seedValue: Int) -> Response {
         var seed = SeedRandomNumberGenerator(seed: seedValue)
-        let weather = weather ?? Weather.allCases.randomElement(using: &seed)!
+        let weatherCondition = weatherCondition ?? WeatherCondition.allCases.randomElement(using: &seed)!
         let maxTemperature = maxTemperature ?? Int.random(in: 10...40, using: &seed)
         let minTemperature = minTemperature ?? Int.random(in: -40..<maxTemperature, using: &seed)
         let date = date ?? Date()
 
         return Response(
-            weather: weather.rawValue,
+            weatherCondition: weatherCondition.rawValue,
             maxTemperature: maxTemperature,
             minTemperature: minTemperature,
             date: date
@@ -75,22 +75,22 @@ final public class YumemiWeather {
     }
 
     /// 擬似 天気予報API Simple ver
-    /// - Returns: 天気を表す文字列 "sunny" or "cloudy" or "rainy"
-    public static func fetchWeather() -> String {
-        return self.makeRandomResponse().weather
+    /// - Returns: 天気状況を表す文字列 "sunny" or "cloudy" or "rainy"
+    public static func fetchWeatherCondition() -> String {
+        return self.makeRandomResponse().weatherCondition
     }
 
     /// 擬似 天気予報API Throws ver
     /// - Parameters:
     ///   - area: 天気予報を取得する対象地域 example: "tokyo"
     /// - Throws: YumemiWeatherError
-    /// - Returns: 天気を表す文字列 "sunny" or "cloudy" or "rainy"
-    public static func fetchWeather(at area: String) throws -> String {
+    /// - Returns: 天気状況を表す文字列 "sunny" or "cloudy" or "rainy"
+    public static func fetchWeatherCondition(at area: String) throws -> String {
         if Int.random(in: 0...4) == 4 {
             throw YumemiWeatherError.unknownError
         }
 
-        return self.makeRandomResponse().weather
+        return self.makeRandomResponse().weatherCondition
     }
 
     /// 擬似 天気予報API Json ver

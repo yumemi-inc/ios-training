@@ -43,7 +43,7 @@ public extension YumemiWeather {
     /// }
     /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
     /// - Returns: Json文字列
-    /// example: [{area: Tokyo, info: {"max_temp":25,"date":"2020-04-01T12:00:00+09:00","min_temp":7,"weather":"cloudy"}}]
+    /// example: [{area: Tokyo, info: {"max_temperature":25,"date":"2020-04-01T12:00:00+09:00","min_temperature":7,"weather_condition":"cloudy"}}]
     static func fetchWeatherList(_ jsonString: String) throws -> String {
         guard let requestData = jsonString.data(using: .utf8),
               let request = try? decoder.decode(AreaRequest.self, from: requestData) else {
