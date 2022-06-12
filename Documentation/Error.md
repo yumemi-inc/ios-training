@@ -2,7 +2,7 @@
 `YumemiWeather`のAPIがエラーをthrowしたときの実装をしましょう。
 
 Throws ver  
-`static func fetchWeather(at area: String) throws -> String`  
+`static func fetchWeatherCondition(at area: String) throws -> String`  
 [APIの概要](YumemiWeather.md)
 
 エラーが発生したときにどのように実装するか...  

@@ -4,14 +4,14 @@ import XCTest
 final class YumemiWeatherTests: XCTestCase {
 
     func test_fetchWeather() {
-        let str = YumemiWeather.fetchWeather()
-        XCTAssertNotNil(Weather(rawValue: str))
+        let str = YumemiWeather.fetchWeatherCondition()
+        XCTAssertNotNil(WeatherCondition(rawValue: str))
     }
 
     func test_fetchWeather_at() {
         do {
-            let str = try YumemiWeather.fetchWeather(at: "tokyo")
-            XCTAssertNotNil(Weather(rawValue: str))
+            let str = try YumemiWeather.fetchWeatherCondition(at: "tokyo")
+            XCTAssertNotNil(WeatherCondition(rawValue: str))
         }
         catch let error as YumemiWeatherError {
             XCTAssertEqual(error, YumemiWeatherError.unknownError)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol YumemiDisasterHandleDelegate: class {
+public protocol YumemiDisasterHandleDelegate: AnyObject {
     func handle(disaster: String)
 }
 

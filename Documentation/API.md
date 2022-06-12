@@ -2,7 +2,7 @@
 `YumemiWeather`のAPIを使用して、天気予報を取得しましょう。  
 
 Simple ver  
-`public static func fetchWeather() -> String`  
+`public static func fetchWeatherCondition() -> String`  
 [APIの概要](YumemiWeather.md)
 
 ## 課題
