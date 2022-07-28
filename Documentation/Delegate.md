@@ -14,6 +14,6 @@ UITableViewDelegateはProtocolで、Cellが選択されたときの関数が宣�
 UITableViewはUITableViewDelegateの実装クラスを保持し、必要な時にDelegateの関数を呼び出します。
 
 ## 課題
-- Delegateパターンを使い、同期APIから天気予報を受け取る
+- Delegateパターンを使い、APIから天気予報を受け取る
 - ViewControllerに`deinit`を実装し、ログを出力するようにしておく
 - ViewControllerを閉じた時に`deinit`が呼ばれることを確認する
