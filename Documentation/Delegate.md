@@ -17,3 +17,8 @@ UITableViewはUITableViewDelegateの実装クラスを保持し、必要な時�
 - Delegateパターンを使い、APIから天気予報を受け取る
 - ViewControllerに`deinit`を実装し、ログを出力するようにしておく
 - ViewControllerを閉じた時に`deinit`が呼ばれることを確認する
+
+## ヒント
+- 結果を受け取る Delegate の例としては、位置情報をリクエストして結果を受け取る [CLLocationManager](https://developer.apple.com/documentation/corelocation/cllocationmanager) と [CLLocationManagerDelegate](https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate) の関係が今回のやりたいことのイメージに近いです
+- [func requestLocation()](https://developer.apple.com/documentation/corelocation/cllocationmanager/1620548-requestlocation) で位置情報をリクエストし、位置情報の更新が発生したら [func locationManager(CLLocationManager, didUpdateLocations: [CLLocation])](https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423615-locationmanager) で更新された位置情報を受け取ることができます
+- これを今回の課題に置き換えると、天気予報をリクエストし、天気予報の更新が発生したら、更新された天気予報を受け取る、とすると実装をイメージがつかみやすいと思います
