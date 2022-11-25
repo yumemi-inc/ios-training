@@ -14,3 +14,8 @@ static func syncFetchWeather(_ jsonString: String) throws -> String
 
 ※イメージ  
 ![thread block](Images/ThreadBlock.gif)
+
+## ヒント
+iOSアプリで時間のかかる処理をするのにどうしたら良いかわからなかったり、何が問題になるのかのヒントを示しておきます。
+
+- [iOSアプリで時間のかかる処理をする](https://zenn.dev/yumemi_inc/articles/ios-ui-thread)
