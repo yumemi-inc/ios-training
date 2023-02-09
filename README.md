@@ -38,6 +38,7 @@ Session1がレビュー待ちの場合...
 1. `session/1`のマージ後、`session/2`を`main`でrebaseする  
 
 # Session
+0. [CI](Documentation/CI.md)
 1. [AutoLayout](Documentation/AutoLayout.md)
 1. [API](Documentation/API.md)
 1. [Lifecycle](Documentation/VC_Lifecycle.md)
