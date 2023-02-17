@@ -68,3 +68,7 @@ DIや依存性の注入などと呼ばれます。
 そういったモックやスタブの実装をサポートしてくれるライブラリがいくつかあります。  
 - [Cuckoo](https://github.com/Brightify/Cuckoo)
 - [Mockolo](https://github.com/uber/mockolo)
+
+それがモックなのかスタブなのかについては以下の記事が詳しいです。
+
+- [xUnit Test PatternsのTest Doubleパターン(Mock、Stub、Fake、Dummy等の定義)](https://goyoki.hatenablog.com/entry/20120301/1330608789)
