@@ -16,3 +16,6 @@
 
 - [pull to refresh](https://developer.apple.com/design/human-interface-guidelines/ios/controls/refresh-content-controls/
 )機能を追加する
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/786fe804ef4d4a65ba9b24498202d0da)

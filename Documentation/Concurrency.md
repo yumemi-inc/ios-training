@@ -9,3 +9,6 @@ iOS 15以降のSwiftランタイムはコンカレンシー（並行演算）を
 ## 課題
 - Delegateで受け取っていたAPIの結果を、コンカレンシー形式で受け取るように変更する
 - ViewControllerを閉じた時に`deinit`が呼ばれることを確認する
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/edb4d0bc62dd4a13b59f7415240bb460)

@@ -11,6 +11,9 @@ UIViewControllerのライフサイクルに関するリファレンスをまと�
 [viewWillLayoutSubviews](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621437-viewwilllayoutsubviews)  
 [viewDidLayoutSubviews](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621398-viewdidlayoutsubviews)
 
+### 関連情報
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/407a7e666af74b80ba8692646d99803c)
+
 ## 課題
 - `新しいViewController`を追加する
 - アプリケーション起動時に`新しいViewController`に遷移する
@@ -19,3 +22,6 @@ UIViewControllerのライフサイクルに関するリファレンスをまと�
 
 ※イメージ  
 ![VC_Lifecycle](Images/VC_Lifecycle.gif)
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/70fe9df85a7d4e2e81b94fbe1dae8f8e)
