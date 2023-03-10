@@ -54,7 +54,7 @@ Session1がレビュー待ちの場合...
     1. [UITableView](Documentation/UITableView.md)
     1. [UINavigationController](Documentation/UINavigationController.md)
 1. [BugFix](Documentation/BugFix.md)
-  
+
 **(注1)**  
 このようなケースで `rebase` コマンドを使うことが必ずしも正しいとは限りません。  
 どのような方法をとるかはチームで議論するべきと考えます。  
@@ -63,3 +63,7 @@ Session1がレビュー待ちの場合...
 ## 補足事項
 - ライブラリ・ツール群に制約はありません
 - 後の課題に含まれる技術要素を先に取り入れてもOKです
+
+## 附録
+
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/iOS-e22f8a8ab59d4b43b039bc201b3ceaf3)
