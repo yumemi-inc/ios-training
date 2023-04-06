@@ -16,3 +16,6 @@ Simple ver
 
 ※イメージ  
 ![api](Images/API.gif)
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/2ed5f2dd1a264593b50994e74b3be4bc)

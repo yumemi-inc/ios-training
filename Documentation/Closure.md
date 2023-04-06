@@ -12,3 +12,6 @@ Delegateパターンよりも全体の処理の流れが追いやすくなると
 - ViewControllerを閉じた時に`deinit`が呼ばれることを確認する
 
 ぜひ関数型引数はOptional型、非Optional型の両方を実装し、その違いを確認してみましょう。
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/e0054fb6f23e4e18a1720f363af65373)

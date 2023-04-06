@@ -32,3 +32,6 @@ InterfaceBuilderで制約を与える方法、NSLayoutConstraintオブジェク�
 ![img4](Images/AutoLayout-4.jpeg)
 - UIButtonとUILabelの水平中央は同じ
 ![img5](Images/AutoLayout-5.jpeg)
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/407a7e666af74b80ba8692646d99803c)

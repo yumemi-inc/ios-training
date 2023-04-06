@@ -14,3 +14,6 @@ Json ver
 
 ※イメージ  
 ![json](Images/Json.gif)
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/d79ceb7ee2564664aa9cef8ef92e7167)

@@ -20,3 +20,6 @@ Swiftにはベースになる考え方があります。
 
 ## ヒント
 - CLLocationDelegate の例だと、 [locationManager(_:didFailWithError:)](https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423786-locationmanager) でエラーを受け取ります
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/0b948552bd89415c95e89e3ebe3811d6)

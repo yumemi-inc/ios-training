@@ -72,3 +72,6 @@ DIや依存性の注入などと呼ばれます。
 それがモックなのかスタブなのかについては以下の記事が詳しいです。
 
 - [xUnit Test PatternsのTest Doubleパターン(Mock、Stub、Fake、Dummy等の定義)](https://goyoki.hatenablog.com/entry/20120301/1330608789)
+
+## 附録
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/d1d5655a68fd4d75a214d3b1a70b5c63)
