@@ -16,7 +16,8 @@ SwiftPackageManagerに対応しています。
 [YumemiWeather](Documentation/YumemiWeather.md)
 
 ## 研修の進め方
-1. ご自身のGitHubアカウントで研修用のリポジトリを作成
+1. ~~ご自身のGitHubアカウントで研修用のリポジトリを作成~~ レビュアー設定の都合で、yumemi組織で研修用リポジトリを作成
+    1. 研修終了後にご自身のGitHubアカウントにリポジトリを移動して構いません。
 1. 研修用リポジトリにXcodeProjectを作成  
 1. XcodeProjectに[YumemiWeather](Documentation/YumemiWeather.md)を導入
 1. `main`ブランチをPush
