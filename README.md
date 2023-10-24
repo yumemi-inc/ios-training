@@ -50,7 +50,7 @@ Session1がレビュー待ちの場合...
 1. [UnitTest](Documentation/UnitTest.md)
 1. [ThreadBlock](Documentation/ThreadBlock.md)
 1. [Delegate](Documentation/Delegate.md)
-1. [Closure](Documentation/Closure.md)
+1. [Callback](Documentation/Callback.md)
 1. [Concurrency](Documentation/Concurrency.md)
 1. UIKit
     1. [UITableView](Documentation/UITableView.md)
