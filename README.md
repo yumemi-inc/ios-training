@@ -42,14 +42,14 @@ Session1がレビュー待ちの場合...
 # Session
 1. [AutoLayout](Documentation/AutoLayout.md)
 1. [API](Documentation/API.md)
-1. [Lifecycle](Documentation/VC_Lifecycle.md)
-1. [Delegate](Documentation/Delegate.md)
 1. [Error](Documentation/Error.md)
 1. [Json](Documentation/Json.md)
 1. [Codable](Documentation/Codable.md)
+1. [Lifecycle](Documentation/VC_Lifecycle.md)
 1. [NotificationCenter](Documentation/NotificationCenter.md)
 1. [UnitTest](Documentation/UnitTest.md)
 1. [ThreadBlock](Documentation/ThreadBlock.md)
+1. [Delegate](Documentation/Delegate.md)
 1. [Closure](Documentation/Closure.md)
 1. [Concurrency](Documentation/Concurrency.md)
 1. UIKit
