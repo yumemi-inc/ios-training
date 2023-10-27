@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-    name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-latest
 
     steps:
@@ -24,4 +23,9 @@ jobs:
         run: |
           # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
           device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
-          xcodebuild -scheme "$scheme" test -destination "platform=$platform,name=$device"
+          xcodebuild -scheme "$scheme" -resultBundlePath TestResults test -destination "platform=$platform,name=$device"
+      - name: Format
+        uses: kishikawakatsumi/xcresulttool@v1
+        with:
+          path: TestResults.xcresult
+        if: success() || failure()
