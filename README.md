@@ -41,7 +41,7 @@ Session1がレビュー待ちの場合...
 
 # Session
 
-**■ App を形にする**
+**■ アプリを形にする**
 
 1) [AutoLayout](Documentation/AutoLayout.md)
 1) [API](Documentation/API.md)
@@ -52,7 +52,7 @@ Session1がレビュー待ちの場合...
 1) [Json](Documentation/Json.md)
 1) [Codable](Documentation/Codable.md)
 
-**■ App の高度な制御**
+**■ アプリの高度な制御**
 
 6) [Lifecycle](Documentation/VC_Lifecycle.md)
 1) [NotificationCenter](Documentation/NotificationCenter.md)
