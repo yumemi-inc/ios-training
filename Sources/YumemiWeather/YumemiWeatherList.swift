@@ -39,7 +39,7 @@ public extension YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "areas": ["tokyo"],
+    ///         "areas": ["Tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     /// 返された AreaResponse の JSON 文字列の例
@@ -85,7 +85,7 @@ public extension YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "areas": ["tokyo"],
+    ///         "areas": ["Tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     /// 返された AreaResponse の JSON 文字列の例
@@ -114,7 +114,7 @@ public extension YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "areas": ["tokyo"],
+    ///         "areas": ["Tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     ///
@@ -156,7 +156,7 @@ public extension YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "areas": ["tokyo"],
+    ///         "areas": ["Tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     /// 返された AreaResponse の JSON 文字列の例
