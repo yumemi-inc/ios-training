@@ -40,22 +40,39 @@ Session1がレビュー待ちの場合...
 1. `session/1`のマージ後、`session/2`を`main`でrebaseする  
 
 # Session
-1. [AutoLayout](Documentation/AutoLayout.md)
-1. [API](Documentation/API.md)
-1. [Lifecycle](Documentation/VC_Lifecycle.md)
-1. [Delegate](Documentation/Delegate.md)
-1. [Error](Documentation/Error.md)
-1. [Json](Documentation/Json.md)
-1. [Codable](Documentation/Codable.md)
-1. [NotificationCenter](Documentation/NotificationCenter.md)
-1. [UnitTest](Documentation/UnitTest.md)
-1. [ThreadBlock](Documentation/ThreadBlock.md)
-1. [Closure](Documentation/Closure.md)
-1. [Concurrency](Documentation/Concurrency.md)
-1. UIKit
-    1. [UITableView](Documentation/UITableView.md)
-    1. [UINavigationController](Documentation/UINavigationController.md)
-1. [BugFix](Documentation/BugFix.md)
+
+**■ アプリを形にする**
+
+1) [AutoLayout](Documentation/AutoLayout.md)
+1) [API](Documentation/API.md)
+
+**■ 実践練習**
+
+3) [Error](Documentation/Error.md)
+1) [Json](Documentation/Json.md)
+1) [Codable](Documentation/Codable.md)
+
+**■ アプリの高度な制御**
+
+6) [Lifecycle](Documentation/VC_Lifecycle.md)
+1) [NotificationCenter](Documentation/NotificationCenter.md)
+1) [UnitTest](Documentation/UnitTest.md)
+
+**■ 非同期処理**
+
+9) [ThreadBlock](Documentation/ThreadBlock.md)
+1) [Delegate](Documentation/Delegate.md)
+1) [Callback](Documentation/Callback.md)
+1) [Concurrency](Documentation/Concurrency.md)
+
+**■ 定番の UI 表現 (UIKit)**
+
+13) [UITableView](Documentation/UITableView.md)
+1) [UINavigationController](Documentation/UINavigationController.md)
+
+**■ 実力チェック**
+
+15) [BugFix](Documentation/BugFix.md)
 
 [^git-rebase]: このようなケースで `rebase` コマンドを使うことが必ずしも正しいとは限りません。 どのような方法をとるかはチームで議論するべきと考えます。 ただ、この研修は「`rebase`コマンドを使ってみる」ことも研修の一部としています。
 
