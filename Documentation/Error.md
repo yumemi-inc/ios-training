@@ -16,7 +16,8 @@ Swiftにはベースになる考え方があります。
 - 天気予報を画面に表示する
 - APIエラーが発生したらUIAlertControllerを表示する
   - エラーの内容に応じてメッセージを変更する  
-  メッセージの内容は自由です。エラーを切り分けられていればOK。
+  - メッセージの内容は自由ですが、[ヒューマンインターフェイスガイドラインのアラート](https://developer.apple.com/jp/design/human-interface-guidelines/alerts)の項目も読んでみましょう。エラーメッセージについては次の記事もあわせて読むとイメージが膨らむと思います
+    - [本当に有意義なエラーメッセージを書くには](https://postd.cc/how-to-write-an-error-message/)
 
 ## ヒント
 - CLLocationDelegate の例だと、 [locationManager(_:didFailWithError:)](https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423786-locationmanager) でエラーを受け取ります
