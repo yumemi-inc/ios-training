@@ -13,6 +13,10 @@ Cocoa frameworkでも古くから採用されてきたパターンの一つで�
 UITableViewDelegateはProtocolで、Cellが選択されたときの関数が宣言されています。  
 UITableViewはUITableViewDelegateの実装クラスを保持し、必要な時にDelegateの関数を呼び出します。
 
+### AppleのDocument
+- [Using Delegates to Customize Object Behavior](https://developer.apple.com/documentation/swift/using-delegates-to-customize-object-behavior)
+- [Delegation(Documentation Archive)](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Delegation.html)
+
 ## 課題
 - Delegateパターンを使い、APIの結果を受け取る
 - ViewControllerに`deinit`を実装し、ログを出力するようにしておく
