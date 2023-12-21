@@ -11,6 +11,8 @@ static func syncFetchWeather(_ jsonString: String) throws -> String
 ## 課題
 - 呼び出しAPIを`Sync ver`に変更する
 - APIの処理が戻るまで[UIActivityIndicatorView](https://developer.apple.com/documentation/uikit/uiactivityindicatorview)を表示する
+- 非同期テストに書き換える
+  - [Asynchronous Tests and Expectations](https://developer.apple.com/documentation/xctest/asynchronous_tests_and_expectations)
 
 ※イメージ  
 ![thread block](Images/ThreadBlock.gif)
