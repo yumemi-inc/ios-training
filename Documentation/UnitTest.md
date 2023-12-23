@@ -20,19 +20,19 @@ XCTestを使ってアプリのテストコードを書いてみましょう
 テストコードを書く前提でプログラムの設計をしていないと、なかなかテストが書きづらいものです。  
 もし、テストコードが書けなかったら次の例のようにコードをリファクタリングしてみましょう。  
 ※必ずこの通りにしなくてもOKです。最良の方法ではなく、シンプルな例の紹介です
-1. FetchingWeatherというProtocolを定義する
-1. FetchingWeatherには`天気予報を取得する`関数を宣言する
-1. FetchingWeatherの実装クラスWeatherProviderを定義する
-1. ViewControllerから`天気予報を取得する実装`を切り離し、WeatherProviderにおく
-1. ViewControllerはFetchingWeatherをプロパティとしてもつ
-1. ViewControllerの`天気予報を取得する実装`をFetchingWeatherの関数呼び出しに置き換える
-1. 外部からViewControllerにWeatherProviderを渡す
+1. `FetchingWeather`というProtocolを定義する
+1. `FetchingWeather`には**天気予報を取得する**関数を宣言する
+1. `FetchingWeather`の実装クラス`WeatherProvider`を定義する
+1. ViewControllerから**天気予報を取得する実装**を切り離し、`WeatherProvider`におく
+1. ViewControllerは`FetchingWeather`をプロパティとしてもつ
+1. ViewControllerの**天気予報を取得する実装**を`FetchingWeather`の関数呼び出しに置き換える
+1. 外部からViewControllerに`WeatherProvider`を渡す
 
-テストでは任意の値を返すFetchingWeatherの実装クラスを用意しておき、  
+テストでは任意の値を返す`FetchingWeather`の実装クラスを用意しておき、  
 ViewControllerにそれを渡してあげるとテストコードが書きやすくなるでしょう。
 
 > [!NOTE]
-> FetchingWeatherやWeatherProviderは命名の一例です。
+> `FetchingWeather`や`WeatherProvider`は命名の一例です。
 > Swift API Design Guideline で Naming についてガイドラインが示されているので読んでみてください
 > 
 > https://www.swift.org/documentation/api-design-guidelines/
@@ -41,7 +41,7 @@ ViewControllerにそれを渡してあげるとテストコードが書きやす
 
 SwiftにはProtocolという機能があります。  
 クラスを使わずに型を抽象的に扱うことができます。  
-上の例ですとViewControllerはFetchingWeatherに**依存しています**。  
+上の例ですとViewControllerは`FetchingWeather`に**依存しています**。  
 その依存先をProtocolで表現することで、テストの時は**一定の値を返す実装に置き換える**ことができるようになります。
 
 #### Protocol-Oriented Programming  
@@ -63,10 +63,10 @@ Protocol指向についてここで詳細は述べませんが、ぜひ専門書
 ### Dependency Injection
 
 DIや依存性の注入などと呼ばれます。  
-繰り返しますが、上の例ですとViewControllerはFetchingWeatherに**依存しています**。  
-例えば、ViewControllerがWeatherProvider(実装クラス)を内部でインスタンス化したとすると...  
+繰り返しますが、上の例ですとViewControllerは`FetchingWeather`に**依存しています**。  
+例えば、ViewControllerが`WeatherProvider`(実装クラス)を内部でインスタンス化したとすると...  
 せっかくProtocolで宣言したのに、実装クラスへの依存が生まれます。  
-しかし、外部から実装クラスを受け取るようにすると、ViewControllerはFetchingWeather(Protocol)への依存しか持たず、その実装は意識しなくて良いことになります。  
+しかし、外部から実装クラスを受け取るようにすると、ViewControllerは`FetchingWeather`(Protocol)への依存しか持たず、その実装は意識しなくて良いことになります。  
 テストが書きやすくなったり、外部の変更に強いプログラムになり易いです。
 
 ### モックライブラリ
