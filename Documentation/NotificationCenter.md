@@ -12,7 +12,8 @@ Sender(イベント通知者)はObserver(イベント観察者)のことを知�
 
 例えば、UIApplicationDelegateがNotificationCenterを経由して提供するイベントはいくつもあります。  
 ※ `NSNotification.Name`を探してみましょう  
-[UIApplicationDelegate](https://developer.apple.com/documentation/uikit/uiapplicationdelegate)  
+- [UIApplicationDelegate](https://developer.apple.com/documentation/uikit/uiapplicationdelegate)
+- [UISceneDelegate](https://developer.apple.com/documentation/uikit/uiscenedelegate)
 
 NotificationCenterはSenderとObserverの仲介役として機能します。  
 SenderとObserverは互いに知る必要がありません。  
