@@ -20,22 +20,28 @@ XCTestを使ってアプリのテストコードを書いてみましょう
 テストコードを書く前提でプログラムの設計をしていないと、なかなかテストが書きづらいものです。  
 もし、テストコードが書けなかったら次の例のようにコードをリファクタリングしてみましょう。  
 ※必ずこの通りにしなくてもOKです。最良の方法ではなく、シンプルな例の紹介です
-1. WeatherModelというProtocolを定義する
-1. WeatherModelには`天気予報を取得する`関数を宣言する
-1. WeatherModelの実装クラスWeatherModelImplを定義する
-1. ViewControllerから`天気予報を取得する実装`を切り離し、WeatherModelImplにおく
-1. ViewControllerはWeatherModelをプロパティとしてもつ
-1. ViewControllerの`天気予報を取得する実装`をWeatherModelの関数呼び出しに置き換える
-1. 外部からViewControllerにWeatherModelImplを渡す
+1. `WeatherFetching`というProtocolを定義する
+1. `WeatherFetching`には**天気予報を取得する**関数を宣言する
+1. `WeatherFetching`の実装クラス`WeatherProvider`を定義する
+1. ViewControllerから**天気予報を取得する実装**を切り離し、`WeatherProvider`におく
+1. ViewControllerは`WeatherFetching`をプロパティとしてもつ
+1. ViewControllerの**天気予報を取得する実装**を`WeatherFetching`の関数呼び出しに置き換える
+1. 外部からViewControllerに`WeatherProvider`を渡す
 
-テストでは任意の値を返すWeatherModelの実装クラスを用意しておき、  
+テストでは任意の値を返す`WeatherFetching`の実装クラスを用意しておき、  
 ViewControllerにそれを渡してあげるとテストコードが書きやすくなるでしょう。
+
+> [!NOTE]
+> `WeatherFetching`や`WeatherProvider`は命名の一例です。
+> Swift API Design Guideline で Naming についてガイドラインが示されているので読んでみてください
+> 
+> https://www.swift.org/documentation/api-design-guidelines/
 
 ### Protocol
 
 SwiftにはProtocolという機能があります。  
 クラスを使わずに型を抽象的に扱うことができます。  
-上の例ですとViewControllerはWeatherModelに**依存しています**。  
+上の例ですとViewControllerは`WeatherFetching`に**依存しています**。  
 その依存先をProtocolで表現することで、テストの時は**一定の値を返す実装に置き換える**ことができるようになります。
 
 #### Protocol-Oriented Programming  
@@ -57,14 +63,14 @@ Protocol指向についてここで詳細は述べませんが、ぜひ専門書
 ### Dependency Injection
 
 DIや依存性の注入などと呼ばれます。  
-繰り返しますが、上の例ですとViewControllerはWeatherModelに**依存しています**。  
-例えば、ViewControllerがWeatherModelImpl(実装クラス)を内部でインスタンス化したとすると...  
+繰り返しますが、上の例ですとViewControllerは`WeatherFetching`に**依存しています**。  
+例えば、ViewControllerが`WeatherProvider`(実装クラス)を内部でインスタンス化したとすると...  
 せっかくProtocolで宣言したのに、実装クラスへの依存が生まれます。  
-しかし、外部から実装クラスを受け取るようにすると、ViewControllerはWeatherModel(Protocol)への依存しか持たず、その実装は意識しなくて良いことになります。  
+しかし、外部から実装クラスを受け取るようにすると、ViewControllerは`WeatherFetching`(Protocol)への依存しか持たず、その実装は意識しなくて良いことになります。  
 テストが書きやすくなったり、外部の変更に強いプログラムになり易いです。
 
 ### モックライブラリ
-任意の値を返す `WeatherModel`の実装クラスをいくつも用意するのは骨がおれます。  
+任意の値を返す `WeatherFetching`の実装クラスをいくつも用意するのは骨がおれます。  
 そういったモックやスタブの実装をサポートしてくれるライブラリがいくつかあります。  
 - [Cuckoo](https://github.com/Brightify/Cuckoo)
 - [Mockolo](https://github.com/uber/mockolo)
