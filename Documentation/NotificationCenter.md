@@ -31,5 +31,11 @@ KVOも昨今は使われる機会は減ったように思います。参考ま�
 - NotificationCenterを利用して、アプリがバックグラウンドからフォアグラウンドに戻ってきたときに、天気予報を更新する
 - エラーが表示された状態での動きも確認してみましょう
 
+下の図の赤枠の部分の矢印の遷移がバックグラウンドからフォアグラウンドに戻ってきたときになります。
+
+<img width="415" alt="scene-state" src="Images/scene-state.png">
+
+[Managing your app’s life cycle](https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle)
+
 ## 附録
 [関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/710cec1d24904e5da79e3bdaa1273dc1)
