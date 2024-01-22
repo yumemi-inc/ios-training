@@ -12,7 +12,8 @@ Sender(イベント通知者)はObserver(イベント観察者)のことを知�
 
 例えば、UIApplicationDelegateがNotificationCenterを経由して提供するイベントはいくつもあります。  
 ※ `NSNotification.Name`を探してみましょう  
-[UIApplicationDelegate](https://developer.apple.com/documentation/uikit/uiapplicationdelegate)  
+- [UIApplicationDelegate](https://developer.apple.com/documentation/uikit/uiapplicationdelegate)
+- [UISceneDelegate](https://developer.apple.com/documentation/uikit/uiscenedelegate)
 
 NotificationCenterはSenderとObserverの仲介役として機能します。  
 SenderとObserverは互いに知る必要がありません。  
@@ -28,7 +29,13 @@ KVOも昨今は使われる機会は減ったように思います。参考ま�
 # アプリがフォアグラウンドにきたとき天気予報を更新する
 ## 課題
 - NotificationCenterを利用して、アプリがバックグラウンドからフォアグラウンドに戻ってきたときに、天気予報を更新する
-- エラーが表示された状態での動きも確認してみましょう
+- アラートが表示された状態での動きも確認してみましょう
+
+下の図の赤枠の部分の矢印の遷移がバックグラウンドからフォアグラウンドに戻ってきたときになります。
+
+<img width="415" alt="scene-state" src="Images/scene-state.png">
+
+[Managing your app’s life cycle](https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle)
 
 ## 附録
 [関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/710cec1d24904e5da79e3bdaa1273dc1)
