@@ -29,13 +29,13 @@ final class YumemiWeatherTests: XCTestCase {
 }
 """
         do {
-            let responseJson = try YumemiWeather.fetchWeather(parameter)
+            let responseJSON = try YumemiWeather.fetchWeather(parameter)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            _ = try decoder.decode(Response.self, from: Data(responseJson.utf8))
+            _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
         }
         catch let error as YumemiWeatherError {
             XCTAssertEqual(error, YumemiWeatherError.unknownError)
@@ -54,13 +54,13 @@ final class YumemiWeatherTests: XCTestCase {
 }
 """
         do {
-            let responseJson = try YumemiWeather.syncFetchWeather(parameter)
+            let responseJSON = try YumemiWeather.syncFetchWeather(parameter)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            _ = try decoder.decode(Response.self, from: Data(responseJson.utf8))
+            _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
         }
         catch let error as YumemiWeatherError {
             XCTAssertEqual(error, YumemiWeatherError.unknownError)
@@ -107,13 +107,13 @@ final class YumemiWeatherTests: XCTestCase {
 }
 """
         do {
-            let responseJson = try await YumemiWeather.asyncFetchWeather(parameter)
+            let responseJSON = try await YumemiWeather.asyncFetchWeather(parameter)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            _ = try decoder.decode(Response.self, from: Data(responseJson.utf8))
+            _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
         }
         catch let error as YumemiWeatherError {
             XCTAssertEqual(error, YumemiWeatherError.unknownError)
