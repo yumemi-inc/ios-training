@@ -49,7 +49,7 @@ Session1がレビュー待ちの場合...
 **■ 実践練習**
 
 3) [Error](Documentation/Error.md)
-1) [Json](Documentation/Json.md)
+1) [JSON](Documentation/JSON.md)
 1) [Codable](Documentation/Codable.md)
 
 **■ アプリの高度な制御**
