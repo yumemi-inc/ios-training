@@ -1,4 +1,7 @@
 # 株式会社ゆめみ iOS研修
+
+[![Test](https://github.com/yumemi-inc/ios-training/actions/workflows/test.yml/badge.svg)](https://github.com/yumemi-inc/ios-training/actions/workflows/test.yml)
+
 業務に近いかたちでアプリ開発を行いながら、  
 iOSアプリ開発の基礎復習、実務スキルを身に付けるための研修です。
 
