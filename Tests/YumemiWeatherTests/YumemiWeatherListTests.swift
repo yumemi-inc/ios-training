@@ -52,7 +52,7 @@ final class YumemiWeatherListTests: XCTestCase {
     func test_fetchWeatherList_jsonString_one() {
         let parameter = """
 {
-    "areas": ["Tokyo"],
+    "areas": ["tokyo"],
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
@@ -66,7 +66,7 @@ final class YumemiWeatherListTests: XCTestCase {
             let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
             XCTAssertEqual(response.count, 1)
             let tokyo = response.first
-            XCTAssertEqual(tokyo?.area, .Tokyo)
+            XCTAssertEqual(tokyo?.area, .tokyo)
 
             let responseJSON2 = try YumemiWeather.fetchWeatherList(parameter)
             let response2 = try decoder.decode([AreaResponse].self, from: Data(responseJSON2.utf8))
@@ -84,7 +84,7 @@ final class YumemiWeatherListTests: XCTestCase {
     func test_fetchWeatherList_jsonString_two() {
         let parameter = """
 {
-    "areas": ["Tokyo", "Nagoya"],
+    "areas": ["tokyo", "nagoya"],
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
@@ -97,9 +97,9 @@ final class YumemiWeatherListTests: XCTestCase {
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
             XCTAssertEqual(response.count, 2)
-            let tokyo = response.first(where: { $0.area == .Tokyo })
+            let tokyo = response.first(where: { $0.area == .tokyo })
             XCTAssertNotNil(tokyo)
-            let nagoya = response.first(where: { $0.area == .Nagoya })
+            let nagoya = response.first(where: { $0.area == .nagoya })
             XCTAssertNotNil(nagoya)
             XCTAssertNotEqual(tokyo?.info, nagoya?.info)
         }
@@ -114,7 +114,7 @@ final class YumemiWeatherListTests: XCTestCase {
     func test_fetchWeatherList_jsonString_none() {
         let parameter = """
 {
-    "areas": ["LosAngeles"],
+    "areas": ["losAngeles"],
     "date": "2020-04-01T12:00:00+09:00"
 }
 """

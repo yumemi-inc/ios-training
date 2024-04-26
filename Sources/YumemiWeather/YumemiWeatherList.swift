@@ -18,18 +18,18 @@ struct AreaResponse: Codable {
 }
 
 public enum Area: String, CaseIterable, Codable {
-    case Sapporo
-    case Sendai
-    case Niigata
-    case Kanazawa
-    case Tokyo
-    case Nagoya
-    case Osaka
-    case Hiroshima
-    case Kochi
-    case Fukuoka
-    case Kagoshima
-    case Naha
+    case sapporo
+    case sendai
+    case niigata
+    case kanazawa
+    case tokyo
+    case nagoya
+    case osaka
+    case hiroshima
+    case kochi
+    case fukuoka
+    case kagoshima
+    case naha
 }
 
 public extension YumemiWeather {
@@ -39,14 +39,14 @@ public extension YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "areas": ["Tokyo"],
+    ///         "areas": ["tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     /// 返された AreaResponse の JSON 文字列の例
     ///
     ///     [
     ///         {
-    ///             "area": "Tokyo",
+    ///             "area": "tokyo",
     ///             "info": {
     ///                 "max_temperature": 25,
     ///                 "date": "2020-04-01T12:00:00+09:00",
@@ -83,14 +83,14 @@ public extension YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "areas": ["Tokyo"],
+    ///         "areas": ["tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     /// 返された AreaResponse の JSON 文字列の例
     ///
     ///     [
     ///         {
-    ///             "area": "Tokyo",
+    ///             "area": "tokyo",
     ///             "info": {
     ///                 "max_temperature": 25,
     ///                 "date": "2020-04-01T12:00:00+09:00",
@@ -112,7 +112,7 @@ public extension YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "areas": ["Tokyo"],
+    ///         "areas": ["tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     ///
@@ -120,7 +120,7 @@ public extension YumemiWeather {
     ///
     ///     [
     ///         {
-    ///             "area": "Tokyo",
+    ///             "area": "tokyo",
     ///             "info": {
     ///                 "max_temperature": 25,
     ///                 "date": "2020-04-01T12:00:00+09:00",
@@ -154,14 +154,14 @@ public extension YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "areas": ["Tokyo"],
+    ///         "areas": ["tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     /// 返された AreaResponse の JSON 文字列の例
     ///
     ///     [
     ///         {
-    ///             "area": "Tokyo",
+    ///             "area": "tokyo",
     ///             "info": {
     ///                 "max_temperature": 25,
     ///                 "date": "2020-04-01T12:00:00+09:00",
