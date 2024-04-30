@@ -157,11 +157,6 @@ final public class YumemiWeather {
         Thread.sleep(forTimeInterval: apiDuration)
         return try self.fetchWeather(jsonString)
     }
-
-
-    /// - Throws: YumemiWeatherError パラメータが正常でもランダムにエラーが発生する
-    /// - Parameter jsonString: 地域と日付を含む JSON 文字列
-    /// - Returns: Weather レスポンスの JSON 文字列
     
     /// 擬似 天気予報 API Callback ver
     ///
