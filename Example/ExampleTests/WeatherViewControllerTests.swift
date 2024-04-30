@@ -32,7 +32,7 @@ class WeatherViewControllerTests: XCTestCase {
             return Result.success(response)
         }
         
-        weahterViewController.loadWeather()
+        weahterViewController.loadWeather(self)
         XCTAssertEqual(weahterViewController.weatherImageView.tintColor, R.color.red())
         XCTAssertEqual(weahterViewController.weatherImageView.image, R.image.sunny())
     }
@@ -43,7 +43,7 @@ class WeatherViewControllerTests: XCTestCase {
             return Result.success(response)
         }
         
-        weahterViewController.loadWeather()
+        weahterViewController.loadWeather(self)
         XCTAssertEqual(weahterViewController.weatherImageView.tintColor, R.color.gray())
         XCTAssertEqual(weahterViewController.weatherImageView.image, R.image.cloudy())
     }
@@ -54,7 +54,7 @@ class WeatherViewControllerTests: XCTestCase {
             return Result.success(response)
         }
         
-        weahterViewController.loadWeather()
+        weahterViewController.loadWeather(self)
         XCTAssertEqual(weahterViewController.weatherImageView.tintColor, R.color.blue())
         XCTAssertEqual(weahterViewController.weatherImageView.image, R.image.rainy())
     }
@@ -65,7 +65,7 @@ class WeatherViewControllerTests: XCTestCase {
             return Result.success(response)
         }
         
-        weahterViewController.loadWeather()
+        weahterViewController.loadWeather(self)
         XCTAssertEqual(weahterViewController.minTempLabel.text, "-100")
         XCTAssertEqual(weahterViewController.maxTempLabel.text, "100")
     }
