@@ -189,10 +189,10 @@ final public class YumemiWeather {
         DispatchQueue.global().asyncAfter(deadline: .now() + apiDuration) {
             do {
                 let response = try fetchWeather(jsonString)
-                completion(Result.success(response))
+                completion(.success(response))
             }
-            catch let error where error is YumemiWeatherError {
-                completion(Result.failure(error as! YumemiWeatherError))
+            catch let error as YumemiWeatherError {
+                completion(.failure(error))
             }
             catch {
                 fatalError()
