@@ -21,7 +21,7 @@ class WeatherViewControllerTests: XCTestCase {
         weatherViewController.weatherModel = weatherModel
         weatherViewController.disasterModel = DisasterModelMock()
         
-        _ = weatherViewController.view
+        weatherViewController.loadViewIfNeeded()
     }
 
     override func tearDownWithError() throws {
