@@ -79,7 +79,7 @@ final public class YumemiWeather {
     /// 擬似 天気予報 API Simple ver
     /// - Returns: 天気状況を表す文字列 "sunny" or "cloudy" or "rainy"
     public static func fetchWeatherCondition() -> String {
-        return self.makeRandomResponse().weatherCondition
+        return makeRandomResponse().weatherCondition
     }
 
     /// 擬似 天気予報 API Throws ver
@@ -92,7 +92,7 @@ final public class YumemiWeather {
             throw YumemiWeatherError.unknownError
         }
 
-        return self.makeRandomResponse().weatherCondition
+        return makeRandomResponse().weatherCondition
     }
 
     /// 擬似 天気予報 API JSON ver
@@ -155,7 +155,7 @@ final public class YumemiWeather {
     /// - Returns: Weather レスポンスの JSON 文字列
     public static func syncFetchWeather(_ jsonString: String) throws -> String {
         Thread.sleep(forTimeInterval: apiDuration)
-        return try self.fetchWeather(jsonString)
+        return try fetchWeather(jsonString)
     }
     
     /// 擬似 天気予報 API Callback ver

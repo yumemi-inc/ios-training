@@ -106,7 +106,7 @@ public extension YumemiWeather {
     /// - Returns: 返された AreaResponse の JSON 文字列
     static func syncFetchWeatherList(_ jsonString: String) throws -> String {
         Thread.sleep(forTimeInterval: apiDuration)
-        return try self.fetchWeatherList(jsonString)
+        return try fetchWeatherList(jsonString)
     }
 
     /// 擬似 天気予報一覧 API Callback ver

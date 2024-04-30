@@ -94,7 +94,7 @@ final class YumemiWeatherTests: XCTestCase {
                 XCTAssertEqual(error, YumemiWeatherError.unknownError)
             }
         }
-        self.wait(for: [exp], timeout: YumemiWeather.apiDuration + 0.1)
+        wait(for: [exp], timeout: YumemiWeather.apiDuration + 0.1)
     }
 
     @available(iOS 13, macOS 10.15, *)
