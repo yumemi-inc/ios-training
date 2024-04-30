@@ -13,10 +13,9 @@ import YumemiWeather
 class WeatherViewControllerTests: XCTestCase {
 
     var weatherViewController: WeatherViewController!
-    var weatherModel: WeatherModelMock!
+    var weatherModel = WeatherModelMock()
     
     override func setUpWithError() throws {
-        weatherModel = WeatherModelMock()
         weatherViewController = R.storyboard.weather.instantiateInitialViewController()!
         weatherViewController.weatherModel = weatherModel
         weatherViewController.disasterModel = DisasterModelMock()
