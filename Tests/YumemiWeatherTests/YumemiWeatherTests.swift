@@ -80,7 +80,7 @@ final class YumemiWeatherTests: XCTestCase {
 }
 """
         let exp = expectation(description: #function)
-        YumemiWeather.fetchWeather(parameter) { result in
+        YumemiWeather.callbackFetchWeather(parameter) { result in
             exp.fulfill()
             switch result {
             case .success(let jsonString):

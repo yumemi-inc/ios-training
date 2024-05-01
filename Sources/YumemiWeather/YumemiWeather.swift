@@ -129,7 +129,7 @@ final public class YumemiWeather {
     /// - Parameters:
     ///   - jsonString: 地域と日付を含む JSON 文字列
     ///   - completion: 完了コールバック
-    public static func fetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void) {
+    public static func callbackFetchWeather(_ jsonString: String, completion: @escaping (Result<String, YumemiWeatherError>) -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + apiDuration) {
             do {
                 let response = try fetchWeather(jsonString)
@@ -168,7 +168,7 @@ final public class YumemiWeather {
     @available(iOS 13, macOS 10.15, *)
     public static func asyncFetchWeather(_ jsonString: String) async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in
-            fetchWeather(jsonString) { result in
+            callbackFetchWeather(jsonString) { result in
                 continuation.resume(with: result)
             }
         }
