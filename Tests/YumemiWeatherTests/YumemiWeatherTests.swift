@@ -64,11 +64,11 @@ final class YumemiWeatherTests: XCTestCase {
 
     func test_fetchWeather_jsonString() {
         let parameter = """
-{
-    "area": "Tokyo",
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
+        {
+            "area": "Tokyo",
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
         do {
             let responseJSON = try YumemiWeather.fetchWeather(parameter)
             let dateFormatter = DateFormatter()
@@ -89,11 +89,11 @@ final class YumemiWeatherTests: XCTestCase {
     func test_fetchWeather_jsonString_sync() {
         let beginDate = Date()
         let parameter = """
-{
-    "area": "Tokyo",
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
+        {
+            "area": "Tokyo",
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
         do {
             let responseJSON = try YumemiWeather.syncFetchWeather(parameter)
             let dateFormatter = DateFormatter()
@@ -115,11 +115,11 @@ final class YumemiWeatherTests: XCTestCase {
 
     func test_fetchWeather_jsonString_callback() {
         let parameter = """
-{
-    "area": "Tokyo",
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
+        {
+            "area": "Tokyo",
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
         let exp = expectation(description: #function)
         YumemiWeather.callbackFetchWeather(parameter) { result in
             exp.fulfill()
@@ -142,11 +142,11 @@ final class YumemiWeatherTests: XCTestCase {
     func test_fetchWeather_jsonString_async() async {
         let beginDate = Date()
         let parameter = """
-{
-    "area": "Tokyo",
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
+        {
+            "area": "Tokyo",
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
         do {
             let responseJSON = try await YumemiWeather.asyncFetchWeather(parameter)
             let dateFormatter = DateFormatter()
