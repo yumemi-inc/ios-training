@@ -18,7 +18,7 @@ enum WeatherCondition: String, CaseIterable {
     case rainy
 }
 
-public enum YumemiWeatherError: Swift.Error {
+public enum YumemiWeatherError: Error {
     case invalidParameterError
     case unknownError
 }
