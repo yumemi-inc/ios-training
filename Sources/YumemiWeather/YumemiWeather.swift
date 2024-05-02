@@ -205,17 +205,30 @@ extension YumemiWeather {
     ///   - maxTemperature: 最高気温
     ///   - minTemperature: 最低気温
     ///   - date: 日付
-    ///   - seed: シード値
     /// - Returns: Response構造体
-
     static func makeRandomResponse(
         weatherCondition: WeatherCondition? = nil,
         maxTemperature: Int? = nil,
         minTemperature: Int? = nil,
-        date: Date? = nil,
-        seed: Int? = nil
+        date: Date? = nil
     ) -> Response {
-        var generator = SeedRandomNumberGenerator(seed: seed ?? Int.random(in: Int.min...Int.max))
+        return makeRandomResponse(using: &ControllableGenerator.shared, weatherCondition: weatherCondition, maxTemperature: maxTemperature, minTemperature: minTemperature)
+    }
+    
+    /// 引数の値でResponse構造体を作成する。引数がnilの場合はランダムに値を作成する。
+    /// - Parameters:
+    ///   - weatherCondition: 天気状況を表すenum
+    ///   - maxTemperature: 最高気温
+    ///   - minTemperature: 最低気温
+    ///   - date: 日付
+    /// - Returns: Response構造体
+    static func makeRandomResponse(
+        using generator: inout some RandomNumberGenerator,
+        weatherCondition: WeatherCondition? = nil,
+        maxTemperature: Int? = nil,
+        minTemperature: Int? = nil,
+        date: Date? = nil
+    ) -> Response {
         let weatherCondition = weatherCondition ?? WeatherCondition.allCases.randomElement(using: &generator)!
         let maxTemperature = maxTemperature ?? Int.random(in: 10...40, using: &generator)
         let minTemperature = minTemperature ?? Int.random(in: -40..<maxTemperature, using: &generator)

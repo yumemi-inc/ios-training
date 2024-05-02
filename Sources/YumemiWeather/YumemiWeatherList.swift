@@ -69,13 +69,11 @@ public extension YumemiWeather {
         }
 
         let areas = request.areas.isEmpty ? Area.allCases : request.areas.compactMap { Area(rawValue: $0) }
-        let response = areas.map { area -> AreaResponse in
-            var hasher = Hasher()
-            hasher.combine(area)
-            hasher.combine(request.date)
-            return AreaResponse(area: area, info: makeRandomResponse(date: request.date, seed: hasher.finalize()))
+        let areaResponses = areas.map { area -> AreaResponse in
+            ControllableGenerator.resetUsing(area: area, date: request.date)
+            return AreaResponse(area: area, info: makeRandomResponse(using: &ControllableGenerator.shared, date: request.date))
         }
-        let responseData = try encoder.encode(response)
+        let responseData = try encoder.encode(areaResponses)
 
         return String(data: responseData, encoding: .utf8)!
     }

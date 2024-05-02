@@ -3,6 +3,47 @@ import XCTest
 
 final class YumemiWeatherTests: XCTestCase {
 
+    func test_ランダムにレスポンスを生成する() {
+
+        // 日付を省略すると実行した瞬間のものが得られてしまうため、
+        // テストするために固定とします。
+        let date = Date()
+        
+        func makeRandomResponse(withSeed seed: Int) -> Response {
+            
+            ControllableGenerator.reset(withSeed: seed)
+            return YumemiWeather.makeRandomResponse(using: &ControllableGenerator.shared, date: date)
+        }
+
+        let response1 = makeRandomResponse(withSeed: 0)
+        let response2 = makeRandomResponse(withSeed: 1546000)
+        let response3 = makeRandomResponse(withSeed: 0)
+        let response4 = makeRandomResponse(withSeed: 1546000)
+
+        XCTAssertEqual(response1, response3)
+        XCTAssertEqual(response2, response4)
+        
+        XCTAssertEqual(response1.weatherCondition, "sunny")
+        XCTAssertEqual(response1.minTemperature, -33)
+        XCTAssertEqual(response1.maxTemperature, 33)
+        XCTAssertEqual(response1.date, date)
+        
+        XCTAssertEqual(response2.weatherCondition, "cloudy")
+        XCTAssertEqual(response2.minTemperature, 23)
+        XCTAssertEqual(response2.maxTemperature, 28)
+        XCTAssertEqual(response2.date, date)
+        
+        XCTAssertEqual(response3.weatherCondition, "sunny")
+        XCTAssertEqual(response3.minTemperature, -33)
+        XCTAssertEqual(response3.maxTemperature, 33)
+        XCTAssertEqual(response3.date, date)
+        
+        XCTAssertEqual(response4.weatherCondition, "cloudy")
+        XCTAssertEqual(response4.minTemperature, 23)
+        XCTAssertEqual(response4.maxTemperature, 28)
+        XCTAssertEqual(response4.date, date)
+    }
+    
     func test_fetchWeather() {
         let str = YumemiWeather.fetchWeatherCondition()
         XCTAssertNotNil(WeatherCondition(rawValue: str))

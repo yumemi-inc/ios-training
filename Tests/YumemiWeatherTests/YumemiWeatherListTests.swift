@@ -3,6 +3,27 @@ import XCTest
 
 final class YumemiWeatherListTests: XCTestCase {
 
+    func test_Areasに空を指定したときに全ての地域が取得される() throws {
+        
+        let request = """
+        {
+            "areas": [],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
+        
+        let responseJSON = try YumemiWeather.fetchWeatherList(request)
+        
+        guard let responseData = responseJSON.data(using: .utf8) else {
+            XCTFail("Illegal response data: \(responseJSON)")
+            return
+        }
+        
+        let response = try YumemiWeather.decoder.decode([AreaResponse].self, from: responseData)
+        
+        XCTAssertEqual(response.map(\.area), Area.allCases)
+    }
+    
     func test_fetchWeatherList_jsonString() {
         let parameter = """
 {
