@@ -58,11 +58,8 @@ final public class YumemiWeather {
     ///   - area: 天気予報を取得する対象地域 example: "tokyo"
     /// - Returns: 天気状況を表す文字列 "sunny" or "cloudy" or "rainy"
     public static func fetchWeatherCondition(at area: String) throws -> String {
-        if Int.random(in: 0...4) == 4 {
-            throw YumemiWeatherError.unknownError
-        }
-
-        return makeRandomResponse().weatherCondition
+        try introduceInstability()
+        return self.makeRandomResponse().weatherCondition
     }
 
     /// 天気予報を読み込む API の JSON Version です。
@@ -98,10 +95,7 @@ final public class YumemiWeather {
         let response = makeRandomResponse(date: request.date)
         let responseData = try encoder.encode(response)
 
-        if Int.random(in: 0...4) == 4 {
-            throw YumemiWeatherError.unknownError
-        }
-
+        try introduceInstability()
         return String(data: responseData, encoding: .utf8)!
     }
 

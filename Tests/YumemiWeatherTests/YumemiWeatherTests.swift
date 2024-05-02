@@ -3,6 +3,10 @@ import XCTest
 
 final class YumemiWeatherTests: XCTestCase {
 
+    override func setUpWithError() throws {
+        YumemiWeather.apiQuality = .neverFails
+    }
+
     func test_ランダムにレスポンスを生成する() {
 
         // 日付を省略すると実行した瞬間のものが得られてしまうため、
@@ -49,44 +53,28 @@ final class YumemiWeatherTests: XCTestCase {
         XCTAssertNotNil(WeatherCondition(rawValue: str))
     }
 
-    func test_fetchWeather_at() {
-        do {
-            let str = try YumemiWeather.fetchWeatherCondition(at: "tokyo")
-            XCTAssertNotNil(WeatherCondition(rawValue: str))
-        }
-        catch let error as YumemiWeatherError {
-            XCTAssertEqual(error, YumemiWeatherError.unknownError)
-        }
-        catch {
-            XCTFail()
-        }
+    func test_fetchWeather_at() throws {
+        let str = try YumemiWeather.fetchWeatherCondition(at: "tokyo")
+        XCTAssertNotNil(WeatherCondition(rawValue: str))
     }
 
-    func test_fetchWeather_jsonString() {
+    func test_fetchWeather_jsonString() throws {
         let parameter = """
 {
     "area": "tokyo",
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
-        do {
-            let responseJSON = try YumemiWeather.fetchWeather(parameter)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
-        }
-        catch let error as YumemiWeatherError {
-            XCTAssertEqual(error, YumemiWeatherError.unknownError)
-        }
-        catch {
-            XCTFail()
-        }
+        let responseJSON = try YumemiWeather.fetchWeather(parameter)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
     }
 
-    func test_fetchWeather_jsonString_sync() {
+    func test_fetchWeather_jsonString_sync() throws {
         let beginDate = Date()
         let parameter = """
 {
@@ -94,21 +82,13 @@ final class YumemiWeatherTests: XCTestCase {
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
-        do {
-            let responseJSON = try YumemiWeather.syncFetchWeather(parameter)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
-        }
-        catch let error as YumemiWeatherError {
-            XCTAssertEqual(error, YumemiWeatherError.unknownError)
-        }
-        catch {
-            XCTFail()
-        }
+        let responseJSON = try YumemiWeather.syncFetchWeather(parameter)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
 
         XCTAssertGreaterThanOrEqual(Date().timeIntervalSince(beginDate), YumemiWeather.apiDuration)
     }
@@ -139,7 +119,7 @@ final class YumemiWeatherTests: XCTestCase {
     }
 
     @available(iOS 13, macOS 10.15, *)
-    func test_fetchWeather_jsonString_async() async {
+    func test_fetchWeather_jsonString_async() async throws {
         let beginDate = Date()
         let parameter = """
 {
@@ -147,21 +127,13 @@ final class YumemiWeatherTests: XCTestCase {
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
-        do {
-            let responseJSON = try await YumemiWeather.asyncFetchWeather(parameter)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
-        }
-        catch let error as YumemiWeatherError {
-            XCTAssertEqual(error, YumemiWeatherError.unknownError)
-        }
-        catch {
-            XCTFail()
-        }
+        let responseJSON = try await YumemiWeather.asyncFetchWeather(parameter)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        _ = try decoder.decode(Response.self, from: Data(responseJSON.utf8))
 
         XCTAssertGreaterThanOrEqual(Date().timeIntervalSince(beginDate), YumemiWeather.apiDuration)
     }
