@@ -30,7 +30,7 @@ extension WeatherCondition {
     /// - Parameter generator: ランダムで取得するのに使う乱数生成期です。
     /// - Returns: なにかしらの転向を返します。
     static func random(using generator: inout some RandomNumberGenerator) -> Self {
-        WeatherCondition.allCases.randomElement(using: &generator)!
+        allCases.randomElement(using: &generator)!
     }
 }
 
