@@ -245,9 +245,9 @@ extension YumemiWeather {
         minTemperature: Int? = nil,
         date: Date? = nil
     ) -> Response {
-        let weatherCondition = weatherCondition ?? WeatherCondition.random(using: &generator)
-        let maxTemperature = maxTemperature ?? Int.random(in: 10...40, using: &generator)
-        let minTemperature = minTemperature ?? Int.random(in: -40..<maxTemperature, using: &generator)
+        let weatherCondition = weatherCondition ?? .random(using: &generator)
+        let maxTemperature = maxTemperature ?? .random(in: 10...40, using: &generator)
+        let minTemperature = minTemperature ?? .random(in: -40..<maxTemperature, using: &generator)
         let date = date ?? Date()
 
         return Response(
