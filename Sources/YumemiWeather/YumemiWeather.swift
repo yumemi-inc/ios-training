@@ -18,6 +18,22 @@ enum WeatherCondition: String, CaseIterable {
     case rainy
 }
 
+extension WeatherCondition {
+    
+    /// 天候をランダムで取得します。
+    /// - Returns: なにかしらの転向を返します。
+    static func random() -> Self {
+        random(using: &ControllableGenerator.shared)
+    }
+    
+    /// 天候をランダムで取得します。
+    /// - Parameter generator: ランダムで取得するのに使う乱数生成期です。
+    /// - Returns: なにかしらの転向を返します。
+    static func random(using generator: inout some RandomNumberGenerator) -> Self {
+        WeatherCondition.allCases.randomElement(using: &generator)!
+    }
+}
+
 public enum YumemiWeatherError: Error {
     case invalidParameterError
     case unknownError
@@ -229,7 +245,7 @@ extension YumemiWeather {
         minTemperature: Int? = nil,
         date: Date? = nil
     ) -> Response {
-        let weatherCondition = weatherCondition ?? WeatherCondition.allCases.randomElement(using: &generator)!
+        let weatherCondition = weatherCondition ?? WeatherCondition.random(using: &generator)
         let maxTemperature = maxTemperature ?? Int.random(in: 10...40, using: &generator)
         let minTemperature = minTemperature ?? Int.random(in: -40..<maxTemperature, using: &generator)
         let date = date ?? Date()
