@@ -187,6 +187,7 @@ extension YumemiWeather {
 
     static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         return decoder
     }()
