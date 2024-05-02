@@ -52,7 +52,7 @@ final class YumemiWeatherListTests: XCTestCase {
     func test_fetchWeatherList_jsonString_one() {
         let parameter = """
 {
-    "areas": ["tokyo"],
+    "areas": ["Tokyo"],
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
@@ -84,7 +84,7 @@ final class YumemiWeatherListTests: XCTestCase {
     func test_fetchWeatherList_jsonString_two() {
         let parameter = """
 {
-    "areas": ["tokyo", "nagoya"],
+    "areas": ["Tokyo", "Nagoya"],
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
@@ -114,7 +114,7 @@ final class YumemiWeatherListTests: XCTestCase {
     func test_fetchWeatherList_jsonString_none() {
         let parameter = """
 {
-    "areas": ["losAngeles"],
+    "areas": ["LosAngeles"],
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
