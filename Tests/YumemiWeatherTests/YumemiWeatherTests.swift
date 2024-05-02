@@ -51,7 +51,7 @@ final class YumemiWeatherTests: XCTestCase {
 
     func test_fetchWeather_at() {
         do {
-            let str = try YumemiWeather.fetchWeatherCondition(at: "tokyo")
+            let str = try YumemiWeather.fetchWeatherCondition(at: "Tokyo")
             XCTAssertNotNil(WeatherCondition(rawValue: str))
         }
         catch let error as YumemiWeatherError {
@@ -65,7 +65,7 @@ final class YumemiWeatherTests: XCTestCase {
     func test_fetchWeather_jsonString() {
         let parameter = """
 {
-    "area": "tokyo",
+    "area": "Tokyo",
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
@@ -90,7 +90,7 @@ final class YumemiWeatherTests: XCTestCase {
         let beginDate = Date()
         let parameter = """
 {
-    "area": "tokyo",
+    "area": "Tokyo",
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
@@ -116,7 +116,7 @@ final class YumemiWeatherTests: XCTestCase {
     func test_fetchWeather_jsonString_callback() {
         let parameter = """
 {
-    "area": "tokyo",
+    "area": "Tokyo",
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
@@ -143,7 +143,7 @@ final class YumemiWeatherTests: XCTestCase {
         let beginDate = Date()
         let parameter = """
 {
-    "area": "tokyo",
+    "area": "Tokyo",
     "date": "2020-04-01T12:00:00+09:00"
 }
 """
