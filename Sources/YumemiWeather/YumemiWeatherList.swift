@@ -34,7 +34,12 @@ public enum Area: String, CaseIterable, Codable {
 
 public extension YumemiWeather {
 
-    /// 擬似 天気予報一覧 API JSON ver
+    /// 天気予報一覧を読み込む API の JSON Version です。
+    ///
+    /// JSON 文字列で地域情報 `areas` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// 取得された天気予報は速やかに返されます。
+    ///
+    /// 地域情報は配列で複数の地域を一括指定し、それらの地域の天気予報を取得できます。地域を指定しない場合は全地域の天気予報を取得します。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -42,6 +47,7 @@ public extension YumemiWeather {
     ///         "areas": ["Tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
+    ///
     /// 返された AreaResponse の JSON 文字列の例
     ///
     ///     [
@@ -78,7 +84,12 @@ public extension YumemiWeather {
         return String(data: responseData, encoding: .utf8)!
     }
 
-    /// 擬似 天気予報一覧 API Sync ver
+    /// 天気予報一覧を読み込む API の Sync Version です。
+    ///
+    /// JSON 文字列で地域情報 `areas` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は同期的に実行され、天気予報を返すまでに若干時間がかかります。
+    ///
+    /// 地域情報は配列で複数の地域を一括指定し、それらの地域の天気予報を取得できます。地域を指定しない場合は全地域の天気予報を取得します。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -107,7 +118,12 @@ public extension YumemiWeather {
         return try fetchWeatherList(jsonString)
     }
 
-    /// 擬似 天気予報一覧 API Callback ver
+    /// 天気予報一覧を読み込む API の Callback Version です。
+    ///
+    /// JSON 文字列で地域情報 `areas` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は非同期的に実行され、天気予報を取得できるとその結果を添えて `completion` を呼び出します。
+    ///
+    /// 地域情報は配列で複数の地域を一括指定し、それらの地域の天気予報を取得できます。地域を指定しない場合は全地域の天気予報を取得します。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -149,7 +165,12 @@ public extension YumemiWeather {
         }
     }
 
-    /// 擬似 天気予報一覧API Async ver
+    /// 天気予報一覧を読み込む API の Async Version です。
+    ///
+    /// JSON 文字列で地域情報 `areas` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は非同期的に実行され、天気予報を取得できるまでは Swift Concurrency により処理が中断されます。
+    ///
+    /// 地域情報は配列で複数の地域を一括指定し、それらの地域の天気予報を取得できます。地域を指定しない場合は全地域の天気予報を取得します。
     ///
     /// API に請求する JSON 文字列の例：
     ///
