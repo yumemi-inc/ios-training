@@ -70,9 +70,7 @@ public extension YumemiWeather {
             throw YumemiWeatherError.invalidParameterError
         }
 
-        if Int.random(in: 0...4) == 4 {
-            throw YumemiWeatherError.unknownError
-        }
+        try introduceInstability()
 
         let areas = request.areas.isEmpty ? Area.allCases : request.areas.compactMap { Area(rawValue: $0) }
         let areaResponses = areas.map { area -> AreaResponse in
