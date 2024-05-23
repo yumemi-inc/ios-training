@@ -48,81 +48,113 @@ final class YumemiWeatherListTests: XCTestCase {
     
     func test_fetchWeatherList_jsonString() throws {
         let parameter = """
-{
-    "areas": [],
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
-        let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
-        XCTAssertEqual(response.count, Area.allCases.count)
+        {
+            "areas": [],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
+        do {
+            let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
+            XCTAssertEqual(response.count, Area.allCases.count)
+        }
+        catch let error as YumemiWeatherError {
+            XCTAssertEqual(error, YumemiWeatherError.unknownError)
+        }
+        catch {
+            XCTFail()
+        }
     }
 
     func test_fetchWeatherList_jsonString_one() throws {
         let parameter = """
-{
-    "areas": ["Tokyo"],
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
-        let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
-        XCTAssertEqual(response.count, 1)
-        let tokyo = response.first
-        XCTAssertEqual(tokyo?.area, .Tokyo)
-        
-        let responseJSON2 = try YumemiWeather.fetchWeatherList(parameter)
-        let response2 = try decoder.decode([AreaResponse].self, from: Data(responseJSON2.utf8))
-        let tokyo2 = response2.first
-        XCTAssertEqual(tokyo?.info, tokyo2?.info)
+        {
+            "areas": ["Tokyo"],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
+        do {
+            let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
+            XCTAssertEqual(response.count, 1)
+            let tokyo = response.first
+            XCTAssertEqual(tokyo?.area, .tokyo)
+
+            let responseJSON2 = try YumemiWeather.fetchWeatherList(parameter)
+            let response2 = try decoder.decode([AreaResponse].self, from: Data(responseJSON2.utf8))
+            let tokyo2 = response2.first
+            XCTAssertEqual(tokyo?.info, tokyo2?.info)
+        }
+        catch let error as YumemiWeatherError {
+            XCTAssertEqual(error, YumemiWeatherError.unknownError)
+        }
+        catch {
+            XCTFail()
+        }
     }
 
     func test_fetchWeatherList_jsonString_two() throws {
         let parameter = """
-{
-    "areas": ["Tokyo", "Nagoya"],
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
-        let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
-        XCTAssertEqual(response.count, 2)
-        let tokyo = response.first(where: { $0.area == .Tokyo })
-        XCTAssertNotNil(tokyo)
-        let nagoya = response.first(where: { $0.area == .Nagoya })
-        XCTAssertNotNil(nagoya)
-        XCTAssertNotEqual(tokyo?.info, nagoya?.info)
+        {
+            "areas": ["Tokyo", "Nagoya"],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
+        do {
+            let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
+            XCTAssertEqual(response.count, 2)
+            let tokyo = response.first(where: { $0.area == .tokyo })
+            XCTAssertNotNil(tokyo)
+            let nagoya = response.first(where: { $0.area == .nagoya })
+            XCTAssertNotNil(nagoya)
+            XCTAssertNotEqual(tokyo?.info, nagoya?.info)
+        }
+        catch let error as YumemiWeatherError {
+            XCTAssertEqual(error, YumemiWeatherError.unknownError)
+        }
+        catch {
+            XCTFail()
+        }
     }
 
     func test_fetchWeatherList_jsonString_none() throws {
         let parameter = """
-{
-    "areas": ["LosAngeles"],
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
-        let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
-        XCTAssertEqual(response.count, 0)
+        {
+            "areas": ["LosAngeles"],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
+        do {
+            let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            let response = try decoder.decode([AreaResponse].self, from: Data(responseJSON.utf8))
+            XCTAssertEqual(response.count, 0)
+        }
+        catch let error as YumemiWeatherError {
+            XCTAssertEqual(error, YumemiWeatherError.unknownError)
+        }
+        catch {
+            XCTFail()
+        }
     }
 }

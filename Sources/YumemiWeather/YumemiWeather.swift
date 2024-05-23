@@ -70,7 +70,7 @@ final public class YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "area": "tokyo",
+    ///         "area": "Tokyo",
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     ///
@@ -107,7 +107,7 @@ final public class YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "area": "tokyo",
+    ///         "area": "Tokyo",
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     ///
@@ -136,7 +136,7 @@ final public class YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "area": "tokyo",
+    ///         "area": "Tokyo",
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     ///
@@ -176,7 +176,7 @@ final public class YumemiWeather {
     /// API に請求する JSON 文字列の例：
     ///
     ///     {
-    ///         "area": "tokyo",
+    ///         "area": "Tokyo",
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
     ///
