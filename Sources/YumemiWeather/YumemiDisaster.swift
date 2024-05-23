@@ -18,7 +18,7 @@ public class YumemiDisaster {
     public init() {}
     
     public func fetchDisaster() {
-        self.delegate?.handle(disaster: "只今、災害情報はありません。")
+        delegate?.handle(disaster: "只今、災害情報はありません。")
     }
     
 }

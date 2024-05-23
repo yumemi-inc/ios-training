@@ -6,6 +6,9 @@ Sync ver
 ```swift
 static func syncFetchWeather(_ jsonString: String) throws -> String
 ```
+
+このメソッドは、値を返すまでに少し時間がかかります。
+
 [APIの概要](YumemiWeather.md)  
 
 ## 課題
