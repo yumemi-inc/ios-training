@@ -3,6 +3,10 @@ import XCTest
 
 final class YumemiWeatherTests: XCTestCase {
 
+    override func setUpWithError() throws {
+        YumemiWeather.apiQuality = .neverFails
+    }
+
     func test_ランダムにレスポンスを生成する() {
 
         // 日付を省略すると実行した瞬間のものが得られてしまうため、
@@ -62,7 +66,7 @@ final class YumemiWeatherTests: XCTestCase {
         }
     }
 
-    func test_fetchWeather_jsonString() {
+    func test_fetchWeather_jsonString() throws {
         let parameter = """
         {
             "area": "Tokyo",
@@ -86,7 +90,7 @@ final class YumemiWeatherTests: XCTestCase {
         }
     }
 
-    func test_fetchWeather_jsonString_sync() {
+    func test_fetchWeather_jsonString_sync() throws {
         let beginDate = Date()
         let parameter = """
         {
@@ -139,7 +143,7 @@ final class YumemiWeatherTests: XCTestCase {
     }
 
     @available(iOS 13, macOS 10.15, *)
-    func test_fetchWeather_jsonString_async() async {
+    func test_fetchWeather_jsonString_async() async throws {
         let beginDate = Date()
         let parameter = """
         {

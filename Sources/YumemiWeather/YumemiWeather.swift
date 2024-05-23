@@ -39,28 +39,33 @@ public enum YumemiWeatherError: Error {
     case unknownError
 }
 
+/// 天気予報を取得する擬似天気予報 API です。
+///
+/// ゆめみ iOS 研修用の実装であり、実際の天気予報ではなくランダムな天気予報が得られます。
+/// 研修効果を高めるため、さまざまなバージョンの API が用意されていて、
+/// その中には適切なパラメーターを与えたときでも一定の確率でエラーを返すものもあります。
 final public class YumemiWeather {
 
-    /// 擬似 天気予報 API Simple ver
+    /// 天気予報を読み込む API の Simple Version です。
     /// - Returns: 天気状況を表す文字列 "sunny" or "cloudy" or "rainy"
     public static func fetchWeatherCondition() -> String {
         return makeRandomResponse().weatherCondition
     }
 
-    /// 擬似 天気予報 API Throws ver
+    /// 天気予報を読み込む API の Throwing Version です。
     /// - Throws: YumemiWeatherError
     /// - Parameters:
     ///   - area: 天気予報を取得する対象地域 example: "tokyo"
     /// - Returns: 天気状況を表す文字列 "sunny" or "cloudy" or "rainy"
     public static func fetchWeatherCondition(at area: String) throws -> String {
-        if Int.random(in: 0...4) == 4 {
-            throw YumemiWeatherError.unknownError
-        }
-
-        return makeRandomResponse().weatherCondition
+        try introduceInstability()
+        return self.makeRandomResponse().weatherCondition
     }
 
-    /// 擬似 天気予報 API JSON ver
+    /// 天気予報を読み込む API の JSON Version です。
+    ///
+    /// JSON 文字列で地域情報 `area` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// 取得された天気予報は速やかに返されます。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -90,14 +95,14 @@ final public class YumemiWeather {
         let response = makeRandomResponse(date: request.date)
         let responseData = try encoder.encode(response)
 
-        if Int.random(in: 0...4) == 4 {
-            throw YumemiWeatherError.unknownError
-        }
-
+        try introduceInstability()
         return String(data: responseData, encoding: .utf8)!
     }
 
-    /// 擬似 天気予報 API Sync ver
+    /// 天気予報を読み込む API の Sync Version です。
+    ///
+    /// JSON 文字列で地域情報 `area` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は同期的に実行され、天気予報を返すまでに若干時間がかかります。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -123,7 +128,10 @@ final public class YumemiWeather {
         return try fetchWeather(jsonString)
     }
     
-    /// 擬似 天気予報 API Callback ver
+    /// 天気予報を読み込む API の Callback Version です。
+    ///
+    /// JSON 文字列で地域情報 `area` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は非同期的に実行され、天気予報を取得できるとその結果を添えて `completion` を呼び出します。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -160,8 +168,11 @@ final public class YumemiWeather {
         }
     }
 
-    /// 擬似 天気予報 API Async ver
+    /// 天気予報を読み込む API の Async Version です。
     ///
+    /// JSON 文字列で地域情報 `area` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は非同期的に実行され、天気予報を取得できるまでは Swift Concurrency により処理が中断されます。
+    /// 
     /// API に請求する JSON 文字列の例：
     ///
     ///     {

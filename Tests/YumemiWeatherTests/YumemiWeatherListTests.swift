@@ -3,6 +3,28 @@ import XCTest
 
 final class YumemiWeatherListTests: XCTestCase {
 
+    override func setUpWithError() throws {
+        YumemiWeather.apiQuality = .neverFails
+    }
+    
+    func test_APIは必ずしも成功しない() throws {
+        
+        let tryingCount = 15_000
+        let request = """
+        {
+            "area": "tokyo",
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
+        let predicate = { _ = try YumemiWeather.fetchWeather(request) }
+
+        XCTAssertAPIQuality(predicate, tryingCount: tryingCount, quality: .sometimesFails(probability: 0.25))
+        XCTAssertAPIQuality(predicate, tryingCount: tryingCount, quality: .sometimesFails(probability: 0.8))
+        XCTAssertAPIQuality(predicate, tryingCount: tryingCount, quality: .sometimesFails(probability: 0.05))
+        XCTAssertAPIQuality(predicate, tryingCount: tryingCount, quality: .alwaysFails)
+        XCTAssertAPIQuality(predicate, tryingCount: tryingCount, quality: .neverFails)
+    }
+    
     func test_Areasに空を指定したときに全ての地域が取得される() throws {
         
         let request = """
@@ -24,7 +46,7 @@ final class YumemiWeatherListTests: XCTestCase {
         XCTAssertEqual(response.map(\.area), Area.allCases)
     }
     
-    func test_fetchWeatherList_jsonString() {
+    func test_fetchWeatherList_jsonString() throws {
         let parameter = """
         {
             "areas": [],
@@ -49,7 +71,7 @@ final class YumemiWeatherListTests: XCTestCase {
         }
     }
 
-    func test_fetchWeatherList_jsonString_one() {
+    func test_fetchWeatherList_jsonString_one() throws {
         let parameter = """
         {
             "areas": ["Tokyo"],
@@ -81,7 +103,7 @@ final class YumemiWeatherListTests: XCTestCase {
         }
     }
 
-    func test_fetchWeatherList_jsonString_two() {
+    func test_fetchWeatherList_jsonString_two() throws {
         let parameter = """
         {
             "areas": ["Tokyo", "Nagoya"],
@@ -111,7 +133,7 @@ final class YumemiWeatherListTests: XCTestCase {
         }
     }
 
-    func test_fetchWeatherList_jsonString_none() {
+    func test_fetchWeatherList_jsonString_none() throws {
         let parameter = """
         {
             "areas": ["LosAngeles"],
