@@ -26,11 +26,11 @@ final class YumemiWeatherListTests: XCTestCase {
     
     func test_fetchWeatherList_jsonString() {
         let parameter = """
-{
-    "areas": [],
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
+        {
+            "areas": [],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
         do {
             let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
             let dateFormatter = DateFormatter()
@@ -51,11 +51,11 @@ final class YumemiWeatherListTests: XCTestCase {
 
     func test_fetchWeatherList_jsonString_one() {
         let parameter = """
-{
-    "areas": ["Tokyo"],
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
+        {
+            "areas": ["Tokyo"],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
         do {
             let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
             let dateFormatter = DateFormatter()
@@ -83,11 +83,11 @@ final class YumemiWeatherListTests: XCTestCase {
 
     func test_fetchWeatherList_jsonString_two() {
         let parameter = """
-{
-    "areas": ["Tokyo", "Nagoya"],
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
+        {
+            "areas": ["Tokyo", "Nagoya"],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
         do {
             let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
             let dateFormatter = DateFormatter()
@@ -113,11 +113,11 @@ final class YumemiWeatherListTests: XCTestCase {
 
     func test_fetchWeatherList_jsonString_none() {
         let parameter = """
-{
-    "areas": ["LosAngeles"],
-    "date": "2020-04-01T12:00:00+09:00"
-}
-"""
+        {
+            "areas": ["LosAngeles"],
+            "date": "2020-04-01T12:00:00+09:00"
+        }
+        """
         do {
             let responseJSON = try YumemiWeather.fetchWeatherList(parameter)
             let dateFormatter = DateFormatter()
