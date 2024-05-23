@@ -18,23 +18,28 @@ struct AreaResponse: Codable {
 }
 
 public enum Area: String, CaseIterable, Codable {
-    case Sapporo
-    case Sendai
-    case Niigata
-    case Kanazawa
-    case Tokyo
-    case Nagoya
-    case Osaka
-    case Hiroshima
-    case Kochi
-    case Fukuoka
-    case Kagoshima
-    case Naha
+    case sapporo = "Sapporo"
+    case sendai = "Sendai"
+    case niigata = "Niigata"
+    case kanazawa = "Kanazawa"
+    case tokyo = "Tokyo"
+    case nagoya = "Nagoya"
+    case osaka = "Osaka"
+    case hiroshima = "Hiroshima"
+    case kochi = "Kochi"
+    case fukuoka = "Fukuoka"
+    case kagoshima = "Kagoshima"
+    case naha = "Naha"
 }
 
 public extension YumemiWeather {
 
-    /// 擬似 天気予報一覧 API JSON ver
+    /// 天気予報一覧を読み込む API の JSON Version です。
+    ///
+    /// JSON 文字列で地域情報 `areas` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// 取得された天気予報は速やかに返されます。
+    ///
+    /// 地域情報は配列で複数の地域を一括指定し、それらの地域の天気予報を取得できます。地域を指定しない場合は全地域の天気予報を取得します。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -42,6 +47,7 @@ public extension YumemiWeather {
     ///         "areas": ["Tokyo"],
     ///         "date": "2020-04-01T12:00:00+09:00"
     ///     }
+    ///
     /// 返された AreaResponse の JSON 文字列の例
     ///
     ///     [
@@ -64,23 +70,24 @@ public extension YumemiWeather {
             throw YumemiWeatherError.invalidParameterError
         }
 
-        if Int.random(in: 0...4) == 4 {
-            throw YumemiWeatherError.unknownError
-        }
+        try introduceInstability()
 
         let areas = request.areas.isEmpty ? Area.allCases : request.areas.compactMap { Area(rawValue: $0) }
-        let response = areas.map { area -> AreaResponse in
-            var hasher = Hasher()
-            hasher.combine(area)
-            hasher.combine(request.date)
-            return AreaResponse(area: area, info: makeRandomResponse(date: request.date, seed: hasher.finalize()))
+        let areaResponses = areas.map { area -> AreaResponse in
+            ControllableGenerator.resetUsing(area: area, date: request.date)
+            return AreaResponse(area: area, info: makeRandomResponse(using: &ControllableGenerator.shared, date: request.date))
         }
-        let responseData = try encoder.encode(response)
+        let responseData = try encoder.encode(areaResponses)
 
         return String(data: responseData, encoding: .utf8)!
     }
 
-    /// 擬似 天気予報一覧 API Sync ver
+    /// 天気予報一覧を読み込む API の Sync Version です。
+    ///
+    /// JSON 文字列で地域情報 `areas` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は同期的に実行され、天気予報を返すまでに若干時間がかかります。
+    ///
+    /// 地域情報は配列で複数の地域を一括指定し、それらの地域の天気予報を取得できます。地域を指定しない場合は全地域の天気予報を取得します。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -106,10 +113,15 @@ public extension YumemiWeather {
     /// - Returns: 返された AreaResponse の JSON 文字列
     static func syncFetchWeatherList(_ jsonString: String) throws -> String {
         Thread.sleep(forTimeInterval: apiDuration)
-        return try self.fetchWeatherList(jsonString)
+        return try fetchWeatherList(jsonString)
     }
 
-    /// 擬似 天気予報一覧 API Callback ver
+    /// 天気予報一覧を読み込む API の Callback Version です。
+    ///
+    /// JSON 文字列で地域情報 `areas` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は非同期的に実行され、天気予報を取得できるとその結果を添えて `completion` を呼び出します。
+    ///
+    /// 地域情報は配列で複数の地域を一括指定し、それらの地域の天気予報を取得できます。地域を指定しない場合は全地域の天気予報を取得します。
     ///
     /// API に請求する JSON 文字列の例：
     ///
@@ -140,10 +152,10 @@ public extension YumemiWeather {
         DispatchQueue.global().asyncAfter(deadline: .now() + apiDuration) {
             do {
                 let response = try fetchWeatherList(jsonString)
-                completion(Result.success(response))
+                completion(.success(response))
             }
-            catch let error where error is YumemiWeatherError {
-                completion(Result.failure(error as! YumemiWeatherError))
+            catch let error as YumemiWeatherError {
+                completion(.failure(error))
             }
             catch {
                 fatalError()
@@ -151,7 +163,12 @@ public extension YumemiWeather {
         }
     }
 
-    /// 擬似 天気予報一覧API Async ver
+    /// 天気予報一覧を読み込む API の Async Version です。
+    ///
+    /// JSON 文字列で地域情報 `areas` と日付情報 `date` を持つオブジェクトを受け取って、それに該当する天気予報を取得します。
+    /// この API は非同期的に実行され、天気予報を取得できるまでは Swift Concurrency により処理が中断されます。
+    ///
+    /// 地域情報は配列で複数の地域を一括指定し、それらの地域の天気予報を取得できます。地域を指定しない場合は全地域の天気予報を取得します。
     ///
     /// API に請求する JSON 文字列の例：
     ///

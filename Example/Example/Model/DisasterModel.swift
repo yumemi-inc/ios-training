@@ -20,15 +20,15 @@ class DisasterModelImpl: DisasterModel {
     }
 
     func fetchDisaster(completion: ((String) -> Void)?) {
-        self.fetchDisasterHandler = completion
-        self.yumemiDisaster.fetchDisaster()
+        fetchDisasterHandler = completion
+        yumemiDisaster.fetchDisaster()
     }
 }
 
 extension DisasterModelImpl: YumemiDisasterHandleDelegate {
     
     func handle(disaster: String) {
-        self.fetchDisasterHandler?(disaster)
+        fetchDisasterHandler?(disaster)
     }
     
 }
