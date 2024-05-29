@@ -6,8 +6,6 @@
 //  Copyright © 2020 YUMEMI Inc. All rights reserved.
 //
 
-import Foundation
-
 enum WeatherError: Error {
     case jsonEncodeError
     case jsonDecodeError
