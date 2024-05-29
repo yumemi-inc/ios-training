@@ -1,44 +1,5 @@
 import Foundation
 
-struct Request: Decodable {
-    let area: String
-    let date: Date
-}
-
-struct Response: Codable, Equatable {
-    let weatherCondition: String
-    let maxTemperature: Int
-    let minTemperature: Int
-    let date: Date
-}
-
-enum WeatherCondition: String, CaseIterable {
-    case sunny
-    case cloudy
-    case rainy
-}
-
-extension WeatherCondition {
-    
-    /// 天候をランダムで取得します。
-    /// - Returns: なにかしらの天候を返します。
-    static func random() -> Self {
-        random(using: &ControllableGenerator.shared)
-    }
-    
-    /// 天候をランダムで取得します。
-    /// - Parameter generator: ランダムで取得するのに使う乱数生成期です。
-    /// - Returns: なにかしらの天候を返します。
-    static func random(using generator: inout some RandomNumberGenerator) -> Self {
-        allCases.randomElement(using: &generator)!
-    }
-}
-
-public enum YumemiWeatherError: Error {
-    case invalidParameterError
-    case unknownError
-}
-
 /// 天気予報を取得する擬似天気予報 API です。
 ///
 /// ゆめみ iOS 研修用の実装であり、実際の天気予報ではなくランダムな天気予報が得られます。
