@@ -5,8 +5,6 @@
 //  Created by 渡部 陽太 on 2020/04/19.
 //
 
-import Foundation
-
 public protocol YumemiDisasterHandleDelegate: AnyObject {
     func handle(disaster: String)
 }

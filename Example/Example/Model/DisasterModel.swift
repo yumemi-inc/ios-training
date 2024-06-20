@@ -6,7 +6,6 @@
 //  Copyright © 2020 YUMEMI Inc. All rights reserved.
 //
 
-import Foundation
 import YumemiWeather
 
 class DisasterModelImpl: DisasterModel {
