@@ -2,7 +2,7 @@
 //  Area.swift
 //
 
-public enum Area: String, CaseIterable, Codable {
+ enum Area: String, CaseIterable, Codable {
     case sapporo = "Sapporo"
     case sendai = "Sendai"
     case niigata = "Niigata"
