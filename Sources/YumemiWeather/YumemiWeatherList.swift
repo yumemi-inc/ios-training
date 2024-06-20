@@ -7,31 +7,6 @@
 
 import Foundation
 
-struct AreaRequest: Decodable {
-    let areas: [String]
-    let date: Date
-}
-
-struct AreaResponse: Codable {
-    let area: Area
-    let info: Response
-}
-
-public enum Area: String, CaseIterable, Codable {
-    case sapporo = "Sapporo"
-    case sendai = "Sendai"
-    case niigata = "Niigata"
-    case kanazawa = "Kanazawa"
-    case tokyo = "Tokyo"
-    case nagoya = "Nagoya"
-    case osaka = "Osaka"
-    case hiroshima = "Hiroshima"
-    case kochi = "Kochi"
-    case fukuoka = "Fukuoka"
-    case kagoshima = "Kagoshima"
-    case naha = "Naha"
-}
-
 public extension YumemiWeather {
 
     /// 天気予報一覧を読み込む API の JSON Version です。
