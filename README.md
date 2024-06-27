@@ -73,17 +73,6 @@ Session1がレビュー待ちの場合...
 13) [UITableView](Documentation/UITableView.md)
 1) [UINavigationController](Documentation/UINavigationController.md)
 
-**■ 並行処理**
-
-15) sync ver を用いて、１週間の天気を取得まずは直列。
-    全部揃ってから表示すること。
-1) Dispatch による並行処理を実施。この時ロックは使わずに並行処理を実装してみる。データが正常に更新されない場合があることを確認する。
-1) ロックを入れてデータの不整合が起こらないようにする。
-1) シリアルキューによる不整合阻止
-1) アクターによる阻止。
-    メインアクターで保護させるしかないかも。別のアクターだとデータソースが困りそう。
-1) タスクグループを用いた不整合阻止
-
 **■ 実力チェック**
 
 15) [BugFix](Documentation/BugFix.md)
