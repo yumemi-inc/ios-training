@@ -30,7 +30,7 @@ class WeatherViewControllerTests: XCTestCase {
     @MainActor
     func test_天気予報がsunnyだったらImageViewのImageにsunnyが設定されること_TintColorがredに設定されること() async throws {
         weatherModel.fetchWeatherImpl = { _ in
-            let response = Response(weather: .sunny, maxTemp: 0, minTemp: 0, date: Date())
+            let response = Response(weatherCondition: .sunny, maxTemperature: 0, minTemperature: 0, date: Date())
             return Result.success(response)
         }
         
@@ -44,7 +44,7 @@ class WeatherViewControllerTests: XCTestCase {
     @MainActor
     func test_天気予報がcloudyだったらImageViewのImageにcloudyが設定されること_TintColorがgrayに設定されること() async throws {
         weatherModel.fetchWeatherImpl = { _ in
-            let response = Response(weather: .cloudy, maxTemp: 0, minTemp: 0, date: Date())
+            let response = Response(weatherCondition: .cloudy, maxTemperature: 0, minTemperature: 0, date: Date())
             return Result.success(response)
         }
         
@@ -58,7 +58,7 @@ class WeatherViewControllerTests: XCTestCase {
     @MainActor
     func test_天気予報がrainyだったらImageViewのImageにrainyが設定されること_TintColorがblueに設定されること() async throws {
         weatherModel.fetchWeatherImpl = { _ in
-            let response = Response(weather: .rainy, maxTemp: 0, minTemp: 0, date: Date())
+            let response = Response(weatherCondition: .rainy, maxTemperature: 0, minTemperature: 0, date: Date())
             return Result.success(response)
         }
         
@@ -72,7 +72,7 @@ class WeatherViewControllerTests: XCTestCase {
     @MainActor
     func test_最高気温_最低気温がUILabelに設定されること() async throws {
         weatherModel.fetchWeatherImpl = { _ in
-            let response = Response(weather: .rainy, maxTemp: 100, minTemp: -100, date: Date())
+            let response = Response(weatherCondition: .rainy, maxTemperature: 100, minTemperature: -100, date: Date())
             return Result.success(response)
         }
         
