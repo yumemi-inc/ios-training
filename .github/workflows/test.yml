@@ -17,7 +17,7 @@ jobs:
     steps:
       - id: setmatrix
         run: |
-          object="{\"targets\":[{\"scheme\": \"YumemiWeather\", \"dir\": \".\"}, {\"scheme\": \"Example\", \"dir\": \"Example\"}]}"
+          object="[{\"scheme\":\"YumemiWeather\",\"dir\":\".\"},{\"scheme\":\"Example\",\"dir\":\"Example\"}]"
           echo "matrix=$object" >> $GITHUB_OUTPUT
   test:
     needs: setup
@@ -26,7 +26,8 @@ jobs:
       contents: read
       checks: write
     strategy:
-      matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
+      matrix:
+        config: ${{fromJson(needs.setup.outputs.matrix)}}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,10 +37,10 @@ jobs:
         run: |
           # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
           device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
-          cd ${{ matrix.dir }}
-          xcodebuild -scheme "${{ matrix.scheme }}" -resultBundlePath ${{ matrix.scheme }} test -destination "platform=$platform,name=$device"
-      - name: Format
+          cd ${{ matrix.config.dir }}
+          xcodebuild -scheme "${{ matrix.config.scheme }}" -resultBundlePath ${{ matrix.config.scheme }} test -destination "platform=$platform,name=$device"
+      - name: Report
         uses: kishikawakatsumi/xcresulttool@v1
         with:
-          path: ${{ matrix.scheme }}.xcresult
+          path: ${{ matrix.config.scheme }}.xcresult
         if: success() || failure()
