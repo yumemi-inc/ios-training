@@ -38,6 +38,7 @@ jobs:
           # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
           device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
           cd ${{ matrix.config.dir }}
+          rm -rf "${{ matrix.config.scheme }}".xcresult
           xcodebuild -scheme "${{ matrix.config.scheme }}" -resultBundlePath ${{ matrix.config.scheme }} test -destination "platform=$platform,name=$device"
       - name: Report
         uses: kishikawakatsumi/xcresulttool@v1
